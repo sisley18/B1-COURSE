@@ -1,20 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap');
 @import './variables.css';
 
-/* Reuse previous imports and base styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
 }
 
 body {
-    background-color: var(--bg-primary);
+    background: var(--bg-primary);
     color: var(--text-primary);
     font-family: var(--font-body);
-    line-height: 1.6;
-    overflow-x: hidden;
+    line-height: 1.7;
+    min-height: 100vh;
 }
 
 h1,
@@ -22,12 +20,12 @@ h2,
 h3,
 h4 {
     font-family: var(--font-heading);
+    color: #fff;
 }
 
 a {
     text-decoration: none;
     color: inherit;
-    transition: 0.3s ease;
 }
 
 .container {
@@ -39,47 +37,44 @@ a {
 .btn {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    padding: 10px 24px;
+    padding: 12px 28px;
     border-radius: 50px;
     font-weight: 600;
     cursor: pointer;
-    transition: 0.3s;
-    border: none;
+    transition: all 0.3s ease;
+    border: 2px solid #fff;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
     font-family: var(--font-heading);
 }
 
-.btn-primary {
-    background: var(--gradient-gold);
-    color: #fff;
-    box-shadow: 0 4px 15px rgba(34, 211, 238, 0.3);
-}
-
-.btn-primary:hover {
+.btn:hover {
+    background: #fff;
+    color: var(--bg-primary);
     transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 header {
-    background: rgba(30, 27, 75, 0.95);
-    backdrop-filter: blur(12px);
+    background: var(--bg-secondary);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    padding: 15px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 18px 0;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 nav {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 800;
-    color: var(--text-primary);
+    color: #fff;
 }
 
 .logo span {
@@ -92,17 +87,23 @@ nav {
 }
 
 details.unit-block {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
+    background: rgba(0, 0, 0, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--border-radius);
     margin-bottom: 25px;
     overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+details.unit-block:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: var(--shadow-glow);
 }
 
 details.unit-block[open] {
-    background: rgba(30, 27, 75, 0.8);
-    border-color: var(--accent-gold-dim);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.2);
+    border-color: #fff;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
 }
 
 summary.unit-header {
@@ -112,36 +113,38 @@ summary.unit-header {
     justify-content: space-between;
     align-items: center;
     list-style: none;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
+    background: rgba(255, 255, 255, 0.05);
+    transition: background 0.3s ease;
 }
 
 summary.unit-header:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .unit-title {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 700;
-    color: var(--text-primary);
+    color: #fff;
 }
 
 .unit-subtitle {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--accent-gold);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     margin-right: 15px;
+    font-weight: 700;
 }
 
 summary.unit-header::after {
     content: '+';
     font-size: 2rem;
-    color: var(--accent-gold);
+    color: #fff;
     font-weight: 300;
 }
 
 details[open] summary.unit-header::after {
-    content: '-';
+    content: '−';
 }
 
 .unit-body {
@@ -164,69 +167,91 @@ details[open] summary.unit-header::after {
 .section-block {
     margin-top: 40px;
     padding-top: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .section-label {
     display: inline-block;
-    padding: 6px 16px;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    font-size: 0.8rem;
+    padding: 8px 20px;
+    border-radius: 25px;
+    background: rgba(0, 0, 0, 0.25);
+    font-size: 0.85rem;
     font-weight: 700;
     margin-bottom: 15px;
-    color: var(--text-secondary);
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .section-label.listening {
-    background: rgba(34, 211, 238, 0.15);
-    color: #22d3ee;
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .section-label.reading {
-    background: rgba(244, 114, 182, 0.15);
-    color: #f472b6;
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .section-label.grammar {
-    background: rgba(167, 139, 250, 0.15);
-    color: #a78bfa;
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .section-label.collocation {
-    background: rgba(52, 211, 153, 0.15);
-    color: #34d399;
+    background: rgba(255, 255, 255, 0.2);
 }
 
-/* New Vocab Styles */
+.section-label.pronunciation {
+    background: rgba(255, 255, 255, 0.2);
+}
+
 .vocab-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 15px;
     margin-top: 20px;
 }
 
 .vocab-card {
     background: rgba(0, 0, 0, 0.2);
-    padding: 15px;
-    border-radius: 10px;
-    border-left: 2px solid var(--accent-gold);
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid var(--accent-gold);
+    transition: all 0.3s ease;
+}
+
+.vocab-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .vocab-card strong {
     display: block;
     color: var(--accent-gold);
     margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.vocab-card p {
+    color: #fff;
 }
 
 .reading-text {
     background: rgba(0, 0, 0, 0.2);
     padding: 30px;
     border-radius: 12px;
-    line-height: 1.9;
+    line-height: 2;
     margin-bottom: 25px;
-    border-left: 3px solid #f472b6;
-    font-size: 1.05rem;
+    border-left: 4px solid var(--accent-gold);
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+.transcript-box {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 25px;
+    border-radius: 12px;
+    color: #fff;
+    line-height: 1.9;
+    border-left: 4px solid var(--accent-gold);
 }
 
 .player-controls {
@@ -234,65 +259,162 @@ details[open] summary.unit-header::after {
     align-items: center;
     gap: 15px;
     background: rgba(0, 0, 0, 0.2);
-    padding: 10px 20px;
+    padding: 15px 25px;
     border-radius: 50px;
     margin: 15px 0;
 }
 
 .play-btn {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    background: var(--gradient-gold);
+    background: #fff;
     border: none;
     cursor: pointer;
-    color: #fff;
+    color: var(--bg-primary);
+    font-size: 1.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.play-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .grammar-box {
-    background: rgba(167, 139, 250, 0.05);
+    background: rgba(0, 0, 0, 0.2);
     padding: 25px;
     border-radius: 12px;
-    border: 1px solid rgba(167, 139, 250, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
 }
 
 .collo-box {
     text-align: center;
     padding: 25px;
-    background: rgba(52, 211, 153, 0.05);
+    background: rgba(0, 0, 0, 0.15);
     border-radius: 12px;
     margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.collo-box:hover {
+    background: rgba(0, 0, 0, 0.25);
 }
 
 .word-slot {
     font-size: 1.8rem;
     margin: 20px 0;
     font-weight: 700;
+    color: #fff;
 }
 
 .blank {
-    border-bottom: 2px solid #34d399;
-    padding: 0 10px;
-    color: #34d399;
+    border-bottom: 3px solid var(--accent-gold);
+    padding: 0 15px;
+    color: var(--accent-gold);
 }
 
 .options-grid {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 15px;
+}
+
+details textarea {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 1rem;
 }
 
 details textarea:focus {
-    outline: 1px solid var(--accent-gold);
+    outline: none;
+    border-color: #fff;
+}
+
+details textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
 }
 
 footer {
     text-align: center;
-    padding: 40px;
-    color: var(--text-secondary);
-    opacity: 0.6;
+    padding: 50px 20px;
+    color: #fff;
+    background: var(--bg-secondary);
+    margin-top: 40px;
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+footer p {
+    opacity: 0.8;
+}
+
+/* Theory Box Styling */
+.theory-box {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    color: #fff;
+}
+
+.theory-box h4 {
+    color: var(--accent-gold);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.theory-box p {
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+.theory-box ul {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.theory-box li {
+    margin-bottom: 8px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .unit-title {
+        font-size: 1.2rem;
+    }
+
+    .vocab-grid {
+        grid-template-columns: 1fr;
+    }
+
+    summary.unit-header {
+        padding: 20px;
+    }
+
+    .unit-body {
+        padding: 0 20px 20px 20px;
+    }
+}
+
+/* Stop Audio Button Style */
+.stop-audio-btn {
+    background: rgba(0, 0, 0, 0.3) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.stop-audio-btn:hover {
+    background: rgba(0, 0, 0, 0.5) !important;
 }

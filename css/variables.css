@@ -1,34 +1,32 @@
 :root {
-    /* Color Palette - Royal Indigo (Lighter Version) */
-    --bg-primary: #1e1b4b;
-    /* Lighter Indigo/Navy (was #0f0518) */
-    --bg-secondary: #312e81;
-    /* Soft Violet/Indigo (was #1a0b2e) */
+    /* Color Palette - Orange Background Theme */
+    --bg-primary: #ea580c;
+    /* Vibrant Orange Background */
+    --bg-secondary: #c2410c;
+    /* Darker Orange */
     --text-primary: #ffffff;
-    --text-secondary: #e0e7ff;
-    /* Very Light Indigo */
+    --text-secondary: #fff7ed;
+    /* Warm Cream */
 
-    --accent-gold: #22d3ee;
-    /* Cyan */
-    --accent-gold-dim: #0891b2;
-    --accent-electric: #f472b6;
-    /* Pink */
+    /* Accent Colors */
+    --accent-gold: #fef3c7;
+    /* Light Yellow-Cream */
+    --accent-gold-dim: rgba(254, 243, 199, 0.3);
+    --accent-electric: #fbbf24;
+    /* Amber */
+    --accent-dark: #9a3412;
+    /* Dark Orange-Brown */
 
-    /* Gradients */
-    --gradient-gold: linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%);
-    --gradient-dark: linear-gradient(to bottom, #1e1b4b, #312e81);
+    --gradient-orange: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+    --gradient-accent: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
 
-    /* Typography */
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-heading: 'Outfit', sans-serif;
-    --font-body: 'Inter', sans-serif;
 
-    /* Spacing */
     --spacing-sm: 8px;
-    --spacing-md: 16px;
-    --spacing-lg: 32px;
-    --spacing-xl: 64px;
+    --spacing-md: 24px;
+    --spacing-lg: 48px;
 
-    /* Borders & Radius */
-    --radius-md: 12px;
-    --radius-lg: 20px;
+    --border-radius: 16px;
+    --shadow-glow: 0 0 30px rgba(0, 0, 0, 0.2);
 }
