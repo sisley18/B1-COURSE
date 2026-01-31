@@ -1,0 +1,28 @@
+:root {
+    /* Color Palette - Midnight Gold */
+    --bg-primary: #0a0e17; /* Deep Blue/Black */
+    --bg-secondary: #151a28; /* Lighter Deep Blue */
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --accent-gold: #ffd700;
+    --accent-gold-dim: #c5a600;
+    --accent-electric: #00f3ff;
+    
+    /* Gradients */
+    --gradient-gold: linear-gradient(135deg, #ffd700 0%, #d4af37 100%);
+    --gradient-dark: linear-gradient(to bottom, #0a0e17, #151a28);
+    
+    /* Typography */
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    
+    /* Spacing */
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 32px;
+    --spacing-xl: 64px;
+    
+    /* Borders & Radius */
+    --radius-md: 12px;
+    --radius-lg: 20px;
+}
