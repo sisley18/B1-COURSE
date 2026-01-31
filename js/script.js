@@ -223,6 +223,29 @@ function renderCurriculum() {
                     </div>
                 </div>
 
+                <!-- 9. Videos -->
+                ${unit.videos && unit.videos.length > 0 ? `
+                <div class="section-block">
+                    <span class="section-label" style="background: rgba(255, 0, 0, 0.2); color: #ff6b6b;">📺 Videos</span>
+                    <h3>Recommended Videos</h3>
+                    <p style="margin-bottom: 20px; opacity: 0.7;">Watch these videos to deepen your understanding of the topic:</p>
+                    <div style="display: grid; gap: 15px;">
+                        ${unit.videos.map(video => `
+                            <a href="${video.url}" target="_blank" rel="noopener noreferrer" 
+                               style="display: flex; align-items: center; gap: 15px; background: rgba(0,0,0,0.2); padding: 15px 20px; border-radius: 12px; text-decoration: none; color: #fff; border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease;"
+                               onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='var(--accent-gold)';"
+                               onmouseout="this.style.background='rgba(0,0,0,0.2)'; this.style.borderColor='rgba(255,255,255,0.1)';">
+                                <span style="font-size: 2rem;">▶️</span>
+                                <div>
+                                    <h4 style="margin: 0 0 5px 0; color: var(--accent-gold);">${video.title}</h4>
+                                    <p style="margin: 0; font-size: 0.9rem; opacity: 0.7;">${video.channel} • ${video.duration}</p>
+                                </div>
+                            </a>
+                        `).join('')}
+                    </div>
+                </div>
+                ` : ''}
+
             </div>
         `;
         container.appendChild(unitBlock);

@@ -100,7 +100,12 @@ courseData.units.push(
             ]
         },
         writing: "Discuss the most effective ways individuals can help combat climate change in their daily lives. Consider aspects such as transportation, diet, consumption habits, and energy use. Write at least 250 words with specific examples.",
-        speaking: "Debate: Should governments ban all single-use plastics, or should consumers be allowed to make their own choices? Present arguments for both sides and explain your personal position."
+        speaking: "Debate: Should governments ban all single-use plastics, or should consumers be allowed to make their own choices? Present arguments for both sides and explain your personal position.",
+        videos: [
+            { title: "Climate Change 101 with Bill Nye", channel: "National Geographic", duration: "4:14", url: "https://www.youtube.com/watch?v=EtW2rrLHs08" },
+            { title: "Can We Fix Climate Change?", channel: "Kurzgesagt", duration: "16:24", url: "https://www.youtube.com/watch?v=LxgMdjyw8uw" },
+            { title: "What Is Sustainability?", channel: "UCLA", duration: "2:26", url: "https://www.youtube.com/watch?v=zx04Kl8y4dE" }
+        ]
     },
     {
         id: 4, title: "Media & Society", topic: "Fake News & Media Literacy",
@@ -202,6 +207,11 @@ courseData.units.push(
             ]
         },
         writing: "Analyze the role social media plays in spreading misinformation. Discuss both the problems it creates and potential solutions. Consider the responsibilities of platforms, governments, and individuals. Write at least 250 words with specific examples.",
-        speaking: "Have you ever believed or shared a fake news story? Describe what happened and what you learned from the experience. How do you now verify information before accepting or sharing it?"
+        speaking: "Have you ever believed or shared a fake news story? Describe what happened and what you learned from the experience. How do you now verify information before accepting or sharing it?",
+        videos: [
+            { title: "How False News Can Spread", channel: "TED-Ed", duration: "3:42", url: "https://www.youtube.com/watch?v=cSKGa_7XJkg" },
+            { title: "How To Spot Fake News", channel: "BBC Learning English", duration: "6:05", url: "https://www.youtube.com/watch?v=AkwWcHekMdo" },
+            { title: "The Spread of Misinformation Online", channel: "Vox", duration: "8:21", url: "https://www.youtube.com/watch?v=soYkEqDp760" }
+        ]
     }
 );

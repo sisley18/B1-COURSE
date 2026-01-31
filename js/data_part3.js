@@ -71,37 +71,41 @@ courseData.units.push(
             { pair: ["Quality", "Sleep"], context: "Quality _____ is essential for recovery.", distractors: ["Rest", "Nap"] },
             { pair: ["Healthy", "Lifestyle"], context: "Adopt a healthy _____ for longevity.", distractors: ["Life", "Way"] },
             { pair: ["Immune", "System"], context: "Good nutrition strengthens your immune _____.", distractors: ["Body", "Health"] },
-            { word: "Emotional", "Wellbeing"], context: "Emotional _____ affects every aspect of life.", distractors: ["Health", "State"]
-    }
+            { pair: ["Emotional", "Wellbeing"], context: "Emotional _____ affects every aspect of life.", distractors: ["Health", "State"] }
         ],
-    pronunciation: {
-    word_stress: [
-        { word: "MIND-ful-ness", syllables: ["MIND", "ful", "ness"], correct: 0 },
-        { word: "me-di-TA-tion", syllables: ["me", "di", "TA", "tion"], correct: 2 },
-        { word: "nu-TRI-tion", syllables: ["nu", "TRI", "tion"], correct: 1 },
-        { word: "mi-cro-BI-ome", syllables: ["mi", "cro", "BI", "ome"], correct: 2 },
-        { word: "ho-LIS-tic", syllables: ["ho", "LIS", "tic"], correct: 1 },
-        { word: "anx-I-e-ty", syllables: ["anx", "I", "e", "ty"], correct: 1 },
-        { word: "de-PRES-sion", syllables: ["de", "PRES", "sion"], correct: 1 },
-        { word: "THE-ra-py", syllables: ["THE", "ra", "py"], correct: 0 },
-        { word: "WELL-ness", syllables: ["WELL", "ness"], correct: 0 },
-        { word: "e-qui-LI-bri-um", syllables: ["e", "qui", "LI", "bri", "um"], correct: 2 }
-    ],
-    sentence_stress: [
-        { sentence: "Mental health matters as much as physical.", stressed: ["Mental", "health", "matters", "physical"] },
-        { sentence: "What you eat affects how you feel.", stressed: ["What", "eat", "affects", "feel"] },
-        { sentence: "Sleep is essential for proper recovery.", stressed: ["Sleep", "essential", "proper", "recovery"] },
-        { sentence: "Exercise releases endorphins naturally.", stressed: ["Exercise", "releases", "endorphins", "naturally"] },
-        { sentence: "Stress affects every system in your body.", stressed: ["Stress", "affects", "system", "body"] },
-        { sentence: "Meditation can literally change your brain.", stressed: ["Meditation", "literally", "change", "brain"] },
-        { sentence: "Balance is key to sustainable health.", stressed: ["Balance", "key", "sustainable", "health"] },
-        { sentence: "Prevention is better than treatment.", stressed: ["Prevention", "better", "treatment"] },
-        { sentence: "Listen to what your body tells you.", stressed: ["Listen", "body", "tells"] },
-        { sentence: "Small daily habits lead to big changes.", stressed: ["Small", "daily", "habits", "lead", "big", "changes"] }
-    ]
-},
-    writing: "Describe your personal approach to maintaining good physical and mental health. What habits do you practice? What challenges do you face? What advice would you give to someone wanting to improve their wellbeing? Write at least 250 words.",
-    speaking: "Is mental health given enough attention in your country? Discuss the stigmas associated with mental health issues and suggest ways society could better support those who struggle."
+        pronunciation: {
+            word_stress: [
+                { word: "MIND-ful-ness", syllables: ["MIND", "ful", "ness"], correct: 0 },
+                { word: "me-di-TA-tion", syllables: ["me", "di", "TA", "tion"], correct: 2 },
+                { word: "nu-TRI-tion", syllables: ["nu", "TRI", "tion"], correct: 1 },
+                { word: "mi-cro-BI-ome", syllables: ["mi", "cro", "BI", "ome"], correct: 2 },
+                { word: "ho-LIS-tic", syllables: ["ho", "LIS", "tic"], correct: 1 },
+                { word: "anx-I-e-ty", syllables: ["anx", "I", "e", "ty"], correct: 1 },
+                { word: "de-PRES-sion", syllables: ["de", "PRES", "sion"], correct: 1 },
+                { word: "THE-ra-py", syllables: ["THE", "ra", "py"], correct: 0 },
+                { word: "WELL-ness", syllables: ["WELL", "ness"], correct: 0 },
+                { word: "e-qui-LI-bri-um", syllables: ["e", "qui", "LI", "bri", "um"], correct: 2 }
+            ],
+            sentence_stress: [
+                { sentence: "Mental health matters as much as physical.", stressed: ["Mental", "health", "matters", "physical"] },
+                { sentence: "What you eat affects how you feel.", stressed: ["What", "eat", "affects", "feel"] },
+                { sentence: "Sleep is essential for proper recovery.", stressed: ["Sleep", "essential", "proper", "recovery"] },
+                { sentence: "Exercise releases endorphins naturally.", stressed: ["Exercise", "releases", "endorphins", "naturally"] },
+                { sentence: "Stress affects every system in your body.", stressed: ["Stress", "affects", "system", "body"] },
+                { sentence: "Meditation can literally change your brain.", stressed: ["Meditation", "literally", "change", "brain"] },
+                { sentence: "Balance is key to sustainable health.", stressed: ["Balance", "key", "sustainable", "health"] },
+                { sentence: "Prevention is better than treatment.", stressed: ["Prevention", "better", "treatment"] },
+                { sentence: "Listen to what your body tells you.", stressed: ["Listen", "body", "tells"] },
+                { sentence: "Small daily habits lead to big changes.", stressed: ["Small", "daily", "habits", "lead", "big", "changes"] }
+            ]
+        },
+        writing: "Describe your personal approach to maintaining good physical and mental health. What habits do you practice? What challenges do you face? What advice would you give to someone wanting to improve their wellbeing? Write at least 250 words.",
+        speaking: "Is mental health given enough attention in your country? Discuss the stigmas associated with mental health issues and suggest ways society could better support those who struggle.",
+        videos: [
+            { title: "How to Make Stress Your Friend", channel: "TED", duration: "14:28", url: "https://www.youtube.com/watch?v=RcGyVTAoXEU" },
+            { title: "The Science of Well-Being", channel: "Yale University", duration: "5:12", url: "https://www.youtube.com/watch?v=ZizdB0TgAVM" },
+            { title: "How Meditation Can Reshape Our Brains", channel: "TEDx", duration: "8:33", url: "https://www.youtube.com/watch?v=m8rRzTtP7Tc" }
+        ]
     },
     {
         id: 6, title: "Art & Culture", topic: "Modern Art & Cultural Heritage",
@@ -203,6 +207,11 @@ courseData.units.push(
             ]
         },
         writing: "What role does art play in society? Consider functions such as expression, social commentary, cultural preservation, and economic value. Is art a luxury or a necessity? Write at least 250 words with personal examples.",
-        speaking: "Describe a work of art—painting, sculpture, performance, or any other form—that deeply moved or affected you. What was it about this piece that made such an impact?"
+        speaking: "Describe a work of art—painting, sculpture, performance, or any other form—that deeply moved or affected you. What was it about this piece that made such an impact?",
+        videos: [
+            { title: "Why Is Modern Art So Bad?", channel: "PragerU", duration: "5:27", url: "https://www.youtube.com/watch?v=lNI07egoefc" },
+            { title: "The Case for Conceptual Art", channel: "The Art Assignment", duration: "10:34", url: "https://www.youtube.com/watch?v=KrWQw3S0B_4" },
+            { title: "Why Cultural Heritage Matters", channel: "UNESCO", duration: "3:15", url: "https://www.youtube.com/watch?v=dH0MNJhKfoA" }
+        ]
     }
 );

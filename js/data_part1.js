@@ -109,7 +109,12 @@ const courseData = {
                 ]
             },
             writing: "Discuss the potential benefits and risks of artificial intelligence in everyday life. Consider areas such as healthcare, transportation, and employment. Write at least 250 words expressing your personal opinion with supporting arguments.",
-            speaking: "Would you trust a robot to perform surgery on you or a family member? Explain your reasoning and discuss the role of human oversight in medical procedures."
+            speaking: "Would you trust a robot to perform surgery on you or a family member? Explain your reasoning and discuss the role of human oversight in medical procedures.",
+            videos: [
+                { title: "How AI Could Empower Any Business", channel: "TED", duration: "9:28", url: "https://www.youtube.com/watch?v=reUZRyXxUs4" },
+                { title: "What Is Artificial Intelligence?", channel: "BBC Ideas", duration: "4:12", url: "https://www.youtube.com/watch?v=mJeNghZXtMo" },
+                { title: "The Danger of AI is Weirder Than You Think", channel: "TED", duration: "10:31", url: "https://www.youtube.com/watch?v=OhCzX0iLnOc" }
+            ]
         },
         {
             id: 2,
@@ -215,7 +220,12 @@ const courseData = {
                 ]
             },
             writing: "Analyze the advantages and disadvantages of the gig economy for workers and society. Consider aspects such as income stability, benefits, work-life balance, and personal freedom. Write at least 250 words with your personal perspective.",
-            speaking: "Describe your ideal work environment in detail. Would you prefer working remotely, in an office, or a hybrid model? Explain your reasoning and discuss what factors are most important to you in a job."
+            speaking: "Describe your ideal work environment in detail. Would you prefer working remotely, in an office, or a hybrid model? Explain your reasoning and discuss what factors are most important to you in a job.",
+            videos: [
+                { title: "Remote Work Is Here To Stay", channel: "CNBC", duration: "13:42", url: "https://www.youtube.com/watch?v=oSLAN0S3msk" },
+                { title: "How To Work From Home Successfully", channel: "Thomas Frank", duration: "11:15", url: "https://www.youtube.com/watch?v=PLBYYdg0sfs" },
+                { title: "The Future of Work After COVID-19", channel: "World Economic Forum", duration: "5:23", url: "https://www.youtube.com/watch?v=LbGjxp6xrho" }
+            ]
         }
     ]
 };

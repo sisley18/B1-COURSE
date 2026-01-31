@@ -100,7 +100,12 @@ courseData.units.push(
             ]
         },
         writing: "Compare living in a large city versus a small town or village. Consider factors such as job opportunities, cost of living, quality of life, community, and environment. Which do you prefer and why? Write at least 250 words.",
-        speaking: "What makes a city truly livable? Discuss the most important factors that contribute to quality of urban life, drawing on your own experiences or observations."
+        speaking: "What makes a city truly livable? Discuss the most important factors that contribute to quality of urban life, drawing on your own experiences or observations.",
+        videos: [
+            { title: "The 15-Minute City Explained", channel: "Bloomberg Quicktake", duration: "6:45", url: "https://www.youtube.com/watch?v=_mSxRPvknD4" },
+            { title: "What Makes a City Great?", channel: "Wendover Productions", duration: "11:23", url: "https://www.youtube.com/watch?v=IFjD3NMv6Kw" },
+            { title: "How Singapore Solved Housing", channel: "Vox", duration: "8:42", url: "https://www.youtube.com/watch?v=2cjPgNBNeLs" }
+        ]
     },
     {
         id: 8, title: "Education", topic: "Educational Technology & Lifelong Learning",
@@ -202,6 +207,11 @@ courseData.units.push(
             ]
         },
         writing: "Is a university degree still necessary for success in today's world? Consider the alternatives, such as vocational training, self-study, and professional certifications. Discuss the value of formal education versus practical experience. Write at least 250 words.",
-        speaking: "What was your favorite subject in school and why? How did your education shape who you are today? Is there something you wish you had learned in school but didn't?"
+        speaking: "What was your favorite subject in school and why? How did your education shape who you are today? Is there something you wish you had learned in school but didn't?",
+        videos: [
+            { title: "Do Schools Kill Creativity?", channel: "TED", duration: "19:24", url: "https://www.youtube.com/watch?v=iG9CE55wbtY" },
+            { title: "The Future of Education", channel: "World Economic Forum", duration: "4:37", url: "https://www.youtube.com/watch?v=g4e-sMvSMzI" },
+            { title: "How to Learn Faster", channel: "Veritasium", duration: "14:11", url: "https://www.youtube.com/watch?v=rhgwIhB58PA" }
+        ]
     }
 );
