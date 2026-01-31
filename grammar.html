@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grammar | English Language Course</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        details {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-lg);
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        details[open] {
+            border-color: var(--accent-gold);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        summary {
+            padding: 20px;
+            cursor: pointer;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            list-style: none;
+            color: var(--text-secondary);
+        }
+
+        summary:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+        }
+
+        details[open] summary::after {
+            content: '-';
+        }
+
+        details[open] summary {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--accent-gold);
+        }
+
+        .unit-content {
+            padding: 30px;
+        }
+
+        .example-box {
+            background: rgba(0, 0, 0, 0.2);
+            border-left: 3px solid var(--accent-gold);
+            padding: 15px;
+            margin: 20px 0;
+            font-family: monospace;
+            color: #e0e7ff;
+        }
+
+        .option-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: inherit;
+            text-align: left;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.2s;
+        }
+
+        .option-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">English<span>Language</span></div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="listening.html">Listening</a></li>
+                    <li><a href="reading.html">Reading</a></li>
+                    <li><a href="#" class="active">Grammar</a></li>
+                    <li><a href="collocations.html">Collocations</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container" style="padding-top: 120px; padding-bottom: 60px;">
+        <h1 class="section-title">Advanced Grammar</h1>
+        <div id="grammar-container"></div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p class="footer-credit">© 2024 English Language Course. Created by Cecilia Chiappero.</p>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('grammar-container');
+
+            courseData.units.forEach((unit, index) => {
+                const item = unit.grammar;
+                const details = document.createElement('details');
+
+                details.innerHTML = `
+                    <summary>Unit ${unit.id}: ${item.title}</summary>
+                    <div class="unit-content">
+                        <p style="margin-bottom: 20px; font-size: 1.1rem; line-height: 1.7;">${item.explanation}</p>
+                        
+                        <div class="example-box">
+                            <strong>Example:</strong><br>
+                            ${item.example}
+                        </div>
+
+                        <div style="background: rgba(34, 211, 238, 0.05); padding: 20px; border-radius: 12px; margin-top: 20px;">
+                            <h4 style="margin-bottom: 15px;">Quick Quiz</h4>
+                            <p style="margin-bottom: 15px; font-weight: 500;">${item.quiz.question}</p>
+                            <div id="quiz-${index}">
+                                ${item.quiz.options.map((opt, i) => `
+                                    <button class="option-btn" onclick="checkGrammar(this, ${i === item.quiz.correct})">${opt}</button>
+                                `).join('')}
+                            </div>
+                            <div class="feedback" style="margin-top: 10px; font-weight: bold; min-height: 20px;"></div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(details);
+            });
+        });
+
+        window.checkGrammar = function (btn, isCorrect) {
+            const parent = btn.parentElement;
+            const feedback = parent.nextElementSibling;
+            Array.from(parent.children).forEach(child => { child.disabled = true; if (child === btn) { child.style.background = isCorrect ? 'rgba(0,255,0,0.2)' : 'rgba(255,0,0,0.2)'; child.style.borderColor = isCorrect ? '#00ff00' : '#ff0000'; } });
+            if (isCorrect) { feedback.textContent = "Correct! Well done."; feedback.style.color = "#00ff00"; }
+            else { feedback.textContent = "Incorrect. Try again!"; feedback.style.color = "#ff4444"; setTimeout(() => { Array.from(parent.children).forEach(child => child.disabled = false); feedback.textContent = ""; }, 1500); }
+        };
+    </script>
+</body>
+
+</html>

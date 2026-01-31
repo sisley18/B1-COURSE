@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading | English Language Course</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        details {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-lg);
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        details[open] {
+            border-color: var(--accent-electric);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        summary {
+            padding: 20px;
+            cursor: pointer;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            list-style: none;
+            color: var(--text-secondary);
+        }
+
+        summary:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--accent-electric);
+        }
+
+        details[open] summary::after {
+            content: '-';
+        }
+
+        details[open] summary {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--accent-electric);
+        }
+
+        .unit-content {
+            padding: 30px;
+        }
+
+        .reading-text {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            border-radius: 12px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            border-left: 3px solid var(--accent-electric);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">English<span>Language</span></div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="listening.html">Listening</a></li>
+                    <li><a href="#" class="active">Reading</a></li>
+                    <li><a href="grammar.html">Grammar</a></li>
+                    <li><a href="collocations.html">Collocations</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container" style="padding-top: 120px; padding-bottom: 60px;">
+        <h1 class="section-title">Reading Comprehension</h1>
+        <p style="text-align: center; margin-bottom: 40px; color: var(--text-secondary);">Select a Unit to read.</p>
+
+        <div id="reading-container"></div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p class="footer-credit">© 2024 English Language Course. Created by Cecilia Chiappero.</p>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('reading-container');
+
+            courseData.units.forEach(unit => {
+                const item = unit.reading;
+                const details = document.createElement('details');
+
+                details.innerHTML = `
+                    <summary>Unit ${unit.id}: ${unit.title}</summary>
+                    <div class="unit-content">
+                        <h2 style="font-size: 1.5rem; margin-bottom: 15px;">${item.title}</h2>
+                        <div class="reading-text">${item.text}</div>
+
+                        <div class="quiz-area">
+                            <h4 style="margin-bottom: 15px;">Comprehension Check</h4>
+                            ${item.questions.map((q, qIdx) => `
+                                <div style="margin-bottom: 15px;">
+                                    <p style="font-weight: 500; margin-bottom: 10px;">${q.q}</p>
+                                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                        ${q.options.map((opt, oIdx) => `
+                                            <button class="btn" style="padding: 8px 18px; font-size: 0.9rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);" 
+                                            onclick="checkReading(this, ${oIdx === q.correct})">${opt}</button>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                container.appendChild(details);
+            });
+        });
+
+        window.checkReading = function (btn, isCorrect) {
+            const parent = btn.parentElement;
+            Array.from(parent.children).forEach(b => { b.style.background = 'rgba(255,255,255,0.05)'; b.style.color = 'inherit'; b.style.borderColor = 'rgba(255,255,255,0.1)'; });
+
+            if (isCorrect) {
+                btn.style.background = 'rgba(244, 114, 182, 0.2)'; // Pink tint
+                btn.style.borderColor = '#f472b6';
+                btn.style.color = '#fff';
+            } else {
+                btn.style.background = 'rgba(255, 0, 0, 0.2)';
+                btn.style.borderColor = '#ff0000';
+            }
+        };
+    </script>
+</body>
+
+</html>

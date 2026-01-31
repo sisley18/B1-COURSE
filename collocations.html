@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collocations | English Language Course</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        details {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-lg);
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        details[open] {
+            border-color: var(--accent-electric);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        summary {
+            padding: 20px;
+            cursor: pointer;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            list-style: none;
+            color: var(--text-secondary);
+        }
+
+        summary:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--accent-electric);
+        }
+
+        details[open] summary::after {
+            content: '-';
+        }
+
+        details[open] summary {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--accent-electric);
+        }
+
+        .unit-content {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .word-slot {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--text-primary);
+            margin: 30px 0;
+        }
+
+        /* LIGHTER BLANK STYLE HERE */
+        .blank {
+            color: var(--accent-gold);
+            border-bottom: 2px solid var(--accent-gold);
+            padding: 0 10px;
+            background: rgba(34, 211, 238, 0.1);
+            /* Light Cyan background */
+            border-radius: 4px;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">English<span>Language</span></div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="listening.html">Listening</a></li>
+                    <li><a href="reading.html">Reading</a></li>
+                    <li><a href="grammar.html">Grammar</a></li>
+                    <li><a href="#" class="active">Collocations</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container" style="padding-top: 120px;">
+        <h1 class="section-title">Collocations Challenge</h1>
+        <p style="text-align: center; margin-bottom: 40px; color: var(--text-secondary);">Select a unit to play.</p>
+        <div id="collocation-container"></div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p class="footer-credit">© 2024 English Language Course. Created by Cecilia Chiappero.</p>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('collocation-container');
+
+            courseData.units.forEach((unit) => {
+                const item = unit.collocation;
+                // Shuffle options
+                const options = [item.pair[1], ...item.distractors];
+                options.sort(() => Math.random() - 0.5);
+
+                const details = document.createElement('details');
+                details.innerHTML = `
+                    <summary>Unit ${unit.id}: ${unit.title} Vocabulary</summary>
+                    <div class="unit-content">
+                        <p style="font-size: 0.9rem; opacity: 0.6; margin-bottom: 10px;">Complete the phrase:</p>
+                        <div class="word-slot">
+                            ${item.pair[0]} <span class="blank">______</span>
+                        </div>
+                        <p style="margin-bottom: 25px; font-style: italic; color: #aaa;">"${item.context.replace(item.pair[1], '______')}"</p>
+                        
+                        <div class="options-grid">
+                            ${options.map(opt => `
+                                <button class="btn" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1); font-size: 1rem;" 
+                                onclick="checkCollocation(this, '${opt}', '${item.pair[1]}')">${opt}</button>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                container.appendChild(details);
+            });
+        });
+
+        window.checkCollocation = function (btn, selected, correct) {
+            const content = btn.closest('.unit-content');
+            const blank = content.querySelector('.blank');
+            const buttons = content.querySelectorAll('button');
+
+            if (selected === correct) {
+                blank.textContent = correct; blank.style.color = '#fff'; blank.style.background = '#10b981'; blank.style.borderColor = 'transparent';
+                btn.style.background = '#10b981'; btn.style.color = '#fff'; btn.style.borderColor = '#10b981';
+                buttons.forEach(b => b.disabled = true);
+            } else {
+                btn.style.background = 'rgba(239, 68, 68, 0.2)'; btn.style.color = '#ef4444'; btn.style.borderColor = '#ef4444';
+                setTimeout(() => { btn.style.background = 'rgba(255,255,255,0.1)'; btn.style.color = 'inherit'; btn.style.borderColor = 'rgba(255,255,255,0.1)'; }, 500);
+            }
+        };
+    </script>
+</body>
+
+</html>
