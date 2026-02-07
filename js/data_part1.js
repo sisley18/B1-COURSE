@@ -110,6 +110,20 @@ const courseData = {
             },
             writing: "Discuss the potential benefits and risks of artificial intelligence in everyday life. Consider areas such as healthcare, transportation, and employment. Write at least 250 words expressing your personal opinion with supporting arguments.",
             speaking: "Would you trust a robot to perform surgery on you or a family member? Explain your reasoning and discuss the role of human oversight in medical procedures.",
+            verb_patterns: {
+                exercises: [
+                    { sentence: "Scientists enjoy _____ new technologies.", options: ["developing", "to develop", "develop"], correct: 0 },
+                    { sentence: "The company decided _____ in AI research.", options: ["to invest", "investing", "invest"], correct: 0 },
+                    { sentence: "They avoid _____ outdated systems.", options: ["using", "to use", "use"], correct: 0 },
+                    { sentence: "Experts suggest _____ more time learning programming.", options: ["spending", "to spend", "spend"], correct: 0 },
+                    { sentence: "I hope _____ a career in technology.", options: ["to have", "having", "have"], correct: 0 },
+                    { sentence: "Keep _____ until you solve the problem.", options: ["trying", "to try", "try"], correct: 0 },
+                    { sentence: "She promised _____ the software update.", options: ["to complete", "completing", "complete"], correct: 0 },
+                    { sentence: "Consider _____ your skills regularly.", options: ["updating", "to update", "update"], correct: 0 },
+                    { sentence: "Many people refuse _____ new technology.", options: ["to learn", "learning", "learn"], correct: 0 },
+                    { sentence: "I finished _____ the code yesterday.", options: ["writing", "to write", "write"], correct: 0 }
+                ]
+            },
             videos: [
                 { title: "How AI Could Empower Any Business", channel: "TED", duration: "9:28", url: "https://www.youtube.com/watch?v=reUZRyXxUs4" },
                 { title: "What Is Artificial Intelligence?", channel: "BBC Ideas", duration: "4:12", url: "https://www.youtube.com/watch?v=mJeNghZXtMo" },
@@ -221,6 +235,20 @@ const courseData = {
             },
             writing: "Analyze the advantages and disadvantages of the gig economy for workers and society. Consider aspects such as income stability, benefits, work-life balance, and personal freedom. Write at least 250 words with your personal perspective.",
             speaking: "Describe your ideal work environment in detail. Would you prefer working remotely, in an office, or a hybrid model? Explain your reasoning and discuss what factors are most important to you in a job.",
+            verb_patterns: {
+                exercises: [
+                    { sentence: "I enjoy _____ from home these days.", options: ["working", "to work", "work"], correct: 0 },
+                    { sentence: "My boss agreed _____ me work remotely.", options: ["to let", "letting", "let"], correct: 0 },
+                    { sentence: "We avoid _____ meetings without agendas.", options: ["having", "to have", "have"], correct: 0 },
+                    { sentence: "They decided _____ a new office downtown.", options: ["to open", "opening", "open"], correct: 0 },
+                    { sentence: "She keeps _____ for better opportunities.", options: ["looking", "to look", "look"], correct: 0 },
+                    { sentence: "I want _____ my own business someday.", options: ["to start", "starting", "start"], correct: 0 },
+                    { sentence: "He suggested _____ the deadline.", options: ["extending", "to extend", "extend"], correct: 0 },
+                    { sentence: "They practice _____ presentations every week.", options: ["giving", "to give", "give"], correct: 0 },
+                    { sentence: "She hopes _____ promoted this year.", options: ["to get", "getting", "get"], correct: 0 },
+                    { sentence: "Consider _____ to a new city for work.", options: ["moving", "to move", "move"], correct: 0 }
+                ]
+            },
             videos: [
                 { title: "Remote Work Is Here To Stay", channel: "CNBC", duration: "13:42", url: "https://www.youtube.com/watch?v=oSLAN0S3msk" },
                 { title: "How To Work From Home Successfully", channel: "Thomas Frank", duration: "11:15", url: "https://www.youtube.com/watch?v=PLBYYdg0sfs" },

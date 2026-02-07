@@ -101,6 +101,20 @@ courseData.units.push(
         },
         writing: "Discuss the most effective ways individuals can help combat climate change in their daily lives. Consider aspects such as transportation, diet, consumption habits, and energy use. Write at least 250 words with specific examples.",
         speaking: "Debate: Should governments ban all single-use plastics, or should consumers be allowed to make their own choices? Present arguments for both sides and explain your personal position.",
+        verb_patterns: {
+            exercises: [
+                { sentence: "We must stop _____ so much plastic.", options: ["using", "to use", "use"], correct: 0 },
+                { sentence: "They promised _____ their carbon emissions.", options: ["to reduce", "reducing", "reduce"], correct: 0 },
+                { sentence: "Avoid _____ products with excess packaging.", options: ["buying", "to buy", "buy"], correct: 0 },
+                { sentence: "I hope _____ a difference in the environment.", options: ["to make", "making", "make"], correct: 0 },
+                { sentence: "Consider _____ solar panels on your roof.", options: ["installing", "to install", "install"], correct: 0 },
+                { sentence: "We enjoy _____ in nature on weekends.", options: ["hiking", "to hike", "hike"], correct: 0 },
+                { sentence: "The company decided _____ renewable energy.", options: ["to use", "using", "use"], correct: 0 },
+                { sentence: "Keep _____ for the planet every day.", options: ["recycling", "to recycle", "recycle"], correct: 0 },
+                { sentence: "Scientists suggest _____ meat consumption.", options: ["reducing", "to reduce", "reduce"], correct: 0 },
+                { sentence: "I want _____ a more sustainable life.", options: ["to live", "living", "live"], correct: 0 }
+            ]
+        },
         videos: [
             { title: "Climate Change 101 with Bill Nye", channel: "National Geographic", duration: "4:14", url: "https://www.youtube.com/watch?v=EtW2rrLHs08" },
             { title: "Can We Fix Climate Change?", channel: "Kurzgesagt", duration: "16:24", url: "https://www.youtube.com/watch?v=LxgMdjyw8uw" },
@@ -208,6 +222,20 @@ courseData.units.push(
         },
         writing: "Analyze the role social media plays in spreading misinformation. Discuss both the problems it creates and potential solutions. Consider the responsibilities of platforms, governments, and individuals. Write at least 250 words with specific examples.",
         speaking: "Have you ever believed or shared a fake news story? Describe what happened and what you learned from the experience. How do you now verify information before accepting or sharing it?",
+        verb_patterns: {
+            exercises: [
+                { sentence: "I avoid _____ news from unreliable sources.", options: ["reading", "to read", "read"], correct: 0 },
+                { sentence: "She decided _____ the information before sharing.", options: ["to verify", "verifying", "verify"], correct: 0 },
+                { sentence: "We need _____ more critical of what we read.", options: ["to be", "being", "be"], correct: 0 },
+                { sentence: "They keep _____ false stories on social media.", options: ["sharing", "to share", "share"], correct: 0 },
+                { sentence: "Consider _____ your news sources.", options: ["checking", "to check", "check"], correct: 0 },
+                { sentence: "He promised _____ fact-checking in the future.", options: ["to practice", "practicing", "practice"], correct: 0 },
+                { sentence: "I enjoy _____ documentaries about journalism.", options: ["watching", "to watch", "watch"], correct: 0 },
+                { sentence: "People risk _____ misinformation to others.", options: ["spreading", "to spread", "spread"], correct: 0 },
+                { sentence: "We hope _____ media literacy in schools.", options: ["to improve", "improving", "improve"], correct: 0 },
+                { sentence: "Suggest _____ multiple sources for every story.", options: ["consulting", "to consult", "consult"], correct: 0 }
+            ]
+        },
         videos: [
             { title: "How False News Can Spread", channel: "TED-Ed", duration: "3:42", url: "https://www.youtube.com/watch?v=cSKGa_7XJkg" },
             { title: "How To Spot Fake News", channel: "BBC Learning English", duration: "6:05", url: "https://www.youtube.com/watch?v=AkwWcHekMdo" },

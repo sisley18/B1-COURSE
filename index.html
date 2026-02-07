@@ -15,10 +15,25 @@
         <div class="container">
             <nav>
                 <div class="logo">English<span>Language</span> Course</div>
-                <button class="btn stop-audio-btn" onclick="stopAudio()"
-                    style="background: rgba(239, 68, 68, 0.3); border-color: #ef4444; padding: 8px 16px; font-size: 0.9rem;">
-                    ⏹️ Stop Audio
-                </button>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <button id="prev-unit-btn" class="btn nav-btn" onclick="navigateUnit(-1)"
+                        style="background: rgba(99, 102, 241, 0.3); border-color: #6366f1; padding: 8px 16px; font-size: 0.9rem;">
+                        ◀️ Prev
+                    </button>
+                    <button id="next-unit-btn" class="btn nav-btn" onclick="navigateUnit(1)"
+                        style="background: rgba(99, 102, 241, 0.3); border-color: #6366f1; padding: 8px 16px; font-size: 0.9rem;">
+                        Next ▶️
+                    </button>
+                    <span style="width: 1px; height: 24px; background: rgba(255,255,255,0.3); margin: 0 5px;"></span>
+                    <button id="pause-audio-btn" class="btn pause-audio-btn" onclick="togglePauseAudio()"
+                        style="background: rgba(251, 146, 60, 0.3); border-color: #fb923c; padding: 8px 16px; font-size: 0.9rem;">
+                        ⏸️ Pause
+                    </button>
+                    <button class="btn stop-audio-btn" onclick="stopAudio()"
+                        style="background: rgba(239, 68, 68, 0.3); border-color: #ef4444; padding: 8px 16px; font-size: 0.9rem;">
+                        ⏹️ Stop
+                    </button>
+                </div>
             </nav>
         </div>
     </header>
@@ -26,6 +41,99 @@
     <div class="container" id="main-content">
         <div class="unit-list" id="curriculum-container">
             <!-- Content Injected via script.js -->
+        </div>
+    </div>
+
+    <!-- About the Author Section -->
+    <div class="container" id="author-section">
+        <details class="author-block">
+            <summary class="author-header">👩‍🏫 About the Author</summary>
+            <div class="author-content">
+                <div class="author-profile">
+                    <div class="author-avatar">CC</div>
+                    <div class="author-info">
+                        <h3>Cecilia Chiappero</h3>
+                        <p class="author-title">English Language Educator & Researcher | Universidad Nacional de Córdoba
+                        </p>
+                    </div>
+                </div>
+                <div class="author-bio">
+                    <p>Cecilia Chiappero is an English language educator and researcher affiliated with the
+                        <strong>Universidad Nacional de Córdoba</strong>, Argentina. Her academic work focuses on
+                        innovative teaching methodologies and technology-enhanced language learning.
+                    </p>
+                    <p>She has published research on the use of <strong>Moodle</strong> to promote listening
+                        comprehension strategies in the English Language classroom. Her paper "El uso de Moodle para
+                        fomentar el uso de estrategias de comprensión auditiva en el aula de Lengua Inglesa I" (2011)
+                        demonstrates her expertise in integrating digital tools into effective language instruction.</p>
+                    <p>This English Language Course represents her continued dedication to creating comprehensive,
+                        accessible,
+                        and engaging materials for adult learners seeking to advance their English proficiency.</p>
+                    <p class="author-contact"><strong>Research Profile:</strong> Available on <a
+                            href="https://www.researchgate.net" target="_blank"
+                            style="color: var(--accent-gold);">ResearchGate</a> and academic databases.</p>
+                </div>
+            </div>
+        </details>
+    </div>
+
+    <!-- References Section -->
+    <div class="container" id="references-section">
+        <details class="references-block">
+            <summary class="references-header">📚 References (APA Style)</summary>
+            <div class="references-content">
+                <p class="references-author"><strong>Course Author:</strong> Chiappero, C. (2024). <em>English Language
+                        Course: B1 Level</em>. Original educational material.</p>
+
+                <h4>Video Resources</h4>
+                <ul class="references-list">
+                    <li>BBC Ideas. (n.d.). <em>What is artificial intelligence?</em> [Video]. YouTube.
+                        https://www.youtube.com/watch?v=mJeNghZXtMo</li>
+                    <li>BBC Learning English. (n.d.). <em>How to spot fake news</em> [Video]. YouTube.
+                        https://www.youtube.com/watch?v=AkwWcHekMdo</li>
+                    <li>Bloomberg Quicktake. (n.d.). <em>The 15-minute city explained</em> [Video]. YouTube.
+                        https://www.youtube.com/watch?v=_mSxRPvknD4</li>
+                    <li>CNBC. (n.d.). <em>Remote work is here to stay</em> [Video]. YouTube.
+                        https://www.youtube.com/watch?v=oSLAN0S3msk</li>
+                    <li>Kurzgesagt. (n.d.). <em>Can we fix climate change?</em> [Video]. YouTube.
+                        https://www.youtube.com/watch?v=LxgMdjyw8uw</li>
+                    <li>National Geographic. (n.d.). <em>Climate change 101 with Bill Nye</em> [Video]. YouTube.
+                        https://www.youtube.com/watch?v=EtW2rrLHs08</li>
+                    <li>TED. (n.d.). <em>How AI could empower any business</em> [Video]. YouTube.
+                        https://www.youtube.com/watch?v=reUZRyXxUs4</li>
+                    <li>TED. (n.d.). <em>How to make stress your friend</em> [Video]. YouTube.
+                        https://www.youtube.com/watch?v=RcGyVTAoXEU</li>
+                    <li>TED. (n.d.). <em>Do schools kill creativity?</em> [Video]. YouTube.
+                        https://www.youtube.com/watch?v=iG9CE55wbtY</li>
+                    <li>TED-Ed. (n.d.). <em>How false news can spread</em> [Video]. YouTube.
+                        https://www.youtube.com/watch?v=cSKGa_7XJkg</li>
+                    <li>The Art Assignment. (n.d.). <em>The case for conceptual art</em> [Video]. YouTube.
+                        https://www.youtube.com/watch?v=KrWQw3S0B_4</li>
+                    <li>World Economic Forum. (n.d.). <em>The future of education</em> [Video]. YouTube.
+                        https://www.youtube.com/watch?v=g4e-sMvSMzI</li>
+                </ul>
+
+                <h4>Framework & Language References</h4>
+                <ul class="references-list">
+                    <li>Council of Europe. (2020). <em>Common European Framework of Reference for Languages (CEFR)</em>.
+                        Council of Europe Publishing.</li>
+                    <li>Swan, M. (2016). <em>Practical English usage</em> (4th ed.). Oxford University Press.</li>
+                </ul>
+
+                <p class="references-disclaimer"><em>All video content is property of their respective creators. Used
+                        for educational purposes under fair use guidelines.</em></p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Protection Overlay -->
+    <div id="protection-overlay" class="protection-overlay" style="display: none;">
+        <div class="protection-message">
+            <span class="protection-icon">🔒</span>
+            <h2>Protected Content</h2>
+            <p>No permission to copy, download, or redistribute this material.</p>
+            <p class="protection-copyright">© 2024 English Language Course - Cecilia Chiappero</p>
+            <p class="protection-note">All rights reserved. This content is for authorized students only.</p>
         </div>
     </div>
 

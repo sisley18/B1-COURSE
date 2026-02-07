@@ -101,6 +101,20 @@ courseData.units.push(
         },
         writing: "Compare living in a large city versus a small town or village. Consider factors such as job opportunities, cost of living, quality of life, community, and environment. Which do you prefer and why? Write at least 250 words.",
         speaking: "What makes a city truly livable? Discuss the most important factors that contribute to quality of urban life, drawing on your own experiences or observations.",
+        verb_patterns: {
+            exercises: [
+                { sentence: "I enjoy _____ through the city parks.", options: ["walking", "to walk", "walk"], correct: 0 },
+                { sentence: "The city decided _____ more bike lanes.", options: ["to build", "building", "build"], correct: 0 },
+                { sentence: "People avoid _____ during rush hour.", options: ["driving", "to drive", "drive"], correct: 0 },
+                { sentence: "We hope _____ to a better neighborhood.", options: ["to move", "moving", "move"], correct: 0 },
+                { sentence: "Consider _____ public transportation daily.", options: ["using", "to use", "use"], correct: 0 },
+                { sentence: "They keep _____ about traffic congestion.", options: ["complaining", "to complain", "complain"], correct: 0 },
+                { sentence: "The mayor promised _____ pollution levels.", options: ["to reduce", "reducing", "reduce"], correct: 0 },
+                { sentence: "I suggest _____ the subway instead of driving.", options: ["taking", "to take", "take"], correct: 0 },
+                { sentence: "We want _____ in a walkable neighborhood.", options: ["to live", "living", "live"], correct: 0 },
+                { sentence: "She finished _____ her commute in 30 minutes.", options: ["completing", "to complete", "complete"], correct: 0 }
+            ]
+        },
         videos: [
             { title: "The 15-Minute City Explained", channel: "Bloomberg Quicktake", duration: "6:45", url: "https://www.youtube.com/watch?v=_mSxRPvknD4" },
             { title: "What Makes a City Great?", channel: "Wendover Productions", duration: "11:23", url: "https://www.youtube.com/watch?v=IFjD3NMv6Kw" },
@@ -208,6 +222,20 @@ courseData.units.push(
         },
         writing: "Is a university degree still necessary for success in today's world? Consider the alternatives, such as vocational training, self-study, and professional certifications. Discuss the value of formal education versus practical experience. Write at least 250 words.",
         speaking: "What was your favorite subject in school and why? How did your education shape who you are today? Is there something you wish you had learned in school but didn't?",
+        verb_patterns: {
+            exercises: [
+                { sentence: "I enjoy _____ new languages.", options: ["learning", "to learn", "learn"], correct: 0 },
+                { sentence: "She decided _____ for a master's degree.", options: ["to apply", "applying", "apply"], correct: 0 },
+                { sentence: "Students avoid _____ until the last minute.", options: ["studying", "to study", "study"], correct: 0 },
+                { sentence: "He hopes _____ a scholarship next year.", options: ["to get", "getting", "get"], correct: 0 },
+                { sentence: "Consider _____ an online course.", options: ["taking", "to take", "take"], correct: 0 },
+                { sentence: "They keep _____ their skills throughout life.", options: ["improving", "to improve", "improve"], correct: 0 },
+                { sentence: "The university promised _____ more resources.", options: ["to provide", "providing", "provide"], correct: 0 },
+                { sentence: "I suggest _____ notes during lectures.", options: ["taking", "to take", "take"], correct: 0 },
+                { sentence: "We want _____ critical thinking skills.", options: ["to develop", "developing", "develop"], correct: 0 },
+                { sentence: "She finished _____ her dissertation last month.", options: ["writing", "to write", "write"], correct: 0 }
+            ]
+        },
         videos: [
             { title: "Do Schools Kill Creativity?", channel: "TED", duration: "19:24", url: "https://www.youtube.com/watch?v=iG9CE55wbtY" },
             { title: "The Future of Education", channel: "World Economic Forum", duration: "4:37", url: "https://www.youtube.com/watch?v=g4e-sMvSMzI" },

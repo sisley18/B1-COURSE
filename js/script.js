@@ -2,7 +2,108 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('App Initialized: Full Module with Pronunciation');
     initAudioEngine();
     renderCurriculum();
+    setupNavigation();
+    setupProtection();
 });
+
+// Content Protection
+function setupProtection() {
+    const overlay = document.getElementById('protection-overlay');
+
+    // Disable right-click
+    document.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        showProtectionMessage();
+    });
+
+    // Disable copy
+    document.addEventListener('copy', (e) => {
+        e.preventDefault();
+        showProtectionMessage();
+    });
+
+    // Disable cut
+    document.addEventListener('cut', (e) => {
+        e.preventDefault();
+        showProtectionMessage();
+    });
+
+    // Disable text selection on double-click
+    document.addEventListener('selectstart', (e) => {
+        if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+            // Allow selection but show message on copy attempt
+        }
+    });
+
+    // Close overlay on click
+    if (overlay) {
+        overlay.addEventListener('click', () => {
+            overlay.style.display = 'none';
+        });
+    }
+
+    // Disable keyboard shortcuts for copy/print
+    document.addEventListener('keydown', (e) => {
+        // Ctrl+C, Ctrl+P, Ctrl+S, Ctrl+U
+        if (e.ctrlKey && (e.key === 'c' || e.key === 'p' || e.key === 's' || e.key === 'u')) {
+            e.preventDefault();
+            showProtectionMessage();
+        }
+        // F12 (DevTools)
+        if (e.key === 'F12') {
+            e.preventDefault();
+            showProtectionMessage();
+        }
+    });
+}
+
+function showProtectionMessage() {
+    const overlay = document.getElementById('protection-overlay');
+    if (overlay) {
+        overlay.style.display = 'flex';
+        setTimeout(() => {
+            overlay.style.display = 'none';
+        }, 3000); // Auto-hide after 3 seconds
+    }
+}
+
+let currentUnitIndex = 0;
+
+function setupNavigation() {
+    // Listen for unit open/close events
+    const unitBlocks = document.querySelectorAll('.unit-block');
+    unitBlocks.forEach((block, index) => {
+        block.addEventListener('toggle', () => {
+            if (block.open) {
+                currentUnitIndex = index;
+            }
+        });
+    });
+}
+
+window.navigateUnit = function (direction) {
+    const unitBlocks = document.querySelectorAll('.unit-block');
+    const totalUnits = unitBlocks.length;
+
+    // Close current unit
+    if (unitBlocks[currentUnitIndex]) {
+        unitBlocks[currentUnitIndex].open = false;
+    }
+
+    // Calculate new index
+    currentUnitIndex = currentUnitIndex + direction;
+
+    // Wrap around
+    if (currentUnitIndex < 0) currentUnitIndex = totalUnits - 1;
+    if (currentUnitIndex >= totalUnits) currentUnitIndex = 0;
+
+    // Open new unit
+    if (unitBlocks[currentUnitIndex]) {
+        unitBlocks[currentUnitIndex].open = true;
+        // Scroll to the unit
+        unitBlocks[currentUnitIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+};
 
 function renderCurriculum() {
     const container = document.getElementById('curriculum-container');
@@ -103,7 +204,50 @@ function renderCurriculum() {
                     </div>
                 </div>
 
-                <!-- 5. Pronunciation (NEW) -->
+                <!-- 5. Verb Patterns (NEW) -->
+                ${unit.verb_patterns ? `
+                <div class="section-block">
+                    <span class="section-label" style="background: rgba(167, 139, 250, 0.2); color: #a78bfa;">Verb Patterns</span>
+                    <h3>Verbs + Gerund / Infinitive</h3>
+                    
+                    <div class="theory-box">
+                        <h4>📚 Verb Patterns Theory</h4>
+                        <p>In English, some verbs are followed by <strong>gerunds (-ing)</strong>, some by <strong>infinitives (to + verb)</strong>, and some can take <strong>both</strong>.</p>
+                        <p><strong>Verbs + Gerund (-ing):</strong></p>
+                        <ul>
+                            <li><strong>enjoy, avoid, finish, keep, practice, suggest, consider, mind, risk, imagine</strong></li>
+                            <li>Example: I enjoy <em>swimming</em>. / She avoids <em>eating</em> sugar.</li>
+                        </ul>
+                        <p style="margin-top: 10px;"><strong>Verbs + Infinitive (to + verb):</strong></p>
+                        <ul>
+                            <li><strong>want, need, decide, hope, plan, promise, expect, agree, refuse, learn</strong></li>
+                            <li>Example: I want <em>to travel</em>. / She decided <em>to quit</em>.</li>
+                        </ul>
+                        <p style="margin-top: 10px;"><strong>Verbs + Both (with different meanings):</strong></p>
+                        <ul>
+                            <li><strong>stop, remember, forget, try, regret</strong></li>
+                            <li>Example: I stopped <em>smoking</em> (quit). / I stopped <em>to smoke</em> (paused to smoke).</li>
+                        </ul>
+                    </div>
+                    
+                    <p style="margin-bottom: 15px; opacity: 0.7;">Complete the sentences with the correct verb form:</p>
+                    <div style="margin-top:20px;">
+                        ${unit.verb_patterns.exercises.map((q, idx) => `
+                            <div style="margin-bottom: 15px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 10px;">
+                                <p style="font-weight:600; margin-bottom:10px;">${idx + 1}. ${q.sentence}</p>
+                                <div class="options-grid" style="justify-content: flex-start;">
+                                    ${q.options.map((opt, i) => `
+                                        <button class="btn" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);" 
+                                        onclick="checkAnswer(this, ${i === q.correct})">${opt}</button>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                ` : ''}
+
+                <!-- 6. Pronunciation -->
                 <div class="section-block">
                     <span class="section-label pronunciation">Pronunciation</span>
                     <h3>Word & Sentence Stress</h3>
@@ -316,4 +460,29 @@ window.playAudio = function (text) {
 window.stopAudio = function () {
     synth.cancel();
 };
-window.courseAudio = { play: window.playAudio, stop: window.stopAudio };
+window.pauseAudio = function () {
+    if (synth.speaking && !synth.paused) {
+        synth.pause();
+    }
+};
+window.resumeAudio = function () {
+    if (synth.paused) {
+        synth.resume();
+    }
+};
+window.togglePauseAudio = function () {
+    if (synth.paused) {
+        synth.resume();
+        updatePauseButton(false);
+    } else if (synth.speaking) {
+        synth.pause();
+        updatePauseButton(true);
+    }
+};
+function updatePauseButton(isPaused) {
+    const pauseBtn = document.getElementById('pause-audio-btn');
+    if (pauseBtn) {
+        pauseBtn.innerHTML = isPaused ? '▶️ Resume' : '⏸️ Pause';
+    }
+}
+window.courseAudio = { play: window.playAudio, stop: window.stopAudio, pause: window.pauseAudio, resume: window.resumeAudio, togglePause: window.togglePauseAudio };

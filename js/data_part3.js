@@ -101,6 +101,20 @@ courseData.units.push(
         },
         writing: "Describe your personal approach to maintaining good physical and mental health. What habits do you practice? What challenges do you face? What advice would you give to someone wanting to improve their wellbeing? Write at least 250 words.",
         speaking: "Is mental health given enough attention in your country? Discuss the stigmas associated with mental health issues and suggest ways society could better support those who struggle.",
+        verb_patterns: {
+            exercises: [
+                { sentence: "I enjoy _____ yoga every morning.", options: ["practicing", "to practice", "practice"], correct: 0 },
+                { sentence: "She decided _____ healthier this year.", options: ["to eat", "eating", "eat"], correct: 0 },
+                { sentence: "You should avoid _____ too much sugar.", options: ["consuming", "to consume", "consume"], correct: 0 },
+                { sentence: "He hopes _____ weight before summer.", options: ["to lose", "losing", "lose"], correct: 0 },
+                { sentence: "Consider _____ meditation into your routine.", options: ["incorporating", "to incorporate", "incorporate"], correct: 0 },
+                { sentence: "I keep _____ about starting to exercise.", options: ["thinking", "to think", "think"], correct: 0 },
+                { sentence: "They promised _____ smoking together.", options: ["to quit", "quitting", "quit"], correct: 0 },
+                { sentence: "We suggest _____ at least 8 hours a night.", options: ["sleeping", "to sleep", "sleep"], correct: 0 },
+                { sentence: "I want _____ more mindful of my health.", options: ["to be", "being", "be"], correct: 0 },
+                { sentence: "She finished _____ her therapy sessions.", options: ["attending", "to attend", "attend"], correct: 0 }
+            ]
+        },
         videos: [
             { title: "How to Make Stress Your Friend", channel: "TED", duration: "14:28", url: "https://www.youtube.com/watch?v=RcGyVTAoXEU" },
             { title: "The Science of Well-Being", channel: "Yale University", duration: "5:12", url: "https://www.youtube.com/watch?v=ZizdB0TgAVM" },
@@ -208,6 +222,20 @@ courseData.units.push(
         },
         writing: "What role does art play in society? Consider functions such as expression, social commentary, cultural preservation, and economic value. Is art a luxury or a necessity? Write at least 250 words with personal examples.",
         speaking: "Describe a work of art—painting, sculpture, performance, or any other form—that deeply moved or affected you. What was it about this piece that made such an impact?",
+        verb_patterns: {
+            exercises: [
+                { sentence: "I enjoy _____ museums on weekends.", options: ["visiting", "to visit", "visit"], correct: 0 },
+                { sentence: "She decided _____ art professionally.", options: ["to study", "studying", "study"], correct: 0 },
+                { sentence: "They avoid _____ controversial artworks.", options: ["displaying", "to display", "display"], correct: 0 },
+                { sentence: "He hopes _____ a famous artist someday.", options: ["to become", "becoming", "become"], correct: 0 },
+                { sentence: "Consider _____ a painting class.", options: ["taking", "to take", "take"], correct: 0 },
+                { sentence: "We keep _____ new galleries in the city.", options: ["discovering", "to discover", "discover"], correct: 0 },
+                { sentence: "The museum promised _____ the exhibition next month.", options: ["to open", "opening", "open"], correct: 0 },
+                { sentence: "I suggest _____ the sculpture garden first.", options: ["visiting", "to visit", "visit"], correct: 0 },
+                { sentence: "She wants _____ her work internationally.", options: ["to exhibit", "exhibiting", "exhibit"], correct: 0 },
+                { sentence: "They finished _____ the mural yesterday.", options: ["painting", "to paint", "paint"], correct: 0 }
+            ]
+        },
         videos: [
             { title: "Why Is Modern Art So Bad?", channel: "PragerU", duration: "5:27", url: "https://www.youtube.com/watch?v=lNI07egoefc" },
             { title: "The Case for Conceptual Art", channel: "The Art Assignment", duration: "10:34", url: "https://www.youtube.com/watch?v=KrWQw3S0B_4" },
