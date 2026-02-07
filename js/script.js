@@ -441,20 +441,62 @@ window.checkCollocation = function (btn, selected, correct) {
     }
 };
 
-// Audio Engine (No Gender param)
+// Audio Engine (No Gender param) - Optimized for Mobile
 let voices = [];
 const synth = window.speechSynthesis;
-function initAudioEngine() { populateVoices(); if (speechSynthesis.onvoiceschanged !== undefined) speechSynthesis.onvoiceschanged = populateVoices; }
-function populateVoices() { voices = synth.getVoices(); }
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+function initAudioEngine() {
+    populateVoices();
+    if (speechSynthesis.onvoiceschanged !== undefined) {
+        speechSynthesis.onvoiceschanged = populateVoices;
+    }
+}
+
+function populateVoices() {
+    voices = synth.getVoices();
+}
+
+function getBestEnglishVoice() {
+    const englishVoices = voices.filter(v => v.lang.includes('en'));
+    if (englishVoices.length === 0) return null;
+
+    // Prefer native/local voices (usually better quality)
+    const preferredVoices = englishVoices.filter(v =>
+        v.localService === true ||
+        v.name.includes('Google') ||
+        v.name.includes('Microsoft') ||
+        v.name.includes('Samantha') || // iOS high quality
+        v.name.includes('Daniel') // iOS high quality
+    );
+
+    return preferredVoices[0] || englishVoices[0];
+}
+
 window.playAudio = function (text) {
     synth.cancel(); // Stop any current audio first
+
     if (text) {
         const utterThis = new SpeechSynthesisUtterance(text);
-        const englishVoices = voices.filter(v => v.lang.includes('en'));
-        let selectedVoice = englishVoices[0]; // Use first available English voice
-        utterThis.voice = selectedVoice;
-        utterThis.rate = 0.9;
-        synth.speak(utterThis);
+        const selectedVoice = getBestEnglishVoice();
+
+        if (selectedVoice) {
+            utterThis.voice = selectedVoice;
+        }
+
+        // Mobile: use rate 1.0 to avoid distortion; PC: use 0.9 for clearer pronunciation
+        utterThis.rate = isMobile ? 1.0 : 0.9;
+        utterThis.pitch = 1.0;
+        utterThis.volume = 1.0;
+
+        // Mobile fix: small delay helps prevent audio glitches
+        if (isMobile) {
+            setTimeout(() => {
+                synth.speak(utterThis);
+            }, 50);
+        } else {
+            synth.speak(utterThis);
+        }
     }
 };
 window.stopAudio = function () {
