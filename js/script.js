@@ -390,6 +390,20 @@ function renderCurriculum() {
                 </div>
                 ` : ''}
 
+                ${unit.id % 2 === 0 ? `
+                <!-- Exam Link for Even Units -->
+                <div class="section-block" style="border-top: 2px solid rgba(251,191,36,0.4); margin-top: 40px; padding-top: 30px; text-align: center;">
+                    <span class="section-label" style="background: rgba(251,191,36,0.2); color: #fbbf24; border: 1px solid #fbbf24;">📝 Progress Exam</span>
+                    <h3 style="color: #fbbf24; margin: 15px 0 10px;">You've completed Units ${unit.id - 1} &amp; ${unit.id}!</h3>
+                    <p style="opacity: 0.75; margin-bottom: 20px;">Test your knowledge with the Progress Exam covering both units — listening, writing &amp; grammar.</p>
+                    <a href="exam${unit.id / 2}.html" style="display: inline-block; background: linear-gradient(135deg, rgba(251,191,36,0.3), rgba(245,158,11,0.2)); border: 2px solid #fbbf24; color: #fbbf24; padding: 14px 35px; border-radius: 50px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: all 0.3s ease;"
+                        onmouseover="this.style.background='rgba(251,191,36,0.4)'; this.style.transform='translateY(-2px)'"
+                        onmouseout="this.style.background='linear-gradient(135deg, rgba(251,191,36,0.3), rgba(245,158,11,0.2))'; this.style.transform=''">
+                        📝 Take Exam ${unit.id / 2} →
+                    </a>
+                </div>
+                ` : ''}
+
             </div>
         `;
         container.appendChild(unitBlock);

@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Exam 2 — Units 3 & 4 | English B1 Course</title>
+    <link rel="icon" type="image/x-icon" href="st_marys.ico">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .exam-banner {
+            background: linear-gradient(135deg, rgba(16, 185, 129, .25), rgba(5, 150, 105, .15));
+            border: 2px solid rgba(16, 185, 129, .5);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin: 100px 0 2rem;
+            text-align: center
+        }
+
+        .exam-banner h1 {
+            font-size: 2.2rem;
+            color: #fff;
+            margin-bottom: .5rem
+        }
+
+        .exam-banner p {
+            color: rgba(255, 255, 255, .8);
+            font-size: 1.1rem
+        }
+
+        .exam-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem
+        }
+
+        .exam-meta span {
+            background: rgba(16, 185, 129, .3);
+            border: 1px solid rgba(16, 185, 129, .5);
+            padding: .4rem 1.2rem;
+            border-radius: 20px;
+            font-size: .85rem;
+            color: #fff
+        }
+
+        .exam-section {
+            background: rgba(0, 0, 0, .2);
+            border: 2px solid rgba(255, 255, 255, .15);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem
+        }
+
+        .sec-label {
+            display: inline-block;
+            padding: .4rem 1.2rem;
+            border-radius: 20px;
+            font-size: .8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.2rem;
+            color: #fff
+        }
+
+        .sec-green {
+            background: rgba(16, 185, 129, .45);
+            border: 1px solid #10b981
+        }
+
+        .sec-gold {
+            background: rgba(251, 191, 36, .3);
+            border: 1px solid #fbbf24;
+            color: #fbbf24
+        }
+
+        .sec-teal {
+            background: rgba(20, 184, 166, .4);
+            border: 1px solid #14b8a6
+        }
+
+        .ebox {
+            background: rgba(0, 0, 0, .25);
+            border-left: 4px solid #10b981;
+            border-radius: 10px;
+            padding: 1.2rem;
+            margin: 1.2rem 0
+        }
+
+        .ebox p.qtext {
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: .8rem
+        }
+
+        .opts label {
+            display: flex;
+            align-items: center;
+            gap: .7rem;
+            padding: .5rem .8rem;
+            border-radius: 8px;
+            cursor: pointer;
+            color: rgba(255, 255, 255, .85);
+            transition: background .2s;
+            margin: .25rem 0
+        }
+
+        .opts label:hover {
+            background: rgba(16, 185, 129, .2)
+        }
+
+        .opts input {
+            accent-color: #10b981
+        }
+
+        .transcript {
+            background: rgba(0, 0, 0, .3);
+            border-left: 4px solid #fbbf24;
+            padding: 1.5rem;
+            border-radius: 10px;
+            line-height: 1.9;
+            color: rgba(255, 255, 255, .9);
+            margin: 1rem 0
+        }
+
+        .tbtn {
+            background: rgba(16, 185, 129, .3);
+            border: 2px solid #10b981;
+            color: #fff;
+            padding: .6rem 1.4rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-bottom: 1rem
+        }
+
+        .tbtn:hover {
+            background: rgba(16, 185, 129, .6)
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 100px;
+            background: rgba(0, 0, 0, .3);
+            border: 2px solid rgba(255, 255, 255, .2);
+            color: #fff;
+            padding: 1rem;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: .95rem;
+            resize: vertical
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #10b981
+        }
+
+        textarea::placeholder {
+            color: rgba(255, 255, 255, .4)
+        }
+
+        .wc {
+            font-size: .8rem;
+            color: rgba(255, 255, 255, .4);
+            text-align: right;
+            margin-top: .3rem
+        }
+
+        .hint {
+            font-size: .85rem;
+            color: #fbbf24;
+            margin: .4rem 0;
+            font-style: italic
+        }
+
+        .check-btn {
+            background: linear-gradient(135deg, #10b981, #059669);
+            border: none;
+            color: #fff;
+            padding: .9rem 2.2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-top: 1.5rem;
+            display: block;
+            transition: transform .2s
+        }
+
+        .check-btn:hover {
+            transform: translateY(-2px)
+        }
+
+        .score-reveal {
+            background: linear-gradient(135deg, rgba(16, 185, 129, .35), rgba(5, 150, 105, .25));
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 1rem;
+            display: none
+        }
+
+        .score-num {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #fbbf24
+        }
+
+        .ms-box {
+            background: rgba(0, 0, 0, .3);
+            border: 2px solid rgba(251, 191, 36, .4);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 2rem
+        }
+
+        .ms-box h3 {
+            color: #fbbf24;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem
+        }
+
+        .ak {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+            gap: .5rem;
+            margin: 1rem 0
+        }
+
+        .ai {
+            background: rgba(0, 0, 0, .25);
+            border: 1px solid rgba(251, 191, 36, .3);
+            padding: .6rem 1rem;
+            border-radius: 8px;
+            font-size: .9rem;
+            color: rgba(255, 255, 255, .85)
+        }
+
+        .ai strong {
+            color: #fbbf24
+        }
+
+        .gbounds table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: .8rem
+        }
+
+        .gbounds th {
+            background: rgba(16, 185, 129, .4);
+            color: #fff;
+            padding: .7rem 1rem;
+            text-align: left;
+            font-size: .9rem
+        }
+
+        .gbounds td {
+            padding: .6rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+            color: rgba(255, 255, 255, .85);
+            font-size: .9rem
+        }
+
+        .ms-toggle {
+            background: rgba(251, 191, 36, .2);
+            border: 2px solid #fbbf24;
+            color: #fbbf24;
+            padding: .8rem 2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            margin: 2rem auto;
+            display: block
+        }
+
+        .ms-toggle:hover {
+            background: rgba(251, 191, 36, .35)
+        }
+
+        .hidden {
+            display: none
+        }
+
+        .mark-hint {
+            color: rgba(255, 255, 255, .6);
+            font-size: .85rem;
+            margin-bottom: 1rem
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">English<span>Language</span> Course</div><a href="index.html"
+                    style="color:rgba(255,255,255,.7);font-size:.9rem;">← Back to Course</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="exam-banner">
+            <h1>📝 Progress Exam 2</h1>
+            <p>Units 3 &amp; 4 — Sustainability &amp; Climate Change / Fake News &amp; Media Literacy</p>
+            <div class="exam-meta"><span>⏱ 60 minutes</span><span>📊 50 marks</span><span>🎯 Pass: 30/50</span></div>
+        </div>
+
+        <!-- SECTION A -->
+        <div class="exam-section">
+            <span class="sec-label sec-green">🎧 Section A — Listening Comprehension — 20 marks</span>
+            <p class="mark-hint">Read the transcript, then answer all 10 questions. Each correct answer = 2 marks.</p>
+            <button class="tbtn" onclick="document.getElementById('tr').classList.toggle('hidden')">📄 Show / Hide
+                Transcript</button>
+            <div id="tr" class="transcript hidden">
+                <strong>Transcript: "Media Literacy in the Age of Misinformation"</strong><br><br>
+                Welcome to Open Dialogue, where we discuss issues shaping modern society. Today's guest is Professor
+                Mark Chen, a media studies researcher who has spent fifteen years studying how people consume and share
+                information online.<br><br>
+                Professor Chen, why has fake news become such a significant problem in recent years?<br><br>
+                Several factors are at play. First, social media platforms reward content that generates strong
+                emotional reactions — outrage, fear, and excitement spread far faster than calm, factual reporting.
+                Second, the sheer volume of information available makes it difficult for people to evaluate everything
+                critically. And third, confirmation bias leads people to accept information that matches their existing
+                beliefs without questioning it.<br><br>
+                How can ordinary people protect themselves from misinformation?<br><br>
+                I always recommend three steps. First, check the source — is it a reputable news outlet with a history
+                of editorial standards? Second, look for the same story in at least three different independent sources.
+                If only one source is reporting something significant, that's a warning sign. Third, pay attention to
+                your emotional response. If a headline makes you feel outraged or delighted, slow down. Strong emotions
+                cloud our critical thinking. Be especially suspicious of stories that confirm exactly what you already
+                believe.<br><br>
+                And what role should governments and tech companies play?<br><br>
+                Regulation alone won't solve the problem. We need a combination of platform accountability — meaning
+                tech companies must take responsibility for the content that spreads on their platforms — and widespread
+                investment in media literacy education, particularly in secondary schools. Young people need to develop
+                critical thinking skills before they encounter the full volume of online information. In Finland, for
+                example, media literacy has been taught as part of the curriculum since the late 1990s, and their levels
+                of misinformation spread are significantly lower than in comparable countries.
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">1. How many years has Professor Chen studied information consumption?</p>
+                <div class="opts">
+                    <label><input type="radio" name="q1" value="a"> A. Five years</label>
+                    <label><input type="radio" name="q1" value="b"> B. Fifteen years</label>
+                    <label><input type="radio" name="q1" value="c"> C. Twenty years</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">2. What type of content do social media platforms reward most?</p>
+                <div class="opts">
+                    <label><input type="radio" name="q2" value="a"> A. Long, detailed factual articles</label>
+                    <label><input type="radio" name="q2" value="b"> B. Expert academic commentary</label>
+                    <label><input type="radio" name="q2" value="c"> C. Content that generates strong emotional
+                        reactions</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">3. What is "confirmation bias", as implied in the transcript?</p>
+                <div class="opts">
+                    <label><input type="radio" name="q3" value="a"> A. Sharing news to confirm you have read it</label>
+                    <label><input type="radio" name="q3" value="b"> B. Accepting information that matches your existing
+                        beliefs</label>
+                    <label><input type="radio" name="q3" value="c"> C. Checking sources before sharing news</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">4. What is the professor's FIRST recommendation for spotting misinformation?</p>
+                <div class="opts">
+                    <label><input type="radio" name="q4" value="a"> A. Check your emotional response</label>
+                    <label><input type="radio" name="q4" value="b"> B. Look for multiple sources</label>
+                    <label><input type="radio" name="q4" value="c"> C. Check if the source is reputable</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">5. How many independent sources should confirm a story?</p>
+                <div class="opts">
+                    <label><input type="radio" name="q5" value="a"> A. At least three</label>
+                    <label><input type="radio" name="q5" value="b"> B. At least ten</label>
+                    <label><input type="radio" name="q5" value="c"> C. Only one official source</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">6. Why should we slow down when a headline triggers strong emotions?</p>
+                <div class="opts">
+                    <label><input type="radio" name="q6" value="a"> A. Because emotional headlines are always
+                        false</label>
+                    <label><input type="radio" name="q6" value="b"> B. Because strong emotions cloud critical
+                        thinking</label>
+                    <label><input type="radio" name="q6" value="c"> C. Because the news is always biased
+                        politically</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">7. Professor Chen says tech companies should take _____ for content on their platforms.
+                </p>
+                <div class="opts">
+                    <label><input type="radio" name="q7" value="a"> A. government control</label>
+                    <label><input type="radio" name="q7" value="b"> B. financial payment</label>
+                    <label><input type="radio" name="q7" value="c"> C. responsibility</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">8. Where should media literacy education be targeted first?</p>
+                <div class="opts">
+                    <label><input type="radio" name="q8" value="a"> A. In secondary schools</label>
+                    <label><input type="radio" name="q8" value="b"> B. In universities</label>
+                    <label><input type="radio" name="q8" value="c"> C. In professional workplaces</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">9. Which country is given as a positive example in the transcript?</p>
+                <div class="opts">
+                    <label><input type="radio" name="q9" value="a"> A. Sweden</label>
+                    <label><input type="radio" name="q9" value="b"> B. Germany</label>
+                    <label><input type="radio" name="q9" value="c"> C. Finland</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">10. When did Finland introduce media literacy into its curriculum?</p>
+                <div class="opts">
+                    <label><input type="radio" name="q10" value="a"> A. In the late 1990s</label>
+                    <label><input type="radio" name="q10" value="b"> B. After 2010</label>
+                    <label><input type="radio" name="q10" value="c"> C. In the early 1980s</label>
+                </div>
+            </div>
+
+            <button class="check-btn" onclick="checkL()">✅ Check Listening Score</button>
+            <div id="lscore" class="score-reveal">
+                <div style="color:rgba(255,255,255,.8)">Your Score:</div>
+                <div class="score-num" id="lnum">—</div>
+                <div style="color:rgba(255,255,255,.7)">out of 20</div>
+            </div>
+        </div>
+
+        <!-- SECTION B -->
+        <div class="exam-section">
+            <span class="sec-label sec-gold">✍️ Section B — Open-Ended Questions — 20 marks</span>
+            <p class="mark-hint">Write 4–6 sentences per answer. Use vocabulary from Units 3 &amp; 4.</p>
+
+            <div style="margin:1.5rem 0">
+                <p style="color:#fff;font-weight:600;margin-bottom:.5rem">1. In your opinion, what is the most urgent
+                    environmental problem facing the world today? What steps should governments and individuals take?
+                    <span style="color:#fbbf24">(5 marks)</span></p>
+                <p class="hint">💡 Use: carbon footprint / renewable energy / fossil fuels / greenhouse gases / climate
+                    change / sustainable development</p>
+                <textarea id="b1" placeholder="Write your answer here..." oninput="wc('b1','w1')"></textarea>
+                <div class="wc" id="w1">Words: 0</div>
+            </div>
+            <div style="margin:1.5rem 0">
+                <p style="color:#fff;font-weight:600;margin-bottom:.5rem">2. Describe a time when you or someone you
+                    know shared or believed something that turned out to be false. What happened and what did you learn?
+                    <span style="color:#fbbf24">(5 marks)</span></p>
+                <p class="hint">💡 Use: fake news / misleading / verify / credible source / misinformation / spread
+                    online</p>
+                <textarea id="b2" placeholder="Write your answer here..." oninput="wc('b2','w2')"></textarea>
+                <div class="wc" id="w2">Words: 0</div>
+            </div>
+            <div style="margin:1.5rem 0">
+                <p style="color:#fff;font-weight:600;margin-bottom:.5rem">3. Do you think individuals can make a real
+                    difference to climate change, or is it the responsibility of large corporations and governments?
+                    Discuss. <span style="color:#fbbf24">(5 marks)</span></p>
+                <textarea id="b3" placeholder="Write your answer here..." oninput="wc('b3','w3')"></textarea>
+                <div class="wc" id="w3">Words: 0</div>
+            </div>
+            <div style="margin:1.5rem 0">
+                <p style="color:#fff;font-weight:600;margin-bottom:.5rem">4. How can schools help students become more
+                    critical consumers of information? Give 2–3 specific examples. <span style="color:#fbbf24">(5
+                        marks)</span></p>
+                <p class="hint">💡 Use: media literacy / critical thinking / bias / fact-checking / editorial standards
+                    / algorithm</p>
+                <textarea id="b4" placeholder="Write your answer here..." oninput="wc('b4','w4')"></textarea>
+                <div class="wc" id="w4">Words: 0</div>
+            </div>
+        </div>
+
+        <!-- SECTION C -->
+        <div class="exam-section">
+            <span class="sec-label sec-teal">📝 Section C — Grammar &amp; Vocabulary — 10 marks</span>
+            <p class="mark-hint">Choose the best option. Each answer = 1 mark.</p>
+
+            <div class="ebox">
+                <p class="qtext">1. The country has committed to _____ its carbon emissions by 50% before 2035.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g1" value="a"> A. reducing</label>
+                    <label><input type="radio" name="g1" value="b"> B. removing</label>
+                    <label><input type="radio" name="g1" value="c"> C. stopping</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">2. The article was completely _____ — none of the statistics could be verified.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g2" value="a"> A. inaccurate</label>
+                    <label><input type="radio" name="g2" value="b"> B. misleading</label>
+                    <label><input type="radio" name="g2" value="c"> C. Both A and B are possible</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">3. Governments _____ invested more in renewable energy over the past decade.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g3" value="a"> A. should have</label>
+                    <label><input type="radio" name="g3" value="b"> B. must be</label>
+                    <label><input type="radio" name="g3" value="c"> C. would</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">4. The _____ gases released by burning coal are a primary driver of global warming.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g4" value="a"> A. house</label>
+                    <label><input type="radio" name="g4" value="b"> B. atmosphere</label>
+                    <label><input type="radio" name="g4" value="c"> C. greenhouse</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">5. She always _____ news stories before sharing them on social media.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g5" value="a"> A. doubts</label>
+                    <label><input type="radio" name="g5" value="b"> B. verifies</label>
+                    <label><input type="radio" name="g5" value="c"> C. ignores</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">6. If we _____ to use fossil fuels at this rate, the consequences will be catastrophic.
+                </p>
+                <div class="opts">
+                    <label><input type="radio" name="g6" value="a"> A. stop</label>
+                    <label><input type="radio" name="g6" value="b"> B. continue</label>
+                    <label><input type="radio" name="g6" value="c"> C. reduce</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">7. The newspaper has high _____ standards — their stories are always checked by at
+                    least two editors.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g7" value="a"> A. writing</label>
+                    <label><input type="radio" name="g7" value="b"> B. publication</label>
+                    <label><input type="radio" name="g7" value="c"> C. editorial</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">8. The disinformation campaign _____ thousands of people into believing the story was
+                    true.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g8" value="a"> A. convinced</label>
+                    <label><input type="radio" name="g8" value="b"> B. showed</label>
+                    <label><input type="radio" name="g8" value="c"> C. gave</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">9. People must reduce their personal _____ footprint by flying less and eating less
+                    meat.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g9" value="a"> A. pollution</label>
+                    <label><input type="radio" name="g9" value="b"> B. energy</label>
+                    <label><input type="radio" name="g9" value="c"> C. carbon</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">10. Media _____ teaches students how to critically evaluate information they encounter
+                    online.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g10" value="a"> A. intelligence</label>
+                    <label><input type="radio" name="g10" value="b"> B. literacy</label>
+                    <label><input type="radio" name="g10" value="c"> C. education</label>
+                </div>
+            </div>
+
+            <button class="check-btn" onclick="checkG()">✅ Check Grammar Score</button>
+            <div id="gscore" class="score-reveal">
+                <div style="color:rgba(255,255,255,.8)">Your Score:</div>
+                <div class="score-num" id="gnum">—</div>
+                <div style="color:rgba(255,255,255,.7)">out of 10</div>
+            </div>
+        </div>
+
+        <!-- MARKING SCHEME -->
+        <button class="ms-toggle" onclick="document.getElementById('ms').classList.toggle('hidden')">🔑 Show / Hide
+            Marking Scheme — Teacher Use Only</button>
+        <div id="ms" class="ms-box hidden">
+            <h3>🔑 Marking Scheme — Exam 2 (Units 3–4)</h3>
+            <h4 style="color:#a78bfa;margin:1.5rem 0 .8rem">Section A Answers (2 marks each)</h4>
+            <div class="ak">
+                <div class="ai">Q1 → <strong>B</strong> (15 years)</div>
+                <div class="ai">Q2 → <strong>C</strong> (emotional reactions)</div>
+                <div class="ai">Q3 → <strong>B</strong> (matching beliefs)</div>
+                <div class="ai">Q4 → <strong>C</strong> (check source)</div>
+                <div class="ai">Q5 → <strong>A</strong> (at least three)</div>
+                <div class="ai">Q6 → <strong>B</strong> (cloud thinking)</div>
+                <div class="ai">Q7 → <strong>C</strong> (responsibility)</div>
+                <div class="ai">Q8 → <strong>A</strong> (secondary schools)</div>
+                <div class="ai">Q9 → <strong>C</strong> (Finland)</div>
+                <div class="ai">Q10 → <strong>A</strong> (late 1990s)</div>
+            </div>
+            <h4 style="color:#a78bfa;margin:1.5rem 0 .8rem">Section B Criteria (5 marks each)</h4>
+            <div class="gbounds">
+                <table>
+                    <tr>
+                        <th>Marks</th>
+                        <th>Criteria</th>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Excellent: well-developed, 5+ sentences, 4+ key vocabulary items used naturally</td>
+                    </tr>
+                    <tr>
+                        <td>3–4</td>
+                        <td>Good: clear ideas, some vocabulary, minor errors</td>
+                    </tr>
+                    <tr>
+                        <td>1–2</td>
+                        <td>Basic: limited language, significant errors</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>Not attempted</td>
+                    </tr>
+                </table>
+            </div>
+            <p style="color:rgba(255,255,255,.7);margin-top:.8rem;font-size:.9rem"><strong style="color:#fbbf24">Key
+                    vocab:</strong> carbon footprint, renewable energy, fossil fuels, greenhouse gases, sustainable
+                development, fake news, misleading, verify, credible source, misinformation, media literacy, critical
+                thinking, bias, fact-checking</p>
+            <h4 style="color:#a78bfa;margin:1.5rem 0 .8rem">Section C Answers (1 mark each)</h4>
+            <div class="ak">
+                <div class="ai">G1 → <strong>A</strong> (reducing)</div>
+                <div class="ai">G2 → <strong>C</strong> (Both A and B)</div>
+                <div class="ai">G3 → <strong>A</strong> (should have)</div>
+                <div class="ai">G4 → <strong>C</strong> (greenhouse)</div>
+                <div class="ai">G5 → <strong>B</strong> (verifies)</div>
+                <div class="ai">G6 → <strong>B</strong> (continue)</div>
+                <div class="ai">G7 → <strong>C</strong> (editorial)</div>
+                <div class="ai">G8 → <strong>A</strong> (convinced)</div>
+                <div class="ai">G9 → <strong>C</strong> (carbon)</div>
+                <div class="ai">G10 → <strong>B</strong> (literacy)</div>
+            </div>
+            <h4 style="color:#a78bfa;margin:1.5rem 0 .8rem">Grade Boundaries</h4>
+            <div class="gbounds">
+                <table>
+                    <tr>
+                        <th>Grade</th>
+                        <th>Marks</th>
+                    </tr>
+                    <tr>
+                        <td>⭐⭐⭐ Distinction</td>
+                        <td>45–50</td>
+                    </tr>
+                    <tr>
+                        <td>✅ Merit</td>
+                        <td>38–44</td>
+                    </tr>
+                    <tr>
+                        <td>👍 Pass</td>
+                        <td>30–37</td>
+                    </tr>
+                    <tr>
+                        <td>⚠️ Borderline</td>
+                        <td>20–29</td>
+                    </tr>
+                    <tr>
+                        <td>❌ Needs Repeat</td>
+                        <td>0–19</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 English Language Course. Created by Cecilia Chiappero.</p>
+        </div>
+    </footer>
+    <script>
+        const LA = { q1: 'b', q2: 'c', q3: 'b', q4: 'c', q5: 'a', q6: 'b', q7: 'c', q8: 'a', q9: 'c', q10: 'a' };
+        const GA = { g1: 'a', g2: 'c', g3: 'a', g4: 'c', g5: 'b', g6: 'b', g7: 'c', g8: 'a', g9: 'c', g10: 'b' };
+        function checkL() { let s = 0; for (let [q, a] of Object.entries(LA)) { const el = document.querySelector(`input[name="${q}"]:checked`); if (el && el.value === a) s += 2; } document.getElementById('lnum').textContent = s + '/20'; document.getElementById('lscore').style.display = 'block'; }
+        function checkG() { let s = 0; for (let [q, a] of Object.entries(GA)) { const el = document.querySelector(`input[name="${q}"]:checked`); if (el && el.value === a) s++; } document.getElementById('gnum').textContent = s + '/10'; document.getElementById('gscore').style.display = 'block'; }
+        function wc(id, cid) { const t = document.getElementById(id).value.trim(); document.getElementById(cid).textContent = 'Words: ' + (t === '' ? 0 : t.split(/\s+/).length); }
+    </script>
+</body>
+
+</html>

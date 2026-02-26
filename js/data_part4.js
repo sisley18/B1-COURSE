@@ -6,47 +6,47 @@ courseData.units.push(
             title: "The 15-Minute City: Reimagining Urban Living",
             transcript: "The concept of the 15-minute city has captured the imagination of urban planners and politicians around the world. First popularized by Carlos Moreno, a professor at the Sorbonne in Paris, the idea is deceptively simple: every resident should be able to access all their essential needs—work, shopping, healthcare, education, and recreation—within a 15-minute walk or bike ride from their home. This vision represents a radical departure from the car-centric urban planning that has dominated cities for the past century. Since the rise of the automobile, cities have been designed around the principle of segregated land use. Residential neighborhoods here, commercial districts there, industrial zones elsewhere. This separation meant that people needed cars to get anywhere, leading to sprawling suburbs, endless traffic jams, and all the environmental and social problems that follow. The 15-minute city aims to reverse this trend by creating mixed-use neighborhoods where homes, offices, shops, and parks coexist in close proximity. Paris has been at the forefront of this movement, with Mayor Anne Hidalgo making it a centerpiece of her administration. The city has added hundreds of kilometers of bike lanes, transformed parking spaces into parks, and restricted car access to many neighborhoods. Similar initiatives are underway in Melbourne, Portland, Barcelona, and dozens of other cities. Critics argue that the 15-minute city works better in theory than practice. Not everyone can afford to live in dense, well-served neighborhoods. Moreover, many jobs cannot be done locally. Yet as remote work becomes more common and people reassess their priorities after the pandemic, the appeal of walkable, human-scale neighborhoods is only growing.",
             questions: [
-                { q: "Who popularized the 15-minute city concept?", options: ["Carlos Moreno", "Albert Einstein", "Bill Gates"], correct: 0 },
-                { q: "What should be accessible in 15 minutes?", options: ["Essential needs", "Only work", "Nothing"], correct: 0 },
-                { q: "What has dominated city planning for a century?", options: ["Car-centric design", "Walking paths", "Bicycles"], correct: 0 },
+                { q: "Who popularized the 15-minute city concept?", options: ["Albert Einstein", "Carlos Moreno", "Bill Gates"], correct: 1 },
+                { q: "What should be accessible in 15 minutes?", options: ["Only work", "Essential needs", "Nothing"], correct: 1 },
+                { q: "What has dominated city planning for a century?", options: ["Walking paths", "Car-centric design", "Bicycles"], correct: 1 },
                 { q: "What does segregated land use mean?", options: ["Separated zones", "Mixed areas", "No zones"], correct: 0 },
-                { q: "What city leads this movement?", options: ["Paris", "New York", "Tokyo"], correct: 0 },
-                { q: "What did Paris add?", options: ["Bike lanes", "More cars", "Highways"], correct: 0 },
-                { q: "What did Paris transform parking spaces into?", options: ["Parks", "More parking", "Buildings"], correct: 0 },
-                { q: "What works better in theory than practice?", options: ["15-minute city", "Driving", "Flying"], correct: 0 },
-                { q: "What is growing after the pandemic?", options: ["Appeal of walkable neighborhoods", "Car sales", "Pollution"], correct: 0 },
-                { q: "What is the vision a departure from?", options: ["Car-centric planning", "Walking", "Living"], correct: 0 }
+                { q: "What city leads this movement?", options: ["New York", "Paris", "Tokyo"], correct: 1 },
+                { q: "What did Paris add?", options: ["More cars", "Bike lanes", "Highways"], correct: 1 },
+                { q: "What did Paris transform parking spaces into?", options: ["More parking", "Parks", "Buildings"], correct: 1 },
+                { q: "What works better in theory than practice?", options: ["Driving", "15-minute city", "Flying"], correct: 1 },
+                { q: "What is growing after the pandemic?", options: ["Car sales", "Appeal of walkable neighborhoods", "Pollution"], correct: 1 },
+                { q: "What is the vision a departure from?", options: ["Walking", "Car-centric planning", "Living"], correct: 1 }
             ]
         },
         reading: {
             title: "Urban Sprawl: The Hidden Costs of Unchecked City Growth",
             text: "Urban sprawl—the unplanned, often low-density expansion of urban areas into surrounding rural land—has been a defining characteristic of development in many countries since the mid-20th century. Enabled by the automobile, cheap land on city peripheries, and government policies that favored suburban development, sprawl has fundamentally shaped how millions of people live. Yet its true costs, often hidden from view, are becoming increasingly apparent. The environmental impact of sprawl is substantial. Low-density development consumes far more land per capita than compact urban development, destroying natural habitats and agricultural land. The dependence on automobiles generates enormous carbon emissions, contributing significantly to climate change. Sprawl also increases imperious surface area—paved roads, parking lots, rooftops—which disrupts natural water cycles and increases flood risk.<br><br>The social consequences are equally concerning. Communities built around driving often lack the walkable streets, public spaces, and mixed uses that foster social interaction and community life. Residents of sprawling suburbs spend hours each day commuting, time that could otherwise be spent with family, on hobbies, or in rest. Research has linked sprawl to higher rates of obesity, as people walk less and drive more. Economically, sprawl is expensive to service. Extending roads, water lines, sewer systems, and utility connections to low-density areas costs far more per household than serving compact neighborhoods. These costs are often hidden from suburban residents through cross-subsidies from denser areas.<br><br>Yet reversing sprawl is challenging. Millions of households have made major investments in suburban homes. The American Dream of a detached house with a yard remains powerful. Smart growth policies—promoting density, mixed uses, and transit-oriented development—offer a path forward, but they require political will and sustained commitment over decades.",
             questions: [
-                { q: "What is urban sprawl?", options: ["Unplanned expansion", "Planned growth", "Shrinking cities"], correct: 0 },
-                { q: "What enabled sprawl?", options: ["Automobiles", "Walking", "Bicycles"], correct: 0 },
-                { q: "What does low-density consume more of?", options: ["Land per capita", "Water", "Time"], correct: 0 },
-                { q: "What does sprawl increase?", options: ["Flood risk", "Safety", "Health"], correct: 0 },
-                { q: "What do sprawl residents spend hours doing?", options: ["Commuting", "Exercising", "Cooking"], correct: 0 },
-                { q: "What is sprawl linked to?", options: ["Obesity", "Fitness", "Happiness"], correct: 0 },
-                { q: "What is expensive to extend?", options: ["Infrastructure", "Happiness", "Trees"], correct: 0 },
-                { q: "What remains powerful?", options: ["American Dream", "Old cities", "Villages"], correct: 0 },
-                { q: "What do smart growth policies promote?", options: ["Density and transit", "More cars", "Sprawl"], correct: 0 },
-                { q: "What is challenging?", options: ["Reversing sprawl", "Driving", "Walking"], correct: 0 }
+                { q: "What is urban sprawl?", options: ["Planned growth", "Unplanned expansion", "Shrinking cities"], correct: 1 },
+                { q: "What enabled sprawl?", options: ["Walking", "Automobiles", "Bicycles"], correct: 1 },
+                { q: "What does low-density consume more of?", options: ["Water", "Land per capita", "Time"], correct: 1 },
+                { q: "What does sprawl increase?", options: ["Safety", "Flood risk", "Health"], correct: 1 },
+                { q: "What do sprawl residents spend hours doing?", options: ["Exercising", "Commuting", "Cooking"], correct: 1 },
+                { q: "What is sprawl linked to?", options: ["Fitness", "Obesity", "Happiness"], correct: 1 },
+                { q: "What is expensive to extend?", options: ["Happiness", "Infrastructure", "Trees"], correct: 1 },
+                { q: "What remains powerful?", options: ["Old cities", "American Dream", "Villages"], correct: 1 },
+                { q: "What do smart growth policies promote?", options: ["More cars", "Density and transit", "Sprawl"], correct: 1 },
+                { q: "What is challenging?", options: ["Driving", "Reversing sprawl", "Walking"], correct: 1 }
             ]
         },
         grammar: {
             title: "Causative Form", explanation: "Use 'have/get + object + past participle' when someone else does something for you.", example: "I had my car repaired. (A mechanic repaired it for me.) I got my hair cut. (A stylist cut it for me.)",
             quizzes: [
-                { question: "I need to have my car _____ this week.", options: ["serviced", "servicing", "service"], correct: 0 },
-                { question: "She got her apartment _____ last month.", options: ["painted", "painting", "paint"], correct: 0 },
-                { question: "We should have the documents _____ by a lawyer.", options: ["reviewed", "reviewing", "review"], correct: 0 },
-                { question: "He had his suit _____ for the wedding.", options: ["tailored", "tailoring", "tailor"], correct: 0 },
-                { question: "I need to get this report _____ by Friday.", options: ["finished", "finishing", "finish"], correct: 0 },
-                { question: "She had her photo _____ professionally.", options: ["taken", "taking", "take"], correct: 0 },
-                { question: "We got the kitchen _____ last summer.", options: ["renovated", "renovating", "renovate"], correct: 0 },
-                { question: "He had his phone _____ at the repair shop.", options: ["fixed", "fixing", "fix"], correct: 0 },
-                { question: "I should get my eyes _____ soon.", options: ["tested", "testing", "test"], correct: 0 },
-                { question: "She had the contract _____ by her assistant.", options: ["sent", "sending", "send"], correct: 0 }
+                { question: "I need to have my car _____ this week.", options: ["servicing", "serviced", "service"], correct: 1 },
+                { question: "She got her apartment _____ last month.", options: ["painting", "painted", "paint"], correct: 1 },
+                { question: "We should have the documents _____ by a lawyer.", options: ["reviewing", "reviewed", "review"], correct: 1 },
+                { question: "He had his suit _____ for the wedding.", options: ["tailoring", "tailored", "tailor"], correct: 1 },
+                { question: "I need to get this report _____ by Friday.", options: ["finishing", "finished", "finish"], correct: 1 },
+                { question: "She had her photo _____ professionally.", options: ["taking", "taken", "take"], correct: 1 },
+                { question: "We got the kitchen _____ last summer.", options: ["renovating", "renovated", "renovate"], correct: 1 },
+                { question: "He had his phone _____ at the repair shop.", options: ["fixing", "fixed", "fix"], correct: 1 },
+                { question: "I should get my eyes _____ soon.", options: ["testing", "tested", "test"], correct: 1 },
+                { question: "She had the contract _____ by her assistant.", options: ["sending", "sent", "send"], correct: 1 }
             ]
         },
         vocabulary: [
@@ -103,16 +103,16 @@ courseData.units.push(
         speaking: "What makes a city truly livable? Discuss the most important factors that contribute to quality of urban life, drawing on your own experiences or observations.",
         verb_patterns: {
             exercises: [
-                { sentence: "I enjoy _____ through the city parks.", options: ["walking", "to walk", "walk"], correct: 0 },
-                { sentence: "The city decided _____ more bike lanes.", options: ["to build", "building", "build"], correct: 0 },
-                { sentence: "People avoid _____ during rush hour.", options: ["driving", "to drive", "drive"], correct: 0 },
-                { sentence: "We hope _____ to a better neighborhood.", options: ["to move", "moving", "move"], correct: 0 },
-                { sentence: "Consider _____ public transportation daily.", options: ["using", "to use", "use"], correct: 0 },
-                { sentence: "They keep _____ about traffic congestion.", options: ["complaining", "to complain", "complain"], correct: 0 },
-                { sentence: "The mayor promised _____ pollution levels.", options: ["to reduce", "reducing", "reduce"], correct: 0 },
-                { sentence: "I suggest _____ the subway instead of driving.", options: ["taking", "to take", "take"], correct: 0 },
-                { sentence: "We want _____ in a walkable neighborhood.", options: ["to live", "living", "live"], correct: 0 },
-                { sentence: "She finished _____ her commute in 30 minutes.", options: ["completing", "to complete", "complete"], correct: 0 }
+                { sentence: "I enjoy _____ through the city parks.", options: ["to walk", "walking", "walk"], correct: 1 },
+                { sentence: "The city decided _____ more bike lanes.", options: ["building", "to build", "build"], correct: 1 },
+                { sentence: "People avoid _____ during rush hour.", options: ["to drive", "driving", "drive"], correct: 1 },
+                { sentence: "We hope _____ to a better neighborhood.", options: ["moving", "to move", "move"], correct: 1 },
+                { sentence: "Consider _____ public transportation daily.", options: ["to use", "using", "use"], correct: 1 },
+                { sentence: "They keep _____ about traffic congestion.", options: ["to complain", "complaining", "complain"], correct: 1 },
+                { sentence: "The mayor promised _____ pollution levels.", options: ["reducing", "to reduce", "reduce"], correct: 1 },
+                { sentence: "I suggest _____ the subway instead of driving.", options: ["to take", "taking", "take"], correct: 1 },
+                { sentence: "We want _____ in a walkable neighborhood.", options: ["living", "to live", "live"], correct: 1 },
+                { sentence: "She finished _____ her commute in 30 minutes.", options: ["to complete", "completing", "complete"], correct: 1 }
             ]
         },
         videos: [
@@ -127,47 +127,47 @@ courseData.units.push(
             title: "The Classroom of Tomorrow: Technology and Education",
             transcript: "The integration of technology into education has accelerated dramatically in recent years, particularly following the global pandemic that forced schools worldwide to adopt remote learning virtually overnight. What was once a gradual evolution has become a revolution, fundamentally changing how we think about teaching and learning. Virtual reality allows students to walk through ancient Rome or explore the surface of Mars. Artificial intelligence can provide personalized tutoring, adapting to each student's pace and learning style. Massive open online courses have made world-class education accessible to anyone with an internet connection. Gamification—the application of game design elements to learning—has proven remarkably effective at engaging students and motivating them to learn. Yet technology in education is not without controversy. Critics worry about increased screen time and its effects on children's development. They point to the digital divide—the gap between those with access to technology and those without—which threatens to exacerbate existing inequalities. There are concerns about data privacy, as educational platforms collect vast amounts of information about students. Perhaps most fundamentally, some argue that technology cannot replace the human elements of education: the mentorship, inspiration, and social learning that happen in physical classrooms. The most thoughtful approaches to educational technology recognize these concerns. They see technology not as a replacement for human teachers but as a tool that allows teachers to focus on what they do best: inspiring curiosity, developing critical thinking, and nurturing the whole child. The question is not whether to use technology in education, but how to use it wisely.",
             questions: [
-                { q: "What accelerated technology in education?", options: ["The pandemic", "New games", "Sports"], correct: 0 },
-                { q: "What allows exploring Mars?", options: ["Virtual reality", "Textbooks", "Buses"], correct: 0 },
-                { q: "What provides personalized tutoring?", options: ["Artificial intelligence", "Books only", "Nothing"], correct: 0 },
-                { q: "What are MOOCs?", options: ["Massive open online courses", "Music", "Medicine"], correct: 0 },
-                { q: "What engages students effectively?", options: ["Gamification", "Boring lectures", "Silence"], correct: 0 },
-                { q: "What is the digital divide?", options: ["Gap in technology access", "A game", "A bridge"], correct: 0 },
-                { q: "What do critics worry about?", options: ["Screen time", "Too much play", "Sports"], correct: 0 },
-                { q: "What can technology not replace?", options: ["Human elements", "Books", "Tests"], correct: 0 },
-                { q: "What should teachers focus on?", options: ["Inspiring curiosity", "Only technology", "Nothing"], correct: 0 },
-                { q: "What is the real question?", options: ["How to use technology wisely", "Whether to use it", "When to stop"], correct: 0 }
+                { q: "What accelerated technology in education?", options: ["New games", "The pandemic", "Sports"], correct: 1 },
+                { q: "What allows exploring Mars?", options: ["Textbooks", "Virtual reality", "Buses"], correct: 1 },
+                { q: "What provides personalized tutoring?", options: ["Books only", "Artificial intelligence", "Nothing"], correct: 1 },
+                { q: "What are MOOCs?", options: ["Music", "Massive open online courses", "Medicine"], correct: 1 },
+                { q: "What engages students effectively?", options: ["Boring lectures", "Gamification", "Silence"], correct: 1 },
+                { q: "What is the digital divide?", options: ["A game", "Gap in technology access", "A bridge"], correct: 1 },
+                { q: "What do critics worry about?", options: ["Too much play", "Screen time", "Sports"], correct: 1 },
+                { q: "What can technology not replace?", options: ["Books", "Human elements", "Tests"], correct: 1 },
+                { q: "What should teachers focus on?", options: ["Only technology", "Inspiring curiosity", "Nothing"], correct: 1 },
+                { q: "What is the real question?", options: ["Whether to use it", "How to use technology wisely", "When to stop"], correct: 1 }
             ]
         },
         reading: {
             title: "Lifelong Learning: Adapting to a World of Constant Change",
             text: "The concept of education as something that happens in youth—a phase we complete before entering 'real life'—is rapidly becoming obsolete. In a world where technology, industries, and job markets change at unprecedented speed, the ability to continuously learn and adapt has become essential for success and even basic economic survival. Economists estimate that the average worker will change careers—not just jobs, but entire careers—between five and seven times over their lifetime. Many of the jobs that will exist in 20 years haven't been invented yet. In this environment, a degree earned decades ago is just the beginning of one's education.<br><br>Lifelong learning takes many forms. Some pursue formal education, returning to universities for advanced degrees or professional certifications. Others engage in informal learning through online courses, podcasts, books, and professional communities. Many employers now invest heavily in employee training and development, recognizing that their competitive advantage depends on their workforce's skills. The most successful lifelong learners share certain traits. They maintain curiosity and openness to new ideas. They are comfortable with not knowing everything and willing to ask questions. They view challenges and failures as opportunities for growth rather than threats to their self-image. They take ownership of their own development rather than waiting for others to provide learning opportunities.<br><br>Technology has made lifelong learning more accessible than ever. Platforms like Coursera, edX, and LinkedIn Learning offer courses from top universities and industry experts on virtually any topic. YouTube has become an informal university for everything from programming to plumbing. Yet technology is just an enabler; the motivation to learn must come from within. Those who embrace a mindset of continuous growth and improvement will thrive in the decades ahead, while those who stop learning risk being left behind.",
             questions: [
-                { q: "What is becoming obsolete?", options: ["Education only in youth", "Learning", "Schools"], correct: 0 },
-                { q: "How many career changes will average workers make?", options: ["5-7 times", "Never", "Once"], correct: 0 },
-                { q: "What haven't been invented yet?", options: ["Many future jobs", "Cars", "Books"], correct: 0 },
-                { q: "What takes many forms?", options: ["Lifelong learning", "Only degrees", "Nothing"], correct: 0 },
-                { q: "What do successful learners maintain?", options: ["Curiosity", "Arrogance", "Fear"], correct: 0 },
-                { q: "How do they view failures?", options: ["As growth opportunities", "As disasters", "Negatively"], correct: 0 },
-                { q: "What platforms offer courses?", options: ["Coursera and edX", "Only universities", "None"], correct: 0 },
-                { q: "What has YouTube become?", options: ["An informal university", "A TV channel", "Nothing"], correct: 0 },
-                { q: "Where must motivation come from?", options: ["Within oneself", "Others", "Technology"], correct: 0 },
-                { q: "Who risks being left behind?", options: ["Those who stop learning", "Everyone", "No one"], correct: 0 }
+                { q: "What is becoming obsolete?", options: ["Learning", "Education only in youth", "Schools"], correct: 1 },
+                { q: "How many career changes will average workers make?", options: ["Never", "5-7 times", "Once"], correct: 1 },
+                { q: "What haven't been invented yet?", options: ["Cars", "Many future jobs", "Books"], correct: 1 },
+                { q: "What takes many forms?", options: ["Only degrees", "Lifelong learning", "Nothing"], correct: 1 },
+                { q: "What do successful learners maintain?", options: ["Arrogance", "Curiosity", "Fear"], correct: 1 },
+                { q: "How do they view failures?", options: ["As disasters", "As growth opportunities", "Negatively"], correct: 1 },
+                { q: "What platforms offer courses?", options: ["Only universities", "Coursera and edX", "None"], correct: 1 },
+                { q: "What has YouTube become?", options: ["A TV channel", "An informal university", "Nothing"], correct: 1 },
+                { q: "Where must motivation come from?", options: ["Others", "Within oneself", "Technology"], correct: 1 },
+                { q: "Who risks being left behind?", options: ["Everyone", "Those who stop learning", "No one"], correct: 1 }
             ]
         },
         grammar: {
             title: "Mixed Conditionals", explanation: "Mixed conditionals combine different time frames in if-clauses and main clauses to express complex conditions and results.", example: "If I had studied medicine, I would be a doctor now. (Past condition → Present result)",
             quizzes: [
-                { question: "If I _____ harder at school, I would have better opportunities now.", options: ["had studied", "study", "studied"], correct: 0 },
-                { question: "If she _____ fluent in English, she would have gotten that job.", options: ["were", "is", "was"], correct: 0 },
-                { question: "If they had saved money, they _____ traveling now.", options: ["would be", "will be", "are"], correct: 0 },
-                { question: "If he _____ more careful, the accident wouldn't have happened.", options: ["had been", "is", "was"], correct: 0 },
-                { question: "If I _____ rich, I would have bought that house.", options: ["were", "am", "was"], correct: 0 },
-                { question: "If she had accepted the offer, she _____ in Paris now.", options: ["would be living", "lives", "lived"], correct: 0 },
-                { question: "If they weren't so stubborn, they _____ compromised.", options: ["would have", "had", "will"], correct: 0 },
-                { question: "If I _____ known about the sale, I would have bought more.", options: ["had", "have", "has"], correct: 0 },
-                { question: "If he _____ healthy, he could join us for the hike.", options: ["were", "is", "was"], correct: 0 },
-                { question: "If we had left earlier, we _____ stuck in traffic now.", options: ["wouldn't be", "weren't", "aren't"], correct: 0 }
+                { question: "If I _____ harder at school, I would have better opportunities now.", options: ["study", "had studied", "studied"], correct: 1 },
+                { question: "If she _____ fluent in English, she would have gotten that job.", options: ["is", "were", "was"], correct: 1 },
+                { question: "If they had saved money, they _____ traveling now.", options: ["will be", "would be", "are"], correct: 1 },
+                { question: "If he _____ more careful, the accident wouldn't have happened.", options: ["is", "had been", "was"], correct: 1 },
+                { question: "If I _____ rich, I would have bought that house.", options: ["am", "were", "was"], correct: 1 },
+                { question: "If she had accepted the offer, she _____ in Paris now.", options: ["lives", "would be living", "lived"], correct: 1 },
+                { question: "If they weren't so stubborn, they _____ compromised.", options: ["had", "would have", "will"], correct: 1 },
+                { question: "If I _____ known about the sale, I would have bought more.", options: ["have", "had", "has"], correct: 1 },
+                { question: "If he _____ healthy, he could join us for the hike.", options: ["is", "were", "was"], correct: 1 },
+                { question: "If we had left earlier, we _____ stuck in traffic now.", options: ["weren't", "wouldn't be", "aren't"], correct: 1 }
             ]
         },
         vocabulary: [
@@ -224,16 +224,16 @@ courseData.units.push(
         speaking: "What was your favorite subject in school and why? How did your education shape who you are today? Is there something you wish you had learned in school but didn't?",
         verb_patterns: {
             exercises: [
-                { sentence: "I enjoy _____ new languages.", options: ["learning", "to learn", "learn"], correct: 0 },
-                { sentence: "She decided _____ for a master's degree.", options: ["to apply", "applying", "apply"], correct: 0 },
-                { sentence: "Students avoid _____ until the last minute.", options: ["studying", "to study", "study"], correct: 0 },
-                { sentence: "He hopes _____ a scholarship next year.", options: ["to get", "getting", "get"], correct: 0 },
-                { sentence: "Consider _____ an online course.", options: ["taking", "to take", "take"], correct: 0 },
-                { sentence: "They keep _____ their skills throughout life.", options: ["improving", "to improve", "improve"], correct: 0 },
-                { sentence: "The university promised _____ more resources.", options: ["to provide", "providing", "provide"], correct: 0 },
-                { sentence: "I suggest _____ notes during lectures.", options: ["taking", "to take", "take"], correct: 0 },
-                { sentence: "We want _____ critical thinking skills.", options: ["to develop", "developing", "develop"], correct: 0 },
-                { sentence: "She finished _____ her dissertation last month.", options: ["writing", "to write", "write"], correct: 0 }
+                { sentence: "I enjoy _____ new languages.", options: ["to learn", "learning", "learn"], correct: 1 },
+                { sentence: "She decided _____ for a master's degree.", options: ["applying", "to apply", "apply"], correct: 1 },
+                { sentence: "Students avoid _____ until the last minute.", options: ["to study", "studying", "study"], correct: 1 },
+                { sentence: "He hopes _____ a scholarship next year.", options: ["getting", "to get", "get"], correct: 1 },
+                { sentence: "Consider _____ an online course.", options: ["to take", "taking", "take"], correct: 1 },
+                { sentence: "They keep _____ their skills throughout life.", options: ["to improve", "improving", "improve"], correct: 1 },
+                { sentence: "The university promised _____ more resources.", options: ["providing", "to provide", "provide"], correct: 1 },
+                { sentence: "I suggest _____ notes during lectures.", options: ["to take", "taking", "take"], correct: 1 },
+                { sentence: "We want _____ critical thinking skills.", options: ["developing", "to develop", "develop"], correct: 1 },
+                { sentence: "She finished _____ her dissertation last month.", options: ["to write", "writing", "write"], correct: 1 }
             ]
         },
         videos: [

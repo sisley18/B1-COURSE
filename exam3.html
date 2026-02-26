@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Exam 3 — Units 5 & 6 | English B1 Course</title>
+    <link rel="icon" type="image/x-icon" href="st_marys.ico">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .exam-banner {
+            background: linear-gradient(135deg, rgba(239, 68, 68, .2), rgba(220, 38, 38, .1));
+            border: 2px solid rgba(239, 68, 68, .5);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin: 100px 0 2rem;
+            text-align: center
+        }
+
+        .exam-banner h1 {
+            font-size: 2.2rem;
+            color: #fff;
+            margin-bottom: .5rem
+        }
+
+        .exam-banner p {
+            color: rgba(255, 255, 255, .8);
+            font-size: 1.1rem
+        }
+
+        .exam-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem
+        }
+
+        .exam-meta span {
+            background: rgba(239, 68, 68, .25);
+            border: 1px solid rgba(239, 68, 68, .5);
+            padding: .4rem 1.2rem;
+            border-radius: 20px;
+            font-size: .85rem;
+            color: #fff
+        }
+
+        .exam-section {
+            background: rgba(0, 0, 0, .2);
+            border: 2px solid rgba(255, 255, 255, .15);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem
+        }
+
+        .sec-label {
+            display: inline-block;
+            padding: .4rem 1.2rem;
+            border-radius: 20px;
+            font-size: .8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.2rem;
+            color: #fff
+        }
+
+        .sec-red {
+            background: rgba(239, 68, 68, .4);
+            border: 1px solid #ef4444
+        }
+
+        .sec-gold {
+            background: rgba(251, 191, 36, .3);
+            border: 1px solid #fbbf24;
+            color: #fbbf24
+        }
+
+        .sec-pink {
+            background: rgba(236, 72, 153, .35);
+            border: 1px solid #ec4899
+        }
+
+        .ebox {
+            background: rgba(0, 0, 0, .25);
+            border-left: 4px solid #ef4444;
+            border-radius: 10px;
+            padding: 1.2rem;
+            margin: 1.2rem 0
+        }
+
+        .ebox p.qtext {
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: .8rem
+        }
+
+        .opts label {
+            display: flex;
+            align-items: center;
+            gap: .7rem;
+            padding: .5rem .8rem;
+            border-radius: 8px;
+            cursor: pointer;
+            color: rgba(255, 255, 255, .85);
+            transition: background .2s;
+            margin: .25rem 0
+        }
+
+        .opts label:hover {
+            background: rgba(239, 68, 68, .15)
+        }
+
+        .opts input {
+            accent-color: #ef4444
+        }
+
+        .transcript {
+            background: rgba(0, 0, 0, .3);
+            border-left: 4px solid #fbbf24;
+            padding: 1.5rem;
+            border-radius: 10px;
+            line-height: 1.9;
+            color: rgba(255, 255, 255, .9);
+            margin: 1rem 0
+        }
+
+        .tbtn {
+            background: rgba(239, 68, 68, .25);
+            border: 2px solid #ef4444;
+            color: #fff;
+            padding: .6rem 1.4rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-bottom: 1rem
+        }
+
+        .tbtn:hover {
+            background: rgba(239, 68, 68, .5)
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 100px;
+            background: rgba(0, 0, 0, .3);
+            border: 2px solid rgba(255, 255, 255, .2);
+            color: #fff;
+            padding: 1rem;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: .95rem;
+            resize: vertical
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #ef4444
+        }
+
+        textarea::placeholder {
+            color: rgba(255, 255, 255, .4)
+        }
+
+        .wc {
+            font-size: .8rem;
+            color: rgba(255, 255, 255, .4);
+            text-align: right;
+            margin-top: .3rem
+        }
+
+        .hint {
+            font-size: .85rem;
+            color: #fbbf24;
+            margin: .4rem 0;
+            font-style: italic
+        }
+
+        .check-btn {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            border: none;
+            color: #fff;
+            padding: .9rem 2.2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            display: block;
+            transition: transform .2s
+        }
+
+        .check-btn:hover {
+            transform: translateY(-2px)
+        }
+
+        .score-reveal {
+            background: linear-gradient(135deg, rgba(239, 68, 68, .35), rgba(220, 38, 38, .25));
+            border: 2px solid #ef4444;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 1rem;
+            display: none
+        }
+
+        .score-num {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #fbbf24
+        }
+
+        .ms-box {
+            background: rgba(0, 0, 0, .3);
+            border: 2px solid rgba(251, 191, 36, .4);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 2rem
+        }
+
+        .ms-box h3 {
+            color: #fbbf24;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem
+        }
+
+        .ak {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+            gap: .5rem;
+            margin: 1rem 0
+        }
+
+        .ai {
+            background: rgba(0, 0, 0, .25);
+            border: 1px solid rgba(251, 191, 36, .3);
+            padding: .6rem 1rem;
+            border-radius: 8px;
+            font-size: .9rem;
+            color: rgba(255, 255, 255, .85)
+        }
+
+        .ai strong {
+            color: #fbbf24
+        }
+
+        .gbounds table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: .8rem
+        }
+
+        .gbounds th {
+            background: rgba(239, 68, 68, .4);
+            color: #fff;
+            padding: .7rem 1rem;
+            text-align: left;
+            font-size: .9rem
+        }
+
+        .gbounds td {
+            padding: .6rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+            color: rgba(255, 255, 255, .85);
+            font-size: .9rem
+        }
+
+        .ms-toggle {
+            background: rgba(251, 191, 36, .2);
+            border: 2px solid #fbbf24;
+            color: #fbbf24;
+            padding: .8rem 2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            margin: 2rem auto;
+            display: block
+        }
+
+        .hidden {
+            display: none
+        }
+
+        .mark-hint {
+            color: rgba(255, 255, 255, .6);
+            font-size: .85rem;
+            margin-bottom: 1rem
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">English<span>Language</span> Course</div><a href="index.html"
+                    style="color:rgba(255,255,255,.7);font-size:.9rem;">← Back to Course</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="exam-banner">
+            <h1>📝 Progress Exam 3</h1>
+            <p>Units 5 &amp; 6 — Health &amp; Wellness / Art &amp; Culture</p>
+            <div class="exam-meta"><span>⏱ 60 minutes</span><span>📊 50 marks</span><span>🎯 Pass: 30/50</span></div>
+        </div>
+
+        <!-- SECTION A -->
+        <div class="exam-section">
+            <span class="sec-label sec-red">🎧 Section A — Listening Comprehension — 20 marks</span>
+            <p class="mark-hint">Read the transcript, then answer. Each correct answer = 2 marks.</p>
+            <button class="tbtn" onclick="document.getElementById('tr').classList.toggle('hidden')">📄 Show / Hide
+                Transcript</button>
+            <div id="tr" class="transcript hidden">
+                <strong>Transcript: "The Modern Wellness Movement — Hype or Help?"</strong><br><br>
+                Welcome to Mind &amp; Body, the podcast exploring the science behind health and happiness. Today's guest
+                is Dr. Sofia Ramos, a clinical psychologist who has been practising for over twelve years and
+                specialises in stress management and preventative mental health care.<br><br>
+                Dr. Ramos, the wellness industry is worth billions globally. Is it living up to its promises?<br><br>
+                It's a mixed picture. On one hand, the growing public awareness of mental health has helped reduce
+                stigma enormously — people feel far more comfortable discussing anxiety, burnout, and depression than
+                they did a generation ago. On the other hand, many so-called wellness products and apps capitalise on
+                anxiety without providing genuinely evidence-based interventions. Some mindfulness apps, for example,
+                are marketed as solutions to serious clinical conditions when they're really only helpful for mild daily
+                stress.<br><br>
+                What habits are genuinely supported by science?<br><br>
+                Regular physical exercise is the single most evidence-backed intervention for both mental and physical
+                health. Even thirty minutes of moderate exercise five times a week significantly lowers the risk of
+                depression, anxiety, and cardiovascular disease. After that comes sleep quality — not just duration, but
+                genuinely restful sleep. Then social connection. Chronic loneliness is now recognised as having the same
+                mortality risk as smoking fifteen cigarettes a day.<br><br>
+                That's remarkable. What about nutrition?<br><br>
+                Nutrition matters enormously but people often overcomplicate it. The research consistently shows that a
+                diet rich in fruit, vegetables, whole grains, and lean protein — and low in processed food and added
+                sugar — correlates with better mental health outcomes. The gut-brain connection is real and is one of
+                the most exciting areas of current research.
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">1. How long has Dr. Ramos been practising?</p>
+                <div class="opts">
+                    <label><input type="radio" name="q1" value="a"> A. Over twelve years</label>
+                    <label><input type="radio" name="q1" value="b"> B. Five years</label>
+                    <label><input type="radio" name="q1" value="c"> C. Over twenty years</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">2. What positive effect has the wellness movement had, according to Dr. Ramos?</p>
+                <div class="opts">
+                    <label><input type="radio" name="q2" value="a"> A. Made people exercise more regularly</label>
+                    <label><input type="radio" name="q2" value="b"> B. Created thousands of new jobs</label>
+                    <label><input type="radio" name="q2" value="c"> C. Reduced stigma around mental health</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">3. What criticism does she have of some mindfulness apps?</p>
+                <div class="opts">
+                    <label><input type="radio" name="q3" value="a"> A. They are too expensive for most people</label>
+                    <label><input type="radio" name="q3" value="b"> B. They are marketed for serious conditions but only
+                        help mild stress</label>
+                    <label><input type="radio" name="q3" value="c"> C. They are not available in all languages</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">4. What does Dr. Ramos call the most evidence-backed intervention?</p>
+                <div class="opts">
+                    <label><input type="radio" name="q4" value="a"> A. Proper nutrition and diet</label>
+                    <label><input type="radio" name="q4" value="b"> B. Regular physical exercise</label>
+                    <label><input type="radio" name="q4" value="c"> C. Therapy and counselling</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">5. How much exercise does the research recommend per week?</p>
+                <div class="opts">
+                    <label><input type="radio" name="q5" value="a"> A. An hour every day</label>
+                    <label><input type="radio" name="q5" value="b"> B. Twenty minutes three times a week</label>
+                    <label><input type="radio" name="q5" value="c"> C. Thirty minutes, five times a week</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">6. What does Dr. Ramos say comes second after exercise?</p>
+                <div class="opts">
+                    <label><input type="radio" name="q6" value="a"> A. Sleep quality</label>
+                    <label><input type="radio" name="q6" value="b"> B. Social connection</label>
+                    <label><input type="radio" name="q6" value="c"> C. Balanced nutrition</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">7. Chronic loneliness is said to be equivalent in mortality risk to...</p>
+                <div class="opts">
+                    <label><input type="radio" name="q7" value="a"> A. Eating junk food every day</label>
+                    <label><input type="radio" name="q7" value="b"> B. Smoking fifteen cigarettes a day</label>
+                    <label><input type="radio" name="q7" value="c"> C. Never exercising</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">8. What does the research consistently show about nutrition?</p>
+                <div class="opts">
+                    <label><input type="radio" name="q8" value="a"> A. Expensive supplements are worth the cost</label>
+                    <label><input type="radio" name="q8" value="b"> B. Skipping meals helps concentration</label>
+                    <label><input type="radio" name="q8" value="c"> C. A diet rich in fruit, vegetables, and whole
+                        grains improves mental health</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">9. What connection does Dr. Ramos describe as "real and exciting"?</p>
+                <div class="opts">
+                    <label><input type="radio" name="q9" value="a"> A. The mind-body connection through yoga</label>
+                    <label><input type="radio" name="q9" value="b"> B. The gut-brain connection</label>
+                    <label><input type="radio" name="q9" value="c"> C. The sleep-productivity connection</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">10. What does Dr. Ramos say people often do with nutrition advice?</p>
+                <div class="opts">
+                    <label><input type="radio" name="q10" value="a"> A. They ignore expert advice entirely</label>
+                    <label><input type="radio" name="q10" value="b"> B. They follow it perfectly</label>
+                    <label><input type="radio" name="q10" value="c"> C. They overcomplicate it</label>
+                </div>
+            </div>
+
+            <button class="check-btn" onclick="checkL()">✅ Check Listening Score</button>
+            <div id="lscore" class="score-reveal">
+                <div style="color:rgba(255,255,255,.8)">Your Score:</div>
+                <div class="score-num" id="lnum">—</div>
+                <div style="color:rgba(255,255,255,.7)">out of 20</div>
+            </div>
+        </div>
+
+        <!-- SECTION B -->
+        <div class="exam-section">
+            <span class="sec-label sec-gold">✍️ Section B — Open-Ended Questions — 20 marks</span>
+            <p class="mark-hint">Write 4–6 sentences per answer. Use vocabulary from Units 5 &amp; 6.</p>
+
+            <div style="margin:1.5rem 0">
+                <p style="color:#fff;font-weight:600;margin-bottom:.5rem">1. Describe your personal approach to staying
+                    healthy — physically and mentally. What habits do you have or would you like to develop? <span
+                        style="color:#fbbf24">(5 marks)</span></p>
+                <p class="hint">💡 Use: mental health / physical wellbeing / stress management / mindfulness / balanced
+                    diet / work-life balance</p>
+                <textarea id="b1" placeholder="Write your answer here..." oninput="wc('b1','w1')"></textarea>
+                <div class="wc" id="w1">Words: 0</div>
+            </div>
+            <div style="margin:1.5rem 0">
+                <p style="color:#fff;font-weight:600;margin-bottom:.5rem">2. Think of a painting, film, book, or song
+                    that has deeply moved you. What is it, and why does it affect you emotionally? <span
+                        style="color:#fbbf24">(5 marks)</span></p>
+                <p class="hint">💡 Use: cultural heritage / artistic expression / evoke emotion / aesthetic /
+                    contemporary art / provoke thought</p>
+                <textarea id="b2" placeholder="Write your answer here..." oninput="wc('b2','w2')"></textarea>
+                <div class="wc" id="w2">Words: 0</div>
+            </div>
+            <div style="margin:1.5rem 0">
+                <p style="color:#fff;font-weight:600;margin-bottom:.5rem">3. Should governments fund the arts during
+                    times of economic hardship, or should the money go to healthcare and education? Argue your position.
+                    <span style="color:#fbbf24">(5 marks)</span></p>
+                <textarea id="b3" placeholder="Write your answer here..." oninput="wc('b3','w3')"></textarea>
+                <div class="wc" id="w3">Words: 0</div>
+            </div>
+            <div style="margin:1.5rem 0">
+                <p style="color:#fff;font-weight:600;margin-bottom:.5rem">4. Modern life is increasingly stressful. What
+                    do you think are the main causes of stress today, and what can individuals and society do to address
+                    them? <span style="color:#fbbf24">(5 marks)</span></p>
+                <p class="hint">💡 Use: burnout / anxiety / coping strategies / social pressure / preventive care /
+                    mental health awareness</p>
+                <textarea id="b4" placeholder="Write your answer here..." oninput="wc('b4','w4')"></textarea>
+                <div class="wc" id="w4">Words: 0</div>
+            </div>
+        </div>
+
+        <!-- SECTION C -->
+        <div class="exam-section">
+            <span class="sec-label sec-pink">📝 Section C — Grammar &amp; Vocabulary — 10 marks</span>
+            <p class="mark-hint">Choose the best option. Each answer = 1 mark.</p>
+
+            <div class="ebox">
+                <p class="qtext">1. Regular exercise can significantly _____ the risk of developing chronic diseases.
+                </p>
+                <div class="opts">
+                    <label><input type="radio" name="g1" value="a"> A. raise</label>
+                    <label><input type="radio" name="g1" value="b"> B. lower</label>
+                    <label><input type="radio" name="g1" value="c"> C. maintain</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">2. The sculpture _____ strong emotions in visitors when it was first exhibited in 1999.
+                </p>
+                <div class="opts">
+                    <label><input type="radio" name="g2" value="a"> A. provoked</label>
+                    <label><input type="radio" name="g2" value="b"> B. made</label>
+                    <label><input type="radio" name="g2" value="c"> C. showed</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">3. She has been _____ from work-related stress for several months now.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g3" value="a"> A. tired</label>
+                    <label><input type="radio" name="g3" value="b"> B. suffering</label>
+                    <label><input type="radio" name="g3" value="c"> C. sick</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">4. The museum aims to _____ local cultural heritage through exhibitions and education.
+                </p>
+                <div class="opts">
+                    <label><input type="radio" name="g4" value="a"> A. forget</label>
+                    <label><input type="radio" name="g4" value="b"> B. remove</label>
+                    <label><input type="radio" name="g4" value="c"> C. preserve</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">5. If you _____ more fruit and vegetables, you would feel noticeably better within
+                    weeks.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g5" value="a"> A. would eat</label>
+                    <label><input type="radio" name="g5" value="b"> B. eat</label>
+                    <label><input type="radio" name="g5" value="c"> C. ate</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">6. The abstract painting was said to _____ the feeling of solitude in a crowded city.
+                </p>
+                <div class="opts">
+                    <label><input type="radio" name="g6" value="a"> A. create</label>
+                    <label><input type="radio" name="g6" value="b"> B. show</label>
+                    <label><input type="radio" name="g6" value="c"> C. evoke</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">7. Taking short breaks during the workday is a simple _____ strategy for reducing
+                    burnout.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g7" value="a"> A. coping</label>
+                    <label><input type="radio" name="g7" value="b"> B. helping</label>
+                    <label><input type="radio" name="g7" value="c"> C. fixing</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">8. He _____ painting for thirty years before his work was finally recognised
+                    internationally.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g8" value="a"> A. is doing</label>
+                    <label><input type="radio" name="g8" value="b"> B. had been doing</label>
+                    <label><input type="radio" name="g8" value="c"> C. has done</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">9. A _____ diet should include a variety of nutrients from different food groups.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g9" value="a"> A. correct</label>
+                    <label><input type="radio" name="g9" value="b"> B. right</label>
+                    <label><input type="radio" name="g9" value="c"> C. balanced</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">10. The artist's work was described as _____ — it challenged viewers to question their
+                    assumptions.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g10" value="a"> A. thought-provoking</label>
+                    <label><input type="radio" name="g10" value="b"> B. interesting-minded</label>
+                    <label><input type="radio" name="g10" value="c"> C. idea-making</label>
+                </div>
+            </div>
+
+            <button class="check-btn" onclick="checkG()">✅ Check Grammar Score</button>
+            <div id="gscore" class="score-reveal">
+                <div style="color:rgba(255,255,255,.8)">Your Score:</div>
+                <div class="score-num" id="gnum">—</div>
+                <div style="color:rgba(255,255,255,.7)">out of 10</div>
+            </div>
+        </div>
+
+        <button class="ms-toggle" onclick="document.getElementById('ms').classList.toggle('hidden')">🔑 Show / Hide
+            Marking Scheme — Teacher Use Only</button>
+        <div id="ms" class="ms-box hidden">
+            <h3>🔑 Marking Scheme — Exam 3 (Units 5–6)</h3>
+            <h4 style="color:#a78bfa;margin:1.5rem 0 .8rem">Section A Answers (2 marks each)</h4>
+            <div class="ak">
+                <div class="ai">Q1 → <strong>A</strong> (over 12 years)</div>
+                <div class="ai">Q2 → <strong>C</strong> (reduced stigma)</div>
+                <div class="ai">Q3 → <strong>B</strong> (marketed for serious conditions)</div>
+                <div class="ai">Q4 → <strong>B</strong> (physical exercise)</div>
+                <div class="ai">Q5 → <strong>C</strong> (30 min, 5 times/week)</div>
+                <div class="ai">Q6 → <strong>A</strong> (sleep quality)</div>
+                <div class="ai">Q7 → <strong>B</strong> (15 cigarettes/day)</div>
+                <div class="ai">Q8 → <strong>C</strong> (fruit, veg, whole grains)</div>
+                <div class="ai">Q9 → <strong>B</strong> (gut-brain connection)</div>
+                <div class="ai">Q10 → <strong>C</strong> (overcomplicate it)</div>
+            </div>
+            <h4 style="color:#a78bfa;margin:1.5rem 0 .8rem">Section B Criteria (5 marks each)</h4>
+            <div class="gbounds">
+                <table>
+                    <tr>
+                        <th>Marks</th>
+                        <th>Criteria</th>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Excellent: 5+ sentences, 4+ vocab items, well-developed, minimal errors</td>
+                    </tr>
+                    <tr>
+                        <td>3–4</td>
+                        <td>Good: clear ideas, some vocabulary, minor errors</td>
+                    </tr>
+                    <tr>
+                        <td>1–2</td>
+                        <td>Basic: limited language</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>Not attempted</td>
+                    </tr>
+                </table>
+            </div>
+            <p style="color:rgba(255,255,255,.7);margin-top:.8rem;font-size:.9rem"><strong style="color:#fbbf24">Key
+                    vocab:</strong> mental health, physical wellbeing, stress management, mindfulness, balanced diet,
+                work-life balance, burnout, anxiety, coping strategies, cultural heritage, artistic expression, evoke
+                emotion, aesthetic, provoke thought</p>
+            <h4 style="color:#a78bfa;margin:1.5rem 0 .8rem">Section C Answers (1 mark each)</h4>
+            <div class="ak">
+                <div class="ai">G1 → <strong>B</strong> (lower)</div>
+                <div class="ai">G2 → <strong>A</strong> (provoked)</div>
+                <div class="ai">G3 → <strong>B</strong> (suffering)</div>
+                <div class="ai">G4 → <strong>C</strong> (preserve)</div>
+                <div class="ai">G5 → <strong>C</strong> (ate)</div>
+                <div class="ai">G6 → <strong>C</strong> (evoke)</div>
+                <div class="ai">G7 → <strong>A</strong> (coping)</div>
+                <div class="ai">G8 → <strong>B</strong> (had been doing)</div>
+                <div class="ai">G9 → <strong>C</strong> (balanced)</div>
+                <div class="ai">G10 → <strong>A</strong> (thought-provoking)</div>
+            </div>
+            <div class="gbounds">
+                <table>
+                    <tr>
+                        <th>Grade</th>
+                        <th>Marks</th>
+                    </tr>
+                    <tr>
+                        <td>⭐⭐⭐ Distinction</td>
+                        <td>45–50</td>
+                    </tr>
+                    <tr>
+                        <td>✅ Merit</td>
+                        <td>38–44</td>
+                    </tr>
+                    <tr>
+                        <td>👍 Pass</td>
+                        <td>30–37</td>
+                    </tr>
+                    <tr>
+                        <td>⚠️ Borderline</td>
+                        <td>20–29</td>
+                    </tr>
+                    <tr>
+                        <td>❌ Needs Repeat</td>
+                        <td>0–19</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 English Language Course. Created by Cecilia Chiappero.</p>
+        </div>
+    </footer>
+    <script>
+        const LA = { q1: 'a', q2: 'c', q3: 'b', q4: 'b', q5: 'c', q6: 'a', q7: 'b', q8: 'c', q9: 'b', q10: 'c' };
+        const GA = { g1: 'b', g2: 'a', g3: 'b', g4: 'c', g5: 'c', g6: 'c', g7: 'a', g8: 'b', g9: 'c', g10: 'a' };
+        function checkL() { let s = 0; for (let [q, a] of Object.entries(LA)) { const el = document.querySelector(`input[name="${q}"]:checked`); if (el && el.value === a) s += 2; } document.getElementById('lnum').textContent = s + '/20'; document.getElementById('lscore').style.display = 'block'; }
+        function checkG() { let s = 0; for (let [q, a] of Object.entries(GA)) { const el = document.querySelector(`input[name="${q}"]:checked`); if (el && el.value === a) s++; } document.getElementById('gnum').textContent = s + '/10'; document.getElementById('gscore').style.display = 'block'; }
+        function wc(id, cid) { const t = document.getElementById(id).value.trim(); document.getElementById(cid).textContent = 'Words: ' + (t === '' ? 0 : t.split(/\s+/).length); }
+    </script>
+</body>
+
+</html>

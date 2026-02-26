@@ -6,46 +6,46 @@ courseData.units.push(
             title: "The Urgent Need for Renewable Energy",
             transcript: "As the effects of climate change become increasingly apparent, from record-breaking heatwaves to devastating floods, the transition to renewable energy has never been more urgent. Scientists warn that we have less than a decade to make fundamental changes to our energy systems if we are to avoid the worst consequences of global warming. Fortunately, the technology to make this transition already exists. Solar panels have become dramatically cheaper over the past decade, with costs falling by more than 80 percent. Wind farms now generate electricity more cheaply than coal or natural gas in many regions of the world. Electric vehicles are rapidly approaching price parity with traditional gasoline-powered cars. The challenge is no longer technological but political and economic. Entrenched interests in the fossil fuel industry continue to resist change, spending billions on lobbying and misinformation campaigns. Meanwhile, the infrastructure needed to support renewable energy—from upgraded power grids to charging stations—requires massive investment. Despite these obstacles, the momentum is clearly shifting. Major corporations are pledging to become carbon neutral. Countries around the world are setting ambitious targets for renewable energy adoption. Young people are taking to the streets to demand action. The question is no longer whether we will transition to clean energy, but whether we will do so quickly enough to preserve a livable planet for future generations.",
             questions: [
-                { q: "What has become increasingly apparent?", options: ["Climate change effects", "Good weather", "Nothing"], correct: 0 },
-                { q: "How much have solar panel costs fallen?", options: ["Over 80%", "10%", "Nothing"], correct: 0 },
-                { q: "What generates cheaper electricity in many regions?", options: ["Wind farms", "Coal only", "Nothing"], correct: 0 },
-                { q: "What is the main challenge now?", options: ["Political and economic", "Technological", "Social"], correct: 0 },
-                { q: "Who resists change?", options: ["Fossil fuel industry", "Scientists", "Students"], correct: 0 },
-                { q: "What requires massive investment?", options: ["Infrastructure", "Nothing", "Sports"], correct: 0 },
-                { q: "What are corporations pledging?", options: ["Carbon neutrality", "More pollution", "Nothing"], correct: 0 },
-                { q: "Who is demanding action?", options: ["Young people", "Nobody", "Animals"], correct: 0 },
-                { q: "What is no longer the main challenge?", options: ["Technology", "Money", "Time"], correct: 0 },
-                { q: "What must we preserve?", options: ["A livable planet", "Fossil fuels", "Nothing"], correct: 0 }
+                { q: "What has become increasingly apparent?", options: ["Good weather", "Climate change effects", "Economic stability"], correct: 1 },
+                { q: "How much have solar panel costs fallen?", options: ["10%", "Over 80%", "50%"], correct: 1 },
+                { q: "What generates cheaper electricity in many regions?", options: ["Coal only", "Nuclear power", "Wind farms"], correct: 2 },
+                { q: "What is the main challenge now?", options: ["Technological", "Political and economic", "Scientific"], correct: 1 },
+                { q: "Who resists change?", options: ["Fossil fuel industry", "Scientists", " Universities"], correct: 0 },
+                { q: "What requires massive investment?", options: ["Sports", "Infrastructure", "Entertainment"], correct: 1 },
+                { q: "What are corporations pledging?", options: ["Carbon neutrality", "More pollution", "Less transparency"], correct: 0 },
+                { q: "Who is demanding action?", options: ["Nobody", "Young people", "Politicians only"], correct: 1 },
+                { q: "What is no longer the main challenge?", options: ["Money", "Technology", "Time"], correct: 1 },
+                { q: "What must we preserve?", options: ["Fossil fuels", "A livable planet", "Old industries"], correct: 1 }
             ]
         },
         reading: {
             title: "The Hidden Crisis of Microplastics in Our Environment",
             text: "Microplastics have emerged as one of the most pervasive and concerning forms of pollution on our planet. These tiny fragments of plastic, measuring less than five millimeters in diameter, have been found in virtually every environment scientists have examined—from the deepest ocean trenches to the highest mountain peaks, from Arctic ice to tropical rainforests. They are in the water we drink, the food we eat, and even the air we breathe. Scientists estimate that the average person ingests approximately a credit card's worth of plastic every week.<br><br>The sources of microplastic pollution are numerous and often surprising. While much comes from the breakdown of larger plastic items like bottles and bags, a significant portion originates from synthetic clothing. Every time we wash polyester, nylon, or acrylic garments, thousands of microscopic plastic fibers are released into wastewater. Car tires, as they wear down on roads, release vast quantities of microplastic particles. Cosmetics and personal care products often contain intentionally added microbeads. The environmental and health implications of this ubiquitous contamination are still being understood, but early research is troubling. Microplastics have been found in human blood, lungs, and even placentas. Laboratory studies suggest they may cause inflammation, cell damage, and disruption of hormonal systems.<br><br>Addressing the microplastic crisis requires action on multiple fronts: reducing plastic production and consumption, improving waste management systems, developing better filtration technologies, and investing in biodegradable alternatives. The challenge is immense, but the alternative—continuing to fill our bodies and environment with plastic particles—is unacceptable.",
             questions: [
-                { q: "How small are microplastics?", options: ["Less than 5mm", "Over 1 meter", "Invisible"], correct: 0 },
-                { q: "Where have microplastics been found?", options: ["Virtually everywhere", "Nowhere", "Only oceans"], correct: 0 },
-                { q: "How much plastic does a person ingest weekly?", options: ["A credit card's worth", "Nothing", "A bottle"], correct: 0 },
-                { q: "What releases plastic fibers when washed?", options: ["Synthetic clothing", "Cotton", "Wool"], correct: 0 },
-                { q: "What do car tires release?", options: ["Microplastic particles", "Water", "Air"], correct: 0 },
+                { q: "How small are microplastics?", options: ["Over 1 meter", "Less than 5mm", "Invisible to the eye"], correct: 1 },
+                { q: "Where have microplastics been found?", options: ["Nowhere", "Virtually everywhere", "Only in oceans"], correct: 1 },
+                { q: "How much plastic does a person ingest weekly?", options: ["Nothing", "A credit card's worth", "A bottle"], correct: 1 },
+                { q: "What releases plastic fibers when washed?", options: ["Startups", "Synthetic clothing", "Cotton"], correct: 1 },
+                { q: "What do car tires release?", options: ["Water", "Air", "Microplastic particles"], correct: 2 },
                 { q: "Where have microplastics been found in humans?", options: ["Blood, lungs, placentas", "Nowhere", "Only skin"], correct: 0 },
-                { q: "What may microplastics cause?", options: ["Inflammation and cell damage", "Better health", "Nothing"], correct: 0 },
-                { q: "What needs to improve?", options: ["Waste management", "Nothing", "Plastic production increase"], correct: 0 },
-                { q: "What is unacceptable?", options: ["Filling bodies with plastic", "Reducing plastic", "Recycling"], correct: 0 },
-                { q: "What contains intentionally added microbeads?", options: ["Cosmetics", "Books", "Music"], correct: 0 }
+                { q: "What may microplastics cause?", options: ["Better health", "Inflammation and cell damage", "Improved digestion"], correct: 1 },
+                { q: "What needs to improve?", options: ["Plastic production increase", "Waste management", "Nothing"], correct: 1 },
+                { q: "What is unacceptable?", options: ["Recycling", "Filling bodies with plastic", "Reducing plastic"], correct: 1 },
+                { q: "What contains intentionally added microbeads?", options: ["Books", "Cosmetics", "Music"], correct: 1 }
             ]
         },
         grammar: {
             title: "Inversion for Emphasis", explanation: "Inversion places the auxiliary verb before the subject for emphasis, commonly after negative adverbs like 'never,' 'rarely,' 'seldom,' 'not only,' etc.", example: "Not only is she talented, but she is also hardworking. Never have I witnessed such dedication.",
             quizzes: [
-                { question: "Not only _____ he intelligent, but also kind.", options: ["is", "does", "has"], correct: 0 },
+                { question: "Not only _____ he intelligent, but also kind.", options: ["does", "is", "has"], correct: 1 },
                 { question: "Never _____ I experienced such beauty.", options: ["have", "has", "am"], correct: 0 },
-                { question: "Rarely _____ we encounter such problems.", options: ["do", "does", "is"], correct: 0 },
+                { question: "Rarely _____ we encounter such problems.", options: ["does", "do", "is"], correct: 1 },
                 { question: "Seldom _____ she arrive late to class.", options: ["does", "do", "is"], correct: 0 },
                 { question: "Little _____ they realize the consequences.", options: ["did", "does", "is"], correct: 0 },
-                { question: "Hardly _____ he sat down when the phone rang.", options: ["had", "has", "is"], correct: 0 },
-                { question: "No sooner _____ we arrived than it started raining.", options: ["had", "have", "did"], correct: 0 },
-                { question: "Only then _____ I understand the truth.", options: ["did", "do", "am"], correct: 0 },
-                { question: "Under no circumstances _____ you touch this button.", options: ["should", "do", "are"], correct: 0 },
+                { question: "Hardly _____ he sat down when the phone rang.", options: ["has", "had", "is"], correct: 1 },
+                { question: "No sooner _____ we arrived than it started raining.", options: ["have", "had", "did"], correct: 1 },
+                { question: "Only then _____ I understand the truth.", options: ["do", "did", "am"], correct: 1 },
+                { question: "Under no circumstances _____ you touch this button.", options: ["do", "are", "should"], correct: 2 },
                 { question: "At no time _____ he express any doubt.", options: ["did", "does", "is"], correct: 0 }
             ]
         },
@@ -103,16 +103,16 @@ courseData.units.push(
         speaking: "Debate: Should governments ban all single-use plastics, or should consumers be allowed to make their own choices? Present arguments for both sides and explain your personal position.",
         verb_patterns: {
             exercises: [
-                { sentence: "We must stop _____ so much plastic.", options: ["using", "to use", "use"], correct: 0 },
-                { sentence: "They promised _____ their carbon emissions.", options: ["to reduce", "reducing", "reduce"], correct: 0 },
-                { sentence: "Avoid _____ products with excess packaging.", options: ["buying", "to buy", "buy"], correct: 0 },
+                { sentence: "We must stop _____ so much plastic.", options: ["to use", "using", "use"], correct: 1 },
+                { sentence: "They promised _____ their carbon emissions.", options: ["reducing", "to reduce", "reduce"], correct: 1 },
+                { sentence: "Avoid _____ products with excess packaging.", options: ["to buy", "buying", "buy"], correct: 1 },
                 { sentence: "I hope _____ a difference in the environment.", options: ["to make", "making", "make"], correct: 0 },
                 { sentence: "Consider _____ solar panels on your roof.", options: ["installing", "to install", "install"], correct: 0 },
-                { sentence: "We enjoy _____ in nature on weekends.", options: ["hiking", "to hike", "hike"], correct: 0 },
+                { sentence: "We enjoy _____ in nature on weekends.", options: ["to hike", "hiking", "hike"], correct: 1 },
                 { sentence: "The company decided _____ renewable energy.", options: ["to use", "using", "use"], correct: 0 },
                 { sentence: "Keep _____ for the planet every day.", options: ["recycling", "to recycle", "recycle"], correct: 0 },
-                { sentence: "Scientists suggest _____ meat consumption.", options: ["reducing", "to reduce", "reduce"], correct: 0 },
-                { sentence: "I want _____ a more sustainable life.", options: ["to live", "living", "live"], correct: 0 }
+                { sentence: "Scientists suggest _____ meat consumption.", options: ["to reduce", "reducing", "reduce"], correct: 1 },
+                { sentence: "I want _____ a more sustainable life.", options: ["living", "to live", "live"], correct: 1 }
             ]
         },
         videos: [
@@ -127,15 +127,15 @@ courseData.units.push(
             title: "Navigating the Information Landscape in the Digital Age",
             transcript: "We live in an age of unprecedented access to information, yet paradoxically, truth has never been more elusive. The same technologies that allow us to instantly connect with billions of people around the world have also enabled the rapid spread of misinformation, disinformation, and outright lies. Social media platforms, designed primarily to maximize user engagement and advertising revenue, have created echo chambers where people are exposed mainly to content that confirms their existing beliefs. Algorithms determine what we see based on what will keep us scrolling, not on what is accurate or important. The consequences of this media environment are profound. Political polarization has increased dramatically in many democracies. Public health has been undermined by the spread of vaccine misinformation. Trust in institutions—media, government, science—has eroded significantly. The term 'fake news,' once used to describe genuinely fabricated stories, has been weaponized by politicians to dismiss any critical coverage. In this environment, media literacy—the ability to critically analyze and evaluate media messages—has become an essential life skill. It requires us to question the sources of information we consume, to verify claims before sharing them, and to be aware of our own cognitive biases. Schools are beginning to incorporate media literacy into their curricula, but much more needs to be done. As citizens in a democracy, our ability to make informed decisions depends on our capacity to distinguish fact from fiction in an increasingly complex information landscape.",
             questions: [
-                { q: "What has never been more elusive?", options: ["Truth", "Money", "Time"], correct: 0 },
+                { q: "What has never been more elusive?", options: ["Money", "Time", "Truth"], correct: 2 },
                 { q: "What do social media algorithms prioritize?", options: ["Engagement", "Truth", "Education"], correct: 0 },
-                { q: "What are echo chambers?", options: ["Places confirming existing beliefs", "Music rooms", "Sports venues"], correct: 0 },
-                { q: "What has increased in democracies?", options: ["Political polarization", "Happiness", "Unity"], correct: 0 },
+                { q: "What are echo chambers?", options: ["Music rooms", "Places confirming existing beliefs", "Sports venues"], correct: 1 },
+                { q: "What has increased in democracies?", options: ["Happiness", "Unity", "Political polarization"], correct: 2 },
                 { q: "What has undermined public health?", options: ["Vaccine misinformation", "Good news", "Exercise"], correct: 0 },
-                { q: "What has eroded significantly?", options: ["Trust in institutions", "Buildings", "Mountains"], correct: 0 },
-                { q: "What has media literacy become?", options: ["Essential life skill", "Optional hobby", "Sport"], correct: 0 },
-                { q: "What should we question?", options: ["Sources of information", "Nothing", "Weather"], correct: 0 },
-                { q: "What are schools beginning to incorporate?", options: ["Media literacy", "Sports only", "Nothing new"], correct: 0 },
+                { q: "What has eroded significantly?", options: ["Buildings", "Trust in institutions", "Mountains"], correct: 1 },
+                { q: "What has media literacy become?", options: ["Optional hobby", "Essential life skill", "Sport"], correct: 1 },
+                { q: "What should we question?", options: ["Nothing", "Sources of information", "Weather"], correct: 1 },
+                { q: "What are schools beginning to incorporate?", options: ["Sports only", "Media literacy", "Nothing new"], correct: 1 },
                 { q: "What depends on distinguishing fact from fiction?", options: ["Informed decisions", "Weather", "Food"], correct: 0 }
             ]
         },
@@ -143,31 +143,31 @@ courseData.units.push(
             title: "The Science of Why We Fall for Fake News",
             text: "Understanding why humans are susceptible to misinformation requires delving into the psychology of belief formation. Our brains evolved to make quick decisions based on limited information—a trait that was essential for survival on the savanna but can lead us astray in the information-rich modern world. We are subject to numerous cognitive biases that affect how we process information. Confirmation bias leads us to seek out and remember information that supports our existing beliefs while dismissing contradictory evidence. The availability heuristic causes us to overestimate the importance of information that comes easily to mind, often because it is emotionally charged or recently encountered.<br><br>Social factors also play a crucial role. We are tribal creatures who derive our sense of identity and belonging from the groups we associate with. Accepting information that aligns with our group's beliefs strengthens our social bonds, even if that information is false. Rejecting widely held beliefs within our community, conversely, can lead to social isolation. The format of modern social media exacerbates these tendencies. Posts that provoke strong emotional reactions—particularly outrage—are more likely to be shared, creating a viral ecosystem where sensationalism trumps accuracy. The speed at which information spreads leaves little time for fact-checking. Studies have shown that false news stories spread faster and farther than true ones on social media platforms.<br><br>Combating misinformation requires both individual effort and systemic change. On a personal level, we can practice critical thinking, diversify our information sources, and pause before sharing content. On a broader level, we need better platform design, stronger media literacy education, and responsible journalism that prioritizes accuracy over engagement.",
             questions: [
-                { q: "What did our brains evolve to do?", options: ["Make quick decisions", "Process slowly", "Avoid information"], correct: 0 },
+                { q: "What did our brains evolve to do?", options: ["Process slowly", "Make quick decisions", "Avoid information"], correct: 1 },
                 { q: "What is confirmation bias?", options: ["Seeking information that confirms beliefs", "Rejecting all information", "Ignoring everything"], correct: 0 },
-                { q: "What are we as creatures?", options: ["Tribal", "Solitary", "Robotic"], correct: 0 },
-                { q: "What posts are more likely shared?", options: ["Those provoking strong emotions", "Boring ones", "Random ones"], correct: 0 },
-                { q: "What spreads faster than true stories?", options: ["False news", "True news", "Neither"], correct: 0 },
+                { q: "What are we as creatures?", options: ["Solitary", "Robotic", "Tribal"], correct: 2 },
+                { q: "What posts are more likely shared?", options: ["Boring ones", "Those provoking strong emotions", "Random ones"], correct: 1 },
+                { q: "What spreads faster than true stories?", options: ["True news", "Neither", "False news"], correct: 2 },
                 { q: "What should we diversify?", options: ["Information sources", "Nothing", "Only food"], correct: 0 },
                 { q: "What should we pause before doing?", options: ["Sharing content", "Sleeping", "Eating"], correct: 0 },
-                { q: "What strengthens social bonds?", options: ["Accepting group beliefs", "Rejecting everything", "Isolation"], correct: 0 },
-                { q: "What leaves little time for fact-checking?", options: ["Speed of information spread", "Slow reading", "Nothing"], correct: 0 },
-                { q: "What does sensationalism trump?", options: ["Accuracy", "Entertainment", "Nothing"], correct: 0 }
+                { q: "What strengthens social bonds?", options: ["Rejecting everything", "Accepting group beliefs", "Isolation"], correct: 1 },
+                { q: "What leaves little time for fact-checking?", options: ["Slow reading", "Speed of information spread", "Nothing"], correct: 1 },
+                { q: "What does sensationalism trump?", options: ["Entertainment", "Nothing", "Accuracy"], correct: 2 }
             ]
         },
         grammar: {
             title: "Reported Speech", explanation: "When reporting what someone said, we typically move the tense one step back. Present becomes Past, Past becomes Past Perfect, Will becomes Would.", example: "Direct: 'I am happy.' → Reported: She said she was happy.",
             quizzes: [
-                { question: "She said she _____ tired after the long journey.", options: ["was", "is", "will be"], correct: 0 },
-                { question: "He told me he _____ go to the meeting.", options: ["would", "will", "shall"], correct: 0 },
+                { question: "She said she _____ tired after the long journey.", options: ["is", "was", "will be"], correct: 1 },
+                { question: "He told me he _____ go to the meeting.", options: ["will", "would", "shall"], correct: 1 },
                 { question: "They said they _____ already completed the project.", options: ["had", "have", "will have"], correct: 0 },
-                { question: "She asked if I _____ coming to the party tomorrow.", options: ["was", "am", "will be"], correct: 0 },
-                { question: "He mentioned that he _____ never been to Japan.", options: ["had", "has", "will have"], correct: 0 },
+                { question: "She asked if I _____ coming to the party tomorrow.", options: ["am", "was", "will be"], correct: 1 },
+                { question: "He mentioned that he _____ never been to Japan.", options: ["has", "had", "will have"], correct: 1 },
                 { question: "She told me she _____ help with the presentation.", options: ["could", "can", "will"], correct: 0 },
                 { question: "He said he _____ that movie three times before.", options: ["had seen", "sees", "will see"], correct: 0 },
-                { question: "They reported that they _____ leaving early that day.", options: ["were", "are", "will be"], correct: 0 },
+                { question: "They reported that they _____ leaving early that day.", options: ["are", "were", "will be"], correct: 1 },
                 { question: "She claimed she _____ know anything about the incident.", options: ["didn't", "doesn't", "won't"], correct: 0 },
-                { question: "He admitted that he _____ wrong about the deadline.", options: ["had been", "is", "will be"], correct: 0 }
+                { question: "He admitted that he _____ wrong about the deadline.", options: ["is", "had been", "will be"], correct: 1 }
             ]
         },
         vocabulary: [
@@ -224,16 +224,16 @@ courseData.units.push(
         speaking: "Have you ever believed or shared a fake news story? Describe what happened and what you learned from the experience. How do you now verify information before accepting or sharing it?",
         verb_patterns: {
             exercises: [
-                { sentence: "I avoid _____ news from unreliable sources.", options: ["reading", "to read", "read"], correct: 0 },
+                { sentence: "I avoid _____ news from unreliable sources.", options: ["to read", "reading", "read"], correct: 1 },
                 { sentence: "She decided _____ the information before sharing.", options: ["to verify", "verifying", "verify"], correct: 0 },
                 { sentence: "We need _____ more critical of what we read.", options: ["to be", "being", "be"], correct: 0 },
-                { sentence: "They keep _____ false stories on social media.", options: ["sharing", "to share", "share"], correct: 0 },
-                { sentence: "Consider _____ your news sources.", options: ["checking", "to check", "check"], correct: 0 },
+                { sentence: "They keep _____ false stories on social media.", options: ["to share", "sharing", "share"], correct: 1 },
+                { sentence: "Consider _____ your news sources.", options: ["to check", "checking", "check"], correct: 1 },
                 { sentence: "He promised _____ fact-checking in the future.", options: ["to practice", "practicing", "practice"], correct: 0 },
-                { sentence: "I enjoy _____ documentaries about journalism.", options: ["watching", "to watch", "watch"], correct: 0 },
-                { sentence: "People risk _____ misinformation to others.", options: ["spreading", "to spread", "spread"], correct: 0 },
+                { sentence: "I enjoy _____ documentaries about journalism.", options: ["to watch", "watching", "watch"], correct: 1 },
+                { sentence: "People risk _____ misinformation to others.", options: ["to spread", "spreading", "spread"], correct: 1 },
                 { sentence: "We hope _____ media literacy in schools.", options: ["to improve", "improving", "improve"], correct: 0 },
-                { sentence: "Suggest _____ multiple sources for every story.", options: ["consulting", "to consult", "consult"], correct: 0 }
+                { sentence: "Suggest _____ multiple sources for every story.", options: ["to consult", "consulting", "consult"], correct: 1 }
             ]
         },
         videos: [

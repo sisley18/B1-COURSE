@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Exam 4 — Units 7 & 8 | English B1 Course</title>
+    <link rel="icon" type="image/x-icon" href="st_marys.ico">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .exam-banner {
+            background: linear-gradient(135deg, rgba(251, 191, 36, .2), rgba(245, 158, 11, .1));
+            border: 2px solid rgba(251, 191, 36, .5);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin: 100px 0 2rem;
+            text-align: center
+        }
+
+        .exam-banner h1 {
+            font-size: 2.2rem;
+            color: #fff;
+            margin-bottom: .5rem
+        }
+
+        .exam-banner p {
+            color: rgba(255, 255, 255, .8);
+            font-size: 1.1rem
+        }
+
+        .exam-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem
+        }
+
+        .exam-meta span {
+            background: rgba(251, 191, 36, .2);
+            border: 1px solid rgba(251, 191, 36, .5);
+            padding: .4rem 1.2rem;
+            border-radius: 20px;
+            font-size: .85rem;
+            color: #fff
+        }
+
+        .exam-section {
+            background: rgba(0, 0, 0, .2);
+            border: 2px solid rgba(255, 255, 255, .15);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem
+        }
+
+        .sec-label {
+            display: inline-block;
+            padding: .4rem 1.2rem;
+            border-radius: 20px;
+            font-size: .8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.2rem;
+            color: #fff
+        }
+
+        .sec-amber {
+            background: rgba(245, 158, 11, .4);
+            border: 1px solid #f59e0b
+        }
+
+        .sec-gold {
+            background: rgba(251, 191, 36, .3);
+            border: 1px solid #fbbf24;
+            color: #fbbf24
+        }
+
+        .sec-orange {
+            background: rgba(249, 115, 22, .4);
+            border: 1px solid #f97316
+        }
+
+        .ebox {
+            background: rgba(0, 0, 0, .25);
+            border-left: 4px solid #f59e0b;
+            border-radius: 10px;
+            padding: 1.2rem;
+            margin: 1.2rem 0
+        }
+
+        .ebox p.qtext {
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: .8rem
+        }
+
+        .opts label {
+            display: flex;
+            align-items: center;
+            gap: .7rem;
+            padding: .5rem .8rem;
+            border-radius: 8px;
+            cursor: pointer;
+            color: rgba(255, 255, 255, .85);
+            transition: background .2s;
+            margin: .25rem 0
+        }
+
+        .opts label:hover {
+            background: rgba(245, 158, 11, .15)
+        }
+
+        .opts input {
+            accent-color: #f59e0b
+        }
+
+        .transcript {
+            background: rgba(0, 0, 0, .3);
+            border-left: 4px solid #fbbf24;
+            padding: 1.5rem;
+            border-radius: 10px;
+            line-height: 1.9;
+            color: rgba(255, 255, 255, .9);
+            margin: 1rem 0
+        }
+
+        .tbtn {
+            background: rgba(245, 158, 11, .25);
+            border: 2px solid #f59e0b;
+            color: #fff;
+            padding: .6rem 1.4rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-bottom: 1rem
+        }
+
+        .tbtn:hover {
+            background: rgba(245, 158, 11, .5)
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 100px;
+            background: rgba(0, 0, 0, .3);
+            border: 2px solid rgba(255, 255, 255, .2);
+            color: #fff;
+            padding: 1rem;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: .95rem;
+            resize: vertical
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #f59e0b
+        }
+
+        textarea::placeholder {
+            color: rgba(255, 255, 255, .4)
+        }
+
+        .wc {
+            font-size: .8rem;
+            color: rgba(255, 255, 255, .4);
+            text-align: right;
+            margin-top: .3rem
+        }
+
+        .hint {
+            font-size: .85rem;
+            color: #fbbf24;
+            margin: .4rem 0;
+            font-style: italic
+        }
+
+        .check-btn {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            border: none;
+            color: #fff;
+            padding: .9rem 2.2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            display: block;
+            transition: transform .2s
+        }
+
+        .check-btn:hover {
+            transform: translateY(-2px)
+        }
+
+        .score-reveal {
+            background: linear-gradient(135deg, rgba(245, 158, 11, .35), rgba(217, 119, 6, .25));
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 1rem;
+            display: none
+        }
+
+        .score-num {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #fbbf24
+        }
+
+        .ms-box {
+            background: rgba(0, 0, 0, .3);
+            border: 2px solid rgba(251, 191, 36, .4);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 2rem
+        }
+
+        .ms-box h3 {
+            color: #fbbf24;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem
+        }
+
+        .ak {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+            gap: .5rem;
+            margin: 1rem 0
+        }
+
+        .ai {
+            background: rgba(0, 0, 0, .25);
+            border: 1px solid rgba(251, 191, 36, .3);
+            padding: .6rem 1rem;
+            border-radius: 8px;
+            font-size: .9rem;
+            color: rgba(255, 255, 255, .85)
+        }
+
+        .ai strong {
+            color: #fbbf24
+        }
+
+        .gbounds table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: .8rem
+        }
+
+        .gbounds th {
+            background: rgba(245, 158, 11, .4);
+            color: #fff;
+            padding: .7rem 1rem;
+            text-align: left;
+            font-size: .9rem
+        }
+
+        .gbounds td {
+            padding: .6rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+            color: rgba(255, 255, 255, .85);
+            font-size: .9rem
+        }
+
+        .ms-toggle {
+            background: rgba(251, 191, 36, .2);
+            border: 2px solid #fbbf24;
+            color: #fbbf24;
+            padding: .8rem 2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            margin: 2rem auto;
+            display: block
+        }
+
+        .hidden {
+            display: none
+        }
+
+        .mark-hint {
+            color: rgba(255, 255, 255, .6);
+            font-size: .85rem;
+            margin-bottom: 1rem
+        }
+
+        .final-badge {
+            background: linear-gradient(135deg, rgba(251, 191, 36, .3), rgba(245, 158, 11, .2));
+            border: 2px solid #fbbf24;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #fbbf24;
+            font-weight: 700;
+            font-size: 1.1rem
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">English<span>Language</span> Course</div><a href="index.html"
+                    style="color:rgba(255,255,255,.7);font-size:.9rem;">← Back to Course</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="final-badge">🏆 Final Progress Exam — Covering all key B1 concepts from Units 7 &amp; 8</div>
+
+        <div class="exam-banner">
+            <h1>📝 Progress Exam 4</h1>
+            <p>Units 7 &amp; 8 — Urban Life &amp; Smart Cities / Education &amp; Lifelong Learning</p>
+            <div class="exam-meta"><span>⏱ 60 minutes</span><span>📊 50 marks</span><span>🎯 Pass: 30/50</span><span>📚
+                    Units 7 &amp; 8</span></div>
+        </div>
+
+        <!-- SECTION A -->
+        <div class="exam-section">
+            <span class="sec-label sec-amber">🎧 Section A — Listening Comprehension — 20 marks</span>
+            <p class="mark-hint">Read the transcript, then answer. Each correct answer = 2 marks.</p>
+            <button class="tbtn" onclick="document.getElementById('tr').classList.toggle('hidden')">📄 Show / Hide
+                Transcript</button>
+            <div id="tr" class="transcript hidden">
+                <strong>Transcript: "The Future City — Building Smarter, Living Better"</strong><br><br>
+                Welcome to Urban Perspectives, the podcast on city design and the future of how we live. My guest today
+                is Carlos Andrade, an urban planner who has worked on smart city projects in three continents over the
+                past twenty years.<br><br>
+                Carlos, what exactly is a smart city?<br><br>
+                A smart city uses technology and data to improve the quality of life for its residents. That can mean
+                anything from sensors embedded in roads to manage traffic in real time, to AI-powered waste management
+                systems that optimise collection routes, to digital platforms that allow citizens to report problems to
+                the city council instantly through their phones. The goal is always efficiency, sustainability, and
+                inclusion.<br><br>
+                What are the biggest challenges in building a smart city?<br><br>
+                Two main ones. First, the digital divide — if only wealthy residents can access smart city services, we
+                deepen inequality rather than reducing it. A truly smart city must ensure that all residents, including
+                the elderly and low-income communities, can benefit. Second, data privacy. When a city collects enormous
+                amounts of data about how people move, shop, and spend their time, there are serious questions about who
+                owns that data and how it can be used.<br><br>
+                You've also written about the relationship between education and urban development. How do the two
+                connect?<br><br>
+                Enormously. Cities that invest heavily in education create a more adaptable, innovative workforce.
+                Research from the OECD shows that cities where more than sixty percent of residents have post-secondary
+                qualifications attract more high-value businesses, have lower unemployment, and generate significantly
+                more tax revenue — which they can then reinvest in infrastructure and services. Education and urban
+                development are completely intertwined. You cannot build a great city without a great education system.
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">1. How many years has Carlos Andrade worked on smart city projects?</p>
+                <div class="opts">
+                    <label><input type="radio" name="q1" value="a"> A. Ten years</label>
+                    <label><input type="radio" name="q1" value="b"> B. Five years</label>
+                    <label><input type="radio" name="q1" value="c"> C. Twenty years</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">2. What does a smart city primarily use to improve residents' quality of life?</p>
+                <div class="opts">
+                    <label><input type="radio" name="q2" value="a"> A. More police and security forces</label>
+                    <label><input type="radio" name="q2" value="b"> B. Technology and data</label>
+                    <label><input type="radio" name="q2" value="c"> C. Larger public parks</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">3. What can citizens do through digital platforms in a smart city?</p>
+                <div class="opts">
+                    <label><input type="radio" name="q3" value="a"> A. Report problems to the city council via
+                        phone</label>
+                    <label><input type="radio" name="q3" value="b"> B. Vote in city elections online</label>
+                    <label><input type="radio" name="q3" value="c"> C. Access free Wi-Fi in all public spaces</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">4. What is the first major challenge Carlos identifies?</p>
+                <div class="opts">
+                    <label><input type="radio" name="q4" value="a"> A. High construction costs</label>
+                    <label><input type="radio" name="q4" value="b"> B. The digital divide deepening inequality</label>
+                    <label><input type="radio" name="q4" value="c"> C. Lack of government support</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">5. Which two groups does Carlos specifically mention as needing inclusion?</p>
+                <div class="opts">
+                    <label><input type="radio" name="q5" value="a"> A. Children and university students</label>
+                    <label><input type="radio" name="q5" value="b"> B. Business owners and entrepreneurs</label>
+                    <label><input type="radio" name="q5" value="c"> C. The elderly and low-income communities</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">6. What is the second major challenge Carlos identifies?</p>
+                <div class="opts">
+                    <label><input type="radio" name="q6" value="a"> A. Data privacy</label>
+                    <label><input type="radio" name="q6" value="b"> B. Traffic congestion</label>
+                    <label><input type="radio" name="q6" value="c"> C. Air pollution</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">7. What data concern does Carlos raise about smart cities?</p>
+                <div class="opts">
+                    <label><input type="radio" name="q7" value="a"> A. Data is too expensive to store</label>
+                    <label><input type="radio" name="q7" value="b"> B. Data about movement and habits — who owns
+                        it?</label>
+                    <label><input type="radio" name="q7" value="c"> C. Data centres use too much electricity</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">8. Which organisation's research does Carlos cite?</p>
+                <div class="opts">
+                    <label><input type="radio" name="q8" value="a"> A. The World Bank</label>
+                    <label><input type="radio" name="q8" value="b"> B. The United Nations</label>
+                    <label><input type="radio" name="q8" value="c"> C. The OECD</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">9. What percentage of residents with post-secondary qualifications attracts high-value
+                    businesses?</p>
+                <div class="opts">
+                    <label><input type="radio" name="q9" value="a"> A. More than eighty percent</label>
+                    <label><input type="radio" name="q9" value="b"> B. More than sixty percent</label>
+                    <label><input type="radio" name="q9" value="c"> C. Exactly fifty percent</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">10. What does Carlos say you cannot build without a great education system?</p>
+                <div class="opts">
+                    <label><input type="radio" name="q10" value="a"> A. A competitive economy</label>
+                    <label><input type="radio" name="q10" value="b"> B. A democratic society</label>
+                    <label><input type="radio" name="q10" value="c"> C. A great city</label>
+                </div>
+            </div>
+
+            <button class="check-btn" onclick="checkL()">✅ Check Listening Score</button>
+            <div id="lscore" class="score-reveal">
+                <div style="color:rgba(255,255,255,.8)">Your Score:</div>
+                <div class="score-num" id="lnum">—</div>
+                <div style="color:rgba(255,255,255,.7)">out of 20</div>
+            </div>
+        </div>
+
+        <!-- SECTION B -->
+        <div class="exam-section">
+            <span class="sec-label sec-gold">✍️ Section B — Open-Ended Questions — 20 marks</span>
+            <p class="mark-hint">Write 4–6 sentences per answer. Use vocabulary from Units 7 &amp; 8.</p>
+
+            <div style="margin:1.5rem 0">
+                <p style="color:#fff;font-weight:600;margin-bottom:.5rem">1. Describe the ideal smart city of the
+                    future. What technologies would it use and how would it improve daily life for all citizens,
+                    including the disadvantaged? <span style="color:#fbbf24">(5 marks)</span></p>
+                <p class="hint">💡 Use: smart infrastructure / sustainable urban development / public transport /
+                    renewable energy / digital inclusion / quality of life</p>
+                <textarea id="b1" placeholder="Write your answer here..." oninput="wc('b1','w1')"></textarea>
+                <div class="wc" id="w1">Words: 0</div>
+            </div>
+            <div style="margin:1.5rem 0">
+                <p style="color:#fff;font-weight:600;margin-bottom:.5rem">2. Do you believe that university education is
+                    essential in the modern world, or are there other paths to success just as valuable? Discuss both
+                    sides. <span style="color:#fbbf24">(5 marks)</span></p>
+                <p class="hint">💡 Use: lifelong learning / vocational training / higher education / critical thinking /
+                    digital literacy / career development</p>
+                <textarea id="b2" placeholder="Write your answer here..." oninput="wc('b2','w2')"></textarea>
+                <div class="wc" id="w2">Words: 0</div>
+            </div>
+            <div style="margin:1.5rem 0">
+                <p style="color:#fff;font-weight:600;margin-bottom:.5rem">3. How is the city or town where you live
+                    changing? What improvements would you recommend, and why? <span style="color:#fbbf24">(5
+                        marks)</span></p>
+                <textarea id="b3" placeholder="Write your answer here..." oninput="wc('b3','w3')"></textarea>
+                <div class="wc" id="w3">Words: 0</div>
+            </div>
+            <div style="margin:1.5rem 0">
+                <p style="color:#fff;font-weight:600;margin-bottom:.5rem">4. How should education systems prepare
+                    students for a world being transformed by AI and automation? Be specific about what skills matter
+                    most. <span style="color:#fbbf24">(5 marks)</span></p>
+                <p class="hint">💡 Use: adaptability / problem-solving / creativity / collaboration / critical thinking
+                    / tech literacy / emotional intelligence</p>
+                <textarea id="b4" placeholder="Write your answer here..." oninput="wc('b4','w4')"></textarea>
+                <div class="wc" id="w4">Words: 0</div>
+            </div>
+        </div>
+
+        <!-- SECTION C -->
+        <div class="exam-section">
+            <span class="sec-label sec-orange">📝 Section C — Grammar &amp; Vocabulary — 10 marks</span>
+            <p class="mark-hint">Choose the best option. Each answer = 1 mark.</p>
+
+            <div class="ebox">
+                <p class="qtext">1. Cities must invest in _____ infrastructure if they want to reduce carbon emissions.
+                </p>
+                <div class="opts">
+                    <label><input type="radio" name="g1" value="a"> A. bigger</label>
+                    <label><input type="radio" name="g1" value="b"> B. sustainable</label>
+                    <label><input type="radio" name="g1" value="c"> C. older</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">2. Lifelong _____ means continuing to develop skills and knowledge throughout your
+                    career.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g2" value="a"> A. reading</label>
+                    <label><input type="radio" name="g2" value="b"> B. studying</label>
+                    <label><input type="radio" name="g2" value="c"> C. learning</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">3. If the city _____ in public transport, air pollution would drop significantly.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g3" value="a"> A. invests</label>
+                    <label><input type="radio" name="g3" value="b"> B. will invest</label>
+                    <label><input type="radio" name="g3" value="c"> C. invested</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">4. The _____ divide means that poorer residents cannot access the same digital
+                    services.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g4" value="a"> A. social</label>
+                    <label><input type="radio" name="g4" value="b"> B. digital</label>
+                    <label><input type="radio" name="g4" value="c"> C. economic</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">5. The school system needs to focus more on developing _____ thinking, not just
+                    memorising facts.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g5" value="a"> A. creative</label>
+                    <label><input type="radio" name="g5" value="b"> B. positive</label>
+                    <label><input type="radio" name="g5" value="c"> C. critical</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">6. The city _____ a new metro line by the time the stadium opens next year.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g6" value="a"> A. builds</label>
+                    <label><input type="radio" name="g6" value="b"> B. will have built</label>
+                    <label><input type="radio" name="g6" value="c"> C. has built</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">7. _____ training provides practical skills for specific careers without requiring a
+                    university degree.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g7" value="a"> A. Vocational</label>
+                    <label><input type="radio" name="g7" value="b"> B. Practical</label>
+                    <label><input type="radio" name="g7" value="c"> C. Professional</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">8. Urban _____ plans must balance economic growth with environmental protection.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g8" value="a"> A. design</label>
+                    <label><input type="radio" name="g8" value="b"> B. development</label>
+                    <label><input type="radio" name="g8" value="c"> C. construction</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">9. By the time she graduates, she _____ four languages fluently.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g9" value="a"> A. speaks</label>
+                    <label><input type="radio" name="g9" value="b"> B. will have been speaking</label>
+                    <label><input type="radio" name="g9" value="c"> C. will speak</label>
+                </div>
+            </div>
+
+            <div class="ebox">
+                <p class="qtext">10. The city's _____ of life index improved after investment in parks, clean air, and
+                    public safety.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g10" value="a"> A. standard</label>
+                    <label><input type="radio" name="g10" value="b"> B. quality</label>
+                    <label><input type="radio" name="g10" value="c"> C. level</label>
+                </div>
+            </div>
+
+            <button class="check-btn" onclick="checkG()">✅ Check Grammar Score</button>
+            <div id="gscore" class="score-reveal">
+                <div style="color:rgba(255,255,255,.8)">Your Score:</div>
+                <div class="score-num" id="gnum">—</div>
+                <div style="color:rgba(255,255,255,.7)">out of 10</div>
+            </div>
+        </div>
+
+        <button class="ms-toggle" onclick="document.getElementById('ms').classList.toggle('hidden')">🔑 Show / Hide
+            Marking Scheme — Teacher Use Only</button>
+        <div id="ms" class="ms-box hidden">
+            <h3>🔑 Marking Scheme — Exam 4 (Units 7–8)</h3>
+            <h4 style="color:#a78bfa;margin:1.5rem 0 .8rem">Section A Answers (2 marks each)</h4>
+            <div class="ak">
+                <div class="ai">Q1 → <strong>C</strong> (twenty years)</div>
+                <div class="ai">Q2 → <strong>B</strong> (technology and data)</div>
+                <div class="ai">Q3 → <strong>A</strong> (report problems via phone)</div>
+                <div class="ai">Q4 → <strong>B</strong> (digital divide)</div>
+                <div class="ai">Q5 → <strong>C</strong> (elderly + low-income)</div>
+                <div class="ai">Q6 → <strong>A</strong> (data privacy)</div>
+                <div class="ai">Q7 → <strong>B</strong> (who owns the data)</div>
+                <div class="ai">Q8 → <strong>C</strong> (OECD)</div>
+                <div class="ai">Q9 → <strong>B</strong> (more than 60%)</div>
+                <div class="ai">Q10 → <strong>C</strong> (a great city)</div>
+            </div>
+            <h4 style="color:#a78bfa;margin:1.5rem 0 .8rem">Section B Criteria (5 marks each)</h4>
+            <div class="gbounds">
+                <table>
+                    <tr>
+                        <th>Marks</th>
+                        <th>Criteria</th>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Excellent: 5+ sentences, 4+ vocab items naturally used, well-developed, minimal errors</td>
+                    </tr>
+                    <tr>
+                        <td>3–4</td>
+                        <td>Good: clear ideas, some vocabulary, minor errors</td>
+                    </tr>
+                    <tr>
+                        <td>1–2</td>
+                        <td>Basic: limited language</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>Not attempted</td>
+                    </tr>
+                </table>
+            </div>
+            <p style="color:rgba(255,255,255,.7);margin-top:.8rem;font-size:.9rem"><strong style="color:#fbbf24">Key
+                    vocab:</strong> smart infrastructure, sustainable urban development, public transport, digital
+                inclusion, quality of life, lifelong learning, vocational training, higher education, critical thinking,
+                digital literacy, adaptability, creativity, emotional intelligence</p>
+            <h4 style="color:#a78bfa;margin:1.5rem 0 .8rem">Section C Answers (1 mark each)</h4>
+            <div class="ak">
+                <div class="ai">G1 → <strong>B</strong> (sustainable)</div>
+                <div class="ai">G2 → <strong>C</strong> (learning)</div>
+                <div class="ai">G3 → <strong>C</strong> (invested)</div>
+                <div class="ai">G4 → <strong>B</strong> (digital)</div>
+                <div class="ai">G5 → <strong>C</strong> (critical)</div>
+                <div class="ai">G6 → <strong>B</strong> (will have built)</div>
+                <div class="ai">G7 → <strong>A</strong> (Vocational)</div>
+                <div class="ai">G8 → <strong>B</strong> (development)</div>
+                <div class="ai">G9 → <strong>C</strong> (will speak)</div>
+                <div class="ai">G10 → <strong>B</strong> (quality)</div>
+            </div>
+            <div class="gbounds" style="margin-top:1.5rem">
+                <table>
+                    <tr>
+                        <th>Grade</th>
+                        <th>Marks</th>
+                        <th>Descriptor</th>
+                    </tr>
+                    <tr>
+                        <td>⭐⭐⭐ Distinction</td>
+                        <td>45–50</td>
+                        <td>Outstanding B1 performance</td>
+                    </tr>
+                    <tr>
+                        <td>✅ Merit</td>
+                        <td>38–44</td>
+                        <td>Strong across all areas</td>
+                    </tr>
+                    <tr>
+                        <td>👍 Pass</td>
+                        <td>30–37</td>
+                        <td>Adequate B1 competence</td>
+                    </tr>
+                    <tr>
+                        <td>⚠️ Borderline</td>
+                        <td>20–29</td>
+                        <td>Review Units 7–8</td>
+                    </tr>
+                    <tr>
+                        <td>❌ Needs Repeat</td>
+                        <td>0–19</td>
+                        <td>Repeat Units 7–8</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 English Language Course. Created by Cecilia Chiappero.</p>
+        </div>
+    </footer>
+    <script>
+        const LA = { q1: 'c', q2: 'b', q3: 'a', q4: 'b', q5: 'c', q6: 'a', q7: 'b', q8: 'c', q9: 'b', q10: 'c' };
+        const GA = { g1: 'b', g2: 'c', g3: 'c', g4: 'b', g5: 'c', g6: 'b', g7: 'a', g8: 'b', g9: 'c', g10: 'b' };
+        function checkL() { let s = 0; for (let [q, a] of Object.entries(LA)) { const el = document.querySelector(`input[name="${q}"]:checked`); if (el && el.value === a) s += 2; } document.getElementById('lnum').textContent = s + '/20'; document.getElementById('lscore').style.display = 'block'; }
+        function checkG() { let s = 0; for (let [q, a] of Object.entries(GA)) { const el = document.querySelector(`input[name="${q}"]:checked`); if (el && el.value === a) s++; } document.getElementById('gnum').textContent = s + '/10'; document.getElementById('gscore').style.display = 'block'; }
+        function wc(id, cid) { const t = document.getElementById(id).value.trim(); document.getElementById(cid).textContent = 'Words: ' + (t === '' ? 0 : t.split(/\s+/).length); }
+    </script>
+</body>
+
+</html>
