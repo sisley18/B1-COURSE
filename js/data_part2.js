@@ -119,7 +119,20 @@ courseData.units.push(
             { title: "Climate Change 101 with Bill Nye", channel: "National Geographic", duration: "4:14", url: "https://www.youtube.com/watch?v=EtW2rrLHs08" },
             { title: "Can We Fix Climate Change?", channel: "Kurzgesagt", duration: "16:24", url: "https://www.youtube.com/watch?v=LxgMdjyw8uw" },
             { title: "What Is Sustainability?", channel: "UCLA", duration: "2:26", url: "https://www.youtube.com/watch?v=zx04Kl8y4dE" }
-        ]
+        ],
+        video_comprehension: {
+            videoId: "EtW2rrLHs08",
+            videoTitle: "Climate Change 101 with Bill Nye",
+            channel: "National Geographic",
+            duration: "4:14",
+            fitb: [
+                "Greenhouse gases trap ___ in the Earth's atmosphere.",
+                "The main cause of climate change is burning ___ fuels.",
+                "Rising temperatures cause polar ___ to melt and sea levels to rise.",
+                "Renewable energy sources include solar, wind and ___.",
+                "We must act now to stop the planet from ___ too fast."
+            ]
+        }
     },
     {
         id: 4, title: "Media & Society", topic: "Fake News & Media Literacy",
@@ -240,6 +253,19 @@ courseData.units.push(
             { title: "How False News Can Spread", channel: "TED-Ed", duration: "3:42", url: "https://www.youtube.com/watch?v=cSKGa_7XJkg" },
             { title: "How To Spot Fake News", channel: "BBC Learning English", duration: "6:05", url: "https://www.youtube.com/watch?v=AkwWcHekMdo" },
             { title: "The Spread of Misinformation Online", channel: "Vox", duration: "8:21", url: "https://www.youtube.com/watch?v=soYkEqDp760" }
-        ]
+        ],
+        video_comprehension: {
+            videoId: "cSKGa_7XJkg",
+            videoTitle: "How False News Can Spread",
+            channel: "TED-Ed",
+            duration: "3:42",
+            fitb: [
+                "False news spreads faster than ___ news online.",
+                "People often share stories without ___ them first.",
+                "A lie can travel around the ___ before the truth starts.",
+                "Always verify information from multiple ___ before sharing.",
+                "Media ___ helps us identify and stop fake stories."
+            ]
+        }
     }
 );

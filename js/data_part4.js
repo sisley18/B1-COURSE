@@ -119,7 +119,20 @@ courseData.units.push(
             { title: "The 15-Minute City Explained", channel: "Bloomberg Quicktake", duration: "6:45", url: "https://www.youtube.com/watch?v=_mSxRPvknD4" },
             { title: "What Makes a City Great?", channel: "Wendover Productions", duration: "11:23", url: "https://www.youtube.com/watch?v=IFjD3NMv6Kw" },
             { title: "How Singapore Solved Housing", channel: "Vox", duration: "8:42", url: "https://www.youtube.com/watch?v=2cjPgNBNeLs" }
-        ]
+        ],
+        video_comprehension: {
+            videoId: "_mSxRPvknD4",
+            videoTitle: "The 15-Minute City Explained",
+            channel: "Bloomberg Quicktake",
+            duration: "6:45",
+            fitb: [
+                "In a 15-minute city, essential needs are within ___ reach.",
+                "The concept was popularized by urban planner Carlos ___.",
+                "Paris added hundreds of kilometers of ___ lanes.",
+                "The goal is to reduce reliance on the ___ in cities.",
+                "Mixed-use ___ means homes, shops and parks coexist nearby."
+            ]
+        }
     },
     {
         id: 8, title: "Education", topic: "Educational Technology & Lifelong Learning",
@@ -240,6 +253,19 @@ courseData.units.push(
             { title: "Do Schools Kill Creativity?", channel: "TED", duration: "19:24", url: "https://www.youtube.com/watch?v=iG9CE55wbtY" },
             { title: "The Future of Education", channel: "World Economic Forum", duration: "4:37", url: "https://www.youtube.com/watch?v=g4e-sMvSMzI" },
             { title: "How to Learn Faster", channel: "Veritasium", duration: "14:11", url: "https://www.youtube.com/watch?v=rhgwIhB58PA" }
-        ]
+        ],
+        video_comprehension: {
+            videoId: "g4e-sMvSMzI",
+            videoTitle: "The Future of Education",
+            channel: "World Economic Forum",
+            duration: "4:37",
+            fitb: [
+                "Education must prepare students for the ___ of work.",
+                "Critical ___ is one of the most important 21st-century skills.",
+                "Technology is changing how we ___ and learn.",
+                "Students need both technical and ___ skills to succeed.",
+                "Lifelong learning means continuing to learn ___ formal school."
+            ]
+        }
     }
 );

@@ -123,7 +123,20 @@ const courseData = {
                 { title: "How AI Could Empower Any Business", channel: "TED", duration: "9:28", url: "https://www.youtube.com/watch?v=reUZRyXxUs4" },
                 { title: "What Is Artificial Intelligence?", channel: "BBC Ideas", duration: "4:12", url: "https://www.youtube.com/watch?v=mJeNghZXtMo" },
                 { title: "The Danger of AI is Weirder Than You Think", channel: "TED", duration: "10:31", url: "https://www.youtube.com/watch?v=OhCzX0iLnOc" }
-            ]
+            ],
+            video_comprehension: {
+                videoId: "reUZRyXxUs4",
+                videoTitle: "How AI Could Empower Any Business",
+                channel: "TED",
+                duration: "9:28",
+                fitb: [
+                    "AI is like a new form of ___ that automates many tasks.",
+                    "The speaker says AI will transform almost every ___ in the world.",
+                    "Machine learning allows computers to learn from ___ automatically.",
+                    "Small companies can use AI tools to improve their ___ operations.",
+                    "The impact of AI is compared to the Industrial ___."
+                ]
+            }
         },
         {
             id: 2,
@@ -248,7 +261,20 @@ const courseData = {
                 { title: "Remote Work Is Here To Stay", channel: "CNBC", duration: "13:42", url: "https://www.youtube.com/watch?v=oSLAN0S3msk" },
                 { title: "How To Work From Home Successfully", channel: "Thomas Frank", duration: "11:15", url: "https://www.youtube.com/watch?v=PLBYYdg0sfs" },
                 { title: "The Future of Work After COVID-19", channel: "World Economic Forum", duration: "5:23", url: "https://www.youtube.com/watch?v=LbGjxp6xrho" }
-            ]
+            ],
+            video_comprehension: {
+                videoId: "LbGjxp6xrho",
+                videoTitle: "The Future of Work After COVID-19",
+                channel: "World Economic Forum",
+                duration: "5:23",
+                fitb: [
+                    "The pandemic accelerated the shift to ___ work.",
+                    "Many companies adopted a ___ model combining office and home.",
+                    "Workers need strong ___ skills to collaborate online.",
+                    "Maintaining work-life ___ is a key challenge.",
+                    "The future of work will require lifelong ___ and adaptability."
+                ]
+            }
         }
     ]
 };
