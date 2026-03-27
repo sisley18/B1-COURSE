@@ -97,6 +97,30 @@ courseData.units.push(
                 { sentence: "Sustainable living is possible for everyone.", stressed: ["Sustainable", "living", "possible", "everyone"] },
                 { sentence: "Conservation starts with small changes.", stressed: ["Conservation", "starts", "small", "changes"] },
                 { sentence: "Green technology creates new job opportunities.", stressed: ["Green", "technology", "creates", "job", "opportunities"] }
+            ],
+            intonation: [
+                { sentence: "Is climate change caused by human activity?", pattern: "rising", type: "Yes/No Question" },
+                { sentence: "We need to protect our natural resources.", pattern: "falling", type: "Statement" },
+                { sentence: "What can we do to reduce pollution?", pattern: "falling", type: "Wh- Question" },
+                { sentence: "Do you recycle at home?", pattern: "rising", type: "Yes/No Question" },
+                { sentence: "Solar energy is becoming more affordable every year.", pattern: "falling", type: "Statement" },
+                { sentence: "Have you ever planted a tree?", pattern: "rising", type: "Yes/No Question" },
+                { sentence: "How long will fossil fuels last?", pattern: "falling", type: "Wh- Question" },
+                { sentence: "The planet is warming, isn't it?", pattern: "rising", type: "Tag Question (seeking confirmation)" },
+                { sentence: "We should all use less plastic, water, and electricity.", pattern: "falling", type: "Statement with a list" },
+                { sentence: "Could renewable energy really solve the crisis?", pattern: "rising", type: "Yes/No Question" }
+            ],
+            strong_weak: [
+                { sentence: "We _SHOULD_ protect _THE_ environment.", word: "should", strong: "/ʃʊd/", weak: "/ʃəd/", correctForm: "weak", context: "Modal verb in a statement — unstressed" },
+                { sentence: "We _SHOULD_! It's our responsibility!", word: "should", strong: "/ʃʊd/", weak: "/ʃəd/", correctForm: "strong", context: "Emphatic agreement" },
+                { sentence: "There _ARE_ many ways _TO_ help.", word: "are", strong: "/ɑːr/", weak: "/ər/", correctForm: "weak", context: "Auxiliary 'be' — unstressed" },
+                { sentence: "I gave _THEM_ some information _ABOUT_ recycling.", word: "them", strong: "/ðem/", weak: "/ðəm/", correctForm: "weak", context: "Object pronoun — unstressed" },
+                { sentence: "It was _THEM_, not us!", word: "them", strong: "/ðem/", weak: "/ðəm/", correctForm: "strong", context: "Contrastive emphasis" },
+                { sentence: "The ice caps _HAVE_ been melting _FOR_ decades.", word: "have", strong: "/hæv/", weak: "/həv/ or /əv/", correctForm: "weak", context: "Auxiliary in present perfect — unstressed" },
+                { sentence: "Pollution _DOES_ affect our health.", word: "does", strong: "/dʌz/", weak: "/dəz/", correctForm: "strong", context: "Emphatic 'does' for emphasis" },
+                { sentence: "_SOME_ people recycle _BUT_ many don't.", word: "but", strong: "/bʌt/", weak: "/bət/", correctForm: "weak", context: "Conjunction — unstressed" },
+                { sentence: "It _WAS_ a beautiful forest _BEFORE_ the fire.", word: "was", strong: "/wɒz/", weak: "/wəz/", correctForm: "weak", context: "Past 'be' — unstressed" },
+                { sentence: "She _CAN_ ride _HER_ bike _TO_ work.", word: "her", strong: "/hɜːr/", weak: "/ər/", correctForm: "weak", context: "Possessive pronoun — unstressed" }
             ]
         },
         writing: "Discuss the most effective ways individuals can help combat climate change in their daily lives. Consider aspects such as transportation, diet, consumption habits, and energy use. Write at least 250 words with specific examples.",
@@ -231,6 +255,30 @@ courseData.units.push(
                 { sentence: "Algorithms shape what we see and believe.", stressed: ["Algorithms", "shape", "see", "believe"] },
                 { sentence: "Be skeptical of sensational headlines.", stressed: ["skeptical", "sensational", "headlines"] },
                 { sentence: "Responsible sharing helps stop misinformation.", stressed: ["Responsible", "sharing", "helps", "stop", "misinformation"] }
+            ],
+            intonation: [
+                { sentence: "Is that news story actually true?", pattern: "rising", type: "Yes/No Question" },
+                { sentence: "Social media spreads misinformation quickly.", pattern: "falling", type: "Statement" },
+                { sentence: "Where did you read that article?", pattern: "falling", type: "Wh- Question" },
+                { sentence: "Do you check your sources before sharing?", pattern: "rising", type: "Yes/No Question" },
+                { sentence: "Not everything you read online is true.", pattern: "falling", type: "Statement" },
+                { sentence: "Have you ever fallen for fake news?", pattern: "rising", type: "Yes/No Question" },
+                { sentence: "Why do people share false information?", pattern: "falling", type: "Wh- Question" },
+                { sentence: "That headline is clickbait, isn't it?", pattern: "rising", type: "Tag Question (seeking confirmation)" },
+                { sentence: "Journalists should report facts, opinions, and context.", pattern: "falling", type: "Statement with a list" },
+                { sentence: "Can we really trust what algorithms show us?", pattern: "rising", type: "Yes/No Question" }
+            ],
+            strong_weak: [
+                { sentence: "She _WAS_ reading _AN_ article online.", word: "was", strong: "/wɒz/", weak: "/wəz/", correctForm: "weak", context: "Auxiliary 'be' — unstressed" },
+                { sentence: "Yes, it _WAS_ fake news!", word: "was", strong: "/wɒz/", weak: "/wəz/", correctForm: "strong", context: "Emphatic confirmation" },
+                { sentence: "_DO_ you believe _THAT_ story?", word: "do", strong: "/duː/", weak: "/də/", correctForm: "weak", context: "Auxiliary in question — unstressed" },
+                { sentence: "They _HAVE_ shared it _WITH_ everyone.", word: "with", strong: "/wɪð/", weak: "/wɪθ/ or /wəð/", correctForm: "weak", context: "Preposition — unstressed" },
+                { sentence: "_SOME_ sources _ARE_ more reliable _THAN_ others.", word: "than", strong: "/ðæn/", weak: "/ðən/", correctForm: "weak", context: "Conjunction of comparison — unstressed" },
+                { sentence: "You _SHOULD_ verify information _BEFORE_ sharing.", word: "should", strong: "/ʃʊd/", weak: "/ʃəd/", correctForm: "weak", context: "Modal verb — unstressed" },
+                { sentence: "I _COULD_ see _THAT_ _THE_ headline _WAS_ false.", word: "that", strong: "/ðæt/", weak: "/ðət/", correctForm: "weak", context: "Conjunction 'that' — unstressed" },
+                { sentence: "Look at _THAT_! It's completely fake!", word: "that", strong: "/ðæt/", weak: "/ðət/", correctForm: "strong", context: "Demonstrative pronoun — stressed" },
+                { sentence: "_HE_ told _US_ about _THE_ story.", word: "us", strong: "/ʌs/", weak: "/əs/", correctForm: "weak", context: "Object pronoun — unstressed" },
+                { sentence: "He told _US_, not them!", word: "us", strong: "/ʌs/", weak: "/əs/", correctForm: "strong", context: "Contrastive emphasis on pronoun" }
             ]
         },
         writing: "Analyze the role social media plays in spreading misinformation. Discuss both the problems it creates and potential solutions. Consider the responsibilities of platforms, governments, and individuals. Write at least 250 words with specific examples.",

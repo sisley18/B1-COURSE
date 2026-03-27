@@ -427,6 +427,124 @@ function renderCurriculum() {
                 </div>
                 ` : ''}
 
+                <!-- 10. Intonation & Strong/Weak Forms (Follow-up) -->
+                ${unit.pronunciation && unit.pronunciation.intonation ? `
+                <div class="section-block">
+                    <span class="section-label pronunciation">🎵 Intonation & Connected Speech</span>
+                    
+                    <h3 style="margin-bottom: 5px;">Intonation Patterns</h3>
+                    <p style="opacity: 0.6; margin-bottom: 20px; font-size: 0.9rem;">Follow-up pronunciation exercise</p>
+                    
+                    <div class="theory-box">
+                        <h4>📚 Intonation Theory</h4>
+                        <p>Intonation is the <strong>rise and fall of voice pitch</strong> in speech. It conveys meaning beyond words:</p>
+                        <p style="margin-top: 10px;"><strong>⬇️ Falling Intonation (↘):</strong></p>
+                        <ul>
+                            <li><strong>Statements:</strong> I like coffee. ↘</li>
+                            <li><strong>Wh- questions:</strong> Where do you live? ↘</li>
+                            <li><strong>Commands:</strong> Close the door. ↘</li>
+                        </ul>
+                        <p style="margin-top: 10px;"><strong>⬆️ Rising Intonation (↗):</strong></p>
+                        <ul>
+                            <li><strong>Yes/No questions:</strong> Do you like coffee? ↗</li>
+                            <li><strong>Tag questions (seeking confirmation):</strong> It's cold, isn't it? ↗</li>
+                            <li><strong>Polite requests:</strong> Could you help me? ↗</li>
+                        </ul>
+                        <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 15px 0;">
+                        <h4>🗣️ Connected Speech Features</h4>
+                        <p style="margin-top: 10px;"><strong>🔗 Assimilation</strong> — A sound <em>changes</em> to become more like a neighbouring sound:</p>
+                        <ul>
+                            <li>"te<strong>n</strong> <strong>b</strong>ooks" → /te<strong>m</strong> bʊks/ — /n/ becomes /m/ before /b/</li>
+                            <li>"goo<strong>d</strong> <strong>g</strong>irl" → /gʊ<strong>g</strong> gɜːl/ — /d/ becomes /g/ before /g/</li>
+                        </ul>
+                        <p style="margin-top: 10px;"><strong>✂️ Elision</strong> — A sound is <em>dropped</em> (deleted) entirely:</p>
+                        <ul>
+                            <li>"nex<strong>t</strong> door" → /nek<strong>s</strong> dɔːr/ — /t/ is dropped</li>
+                            <li>"las<strong>t</strong> night" → /lɑːs naɪt/ — /t/ is dropped</li>
+                            <li>"frien<strong>d</strong>s" → /frenz/ — /d/ often silent</li>
+                        </ul>
+                        <p style="margin-top: 10px;"><strong>📦 Compression</strong> — Syllables are <em>squeezed together</em> so a word has fewer syllables:</p>
+                        <ul>
+                            <li>"comfortable" → <em>COMF-ta-ble</em> (3 syllables, not 4)</li>
+                            <li>"interesting" → <em>IN-tres-ting</em> (3 syllables, not 4)</li>
+                            <li>"chocolate" → <em>CHOC-lit</em> (2 syllables, not 3)</li>
+                        </ul>
+                    </div>
+                    
+                    <p style="margin: 20px 0 15px; opacity: 0.7;">🔊 Listen and identify: does the intonation rise ↗ or fall ↘?</p>
+                    ${unit.pronunciation.intonation.map((item, idx) => `
+                        <div style="margin-bottom: 15px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 10px;">
+                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
+                                <button class="play-btn" style="width: 40px; height: 40px; font-size: 1rem;" onclick="playAudio('${item.sentence.replace(/'/g, "\\\\'")}')"">🔊</button>
+                                <p style="font-size: 1.05rem; font-style: italic; margin: 0;">"${item.sentence}"</p>
+                            </div>
+                            <div class="options-grid" style="justify-content: flex-start; gap: 10px;">
+                                <button class="btn" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); font-size: 1.1rem; padding: 8px 20px;" 
+                                onclick="checkIntonation(this, '${item.pattern}', 'rising')">↗ Rising</button>
+                                <button class="btn" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); font-size: 1.1rem; padding: 8px 20px;" 
+                                onclick="checkIntonation(this, '${item.pattern}', 'falling')">↘ Falling</button>
+                            </div>
+                            <p class="intonation-feedback" style="display:none; margin-top:8px; font-size:0.85rem; color: var(--accent-gold);"></p>
+                        </div>
+                    `).join('')}
+                    
+                    <h3 style="margin: 40px 0 5px;">Strong & Weak Forms</h3>
+                    <p style="opacity: 0.6; margin-bottom: 20px; font-size: 0.9rem;">How function words change in connected speech</p>
+                    
+                    <div class="theory-box">
+                        <h4>📚 Strong & Weak Forms Theory</h4>
+                        <p>In English, many common words (<strong>function words</strong>) have two pronunciations:</p>
+                        <ul>
+                            <li><strong>Weak form:</strong> Used in normal, unstressed positions (most of the time)</li>
+                            <li><strong>Strong form:</strong> Used when the word is stressed, at the end of a sentence, or for emphasis</li>
+                        </ul>
+                        <p style="margin-top: 10px;"><strong>Common examples:</strong></p>
+                        <table style="width:100%; border-collapse: collapse; margin-top: 8px; font-size: 0.9rem;">
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.15);">
+                                <th style="text-align:left; padding: 6px; color: var(--accent-gold);">Word</th>
+                                <th style="text-align:left; padding: 6px; color: var(--accent-gold);">Strong</th>
+                                <th style="text-align:left; padding: 6px; color: var(--accent-gold);">Weak</th>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                <td style="padding: 6px;">can</td><td style="padding: 6px;">/kæn/</td><td style="padding: 6px;">/kən/</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                <td style="padding: 6px;">to</td><td style="padding: 6px;">/tuː/</td><td style="padding: 6px;">/tə/</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                <td style="padding: 6px;">was</td><td style="padding: 6px;">/wɒz/</td><td style="padding: 6px;">/wəz/</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                <td style="padding: 6px;">are</td><td style="padding: 6px;">/ɑːr/</td><td style="padding: 6px;">/ər/</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 6px;">and</td><td style="padding: 6px;">/ænd/</td><td style="padding: 6px;">/ənd/ or /ən/</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <p style="margin: 20px 0 15px; opacity: 0.7;">🔊 Listen and decide: is the highlighted word in its <strong>STRONG</strong> or <strong>WEAK</strong> form?</p>
+                    ${unit.pronunciation.strong_weak ? unit.pronunciation.strong_weak.map((item, idx) => {
+                        const displaySentence = item.sentence.replace(/_([A-Z]+)_/g, '<strong style="color: var(--accent-gold); text-decoration: underline;">$1</strong>');
+                        return `
+                        <div style="margin-bottom: 15px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 10px;">
+                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 8px;">
+                                <button class="play-btn" style="width: 40px; height: 40px; font-size: 1rem;" onclick="playAudio('${item.sentence.replace(/_/g, '').replace(/'/g, "\\\\'")}')"">🔊</button>
+                                <p style="font-size: 1.05rem; margin: 0;">${displaySentence}</p>
+                            </div>
+                            <p style="font-size: 0.85rem; opacity: 0.5; margin-bottom: 10px;">Word: <strong>${item.word}</strong> — Strong: <span style="font-family: monospace;">${item.strong}</span> | Weak: <span style="font-family: monospace;">${item.weak}</span></p>
+                            <div class="options-grid" style="justify-content: flex-start; gap: 10px;">
+                                <button class="btn" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); padding: 8px 20px;" 
+                                onclick="checkStrongWeak(this, '${item.correctForm}', 'strong', '${item.context.replace(/'/g, "\\\\'")}')"">💪 Strong <span style='font-family:monospace; font-size:0.85rem; opacity:0.7; margin-left:5px;'>${item.strong}</span></button>
+                                <button class="btn" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); padding: 8px 20px;" 
+                                onclick="checkStrongWeak(this, '${item.correctForm}', 'weak', '${item.context.replace(/'/g, "\\\\'")}')"">🤫 Weak <span style='font-family:monospace; font-size:0.85rem; opacity:0.7; margin-left:5px;'>${item.weak}</span></button>
+                            </div>
+                            <p class="sw-feedback" style="display:none; margin-top:8px; font-size:0.85rem; color: var(--accent-gold);"></p>
+                        </div>
+                    `}).join('') : ''}
+                </div>
+                ` : ''}
+
                 ${unit.id % 2 === 0 ? `
                 <!-- Exam Link for Even Units -->
                 <div class="section-block" style="border-top: 2px solid rgba(251,191,36,0.4); margin-top: 40px; padding-top: 30px; text-align: center;">
@@ -489,6 +607,40 @@ window.checkCollocation = function (btn, selected, correct) {
     } else {
         btn.style.background = '#ef4444';
         setTimeout(() => { btn.style.background = 'rgba(255,255,255,0.1)'; }, 500);
+    }
+};
+window.checkIntonation = function (btn, correctPattern, selectedPattern) {
+    const container = btn.parentElement;
+    const questionBlock = btn.closest('div[style*="background: rgba(0,0,0,0.2)"]');
+    const feedback = questionBlock ? questionBlock.querySelector('.intonation-feedback') : null;
+    Array.from(container.children).forEach(b => { b.style.background = 'rgba(255,255,255,0.05)'; b.style.borderColor = 'rgba(255,255,255,0.1)'; b.style.color = 'inherit'; });
+    const isCorrect = selectedPattern === correctPattern;
+    if (isCorrect) {
+        btn.style.background = 'rgba(16, 185, 129, 0.2)'; btn.style.borderColor = '#10b981'; btn.style.color = '#fff';
+    } else {
+        btn.style.background = 'rgba(239, 68, 68, 0.2)'; btn.style.borderColor = '#ef4444';
+    }
+    if (feedback) {
+        feedback.style.display = 'block';
+        feedback.innerHTML = isCorrect ? '✅ Correct! This uses ' + correctPattern + ' intonation.' : '❌ Not quite — this sentence uses <strong>' + correctPattern + '</strong> intonation.';
+        feedback.style.color = isCorrect ? '#34d399' : '#fbbf24';
+    }
+};
+window.checkStrongWeak = function (btn, correctForm, selectedForm, context) {
+    const container = btn.parentElement;
+    const questionBlock = btn.closest('div[style*="background: rgba(0,0,0,0.2)"]');
+    const feedback = questionBlock ? questionBlock.querySelector('.sw-feedback') : null;
+    Array.from(container.children).forEach(b => { b.style.background = 'rgba(255,255,255,0.05)'; b.style.borderColor = 'rgba(255,255,255,0.1)'; b.style.color = 'inherit'; });
+    const isCorrect = selectedForm === correctForm;
+    if (isCorrect) {
+        btn.style.background = 'rgba(16, 185, 129, 0.2)'; btn.style.borderColor = '#10b981'; btn.style.color = '#fff';
+    } else {
+        btn.style.background = 'rgba(239, 68, 68, 0.2)'; btn.style.borderColor = '#ef4444';
+    }
+    if (feedback) {
+        feedback.style.display = 'block';
+        feedback.innerHTML = isCorrect ? '✅ Correct! ' + context : '❌ Not quite — the correct form here is <strong>' + correctForm + '</strong>. ' + context;
+        feedback.style.color = isCorrect ? '#34d399' : '#fbbf24';
     }
 };
 

@@ -101,6 +101,30 @@ const courseData = {
                     { sentence: "Technology advances at an exponential rate.", stressed: ["Technology", "advances", "exponential", "rate"] },
                     { sentence: "We must consider the ethical implications.", stressed: ["must", "consider", "ethical", "implications"] },
                     { sentence: "Data privacy is a major concern today.", stressed: ["Data", "privacy", "major", "concern", "today"] }
+                ],
+                intonation: [
+                    { sentence: "Do you think AI will replace human jobs?", pattern: "rising", type: "Yes/No Question" },
+                    { sentence: "Artificial intelligence is changing everything.", pattern: "falling", type: "Statement" },
+                    { sentence: "What are the risks of autonomous vehicles?", pattern: "falling", type: "Wh- Question" },
+                    { sentence: "Can machines really think like humans?", pattern: "rising", type: "Yes/No Question" },
+                    { sentence: "Technology has both advantages and disadvantages.", pattern: "falling", type: "Statement" },
+                    { sentence: "Have you ever used a virtual assistant?", pattern: "rising", type: "Yes/No Question" },
+                    { sentence: "Where will technology take us in the future?", pattern: "falling", type: "Wh- Question" },
+                    { sentence: "AI is fascinating, isn't it?", pattern: "rising", type: "Tag Question (seeking confirmation)" },
+                    { sentence: "We should invest in AI research, but also consider ethics.", pattern: "falling", type: "Statement with contrast" },
+                    { sentence: "Would you trust a self-driving car?", pattern: "rising", type: "Yes/No Question" }
+                ],
+                strong_weak: [
+                    { sentence: "She _CAN_ speak three languages.", word: "can", strong: "/kæn/", weak: "/kən/", correctForm: "weak", context: "Normal positive statement — unstressed auxiliary" },
+                    { sentence: "Yes, I _CAN_!", word: "can", strong: "/kæn/", weak: "/kən/", correctForm: "strong", context: "Short emphatic answer" },
+                    { sentence: "Technology _HAS_ changed _THE_ world.", word: "has", strong: "/hæz/", weak: "/həz/", correctForm: "weak", context: "Auxiliary verb in a statement" },
+                    { sentence: "I'll send it _TO_ you tomorrow.", word: "to", strong: "/tuː/", weak: "/tə/", correctForm: "weak", context: "Preposition — unstressed" },
+                    { sentence: "Who did you send it _TO_?", word: "to", strong: "/tuː/", weak: "/tə/", correctForm: "strong", context: "Preposition at end of question — stressed" },
+                    { sentence: "We _WERE_ working _ON_ the project.", word: "were", strong: "/wɜːr/", weak: "/wər/", correctForm: "weak", context: "Auxiliary in continuous tense" },
+                    { sentence: "_DO_ you understand algorithms?", word: "do", strong: "/duː/", weak: "/də/", correctForm: "weak", context: "Auxiliary in question — unstressed" },
+                    { sentence: "I _DO_ understand it perfectly!", word: "do", strong: "/duː/", weak: "/də/", correctForm: "strong", context: "Emphatic use of 'do'" },
+                    { sentence: "He _WAS_ an expert _IN_ artificial intelligence.", word: "was", strong: "/wɒz/", weak: "/wəz/", correctForm: "weak", context: "Past simple 'be' — unstressed" },
+                    { sentence: "Give _HER_ the data _AND_ the report.", word: "and", strong: "/ænd/", weak: "/ənd/ or /ən/", correctForm: "weak", context: "Conjunction — unstressed in connected speech" }
                 ]
             },
             writing: "Discuss the potential benefits and risks of artificial intelligence in everyday life. Consider areas such as healthcare, transportation, and employment. Write at least 250 words expressing your personal opinion with supporting arguments.",
@@ -239,6 +263,30 @@ const courseData = {
                     { sentence: "Meeting deadlines is crucial for remote workers.", stressed: ["Meeting", "deadlines", "crucial", "remote", "workers"] },
                     { sentence: "Clear communication is absolutely essential.", stressed: ["Clear", "communication", "absolutely", "essential"] },
                     { sentence: "Adapt quickly or risk falling behind competitors.", stressed: ["Adapt", "quickly", "risk", "falling", "behind", "competitors"] }
+                ],
+                intonation: [
+                    { sentence: "Is remote work better than office work?", pattern: "rising", type: "Yes/No Question" },
+                    { sentence: "Working from home requires great discipline.", pattern: "falling", type: "Statement" },
+                    { sentence: "How many hours do you work per day?", pattern: "falling", type: "Wh- Question" },
+                    { sentence: "Would you like to be a digital nomad?", pattern: "rising", type: "Yes/No Question" },
+                    { sentence: "The gig economy has advantages and disadvantages.", pattern: "falling", type: "Statement" },
+                    { sentence: "Have you ever worked from a different country?", pattern: "rising", type: "Yes/No Question" },
+                    { sentence: "Why do companies prefer hybrid models now?", pattern: "falling", type: "Wh- Question" },
+                    { sentence: "Remote work is here to stay, isn't it?", pattern: "rising", type: "Tag Question (seeking confirmation)" },
+                    { sentence: "You enjoy freelancing, don't you?", pattern: "rising", type: "Tag Question (seeking confirmation)" },
+                    { sentence: "Freelancers earn good money, or do they?", pattern: "rising", type: "Rhetorical doubt" }
+                ],
+                strong_weak: [
+                    { sentence: "She _MUST_ finish _THE_ project today.", word: "must", strong: "/mʌst/", weak: "/məst/", correctForm: "weak", context: "Modal verb in a statement — unstressed" },
+                    { sentence: "You _MUST_ be on time! No excuses!", word: "must", strong: "/mʌst/", weak: "/məst/", correctForm: "strong", context: "Emphatic obligation — stressed" },
+                    { sentence: "We _ARE_ working _FROM_ home today.", word: "are", strong: "/ɑːr/", weak: "/ər/", correctForm: "weak", context: "Auxiliary 'be' — unstressed" },
+                    { sentence: "Yes, we _ARE_!", word: "are", strong: "/ɑːr/", weak: "/ər/", correctForm: "strong", context: "Short emphatic answer" },
+                    { sentence: "I'll talk _TO_ _HIM_ about _THE_ deadline.", word: "him", strong: "/hɪm/", weak: "/ɪm/", correctForm: "weak", context: "Object pronoun — unstressed" },
+                    { sentence: "Tell _HIM_, not me!", word: "him", strong: "/hɪm/", weak: "/ɪm/", correctForm: "strong", context: "Contrastive emphasis on pronoun" },
+                    { sentence: "_HAVE_ you finished _YOUR_ work?", word: "have", strong: "/hæv/", weak: "/həv/ or /əv/", correctForm: "weak", context: "Auxiliary in question — unstressed" },
+                    { sentence: "They _SHOULD_ apply _FOR_ the position.", word: "for", strong: "/fɔːr/", weak: "/fər/", correctForm: "weak", context: "Preposition — unstressed" },
+                    { sentence: "What _ARE_ you looking _FOR_?", word: "for", strong: "/fɔːr/", weak: "/fər/", correctForm: "strong", context: "Preposition at end of question — stressed" },
+                    { sentence: "He _COULD_ work anywhere _IN_ _THE_ world.", word: "could", strong: "/kʊd/", weak: "/kəd/", correctForm: "weak", context: "Modal verb — unstressed" }
                 ]
             },
             writing: "Analyze the advantages and disadvantages of the gig economy for workers and society. Consider aspects such as income stability, benefits, work-life balance, and personal freedom. Write at least 250 words with your personal perspective.",
