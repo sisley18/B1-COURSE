@@ -97,6 +97,30 @@ courseData.units.push(
                 { sentence: "Smart cities leverage technology for residents.", stressed: ["Smart", "cities", "leverage", "technology", "residents"] },
                 { sentence: "Infrastructure investment benefits future generations.", stressed: ["Infrastructure", "investment", "benefits", "future", "generations"] },
                 { sentence: "Strong communities make neighborhoods safer places.", stressed: ["Strong", "communities", "neighborhoods", "safer", "places"] }
+            ],
+            intonation: [
+                { sentence: "Do you prefer living in a city or the countryside?", pattern: "rising", type: "Yes/No Question" },
+                { sentence: "Traffic congestion is a major problem in most cities.", pattern: "falling", type: "Statement" },
+                { sentence: "How long does your daily commute take?", pattern: "falling", type: "Wh- Question" },
+                { sentence: "Have you ever used a bike-sharing service?", pattern: "rising", type: "Yes/No Question" },
+                { sentence: "Public transport should be free for everyone.", pattern: "falling", type: "Statement" },
+                { sentence: "Would you live in a 15-minute city?", pattern: "rising", type: "Yes/No Question" },
+                { sentence: "Why are housing prices so high in big cities?", pattern: "falling", type: "Wh- Question" },
+                { sentence: "This neighbourhood has changed a lot, hasn't it?", pattern: "rising", type: "Tag Question (seeking confirmation)" },
+                { sentence: "Cities need parks, bike lanes, and better transport.", pattern: "falling", type: "Statement with a list" },
+                { sentence: "Could driverless buses solve the congestion problem?", pattern: "rising", type: "Yes/No Question" }
+            ],
+            strong_weak: [
+                { sentence: "We _SHOULD_ invest _IN_ public transport.", word: "should", strong: "/ʃʊd/", weak: "/ʃəd/", correctForm: "weak", context: "Modal verb in a statement — unstressed" },
+                { sentence: "Yes, we _SHOULD_! It's essential!", word: "should", strong: "/ʃʊd/", weak: "/ʃəd/", correctForm: "strong", context: "Emphatic agreement" },
+                { sentence: "There _ARE_ many parks _IN_ this neighbourhood.", word: "are", strong: "/ɑːr/", weak: "/ər/", correctForm: "weak", context: "Auxiliary 'be' — unstressed" },
+                { sentence: "I walk _TO_ work _AND_ back every day.", word: "to", strong: "/tuː/", weak: "/tə/", correctForm: "weak", context: "Preposition — unstressed" },
+                { sentence: "Where _DO_ you commute _TO_?", word: "to", strong: "/tuː/", weak: "/tə/", correctForm: "strong", context: "Preposition at end of question — stressed" },
+                { sentence: "They _HAVE_ built new bike lanes _FOR_ residents.", word: "have", strong: "/hæv/", weak: "/həv/ or /əv/", correctForm: "weak", context: "Auxiliary in present perfect — unstressed" },
+                { sentence: "He _WAS_ stuck _IN_ traffic _FOR_ hours.", word: "was", strong: "/wɒz/", weak: "/wəz/", correctForm: "weak", context: "Past 'be' — unstressed" },
+                { sentence: "_SOME_ people _CAN_ walk _TO_ work easily.", word: "can", strong: "/kæn/", weak: "/kən/", correctForm: "weak", context: "Modal verb — unstressed" },
+                { sentence: "Nobody _CAN_! The distances are too far.", word: "can", strong: "/kæn/", weak: "/kən/", correctForm: "strong", context: "Emphatic contradiction" },
+                { sentence: "Give _THEM_ better infrastructure _AND_ services.", word: "and", strong: "/ænd/", weak: "/ənd/ or /ən/", correctForm: "weak", context: "Conjunction — unstressed" }
             ]
         },
         writing: "Compare living in a large city versus a small town or village. Consider factors such as job opportunities, cost of living, quality of life, community, and environment. Which do you prefer and why? Write at least 250 words.",
@@ -231,6 +255,30 @@ courseData.units.push(
                 { sentence: "Practice and persistence lead to mastery eventually.", stressed: ["Practice", "persistence", "mastery", "eventually"] },
                 { sentence: "Study consistently and you will succeed certainly.", stressed: ["Study", "consistently", "succeed", "certainly"] },
                 { sentence: "Questions lead to answers and deeper understanding.", stressed: ["Questions", "lead", "answers", "deeper", "understanding"] }
+            ],
+            intonation: [
+                { sentence: "Did you enjoy school when you were younger?", pattern: "rising", type: "Yes/No Question" },
+                { sentence: "Education is the most powerful tool for change.", pattern: "falling", type: "Statement" },
+                { sentence: "What subject did you find most challenging?", pattern: "falling", type: "Wh- Question" },
+                { sentence: "Have you ever taken an online course?", pattern: "rising", type: "Yes/No Question" },
+                { sentence: "Lifelong learning keeps your mind sharp and active.", pattern: "falling", type: "Statement" },
+                { sentence: "Would you go back to university as an adult?", pattern: "rising", type: "Yes/No Question" },
+                { sentence: "Why are student loans such a big problem?", pattern: "falling", type: "Wh- Question" },
+                { sentence: "Technology has changed education forever, hasn't it?", pattern: "rising", type: "Tag Question (seeking confirmation)" },
+                { sentence: "Students need creativity, critical thinking, and collaboration.", pattern: "falling", type: "Statement with a list" },
+                { sentence: "Can virtual reality replace real classroom experiences?", pattern: "rising", type: "Yes/No Question" }
+            ],
+            strong_weak: [
+                { sentence: "She _CAN_ teach _AT_ the university.", word: "can", strong: "/kæn/", weak: "/kən/", correctForm: "weak", context: "Modal verb in a statement — unstressed" },
+                { sentence: "Yes, she _CAN_! She's highly qualified.", word: "can", strong: "/kæn/", weak: "/kən/", correctForm: "strong", context: "Short emphatic answer" },
+                { sentence: "We _HAVE_ studied _FOR_ three hours.", word: "have", strong: "/hæv/", weak: "/həv/ or /əv/", correctForm: "weak", context: "Auxiliary in present perfect — unstressed" },
+                { sentence: "I'll send _THE_ assignment _TO_ _HER_ tomorrow.", word: "to", strong: "/tuː/", weak: "/tə/", correctForm: "weak", context: "Preposition — unstressed" },
+                { sentence: "Who should I send _THE_ report _TO_?", word: "to", strong: "/tuː/", weak: "/tə/", correctForm: "strong", context: "Preposition at end of question — stressed" },
+                { sentence: "They _WERE_ studying _IN_ _THE_ library.", word: "were", strong: "/wɜːr/", weak: "/wər/", correctForm: "weak", context: "Auxiliary in past continuous — unstressed" },
+                { sentence: "The students _MUST_ submit _THEIR_ essays.", word: "must", strong: "/mʌst/", weak: "/məst/", correctForm: "weak", context: "Modal verb — unstressed" },
+                { sentence: "You _MUST_! There's no extension!", word: "must", strong: "/mʌst/", weak: "/məst/", correctForm: "strong", context: "Emphatic obligation" },
+                { sentence: "He _WAS_ a brilliant student _BUT_ lazy.", word: "but", strong: "/bʌt/", weak: "/bət/", correctForm: "weak", context: "Conjunction — unstressed" },
+                { sentence: "Give _US_ more time _AND_ resources.", word: "us", strong: "/ʌs/", weak: "/əs/", correctForm: "weak", context: "Object pronoun — unstressed" }
             ]
         },
         writing: "Is a university degree still necessary for success in today's world? Consider the alternatives, such as vocational training, self-study, and professional certifications. Discuss the value of formal education versus practical experience. Write at least 250 words.",

@@ -97,6 +97,30 @@ courseData.units.push(
                 { sentence: "Prevention is better than treatment.", stressed: ["Prevention", "better", "treatment"] },
                 { sentence: "Listen to what your body tells you.", stressed: ["Listen", "body", "tells"] },
                 { sentence: "Small daily habits lead to big changes.", stressed: ["Small", "daily", "habits", "lead", "big", "changes"] }
+            ],
+            intonation: [
+                { sentence: "Do you exercise regularly?", pattern: "rising", type: "Yes/No Question" },
+                { sentence: "A balanced diet is essential for good health.", pattern: "falling", type: "Statement" },
+                { sentence: "How many hours do you sleep per night?", pattern: "falling", type: "Wh- Question" },
+                { sentence: "Have you tried meditation before?", pattern: "rising", type: "Yes/No Question" },
+                { sentence: "Stress can cause serious health problems.", pattern: "falling", type: "Statement" },
+                { sentence: "Would you consider seeing a therapist?", pattern: "rising", type: "Yes/No Question" },
+                { sentence: "Why is mental health so important?", pattern: "falling", type: "Wh- Question" },
+                { sentence: "Exercise is good for you, isn't it?", pattern: "rising", type: "Tag Question (seeking confirmation)" },
+                { sentence: "We need protein, vitamins, and minerals every day.", pattern: "falling", type: "Statement with a list" },
+                { sentence: "Can yoga really reduce anxiety?", pattern: "rising", type: "Yes/No Question" }
+            ],
+            strong_weak: [
+                { sentence: "She _CAN_ swim _FOR_ an hour.", word: "can", strong: "/kæn/", weak: "/kən/", correctForm: "weak", context: "Modal verb in a statement — unstressed" },
+                { sentence: "Yes, she _CAN_!", word: "can", strong: "/kæn/", weak: "/kən/", correctForm: "strong", context: "Short emphatic answer" },
+                { sentence: "I _HAVE_ been feeling better _THAN_ before.", word: "have", strong: "/hæv/", weak: "/həv/ or /əv/", correctForm: "weak", context: "Auxiliary in present perfect — unstressed" },
+                { sentence: "You _SHOULD_ eat more vegetables _AND_ fruit.", word: "and", strong: "/ænd/", weak: "/ənd/ or /ən/", correctForm: "weak", context: "Conjunction — unstressed" },
+                { sentence: "Give _HER_ the prescription _FROM_ the doctor.", word: "her", strong: "/hɜːr/", weak: "/ər/", correctForm: "weak", context: "Object pronoun — unstressed" },
+                { sentence: "It's _HER_ decision, not yours!", word: "her", strong: "/hɜːr/", weak: "/ər/", correctForm: "strong", context: "Contrastive emphasis on pronoun" },
+                { sentence: "We _WERE_ exercising _AT_ the gym.", word: "were", strong: "/wɜːr/", weak: "/wər/", correctForm: "weak", context: "Auxiliary in past continuous — unstressed" },
+                { sentence: "They _MUST_ take _THEIR_ medicine daily.", word: "must", strong: "/mʌst/", weak: "/məst/", correctForm: "weak", context: "Modal verb — unstressed" },
+                { sentence: "He _WAS_ sick _BUT_ he went _TO_ work.", word: "but", strong: "/bʌt/", weak: "/bət/", correctForm: "weak", context: "Conjunction — unstressed" },
+                { sentence: "_DO_ you feel better today?", word: "do", strong: "/duː/", weak: "/də/", correctForm: "weak", context: "Auxiliary in question — unstressed" }
             ]
         },
         writing: "Describe your personal approach to maintaining good physical and mental health. What habits do you practice? What challenges do you face? What advice would you give to someone wanting to improve their wellbeing? Write at least 250 words.",
@@ -231,6 +255,30 @@ courseData.units.push(
                 { sentence: "Art challenges us to think differently.", stressed: ["Art", "challenges", "think", "differently"] },
                 { sentence: "Tradition connects past with present.", stressed: ["Tradition", "connects", "past", "present"] },
                 { sentence: "Every culture has something valuable to offer.", stressed: ["Every", "culture", "valuable", "offer"] }
+            ],
+            intonation: [
+                { sentence: "Do you enjoy visiting art galleries?", pattern: "rising", type: "Yes/No Question" },
+                { sentence: "Modern art can be difficult to understand.", pattern: "falling", type: "Statement" },
+                { sentence: "What is your favourite type of art?", pattern: "falling", type: "Wh- Question" },
+                { sentence: "Have you ever been to a contemporary art exhibition?", pattern: "rising", type: "Yes/No Question" },
+                { sentence: "Cultural heritage must be preserved for future generations.", pattern: "falling", type: "Statement" },
+                { sentence: "Is street art a legitimate art form?", pattern: "rising", type: "Yes/No Question" },
+                { sentence: "Why do some paintings sell for millions of dollars?", pattern: "falling", type: "Wh- Question" },
+                { sentence: "That sculpture is incredible, isn't it?", pattern: "rising", type: "Tag Question (seeking confirmation)" },
+                { sentence: "Art can be paintings, sculptures, music, or performance.", pattern: "falling", type: "Statement with a list" },
+                { sentence: "Could a banana duct-taped to a wall really be art?", pattern: "rising", type: "Yes/No Question" }
+            ],
+            strong_weak: [
+                { sentence: "The painting _WAS_ created _BY_ a famous artist.", word: "was", strong: "/wɒz/", weak: "/wəz/", correctForm: "weak", context: "Auxiliary 'be' in passive — unstressed" },
+                { sentence: "Yes, it _WAS_! It was magnificent!", word: "was", strong: "/wɒz/", weak: "/wəz/", correctForm: "strong", context: "Emphatic confirmation" },
+                { sentence: "_SOME_ people _CAN_ appreciate abstract art.", word: "can", strong: "/kæn/", weak: "/kən/", correctForm: "weak", context: "Modal verb — unstressed" },
+                { sentence: "I gave _HIM_ _THE_ tickets _TO_ the gallery.", word: "to", strong: "/tuː/", weak: "/tə/", correctForm: "weak", context: "Preposition — unstressed" },
+                { sentence: "Who did you give _THEM_ _TO_?", word: "to", strong: "/tuː/", weak: "/tə/", correctForm: "strong", context: "Preposition at end of question — stressed" },
+                { sentence: "They _HAVE_ preserved _THE_ artifacts _FOR_ years.", word: "have", strong: "/hæv/", weak: "/həv/ or /əv/", correctForm: "weak", context: "Auxiliary in present perfect — unstressed" },
+                { sentence: "She _DOES_ appreciate fine art genuinely.", word: "does", strong: "/dʌz/", weak: "/dəz/", correctForm: "strong", context: "Emphatic 'does' for emphasis" },
+                { sentence: "_THE_ museum _AND_ _THE_ gallery _ARE_ closed.", word: "and", strong: "/ænd/", weak: "/ənd/ or /ən/", correctForm: "weak", context: "Conjunction — unstressed" },
+                { sentence: "He _COULD_ paint _BUT_ he preferred sculpture.", word: "could", strong: "/kʊd/", weak: "/kəd/", correctForm: "weak", context: "Modal verb — unstressed" },
+                { sentence: "Look at _THAT_! What a masterpiece!", word: "that", strong: "/ðæt/", weak: "/ðət/", correctForm: "strong", context: "Demonstrative pronoun — stressed" }
             ]
         },
         writing: "What role does art play in society? Consider functions such as expression, social commentary, cultural preservation, and economic value. Is art a luxury or a necessity? Write at least 250 words with personal examples.",
