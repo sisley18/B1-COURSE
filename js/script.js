@@ -105,6 +105,8 @@ window.navigateUnit = function (direction) {
     }
 };
 
+const whatsappIcon = `<svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`;
+
 function renderCurriculum() {
     const container = document.getElementById('curriculum-container');
     if (!container) return;
@@ -367,181 +369,79 @@ function renderCurriculum() {
                     </div>
                 </div>
 
-                <!-- 9. Video Exercise -->
-                ${unit.video_comprehension ? `
-                <div class="section-block">
-                    <span class="section-label" style="background: rgba(255, 0, 0, 0.2); color: #ff6b6b;">📺 Video Exercise</span>
-                    <h3>${unit.video_comprehension.videoTitle}</h3>
-                    <p style="opacity:0.7; margin-bottom:15px;">${unit.video_comprehension.channel} &bull; ${unit.video_comprehension.duration}</p>
-                    <a href="https://www.youtube.com/watch?v=${unit.video_comprehension.videoId}" target="_blank" rel="noopener noreferrer"
-                        style="display:inline-flex; align-items:center; gap:12px; background:rgba(255,0,0,0.15); border:2px solid rgba(255,0,0,0.4); color:#fff; text-decoration:none; padding:14px 24px; border-radius:12px; margin-bottom:25px; font-size:1rem; font-weight:600; transition:all 0.3s ease;"
-                        onmouseover="this.style.background='rgba(255,0,0,0.3)'; this.style.borderColor='#ff4444';"
-                        onmouseout="this.style.background='rgba(255,0,0,0.15)'; this.style.borderColor='rgba(255,0,0,0.4)';">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="red"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
-                        ▶ Watch on YouTube: ${unit.video_comprehension.videoTitle}
-                    </a>
-                    <h4 style="margin-bottom:10px; color: var(--accent-gold);">📝 Fill in the Blanks</h4>
-                    <p style="opacity:0.7; margin-bottom:18px; font-size:0.9rem;">Watch the video and complete each sentence with the missing word or phrase:</p>
-                    <div id="fitb-unit-${unit.id}" style="display:grid; gap:12px; margin-bottom:20px;">
-                        ${unit.video_comprehension.fitb.map((sentence, i) => {
-                            const parts = sentence.split('___');
-                            return `
-                            <div style="background:rgba(0,0,0,0.2); padding:14px 18px; border-radius:10px; display:flex; align-items:center; flex-wrap:wrap; gap:6px; font-size:0.95rem;">
-                                <span style="font-weight:600; color: var(--accent-gold); margin-right:4px;">${i+1}.</span>
-                                <span>${parts[0]}</span>
-                                <input type="text" id="fitb-${unit.id}-${i}"
-                                    style="background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.4); color:#fff; padding:5px 10px; border-radius:6px; min-width:120px; max-width:200px; font-size:0.9rem; font-family:inherit; outline:none;"
-                                    placeholder="..."
-                                    onfocus="this.style.borderColor='var(--accent-gold)'"
-                                    onblur="this.style.borderColor='rgba(255,255,255,0.4)'">
-                                <span>${parts[1] || ''}</span>
-                            </div>`;
-                        }).join('')}
-                    </div>
-                    <button onclick="sendVideoAnswersWA(${unit.id})"
-                        style="display:inline-flex; align-items:center; gap:10px; background:linear-gradient(135deg, #25d366, #128c7e); color:#fff; border:none; padding:13px 28px; border-radius:50px; cursor:pointer; font-size:1rem; font-weight:700; box-shadow:0 4px 15px rgba(37,211,102,0.3); transition: all 0.3s ease;"
-                        onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(37,211,102,0.5)';"
-                        onmouseout="this.style.transform=''; this.style.boxShadow='0 4px 15px rgba(37,211,102,0.3)';">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                        Send to Teacher via WhatsApp
-                    </button>
-                </div>
-                ` : unit.videos && unit.videos.length > 0 ? `
+                <!-- 9. Videos -->
+                ${unit.videos && unit.videos.length > 0 ? `
                 <div class="section-block">
                     <span class="section-label" style="background: rgba(255, 0, 0, 0.2); color: #ff6b6b;">📺 Videos</span>
                     <h3>Recommended Videos</h3>
+                    <p style="margin-bottom: 20px; opacity: 0.7;">Watch these videos to deepen your understanding of the topic:</p>
                     <div style="display: grid; gap: 15px;">
-                        ${unit.videos.map(video => `
-                            <a href="${video.url}" target="_blank" rel="noopener noreferrer"
-                               style="display: flex; align-items: center; gap: 15px; background: rgba(0,0,0,0.2); padding: 15px 20px; border-radius: 12px; text-decoration: none; color: #fff; border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease;"
-                               onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='var(--accent-gold)';"
-                               onmouseout="this.style.background='rgba(0,0,0,0.2)'; this.style.borderColor='rgba(255,255,255,0.1)';">
-                                <span style="font-size: 2rem;">▶️</span>
-                                <div>
-                                    <h4 style="margin: 0 0 5px 0; color: var(--accent-gold);">${video.title}</h4>
-                                    <p style="margin: 0; font-size: 0.9rem; opacity: 0.7;">${video.channel} &bull; ${video.duration}</p>
+                        ${unit.videos.map((video, vIdx) => {
+                            const isCompVideo = unit.video_comprehension && (
+                                unit.video_comprehension.videoIndex === vIdx || 
+                                (unit.video_comprehension.videoId && video.url.includes(unit.video_comprehension.videoId))
+                            );
+                            return `
+                            <div>
+                                <a href="${video.url}" target="_blank" rel="noopener noreferrer" 
+                                   style="display: flex; align-items: center; gap: 15px; background: rgba(0,0,0,0.2); padding: 15px 20px; border-radius: 12px; text-decoration: none; color: #fff; border: 1px solid ${isCompVideo ? 'var(--accent-gold)' : 'rgba(255,255,255,0.1)'}; transition: all 0.3s ease;"
+                                   onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='var(--accent-gold)';"
+                                   onmouseout="this.style.background='rgba(0,0,0,0.2)'; this.style.borderColor='${isCompVideo ? 'var(--accent-gold)' : 'rgba(255,255,255,0.1)'}';">
+                                    <span style="font-size: 2rem;">▶️</span>
+                                    <div>
+                                        <h4 style="margin: 0 0 5px 0; color: var(--accent-gold);">${video.title}</h4>
+                                        <p style="margin: 0; font-size: 0.9rem; opacity: 0.7;">${video.channel} • ${video.duration}</p>
+                                    </div>
+                                </a>
+                                ${unit.video_comprehension && isCompVideo ? `
+                                <div id="video-comp-unit-${unit.id}" style="margin-top: 2px; padding: 20px; background: rgba(0,0,0,0.25); border: 1px solid rgba(251,191,36,0.3); border-top: none; border-radius: 0 0 12px 12px;">
+                                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                                        <span style="font-size: 1.5rem;">🎧</span>
+                                        <h4 style="margin: 0; color: #fbbf24;">Listening Comprehension Exercise</h4>
+                                    </div>
+                                    <p style="margin-bottom: 20px; opacity: 0.8; font-style: italic;">${unit.video_comprehension.instructions || 'Watch the video and complete the exercise below:'}</p>
+                                    ${unit.video_comprehension.questions ? unit.video_comprehension.questions.map((q, qIdx) => `
+                                        <div style="margin-bottom: 20px; padding-bottom: 15px; ${qIdx < unit.video_comprehension.questions.length - 1 ? 'border-bottom: 1px dashed rgba(255,255,255,0.1);' : ''}">
+                                            <p style="font-weight: 600; margin-bottom: 10px;">${qIdx + 1}. ${q.q}</p>
+                                            <div class="options-grid" style="justify-content: flex-start; margin-bottom: 10px;">
+                                                ${q.options.map((opt, i) => `
+                                                    <button class="btn" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);" 
+                                                    onclick="checkAnswer(this, ${i === q.correct})">${opt}</button>
+                                                `).join('')}
+                                            </div>
+                                            <textarea class="video-answer-box" data-unit="${unit.id}" data-question="${qIdx}" 
+                                                placeholder="✍️ Write your answer here..." 
+                                                style="width: 100%; min-height: 60px; background: rgba(255,255,255,0.05); border: 1px solid rgba(251,191,36,0.2); color: #fff; padding: 12px; border-radius: 8px; font-family: inherit; font-size: 0.9rem; resize: vertical; transition: border-color 0.3s ease;"
+                                                onfocus="this.style.borderColor='rgba(251,191,36,0.6)'"
+                                                onblur="this.style.borderColor='rgba(251,191,36,0.2)'"
+                                            ></textarea>
+                                        </div>
+                                    `).join('') : ''}
+                                    ${unit.video_comprehension.fitb ? unit.video_comprehension.fitb.map((sentence, qIdx) => `
+                                        <div style="margin-bottom: 20px; padding-bottom: 15px; ${qIdx < unit.video_comprehension.fitb.length - 1 ? 'border-bottom: 1px dashed rgba(255,255,255,0.1);' : ''}">
+                                            <p style="font-weight: 600; margin-bottom: 10px;">${qIdx + 1}. ${sentence}</p>
+                                            <textarea class="video-answer-box" data-unit="${unit.id}" data-question="fitb-${qIdx}" 
+                                                placeholder="✍️ Complete the sentence..." 
+                                                style="width: 100%; min-height: 60px; background: rgba(255,255,255,0.05); border: 1px solid rgba(251,191,36,0.2); color: #fff; padding: 12px; border-radius: 8px; font-family: inherit; font-size: 0.9rem; resize: vertical; transition: border-color 0.3s ease;"
+                                                onfocus="this.style.borderColor='rgba(251,191,36,0.6)'"
+                                                onblur="this.style.borderColor='rgba(251,191,36,0.2)'"
+                                            ></textarea>
+                                        </div>
+                                    `).join('') : ''}
+                                    <button onclick="sendVideoAnswersToWhatsApp(${unit.id})" 
+                                        style="display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 14px 20px; margin-top: 10px; background: linear-gradient(135deg, #25D366, #128C7E); border: none; color: #fff; font-size: 1rem; font-weight: 700; border-radius: 12px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);"
+                                        onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(37, 211, 102, 0.4)'"
+                                        onmouseout="this.style.transform=''; this.style.boxShadow='0 4px 15px rgba(37, 211, 102, 0.3)'"
+                                    >
+                                        ${whatsappIcon}
+                                        Send Answers via WhatsApp
+                                    </button>
                                 </div>
-                            </a>
-                        `).join('')}
+                                ` : ''}
+                            </div>
+                            `;
+                        }).join('')}
                     </div>
-                </div>
-                ` : ''}
-
-                <!-- 10. Intonation & Strong/Weak Forms (Follow-up) -->
-                ${unit.pronunciation && unit.pronunciation.intonation ? `
-                <div class="section-block">
-                    <span class="section-label pronunciation">🎵 Intonation & Connected Speech</span>
-                    
-                    <h3 style="margin-bottom: 5px;">Intonation Patterns</h3>
-                    <p style="opacity: 0.6; margin-bottom: 20px; font-size: 0.9rem;">Follow-up pronunciation exercise</p>
-                    
-                    <div class="theory-box">
-                        <h4>📚 Intonation Theory</h4>
-                        <p>Intonation is the <strong>rise and fall of voice pitch</strong> in speech. It conveys meaning beyond words:</p>
-                        <p style="margin-top: 10px;"><strong>⬇️ Falling Intonation (↘):</strong></p>
-                        <ul>
-                            <li><strong>Statements:</strong> I like coffee. ↘</li>
-                            <li><strong>Wh- questions:</strong> Where do you live? ↘</li>
-                            <li><strong>Commands:</strong> Close the door. ↘</li>
-                        </ul>
-                        <p style="margin-top: 10px;"><strong>⬆️ Rising Intonation (↗):</strong></p>
-                        <ul>
-                            <li><strong>Yes/No questions:</strong> Do you like coffee? ↗</li>
-                            <li><strong>Tag questions (seeking confirmation):</strong> It's cold, isn't it? ↗</li>
-                            <li><strong>Polite requests:</strong> Could you help me? ↗</li>
-                        </ul>
-                        <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 15px 0;">
-                        <h4>🗣️ Connected Speech Features</h4>
-                        <p style="margin-top: 10px;"><strong>🔗 Assimilation</strong> — A sound <em>changes</em> to become more like a neighbouring sound:</p>
-                        <ul>
-                            <li>"te<strong>n</strong> <strong>b</strong>ooks" → /te<strong>m</strong> bʊks/ — /n/ becomes /m/ before /b/</li>
-                            <li>"goo<strong>d</strong> <strong>g</strong>irl" → /gʊ<strong>g</strong> gɜːl/ — /d/ becomes /g/ before /g/</li>
-                        </ul>
-                        <p style="margin-top: 10px;"><strong>✂️ Elision</strong> — A sound is <em>dropped</em> (deleted) entirely:</p>
-                        <ul>
-                            <li>"nex<strong>t</strong> door" → /nek<strong>s</strong> dɔːr/ — /t/ is dropped</li>
-                            <li>"las<strong>t</strong> night" → /lɑːs naɪt/ — /t/ is dropped</li>
-                            <li>"frien<strong>d</strong>s" → /frenz/ — /d/ often silent</li>
-                        </ul>
-                        <p style="margin-top: 10px;"><strong>📦 Compression</strong> — Syllables are <em>squeezed together</em> so a word has fewer syllables:</p>
-                        <ul>
-                            <li>"comfortable" → <em>COMF-ta-ble</em> (3 syllables, not 4)</li>
-                            <li>"interesting" → <em>IN-tres-ting</em> (3 syllables, not 4)</li>
-                            <li>"chocolate" → <em>CHOC-lit</em> (2 syllables, not 3)</li>
-                        </ul>
-                    </div>
-                    
-                    <p style="margin: 20px 0 15px; opacity: 0.7;">🔊 Listen and identify: does the intonation rise ↗ or fall ↘?</p>
-                    ${unit.pronunciation.intonation.map((item, idx) => `
-                        <div style="margin-bottom: 15px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 10px;">
-                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
-                                <button class="play-btn" style="width: 40px; height: 40px; font-size: 1rem;" onclick="playAudio('${item.sentence.replace(/'/g, "\\\\'")}')"">🔊</button>
-                                <p style="font-size: 1.05rem; font-style: italic; margin: 0;">"${item.sentence}"</p>
-                            </div>
-                            <div class="options-grid" style="justify-content: flex-start; gap: 10px;">
-                                <button class="btn" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); font-size: 1.1rem; padding: 8px 20px;" 
-                                onclick="checkIntonation(this, '${item.pattern}', 'rising')">↗ Rising</button>
-                                <button class="btn" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); font-size: 1.1rem; padding: 8px 20px;" 
-                                onclick="checkIntonation(this, '${item.pattern}', 'falling')">↘ Falling</button>
-                            </div>
-                            <p class="intonation-feedback" style="display:none; margin-top:8px; font-size:0.85rem; color: var(--accent-gold);"></p>
-                        </div>
-                    `).join('')}
-                    
-                    <h3 style="margin: 40px 0 5px;">Strong & Weak Forms</h3>
-                    <p style="opacity: 0.6; margin-bottom: 20px; font-size: 0.9rem;">How function words change in connected speech</p>
-                    
-                    <div class="theory-box">
-                        <h4>📚 Strong & Weak Forms Theory</h4>
-                        <p>In English, many common words (<strong>function words</strong>) have two pronunciations:</p>
-                        <ul>
-                            <li><strong>Weak form:</strong> Used in normal, unstressed positions (most of the time)</li>
-                            <li><strong>Strong form:</strong> Used when the word is stressed, at the end of a sentence, or for emphasis</li>
-                        </ul>
-                        <p style="margin-top: 10px;"><strong>Common examples:</strong></p>
-                        <table style="width:100%; border-collapse: collapse; margin-top: 8px; font-size: 0.9rem;">
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.15);">
-                                <th style="text-align:left; padding: 6px; color: var(--accent-gold);">Word</th>
-                                <th style="text-align:left; padding: 6px; color: var(--accent-gold);">Strong</th>
-                                <th style="text-align:left; padding: 6px; color: var(--accent-gold);">Weak</th>
-                            </tr>
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
-                                <td style="padding: 6px;">can</td><td style="padding: 6px;">/kæn/</td><td style="padding: 6px;">/kən/</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
-                                <td style="padding: 6px;">to</td><td style="padding: 6px;">/tuː/</td><td style="padding: 6px;">/tə/</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
-                                <td style="padding: 6px;">was</td><td style="padding: 6px;">/wɒz/</td><td style="padding: 6px;">/wəz/</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
-                                <td style="padding: 6px;">are</td><td style="padding: 6px;">/ɑːr/</td><td style="padding: 6px;">/ər/</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 6px;">and</td><td style="padding: 6px;">/ænd/</td><td style="padding: 6px;">/ənd/ or /ən/</td>
-                            </tr>
-                        </table>
-                    </div>
-                    
-                    <p style="margin: 20px 0 15px; opacity: 0.7;">🔊 Listen and decide: is the highlighted word in its <strong>STRONG</strong> or <strong>WEAK</strong> form?</p>
-                    ${unit.pronunciation.strong_weak ? unit.pronunciation.strong_weak.map((item, idx) => {
-                        const displaySentence = item.sentence.replace(/_([A-Z]+)_/g, '<strong style="color: var(--accent-gold); text-decoration: underline;">$1</strong>');
-                        return `
-                        <div style="margin-bottom: 15px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 10px;">
-                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 8px;">
-                                <button class="play-btn" style="width: 40px; height: 40px; font-size: 1rem;" onclick="playAudio('${item.sentence.replace(/_/g, '').replace(/'/g, "\\\\'")}')"">🔊</button>
-                                <p style="font-size: 1.05rem; margin: 0;">${displaySentence}</p>
-                            </div>
-                            <p style="font-size: 0.85rem; opacity: 0.5; margin-bottom: 10px;">Word: <strong>${item.word}</strong> — Strong: <span style="font-family: monospace;">${item.strong}</span> | Weak: <span style="font-family: monospace;">${item.weak}</span></p>
-                            <div class="options-grid" style="justify-content: flex-start; gap: 10px;">
-                                <button class="btn" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); padding: 8px 20px;" 
-                                onclick="checkStrongWeak(this, '${item.correctForm}', 'strong', '${item.context.replace(/'/g, "\\\\'")}')"">💪 Strong <span style='font-family:monospace; font-size:0.85rem; opacity:0.7; margin-left:5px;'>${item.strong}</span></button>
-                                <button class="btn" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); padding: 8px 20px;" 
-                                onclick="checkStrongWeak(this, '${item.correctForm}', 'weak', '${item.context.replace(/'/g, "\\\\'")}')"">🤫 Weak <span style='font-family:monospace; font-size:0.85rem; opacity:0.7; margin-left:5px;'>${item.weak}</span></button>
-                            </div>
-                            <p class="sw-feedback" style="display:none; margin-top:8px; font-size:0.85rem; color: var(--accent-gold);"></p>
-                        </div>
-                    `}).join('') : ''}
                 </div>
                 ` : ''}
 
@@ -609,58 +509,49 @@ window.checkCollocation = function (btn, selected, correct) {
         setTimeout(() => { btn.style.background = 'rgba(255,255,255,0.1)'; }, 500);
     }
 };
-window.checkIntonation = function (btn, correctPattern, selectedPattern) {
-    const container = btn.parentElement;
-    const questionBlock = btn.closest('div[style*="background: rgba(0,0,0,0.2)"]');
-    const feedback = questionBlock ? questionBlock.querySelector('.intonation-feedback') : null;
-    Array.from(container.children).forEach(b => { b.style.background = 'rgba(255,255,255,0.05)'; b.style.borderColor = 'rgba(255,255,255,0.1)'; b.style.color = 'inherit'; });
-    const isCorrect = selectedPattern === correctPattern;
-    if (isCorrect) {
-        btn.style.background = 'rgba(16, 185, 129, 0.2)'; btn.style.borderColor = '#10b981'; btn.style.color = '#fff';
-    } else {
-        btn.style.background = 'rgba(239, 68, 68, 0.2)'; btn.style.borderColor = '#ef4444';
-    }
-    if (feedback) {
-        feedback.style.display = 'block';
-        feedback.innerHTML = isCorrect ? '✅ Correct! This uses ' + correctPattern + ' intonation.' : '❌ Not quite — this sentence uses <strong>' + correctPattern + '</strong> intonation.';
-        feedback.style.color = isCorrect ? '#34d399' : '#fbbf24';
-    }
-};
-window.checkStrongWeak = function (btn, correctForm, selectedForm, context) {
-    const container = btn.parentElement;
-    const questionBlock = btn.closest('div[style*="background: rgba(0,0,0,0.2)"]');
-    const feedback = questionBlock ? questionBlock.querySelector('.sw-feedback') : null;
-    Array.from(container.children).forEach(b => { b.style.background = 'rgba(255,255,255,0.05)'; b.style.borderColor = 'rgba(255,255,255,0.1)'; b.style.color = 'inherit'; });
-    const isCorrect = selectedForm === correctForm;
-    if (isCorrect) {
-        btn.style.background = 'rgba(16, 185, 129, 0.2)'; btn.style.borderColor = '#10b981'; btn.style.color = '#fff';
-    } else {
-        btn.style.background = 'rgba(239, 68, 68, 0.2)'; btn.style.borderColor = '#ef4444';
-    }
-    if (feedback) {
-        feedback.style.display = 'block';
-        feedback.innerHTML = isCorrect ? '✅ Correct! ' + context : '❌ Not quite — the correct form here is <strong>' + correctForm + '</strong>. ' + context;
-        feedback.style.color = isCorrect ? '#34d399' : '#fbbf24';
-    }
-};
-
-window.sendVideoAnswersWA = function(unitId) {
+window.sendVideoAnswersToWhatsApp = function(unitId) {
     const unit = courseData.units.find(u => u.id === unitId);
     if (!unit || !unit.video_comprehension) return;
-    const vc = unit.video_comprehension;
 
-    let msg = `📺 Video Exercise – Unit ${unitId}: ${unit.title}\n`;
-    msg += `🎬 ${vc.videoTitle} (${vc.channel} · ${vc.duration})\n\n`;
-    msg += `📝 Fill in the Blanks:\n`;
+    const textareas = document.querySelectorAll(`textarea.video-answer-box[data-unit="${unitId}"]`);
+    const answers = [];
+    let hasAnswers = false;
 
-    vc.fitb.forEach((sentence, i) => {
-        const input = document.getElementById(`fitb-${unitId}-${i}`);
-        const answer = input ? input.value.trim() : '';
-        const filled = sentence.replace('___', answer ? `[${answer}]` : '[???]');
-        msg += `${i + 1}. ${filled}\n`;
-    });
+    if (unit.video_comprehension.questions) {
+        unit.video_comprehension.questions.forEach((q, idx) => {
+            const textarea = Array.from(textareas).find(t => t.dataset.question === String(idx));
+            const answer = textarea ? textarea.value.trim() : '';
+            if (answer) hasAnswers = true;
+            answers.push(`Q${idx + 1}: ${q.q}\n→ ${answer || '(no answer)'}`);
+        });
+    }
 
-    window.open('https://wa.me/?text=' + encodeURIComponent(msg), '_blank');
+    if (unit.video_comprehension.fitb) {
+        unit.video_comprehension.fitb.forEach((sentence, idx) => {
+            const textarea = Array.from(textareas).find(t => t.dataset.question === `fitb-${idx}`);
+            const answer = textarea ? textarea.value.trim() : '';
+            if (answer) hasAnswers = true;
+            answers.push(`FITB ${idx + 1}: ${sentence}\n→ ${answer || '(no answer)'}`);
+        });
+    }
+
+    if (!hasAnswers) {
+        alert('Please write at least one answer before sending.');
+        return;
+    }
+
+    let videoTitle = 'Video';
+    if (unit.video_comprehension.videoIndex !== undefined) {
+        videoTitle = unit.videos[unit.video_comprehension.videoIndex]?.title || 'Video';
+    } else if (unit.video_comprehension.videoId) {
+        const video = unit.videos.find(v => v.url.includes(unit.video_comprehension.videoId));
+        videoTitle = video ? video.title : (unit.video_comprehension.videoTitle || 'Video');
+    }
+
+    const message = `📺 *Video Comprehension - Unit ${unitId}: ${unit.title}*\n🎬 Video: ${videoTitle}\n\n${answers.join('\n\n')}`;
+    
+    const encoded = encodeURIComponent(message);
+    window.open(`https://wa.me/?text=${encoded}`, '_blank');
 };
 
 // Audio Engine (No Gender param) - Optimized for Mobile

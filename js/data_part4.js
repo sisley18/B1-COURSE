@@ -140,21 +140,21 @@ courseData.units.push(
             ]
         },
         videos: [
-            { title: "The 15-Minute City Explained", channel: "Bloomberg Quicktake", duration: "6:45", url: "https://www.youtube.com/watch?v=_mSxRPvknD4" },
+            { title: "The 15-Minute City", channel: "TED", duration: "13:24", url: "https://www.youtube.com/watch?v=5dVcn8NjbwY" },
             { title: "What Makes a City Great?", channel: "Wendover Productions", duration: "11:23", url: "https://www.youtube.com/watch?v=IFjD3NMv6Kw" },
             { title: "How Singapore Solved Housing", channel: "Vox", duration: "8:42", url: "https://www.youtube.com/watch?v=2cjPgNBNeLs" }
         ],
         video_comprehension: {
-            videoId: "_mSxRPvknD4",
-            videoTitle: "The 15-Minute City Explained",
-            channel: "Bloomberg Quicktake",
-            duration: "6:45",
+            videoId: "5dVcn8NjbwY",
+            videoTitle: "The 15-Minute City",
+            channel: "TED (Carlos Moreno)",
+            duration: "13:24",
             fitb: [
-                "In a 15-minute city, essential needs are within ___ reach.",
-                "The concept was popularized by urban planner Carlos ___.",
-                "Paris added hundreds of kilometers of ___ lanes.",
-                "The goal is to reduce reliance on the ___ in cities.",
-                "Mixed-use ___ means homes, shops and parks coexist nearby."
+                "Carlos Moreno says cities must be redesigned around human ___.",
+                "The 15-minute city is based on the idea of ___: everything close to home.",
+                "The four pillars of the concept are ecology, proximity, solidarity and ___.",
+                "In Paris, Mayor Anne Hidalgo transformed ___ spaces into parks and bike lanes.",
+                "The goal is to reduce our dependence on the ___ and create greener neighbourhoods."
             ]
         }
     },
@@ -299,21 +299,36 @@ courseData.units.push(
         },
         videos: [
             { title: "Do Schools Kill Creativity?", channel: "TED", duration: "19:24", url: "https://www.youtube.com/watch?v=iG9CE55wbtY" },
-            { title: "The Future of Education", channel: "World Economic Forum", duration: "4:37", url: "https://www.youtube.com/watch?v=g4e-sMvSMzI" },
+            { title: "OECD: The Future of Education", channel: "OECD Education", duration: "2:13", url: "https://www.youtube.com/watch?v=9YNDnkph_Ko" },
             { title: "How to Learn Faster", channel: "Veritasium", duration: "14:11", url: "https://www.youtube.com/watch?v=rhgwIhB58PA" }
         ],
         video_comprehension: {
-            videoId: "g4e-sMvSMzI",
-            videoTitle: "The Future of Education",
-            channel: "World Economic Forum",
-            duration: "4:37",
+            videoId: "9YNDnkph_Ko",
+            videoTitle: "OECD Future of Education and Skills 2030: The new 'normal' in education",
+            channel: "OECD Education",
+            duration: "2:13",
+            instructions: "<strong>What is the OECD?</strong> The Organisation for Economic Co-operation and Development is an international group that shapes global policies. They run the famous PISA tests and study how education systems must adapt to prepare students for the future job market.<br><br>" +
+            "<button class='btn' style='border: 1px solid rgba(251,191,36,0.5); color: #fbbf24; font-size: 0.8rem; padding: 5px 15px; margin-bottom: 10px;' onclick='toggleTranscript(this)'>Show Video Transcript</button>" +
+            "<div class='transcript-box' style='display:none; margin-bottom:15px; padding:15px; background:rgba(0,0,0,0.2); border-left: 3px solid #fbbf24; border-radius: 0 8px 8px 0; font-size: 0.9rem; line-height: 1.6;'>" +
+            "The future is unpredictable, and we need to prepare students for jobs that haven't been created yet. The traditional model of education—centralized decision-making, teachers talking while students listen, a rigid curriculum, and standardized tests—is giving way to a new normal. This new ecosystem involves students, teachers, parents, and the community. It's a shift from 'one-size-fits-all' to student-centric learning. We are moving from a system focused solely on academic performance to one that prioritizes student well-being, and from using assessments for accountability to using them as continuous feedback to improve learning." +
+            "</div>" +
+            "<div style='margin-bottom: 20px; padding: 15px; background: rgba(251,191,36,0.1); border-radius: 8px;'>" +
+            "<h5 style='color: #fbbf24; margin-bottom: 10px;'>💡 Key Ideas for Discussion</h5>" +
+            "<ul style='margin-left: 20px; font-size: 0.9rem;'>" +
+            "<li style='margin-bottom: 5px;'>How does the \"one-size-fits-all\" approach fail students with different needs?</li>" +
+            "<li style='margin-bottom: 5px;'>In what ways can parents and the community become more involved in the education ecosystem?</li>" +
+            "<li style='margin-bottom: 5px;'>Why is student well-being becoming as important as academic performance?</li>" +
+            "<li style='margin-bottom: 5px;'>How might assessments be redesigned to provide better feedback rather than just grades?</li>" +
+            "</ul></div>" +
+            "Watch this video from their 'Education 2030' project and complete the exercise below:",
             fitb: [
-                "Education must prepare students for the ___ of work.",
-                "Critical ___ is one of the most important 21st-century skills.",
-                "Technology is changing how we ___ and learn.",
-                "Students need both technical and ___ skills to succeed.",
-                "Lifelong learning means continuing to learn ___ formal school."
-            ]
+                "Traditional education systems are often characterized by ___ decision-making and passive learning.",
+                "In the 'new normal' ecosystem, responsibilities are shared among students, teachers, parents, and the ___.",
+                "The future model advocates for student-centric learning, moving away from a ___ approach.",
+                "Beyond academic performance, the OECD project places a strong emphasis on student ___.",
+                "Assessment is increasingly viewed as a tool for providing frequent ___ to improve learning."
+            ],
+            answers: ["centralized", "community", "one-size-fits-all", "well-being", "feedback"]
         }
     }
 );
