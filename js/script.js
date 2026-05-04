@@ -399,7 +399,7 @@ function renderCurriculum() {
                                         <span style="font-size: 1.5rem;">🎧</span>
                                         <h4 style="margin: 0; color: #fbbf24;">Listening Comprehension Exercise</h4>
                                     </div>
-                                    <p style="margin-bottom: 20px; opacity: 0.8; font-style: italic;">${unit.video_comprehension.instructions || 'Watch the video and complete the exercise below:'}</p>
+                                    <div style="margin-bottom: 20px; opacity: 0.8; font-style: italic;">${unit.video_comprehension.instructions || 'Watch the video and complete the exercise below:'}</div>
                                     ${unit.video_comprehension.questions ? unit.video_comprehension.questions.map((q, qIdx) => `
                                         <div style="margin-bottom: 20px; padding-bottom: 15px; ${qIdx < unit.video_comprehension.questions.length - 1 ? 'border-bottom: 1px dashed rgba(255,255,255,0.1);' : ''}">
                                             <p style="font-weight: 600; margin-bottom: 10px;">${qIdx + 1}. ${q.q}</p>
