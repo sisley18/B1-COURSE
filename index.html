@@ -64,6 +64,39 @@
         </details>
     </div>
 
+    <div class="container" id="payments-section" style="margin-bottom: -60px;">
+        <details class="payments-block">
+            <summary class="payments-header">💰 Payments Management</summary>
+            <div class="payments-content">
+                <div class="payments-form">
+                    <div class="form-group">
+                        <label for="pay-date">Date:</label>
+                        <input type="date" id="pay-date" class="pay-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="pay-user">Student:</label>
+                        <select id="pay-user" class="pay-input">
+                            <option value="Matias">Matias</option>
+                            <option value="Gi">Gi</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pay-concept">Concept:</label>
+                        <input type="text" id="pay-concept" class="pay-input" placeholder="e.g. Class 1" value="Class 1">
+                    </div>
+                    <div class="form-group">
+                        <label for="pay-amount">Amount ($):</label>
+                        <input type="number" id="pay-amount" class="pay-input" placeholder="0.00">
+                    </div>
+                    <button class="btn pay-save-btn" onclick="savePayment()">Record Payment 💰</button>
+                </div>
+                <div id="payments-list" class="payments-list">
+                    <!-- History will be loaded here -->
+                </div>
+            </div>
+        </details>
+    </div>
+
     <div class="container" id="main-content">
         <div class="unit-list" id="curriculum-container">
             <!-- Content Injected via script.js -->
