@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -19,27 +19,21 @@
                 <div style="display: flex; gap: 10px; align-items: center;">
                     <button id="prev-unit-btn" class="btn nav-btn" onclick="navigateUnit(-1)"
                         style="background: rgba(99, 102, 241, 0.3); border-color: #6366f1; padding: 8px 16px; font-size: 0.9rem;">
-                        ◀️ Prev
+                        â—€ï¸ Prev
                     </button>
                     <button id="next-unit-btn" class="btn nav-btn" onclick="navigateUnit(1)"
                         style="background: rgba(99, 102, 241, 0.3); border-color: #6366f1; padding: 8px 16px; font-size: 0.9rem;">
-                        Next ▶️
+                        Next â–¶ï¸
                     </button>
                     <span style="width: 1px; height: 24px; background: rgba(255,255,255,0.3); margin: 0 5px;"></span>
                     <button id="pause-audio-btn" class="btn pause-audio-btn" onclick="togglePauseAudio()"
                         style="background: rgba(251, 146, 60, 0.3); border-color: #fb923c; padding: 8px 16px; font-size: 0.9rem;">
-                        ⏸️ Pause
+                        â¸ï¸ Pause
                     </button>
                     <button class="btn stop-audio-btn" onclick="stopAudio()"
                         style="background: rgba(239, 68, 68, 0.3); border-color: #ef4444; padding: 8px 16px; font-size: 0.9rem;">
-                        ⏹️ Stop
+                        â¹ï¸ Stop
                     </button>
-                    <span style="width: 1px; height: 24px; background: rgba(255,255,255,0.3); margin: 0 5px;"></span>
-                    <a href="TEACHER_ANSWER_KEY.html" target="_blank"
-                        class="btn"
-                        style="background: rgba(52, 211, 153, 0.2); border: 1px solid #34d399; color: #34d399; padding: 8px 16px; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; border-radius: 8px;">
-                        📋 Answers
-                    </a>
                 </div>
             </nav>
         </div>
@@ -48,7 +42,7 @@
     <div class="container admin-controls">
         <!-- Attendance Control -->
         <details class="attendance-block">
-            <summary class="attendance-header">📅 Attendance Control</summary>
+            <summary class="attendance-header">ðŸ“… Attendance Control</summary>
             <div class="attendance-content">
                 <div class="attendance-form">
                     <div class="form-group">
@@ -62,7 +56,7 @@
                             <option value="Gi">Gi</option>
                         </select>
                     </div>
-                    <button class="btn att-save-btn" onclick="saveAttendance()">Mark Present ✅</button>
+                    <button class="btn att-save-btn" onclick="saveAttendance()">Mark Present âœ…</button>
                 </div>
                 <div id="attendance-list" class="attendance-list">
                     <!-- History will be loaded here -->
@@ -72,7 +66,7 @@
 
         <!-- Payments Management -->
         <details class="payments-block">
-            <summary class="payments-header">💰 Payments Management</summary>
+            <summary class="payments-header">ðŸ’° Payments Management</summary>
             <div class="payments-content">
                 <div class="payments-form">
                     <div class="form-group">
@@ -94,13 +88,30 @@
                         <label for="pay-amount">Amount ($):</label>
                         <input type="number" id="pay-amount" class="pay-input" placeholder="0.00">
                     </div>
-                    <button class="btn pay-save-btn" onclick="savePayment()">Record Payment 💰</button>
+                    <button class="btn pay-save-btn" onclick="savePayment()">Record Payment ðŸ’°</button>
                 </div>
                 <div id="payments-list" class="payments-list">
                     <!-- History will be loaded here -->
                 </div>
             </div>
         </details>
+
+        <!-- Teacher Answer Key -->
+        <div style="margin-top: 10px; padding: 14px 20px; background: rgba(52, 211, 153, 0.05); border: 1px solid rgba(52, 211, 153, 0.2); border-radius: 12px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 1.5rem;">&#128203;</span>
+                <div>
+                    <p style="font-weight: 600; color: #34d399; margin: 0;">Teacher's Answer Key</p>
+                    <p style="font-size: 0.8rem; opacity: 0.6; margin: 0;">All correct answers for Units 1-8 &mdash; Teacher use only</p>
+                </div>
+            </div>
+            <a href="TEACHER_ANSWER_KEY.html" target="_blank"
+                style="flex-shrink: 0; background: rgba(52, 211, 153, 0.2); border: 1px solid #34d399; color: #34d399; padding: 10px 22px; font-size: 0.9rem; font-weight: 600; text-decoration: none; border-radius: 8px; transition: all 0.2s ease;"
+                onmouseover="this.style.background='rgba(52,211,153,0.35)'"
+                onmouseout="this.style.background='rgba(52,211,153,0.2)'">
+                Open Answer Key &rarr;
+            </a>
+        </div>
     </div>
 
     <div class="container" id="main-content">
@@ -112,24 +123,24 @@
     <!-- About the Author Section -->
     <div class="container" id="author-section">
         <details class="author-block">
-            <summary class="author-header">👩‍🏫 About the Author</summary>
+            <summary class="author-header">ðŸ‘©â€ðŸ« About the Author</summary>
             <div class="author-content">
                 <div class="author-profile">
                     <div class="author-avatar">CC</div>
                     <div class="author-info">
                         <h3>Cecilia Chiappero</h3>
-                        <p class="author-title">English Language Educator & Researcher | Universidad Nacional de Córdoba
+                        <p class="author-title">English Language Educator & Researcher | Universidad Nacional de CÃ³rdoba
                         </p>
                     </div>
                 </div>
                 <div class="author-bio">
                     <p>Cecilia Chiappero is an English language educator and researcher affiliated with the
-                        <strong>Universidad Nacional de Córdoba</strong>, Argentina. Her academic work focuses on
+                        <strong>Universidad Nacional de CÃ³rdoba</strong>, Argentina. Her academic work focuses on
                         innovative teaching methodologies and technology-enhanced language learning.
                     </p>
                     <p>She has published research on the use of <strong>Moodle</strong> to promote listening
                         comprehension strategies in the English Language classroom. Her paper "El uso de Moodle para
-                        fomentar el uso de estrategias de comprensión auditiva en el aula de Lengua Inglesa I" (2011)
+                        fomentar el uso de estrategias de comprensiÃ³n auditiva en el aula de Lengua Inglesa I" (2011)
                         demonstrates her expertise in integrating digital tools into effective language instruction.</p>
                     <p>This English Language Course represents her continued dedication to creating comprehensive,
                         accessible,
@@ -145,7 +156,7 @@
     <!-- References Section -->
     <div class="container" id="references-section">
         <details class="references-block">
-            <summary class="references-header">📚 References (APA Style)</summary>
+            <summary class="references-header">ðŸ“š References (APA Style)</summary>
             <div class="references-content">
                 <p class="references-author"><strong>Course Author:</strong> Chiappero, C. (2024). <em>English Language
                         Course: B1 Level</em>. Original educational material.</p>
@@ -194,17 +205,17 @@
     <!-- Protection Overlay -->
     <div id="protection-overlay" class="protection-overlay" style="display: none;">
         <div class="protection-message">
-            <span class="protection-icon">🔒</span>
+            <span class="protection-icon">ðŸ”’</span>
             <h2>Protected Content</h2>
             <p>No permission to copy, download, or redistribute this material.</p>
-            <p class="protection-copyright">© 2024 English Language Course - Cecilia Chiappero</p>
+            <p class="protection-copyright">Â© 2024 English Language Course - Cecilia Chiappero</p>
             <p class="protection-note">All rights reserved. This content is for authorized students only.</p>
         </div>
     </div>
 
     <footer>
         <div class="container">
-            <p>© 2024 English Language Course. Created by Cecilia Chiappero.</p>
+            <p>Â© 2024 English Language Course. Created by Cecilia Chiappero.</p>
         </div>
     </footer>
 
