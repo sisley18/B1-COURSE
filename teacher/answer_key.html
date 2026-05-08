@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher's Answer Key — B1 English Course</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #f8f5f0; color: #333; padding: 30px; line-height: 1.5; }
+        h1 { text-align: center; color: #5b2c6f; margin-bottom: 5px; font-size: 1.8rem; }
+        .subtitle { text-align: center; color: #888; margin-bottom: 25px; font-size: 0.9rem; }
+        .confidential { text-align: center; color: #c0392b; font-weight: 700; margin-bottom: 20px; font-size: 0.85rem; letter-spacing: 1px; }
+        .unit { background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); page-break-inside: avoid; }
+        .unit h2 { color: #5b2c6f; border-bottom: 2px solid #e8d5f5; padding-bottom: 6px; margin-bottom: 12px; font-size: 1.2rem; }
+        .section { margin-bottom: 14px; }
+        .section h3 { color: #7d3c98; font-size: 0.95rem; margin-bottom: 6px; }
+        .answer-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 3px 15px; font-size: 0.82rem; }
+        .answer-item { padding: 3px 0; border-bottom: 1px dotted #e0e0e0; }
+        .answer-item strong { color: #2c3e50; }
+        .correct { color: #27ae60; font-weight: 600; }
+        .fitb-list { font-size: 0.82rem; }
+        .fitb-list li { margin-bottom: 3px; }
+        .fitb-answer { color: #e67e22; font-weight: 700; }
+        @media print {
+            body { padding: 10px; background: #fff; font-size: 9pt; }
+            .unit { box-shadow: none; border: 1px solid #ddd; padding: 12px; margin-bottom: 12px; }
+            .no-print { display: none; }
+            h1 { font-size: 14pt; }
+            .answer-grid { font-size: 8pt; }
+        }
+        .btn-print { display: block; margin: 0 auto 20px; padding: 12px 30px; background: #5b2c6f; color: #fff; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; }
+        .btn-print:hover { background: #7d3c98; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #5b2c6f; font-size: 0.9rem; text-decoration: none; }
+        .back-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-link no-print">&larr; Back to Course</a>
+    <h1>&#x1F4CB; Teacher's Answer Key</h1>
+    <p class="subtitle">B1 English Language Course &mdash; Cecilia Chiappero</p>
+    <p class="confidential">&#x1F512; CONFIDENTIAL &mdash; FOR TEACHER USE ONLY</p>
+    <button class="btn-print no-print" onclick="window.print()">&#x1F5A8;&#xFE0F; Print / Save as PDF</button>
+    <div id="content"></div>
+
+    <!-- Paths updated: ../js/ because this file is inside /teacher/ -->
+    <script src="../js/data_part1.js"></script>
+    <script src="../js/data_part2.js"></script>
+    <script src="../js/data_part3.js"></script>
+    <script src="../js/data_part4.js"></script>
+    <script>
+    function buildAnswerKey() {
+        const container = document.getElementById('content');
+        courseData.units.forEach(unit => {
+            let html = `<div class="unit"><h2>Unit ${unit.id}: ${unit.title} &mdash; ${unit.topic}</h2>`;
+
+            // Listening
+            if (unit.listening) {
+                html += `<div class="section"><h3>&#x1F3A7; Listening: ${unit.listening.title}</h3><div class="answer-grid">`;
+                unit.listening.questions.forEach((q, i) => {
+                    html += `<div class="answer-item"><strong>${i+1}.</strong> ${q.q} &rarr; <span class="correct">${q.options[q.correct]}</span></div>`;
+                });
+                html += `</div></div>`;
+            }
+
+            // Reading
+            if (unit.reading) {
+                html += `<div class="section"><h3>&#x1F4D6; Reading: ${unit.reading.title}</h3><div class="answer-grid">`;
+                unit.reading.questions.forEach((q, i) => {
+                    html += `<div class="answer-item"><strong>${i+1}.</strong> ${q.q} &rarr; <span class="correct">${q.options[q.correct]}</span></div>`;
+                });
+                html += `</div></div>`;
+            }
+
+            // Grammar
+            if (unit.grammar) {
+                html += `<div class="section"><h3>&#x1F4DD; Grammar: ${unit.grammar.title}</h3><div class="answer-grid">`;
+                unit.grammar.quizzes.forEach((q, i) => {
+                    html += `<div class="answer-item"><strong>${i+1}.</strong> ${q.question} &rarr; <span class="correct">${q.options[q.correct]}</span></div>`;
+                });
+                html += `</div></div>`;
+            }
+
+            // Collocations
+            if (unit.collocations) {
+                html += `<div class="section"><h3>&#x1F517; Collocations</h3><div class="answer-grid">`;
+                unit.collocations.forEach((c, i) => {
+                    html += `<div class="answer-item"><strong>${i+1}.</strong> <span class="correct">${c.pair[0]} + ${c.pair[1]}</span></div>`;
+                });
+                html += `</div></div>`;
+            }
+
+            // Verb Patterns
+            if (unit.verb_patterns) {
+                html += `<div class="section"><h3>&#x1F524; Verb Patterns</h3><div class="answer-grid">`;
+                unit.verb_patterns.exercises.forEach((q, i) => {
+                    html += `<div class="answer-item"><strong>${i+1}.</strong> ${q.sentence} &rarr; <span class="correct">${q.options[q.correct]}</span></div>`;
+                });
+                html += `</div></div>`;
+            }
+
+            // Pronunciation - Word Stress
+            if (unit.pronunciation) {
+                html += `<div class="section"><h3>&#x1F50A; Pronunciation &mdash; Word Stress</h3><div class="answer-grid">`;
+                unit.pronunciation.word_stress.forEach((w, i) => {
+                    html += `<div class="answer-item"><strong>${i+1}.</strong> ${w.word} &rarr; stress on: <span class="correct">${w.syllables[w.correct]}</span></div>`;
+                });
+                html += `</div></div>`;
+            }
+
+            // Video Comprehension
+            if (unit.video_comprehension) {
+                const vc = unit.video_comprehension;
+                html += `<div class="section"><h3>&#x1F3A5; Video: ${vc.videoTitle} (${vc.channel})</h3>`;
+                html += `<p style="font-size:0.82rem;color:#666;margin-bottom:4px;">Fill-in-the-blank &mdash; Suggested answers:</p><ol class="fitb-list">`;
+                vc.fitb.forEach((sentence, i) => {
+                    const answer = vc.answers ? vc.answers[i] : '______';
+                    const blank = sentence.replace(/___+/g, `<span class="fitb-answer">${answer}</span>`);
+                    html += `<li>${blank}</li>`;
+                });
+                html += `</ol><p style="font-size:0.75rem;color:#999;margin-top:4px;">Note: Video FITB answers are open-ended. Accept reasonable synonyms.</p></div>`;
+            }
+
+            html += `</div>`;
+            container.innerHTML += html;
+        });
+    }
+    buildAnswerKey();
+    </script>
+    <footer style="text-align:center;color:#aaa;font-size:0.75rem;margin-top:20px;">
+        &copy; 2024 English Language Course &mdash; Cecilia Chiappero | CONFIDENTIAL &mdash; Not for distribution
+    </footer>
+</body>
+</html>
