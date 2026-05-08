@@ -737,24 +737,43 @@
             isListening = true;
             const btn = document.getElementById('listen-btn');
             if (btn) btn.innerHTML = '&#x23F8;&#xFE0F; Playing...';
-            const chunks = TRANSCRIPT_TEXT.match(/.{1,180}(?:\.\s|$|\s)/g) || [TRANSCRIPT_TEXT];
+            
+            // Smarter split by sentences for natural pauses
+            const chunks = TRANSCRIPT_TEXT.match(/[^.!?]+[.!?]+/g) || [TRANSCRIPT_TEXT];
             let i = 0;
+            
             function next() {
                 if (!isListening || i >= chunks.length) {
                     isListening = false;
                     if (btn) btn.innerHTML = '&#x1F50A; Listen';
                     return;
                 }
-                const u = new SpeechSynthesisUtterance(chunks[i++]);
-                u.lang = 'en-US'; u.rate = 1.0; u.pitch = 1.0;
-                const v = getBestUSVoice(); if (v) u.voice = v;
-                u.onend = next;
-                u.onerror = next;
+                
+                const u = new SpeechSynthesisUtterance(chunks[i++].trim());
+                u.lang = 'en-US';
+                u.rate = 0.95; // Slightly slower for better clarity
+                u.pitch = 1.0;
+                
+                const v = getBestUSVoice();
+                if (v) u.voice = v;
+                
+                u.onend = () => {
+                    // Natural pause between sentences (500ms)
+                    if (isListening) setTimeout(next, 500);
+                };
+                
+                u.onerror = () => {
+                    if (isListening) next();
+                };
+                
                 window.speechSynthesis.speak(u);
             }
+
             if (window.speechSynthesis.getVoices().length === 0) {
-                setTimeout(next, 300);
-            } else { next(); }
+                setTimeout(next, 400);
+            } else {
+                next();
+            }
         }
 
         function stopListen() {

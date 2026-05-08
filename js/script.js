@@ -663,14 +663,19 @@ function processAudioQueue() {
     const utterance = new SpeechSynthesisUtterance(item.text);
     
     utterance.lang = 'en-US';
-    utterance.rate = 1.0; // Professional natural speed
+    utterance.rate = 0.98; // Slightly more natural professional speed
     utterance.pitch = 1.0;
     
     const voice = getBestVoice(item.gender);
     if (voice) utterance.voice = voice;
 
     utterance.onend = () => {
-        processAudioQueue();
+        // Small delay between segments for natural breathing (400ms)
+        if (isPlaying && !isPaused) {
+            setTimeout(processAudioQueue, 400);
+        } else {
+            processAudioQueue();
+        }
     };
 
     utterance.onerror = (e) => {
