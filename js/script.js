@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderCurriculum();
     setupNavigation();
     setupProtection();
+    initAttendance();
 });
 
 // Content Protection
@@ -377,11 +378,11 @@ function renderCurriculum() {
                     <p style="margin-bottom: 20px; opacity: 0.7;">Watch these videos to deepen your understanding of the topic:</p>
                     <div style="display: grid; gap: 15px;">
                         ${unit.videos.map((video, vIdx) => {
-                            const isCompVideo = unit.video_comprehension && (
-                                unit.video_comprehension.videoIndex === vIdx || 
-                                (unit.video_comprehension.videoId && video.url.includes(unit.video_comprehension.videoId))
-                            );
-                            return `
+                    const isCompVideo = unit.video_comprehension && (
+                        unit.video_comprehension.videoIndex === vIdx ||
+                        (unit.video_comprehension.videoId && video.url.includes(unit.video_comprehension.videoId))
+                    );
+                    return `
                             <div>
                                 <a href="${video.url}" target="_blank" rel="noopener noreferrer" 
                                    style="display: flex; align-items: center; gap: 15px; background: rgba(0,0,0,0.2); padding: 15px 20px; border-radius: 12px; text-decoration: none; color: #fff; border: 1px solid ${isCompVideo ? 'var(--accent-gold)' : 'rgba(255,255,255,0.1)'}; transition: all 0.3s ease;"
@@ -440,7 +441,7 @@ function renderCurriculum() {
                                 ` : ''}
                             </div>
                             `;
-                        }).join('')}
+                }).join('')}
                     </div>
                 </div>
                 ` : ''}
@@ -484,7 +485,7 @@ function renderQuiz(questions) {
 }
 
 // Helpers
-window.playTrack = function (text) { window.courseAudio.play(text); };
+window.playTrack = function (text, gender) { window.courseAudio.play(text, gender); };
 window.toggleTranscript = function (btn) {
     const box = btn.nextElementSibling;
     box.style.display = box.style.display === 'none' ? 'block' : 'none';
@@ -509,7 +510,7 @@ window.checkCollocation = function (btn, selected, correct) {
         setTimeout(() => { btn.style.background = 'rgba(255,255,255,0.1)'; }, 500);
     }
 };
-window.sendVideoAnswersToWhatsApp = function(unitId) {
+window.sendVideoAnswersToWhatsApp = function (unitId) {
     const unit = courseData.units.find(u => u.id === unitId);
     if (!unit || !unit.video_comprehension) return;
 
@@ -549,95 +550,225 @@ window.sendVideoAnswersToWhatsApp = function(unitId) {
     }
 
     const message = `📺 *Video Comprehension - Unit ${unitId}: ${unit.title}*\n🎬 Video: ${videoTitle}\n\n${answers.join('\n\n')}`;
-    
+
     const encoded = encodeURIComponent(message);
     window.open(`https://wa.me/?text=${encoded}`, '_blank');
 };
 
-// Audio Engine (No Gender param) - Optimized for Mobile
+// Universal High-Quality Audio Engine (Native Web Speech API)
+// Optimized for American Professional Pronunciation on Mobile/Tablet/PC
+let audioQueue = [];
+let isPlaying = false;
+let isPaused = false;
 let voices = [];
-const synth = window.speechSynthesis;
-const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
 function initAudioEngine() {
-    populateVoices();
-    if (speechSynthesis.onvoiceschanged !== undefined) {
-        speechSynthesis.onvoiceschanged = populateVoices;
-    }
-}
-
-function populateVoices() {
-    voices = synth.getVoices();
-}
-
-function getBestEnglishVoice() {
-    const englishVoices = voices.filter(v => v.lang.includes('en'));
-    if (englishVoices.length === 0) return null;
-
-    // Prefer native/local voices (usually better quality)
-    const preferredVoices = englishVoices.filter(v =>
-        v.localService === true ||
-        v.name.includes('Google') ||
-        v.name.includes('Microsoft') ||
-        v.name.includes('Samantha') || // iOS high quality
-        v.name.includes('Daniel') // iOS high quality
-    );
-
-    return preferredVoices[0] || englishVoices[0];
-}
-
-window.playAudio = function (text) {
-    synth.cancel(); // Stop any current audio first
-
-    if (text) {
-        const utterThis = new SpeechSynthesisUtterance(text);
-        const selectedVoice = getBestEnglishVoice();
-
-        if (selectedVoice) {
-            utterThis.voice = selectedVoice;
-        }
-
-        // Mobile: use rate 1.0 to avoid distortion; PC: use 0.9 for clearer pronunciation
-        utterThis.rate = isMobile ? 1.0 : 0.9;
-        utterThis.pitch = 1.0;
-        utterThis.volume = 1.0;
-
-        // Mobile fix: small delay helps prevent audio glitches
-        if (isMobile) {
-            setTimeout(() => {
-                synth.speak(utterThis);
-            }, 50);
-        } else {
-            synth.speak(utterThis);
+    if ('speechSynthesis' in window) {
+        // Load voices
+        voices = window.speechSynthesis.getVoices();
+        if (window.speechSynthesis.onvoiceschanged !== undefined) {
+            window.speechSynthesis.onvoiceschanged = () => {
+                voices = window.speechSynthesis.getVoices();
+                console.log("Voices updated:", voices.length);
+            };
         }
     }
+    console.log("Universal Audio Engine Ready (Web Speech API)");
+}
+
+function getBestVoice(genderPreference) {
+    if (voices.length === 0) voices = window.speechSynthesis.getVoices();
+    
+    const usVoices = voices.filter(v => v.lang.includes('en-US'));
+    if (usVoices.length === 0) return voices.find(v => v.lang.includes('en')) || null;
+
+    // Filter by gender if possible
+    let filtered = usVoices;
+    if (genderPreference) {
+        const gp = genderPreference.toLowerCase();
+        if (gp === 'female') {
+            filtered = usVoices.filter(v => v.name.toLowerCase().includes('female') || v.name.toLowerCase().includes('samantha') || v.name.toLowerCase().includes('zira') || v.name.toLowerCase().includes('victoria'));
+        } else if (gp === 'male') {
+            filtered = usVoices.filter(v => v.name.toLowerCase().includes('male') || v.name.toLowerCase().includes('alex') || v.name.toLowerCase().includes('david') || v.name.toLowerCase().includes('mark'));
+        }
+    }
+
+    if (filtered.length === 0) filtered = usVoices;
+
+    // Priority for high-quality voices
+    const premiumKeywords = ['Google', 'Enhanced', 'Premium', 'Natural'];
+    const premiumVoice = filtered.find(v => premiumKeywords.some(k => v.name.includes(k)));
+
+    return premiumVoice || filtered[0];
+}
+
+window.playAudio = function (text, genderPreference) {
+    window.stopAudio();
+    if (!text || !('speechSynthesis' in window)) return;
+
+    // Split text into ~180 char chunks at sentence boundaries for smoother playback
+    const chunks = splitTextForTTS(text, 180);
+    audioQueue = chunks.map(c => ({ text: c, gender: genderPreference }));
+    isPaused = false;
+    processAudioQueue();
 };
+
+function splitTextForTTS(text, maxLength) {
+    const chunks = [];
+    let remaining = text;
+
+    while (remaining.length > 0) {
+        if (remaining.length <= maxLength) {
+            chunks.push(remaining);
+            break;
+        }
+
+        let splitIdx = remaining.lastIndexOf('. ', maxLength);
+        if (splitIdx === -1) splitIdx = remaining.lastIndexOf('? ', maxLength);
+        if (splitIdx === -1) splitIdx = remaining.lastIndexOf('! ', maxLength);
+        if (splitIdx === -1) splitIdx = remaining.lastIndexOf(', ', maxLength);
+        if (splitIdx === -1) splitIdx = remaining.lastIndexOf(' ', maxLength);
+        if (splitIdx === -1) splitIdx = maxLength;
+
+        chunks.push(remaining.substring(0, splitIdx + 1).trim());
+        remaining = remaining.substring(splitIdx + 1).trim();
+    }
+    return chunks;
+}
+
+function processAudioQueue() {
+    if (isPaused || audioQueue.length === 0) {
+        isPlaying = false;
+        return;
+    }
+
+    isPlaying = true;
+    const item = audioQueue.shift();
+    const utterance = new SpeechSynthesisUtterance(item.text);
+    
+    utterance.lang = 'en-US';
+    utterance.rate = 1.0; // Professional natural speed
+    utterance.pitch = 1.0;
+    
+    const voice = getBestVoice(item.gender);
+    if (voice) utterance.voice = voice;
+
+    utterance.onend = () => {
+        processAudioQueue();
+    };
+
+    utterance.onerror = (e) => {
+        console.error("SpeechSynthesis error:", e);
+        processAudioQueue();
+    };
+
+    window.speechSynthesis.speak(utterance);
+}
+
 window.stopAudio = function () {
-    synth.cancel();
+    audioQueue = [];
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+    }
+    isPlaying = false;
+    isPaused = false;
+    updatePauseButton(false);
 };
+
 window.pauseAudio = function () {
-    if (synth.speaking && !synth.paused) {
-        synth.pause();
-    }
-};
-window.resumeAudio = function () {
-    if (synth.paused) {
-        synth.resume();
-    }
-};
-window.togglePauseAudio = function () {
-    if (synth.paused) {
-        synth.resume();
-        updatePauseButton(false);
-    } else if (synth.speaking) {
-        synth.pause();
+    if ('speechSynthesis' in window && window.speechSynthesis.speaking && !isPaused) {
+        window.speechSynthesis.pause();
+        isPaused = true;
         updatePauseButton(true);
     }
 };
+
+window.resumeAudio = function () {
+    if ('speechSynthesis' in window && isPaused) {
+        isPaused = false;
+        updatePauseButton(false);
+        window.speechSynthesis.resume();
+    }
+};
+
+window.togglePauseAudio = function () {
+    if (isPaused) {
+        window.resumeAudio();
+    } else if (isPlaying) {
+        window.pauseAudio();
+    }
+};
+
 function updatePauseButton(isPaused) {
     const pauseBtn = document.getElementById('pause-audio-btn');
     if (pauseBtn) {
         pauseBtn.innerHTML = isPaused ? '▶️ Resume' : '⏸️ Pause';
     }
 }
-window.courseAudio = { play: window.playAudio, stop: window.stopAudio, pause: window.pauseAudio, resume: window.resumeAudio, togglePause: window.togglePauseAudio };
+
+window.courseAudio = {
+    play: window.playAudio,
+    stop: window.stopAudio,
+    pause: window.pauseAudio,
+    resume: window.resumeAudio,
+    togglePause: window.togglePauseAudio
+};
+
+// Attendance Logic
+function initAttendance() {
+    const dateInput = document.getElementById('att-date');
+    if (dateInput) {
+        dateInput.value = new Date().toISOString().substr(0, 10);
+    }
+    loadAttendance();
+}
+
+window.saveAttendance = function () {
+    const date = document.getElementById('att-date').value;
+    const user = document.getElementById('att-user').value;
+
+    if (!date || !user) return;
+
+    const records = JSON.parse(localStorage.getItem('attendance_records') || '[]');
+
+    // Check for duplicates
+    const exists = records.some(r => r.date === date && r.user === user);
+    if (exists) {
+        alert('Attendance already marked for this student on this date.');
+        return;
+    }
+
+    records.push({ date, user, id: Date.now() });
+    localStorage.setItem('attendance_records', JSON.stringify(records));
+    loadAttendance();
+};
+
+function loadAttendance() {
+    const container = document.getElementById('attendance-list');
+    if (!container) return;
+
+    const records = JSON.parse(localStorage.getItem('attendance_records') || '[]');
+    // Sort by date (newest first)
+    records.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    container.innerHTML = records.length === 0
+        ? '<p style="grid-column: 1/-1; opacity: 0.5; text-align: center; padding: 20px;">No attendance records found.</p>'
+        : records.map(r => `
+            <div class="att-record">
+                <div>
+                    <span>${r.user}</span>
+                    <span style="display: block; font-size: 0.75rem;">${r.date}</span>
+                </div>
+                <span class="att-delete" onclick="deleteAttendance(${r.id})">🗑️</span>
+            </div>
+        `).join('');
+}
+
+window.deleteAttendance = function (id) {
+    if (!confirm('Delete this attendance record?')) return;
+    let records = JSON.parse(localStorage.getItem('attendance_records') || '[]');
+    records = records.filter(r => r.id !== id);
+    localStorage.setItem('attendance_records', JSON.stringify(records));
+    loadAttendance();
+};
+
