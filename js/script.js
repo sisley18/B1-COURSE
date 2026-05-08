@@ -564,22 +564,35 @@ let voices = [];
 
 function initAudioEngine() {
     if ('speechSynthesis' in window) {
-        // Load voices
+        // Load voices immediately (works on Firefox, Safari)
         voices = window.speechSynthesis.getVoices();
+        // Desktop Chrome/Edge load voices asynchronously — keep retrying
         if (window.speechSynthesis.onvoiceschanged !== undefined) {
             window.speechSynthesis.onvoiceschanged = () => {
                 voices = window.speechSynthesis.getVoices();
                 console.log("Voices updated:", voices.length);
             };
         }
+        // Fallback retry loop for Chrome on Windows (voices often empty on first call)
+        if (voices.length === 0) {
+            let attempts = 0;
+            const retryLoad = setInterval(() => {
+                voices = window.speechSynthesis.getVoices();
+                attempts++;
+                if (voices.length > 0 || attempts >= 15) {
+                    clearInterval(retryLoad);
+                    console.log("Voices ready after retry:", voices.length);
+                }
+            }, 200);
+        }
     }
-    console.log("Universal Audio Engine Ready (Web Speech API)");
+    console.log("Universal Audio Engine Ready (Web Speech API — All Devices)");
 }
 
 function getBestVoice(genderPreference) {
     if (voices.length === 0) voices = window.speechSynthesis.getVoices();
-    
-    const usVoices = voices.filter(v => v.lang.includes('en-US'));
+
+    const usVoices = voices.filter(v => v.lang === 'en-US' || v.lang.startsWith('en-US'));
     if (usVoices.length === 0) return voices.find(v => v.lang.includes('en')) || null;
 
     // Filter by gender if possible
@@ -587,19 +600,22 @@ function getBestVoice(genderPreference) {
     if (genderPreference) {
         const gp = genderPreference.toLowerCase();
         if (gp === 'female') {
-            filtered = usVoices.filter(v => v.name.toLowerCase().includes('female') || v.name.toLowerCase().includes('samantha') || v.name.toLowerCase().includes('zira') || v.name.toLowerCase().includes('victoria'));
+            filtered = usVoices.filter(v => /female|samantha|zira|victoria|aria|jenny|michelle|monica/i.test(v.name));
         } else if (gp === 'male') {
-            filtered = usVoices.filter(v => v.name.toLowerCase().includes('male') || v.name.toLowerCase().includes('alex') || v.name.toLowerCase().includes('david') || v.name.toLowerCase().includes('mark'));
+            filtered = usVoices.filter(v => /male|alex|david|mark|guy|ryan|andrew/i.test(v.name));
         }
     }
 
     if (filtered.length === 0) filtered = usVoices;
 
-    // Priority for high-quality voices
-    const premiumKeywords = ['Google', 'Enhanced', 'Premium', 'Natural'];
-    const premiumVoice = filtered.find(v => premiumKeywords.some(k => v.name.includes(k)));
+    // Priority: Google US English (Chrome desktop) > Microsoft Aria/Jenny (Edge neural) > Apple Enhanced (Mac/iOS) > fallback
+    const premiumOrder = ['Google US English', 'Google US', 'Google', 'Microsoft Aria', 'Microsoft Jenny', 'Microsoft', 'Aria', 'Jenny', 'Enhanced', 'Premium', 'Natural'];
+    for (const keyword of premiumOrder) {
+        const match = filtered.find(v => v.name.includes(keyword));
+        if (match) return match;
+    }
 
-    return premiumVoice || filtered[0];
+    return filtered[0];
 }
 
 window.playAudio = function (text, genderPreference) {
