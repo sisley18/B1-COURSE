@@ -721,6 +721,8 @@
         // ── Audio Engine (Web Speech API — American English) ──────────────────
         const TRANSCRIPT_TEXT = "Welcome to Urban Perspectives, the podcast on city design and the future of how we live. My guest today is Carlos Andrade, an urban planner who has worked on smart city projects in three continents over the past twenty years. Carlos, what exactly is a smart city? A smart city uses technology and data to improve the quality of life for its residents. That can mean anything from sensors embedded in roads to manage traffic in real time, to AI-powered waste management systems that optimise collection routes, to digital platforms that allow citizens to report problems to the city council instantly through their phones. The goal is always efficiency, sustainability, and inclusion. What are the biggest challenges in building a smart city? Two main ones. First, the digital divide — if only wealthy residents can access smart city services, we deepen inequality rather than reducing it. A truly smart city must ensure that all residents, including the elderly and low-income communities, can benefit. Second, data privacy. When a city collects enormous amounts of data about how people move, shop, and spend their time, there are serious questions about who owns that data and how it can be used. You've also written about the relationship between education and urban development. How do the two connect? Enormously. Cities that invest heavily in education create a more adaptable, innovative workforce. Research from the OECD shows that cities where more than sixty percent of residents have post-secondary qualifications attract more high-value businesses, have lower unemployment, and generate significantly more tax revenue — which they can then reinvest in infrastructure and services. Education and urban development are completely intertwined. You cannot build a great city without a great education system.";
 
+        let isListening = false;
+
         function getBestUSVoice() {
             const voices = window.speechSynthesis.getVoices();
             const us = voices.filter(v => v.lang === 'en-US' || v.lang.startsWith('en-US'));
@@ -732,12 +734,17 @@
 
         function listenTranscript() {
             stopListen();
+            isListening = true;
             const btn = document.getElementById('listen-btn');
             if (btn) btn.innerHTML = '&#x23F8;&#xFE0F; Playing...';
             const chunks = TRANSCRIPT_TEXT.match(/.{1,180}(?:\.\s|$|\s)/g) || [TRANSCRIPT_TEXT];
             let i = 0;
             function next() {
-                if (i >= chunks.length) { if (btn) btn.innerHTML = '&#x1F50A; Listen'; return; }
+                if (!isListening || i >= chunks.length) {
+                    isListening = false;
+                    if (btn) btn.innerHTML = '&#x1F50A; Listen';
+                    return;
+                }
                 const u = new SpeechSynthesisUtterance(chunks[i++]);
                 u.lang = 'en-US'; u.rate = 1.0; u.pitch = 1.0;
                 const v = getBestUSVoice(); if (v) u.voice = v;
@@ -745,13 +752,13 @@
                 u.onerror = next;
                 window.speechSynthesis.speak(u);
             }
-            // Retry voice loading on desktop Chrome
             if (window.speechSynthesis.getVoices().length === 0) {
                 setTimeout(next, 300);
             } else { next(); }
         }
 
         function stopListen() {
+            isListening = false;
             if ('speechSynthesis' in window) window.speechSynthesis.cancel();
             const btn = document.getElementById('listen-btn');
             if (btn) btn.innerHTML = '&#x1F50A; Listen';
