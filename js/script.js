@@ -176,54 +176,92 @@ function renderA1() {
     container.innerHTML = html;
 }
 
+// C1 text registry — avoids embedding long text inside onclick HTML attributes
+// (double-quotes and other special chars break onclick="..." delimiters)
+const _c1Texts = {};
+const _c1SectionSamples = {};
+
+window.playC1Text = function (key) {
+    const text = _c1Texts[key];
+    if (text) window.playAudio(text);
+};
+
 function renderC1() {
     const container = document.getElementById('curriculum-container');
     if (!container) return;
     container.innerHTML = '';
 
+    // Store section sample texts in registry (index-based keys)
     const sections = [
-        { icon: '📚', title: '1. Vocabulary', topics: 'Academic and professional register. Low-frequency advanced lexis: geopolitical, philosophical, and scientific terminology. Nuance between near-synonyms (e.g. assert vs. contend). Figurative and idiomatic language at C-level.', sample: 'paradigm, sovereignty, epistemology' },
-        { icon: '🎧', title: '2. Listening', topics: 'Authentic lectures, debates, and academic podcasts. Inferring speaker stance, bias, and subtext. Note-taking strategies. Understanding accented and rapid native speech.', sample: 'The cognitive dissonance created by social media algorithms is unprecedented.' },
-        { icon: '📖', title: '3. Reading', topics: 'Complex academic and journalistic texts. Critical analysis of argument structure and rhetorical devices. Identifying implicit meaning, hedging language, and authorial stance.', sample: 'Global governance frameworks are increasingly inadequate.' },
-        { icon: '✏️', title: '4. Grammar', topics: 'Advanced inversion and cleft structures. Subjunctive and conditional nuance. Ellipsis and substitution. Passive and reporting verbs for academic style. Complex nominal groups.', sample: 'Not only has technology transformed communication, but it has also reshaped cognition.' },
-        { icon: '🔤', title: '5. Pronunciation', topics: 'Weak forms and connected speech at natural speed. Nuclear stress and information structure. Discourse-level intonation. American English rhythm, linking, and elision patterns.', sample: 'The implications of this research are far-reaching.' },
-        { icon: '🔗', title: '6. Collocations & Register', topics: 'Academic collocations: conduct research, draw conclusions, cast doubt. Formal vs. neutral vs. informal register switches. Fixed expressions in academic discourse and debate.', sample: 'draw a distinction, take into account, give rise to' },
-        { icon: '🖊️', title: '7. Writing', topics: 'Extended academic essays (argument, discussion, evaluation). Abstracts and executive summaries. Formal reports and proposals. Coherence, cohesion, hedging, and academic integrity.', sample: 'Critically evaluate the role of biotechnology in addressing food insecurity.' },
-        { icon: '🎙️', title: '8. Speaking', topics: 'Academic presentations and seminars. Structured debate and argumentation. Diplomatic disagreement and turn-taking. Impromptu discussions on complex global topics.', sample: 'While I take your point, I would argue that the evidence suggests otherwise.' }
+        { icon: '\uD83D\uDCDA', title: '1. Vocabulary',   topics: 'Academic and professional register. Low-frequency advanced lexis: geopolitical, philosophical, and scientific terminology. Nuance between near-synonyms (e.g. assert vs. contend). Figurative and idiomatic language at C-level.',                                                                                          sample: 'paradigm, sovereignty, epistemology' },
+        { icon: '\uD83C\uDFA7', title: '2. Listening',    topics: 'Authentic lectures, debates, and academic podcasts. Inferring speaker stance, bias, and subtext. Note-taking strategies. Understanding accented and rapid native speech.',                                                                                                                                              sample: 'The cognitive dissonance created by social media algorithms is unprecedented.' },
+        { icon: '\uD83D\uDCD6', title: '3. Reading',      topics: 'Complex academic and journalistic texts. Critical analysis of argument structure and rhetorical devices. Identifying implicit meaning, hedging language, and authorial stance.',                                                                                                                                       sample: 'Global governance frameworks are increasingly inadequate.' },
+        { icon: '\u270F\uFE0F', title: '4. Grammar',      topics: 'Advanced inversion and cleft structures. Subjunctive and conditional nuance. Ellipsis and substitution. Passive and reporting verbs for academic style. Complex nominal groups.',                                                                                                                                        sample: 'Not only has technology transformed communication, but it has also reshaped cognition.' },
+        { icon: '\uD83D\uDD24', title: '5. Pronunciation',topics: 'Weak forms and connected speech at natural speed. Nuclear stress and information structure. Discourse-level intonation. American English rhythm, linking, and elision patterns.',                                                                                                                                          sample: 'The implications of this research are far-reaching.' },
+        { icon: '\uD83D\uDD17', title: '6. Collocations \u0026 Register', topics: 'Academic collocations: conduct research, draw conclusions, cast doubt. Formal vs. neutral vs. informal register switches. Fixed expressions in academic discourse and debate.',                                                                                                                         sample: 'draw a distinction, take into account, give rise to' },
+        { icon: '\uD83D\uDD8A\uFE0F', title: '7. Writing',topics: 'Extended academic essays (argument, discussion, evaluation). Abstracts and executive summaries. Formal reports and proposals. Coherence, cohesion, hedging, and academic integrity.',                                                                                                                                     sample: 'Critically evaluate the role of biotechnology in addressing food insecurity.' },
+        { icon: '\uD83C\uDF99\uFE0F', title: '8. Speaking',topics: 'Academic presentations and seminars. Structured debate and argumentation. Diplomatic disagreement and turn-taking. Impromptu discussions on complex global topics.',                                                                                                                                             sample: 'While I take your point, I would argue that the evidence suggests otherwise.' }
     ];
+
+    // Register section samples
+    sections.forEach((s, i) => {
+        if (s.sample) _c1Texts['sec-' + i] = s.sample;
+    });
 
     const units = [
         {
             id: 'C1-1',
-            title: 'Cognitive Science & The Mind',
+            title: 'Cognitive Science \u0026 The Mind',
             topic: 'Consciousness, Memory, and Human Perception',
             vocab: [
-                { word: 'Paradigm', ipa: 'ˈpærəˌdaɪm', def: 'A typical example or pattern; a model of thinking within a discipline.' },
-                { word: 'Cognitive dissonance', ipa: 'ˈkɒɡnɪtɪv ˈdɪsənəns', def: 'The discomfort felt when holding two contradictory beliefs simultaneously.' },
-                { word: 'Epistemology', ipa: 'ɪˌpɪstɪˈmɒlədʒi', def: 'The branch of philosophy concerned with the nature and scope of knowledge.' },
-                { word: 'Neuroplasticity', ipa: 'ˌnjʊərəʊplæˈstɪsɪti', def: 'The brain\'s ability to reorganize itself by forming new neural connections throughout life.' },
-                { word: 'Heuristic', ipa: 'hjʊˈrɪstɪk', def: 'A practical mental shortcut enabling quick, efficient judgment and problem-solving.' },
-                { word: 'Introspection', ipa: 'ˌɪntrəˈspɛkʃən', def: 'The examination of one\'s own mental and emotional processes.' }
+                { word: 'Paradigm',           ipa: '\u02C8p\u00E6r\u0259\u02CCda\u026Am', def: 'A typical example or pattern; a model of thinking within a discipline.' },
+                { word: 'Cognitive dissonance', ipa: '\u02C8k\u0252\u0261n\u026At\u026Av \u02C8d\u026As\u0259n\u0259ns', def: 'The discomfort felt when holding two contradictory beliefs simultaneously.' },
+                { word: 'Epistemology',       ipa: '\u026A\u02CCp\u026Est\u026A\u02C8m\u0252l\u0259d\u0292i', def: 'The branch of philosophy concerned with the nature and scope of knowledge.' },
+                { word: 'Neuroplasticity',    ipa: '\u02CCnj\u028A\u0259r\u0259\u028Apl\u00E6\u02C8st\u026As\u026Ati', def: 'The ability of the brain to reorganize itself by forming new neural connections throughout life.' },
+                { word: 'Heuristic',          ipa: 'hj\u028A\u02C8r\u026Ast\u026Ak', def: 'A practical mental shortcut enabling quick, efficient judgment and problem-solving.' },
+                { word: 'Introspection',      ipa: '\u02CCIntr\u0259\u02C8sp\u025Bk\u0283\u0259n', def: 'The examination of one\'s own mental and emotional processes.' }
             ],
-            listening: 'Modern neuroscience has fundamentally challenged our understanding of consciousness. For centuries, philosophers debated whether the mind was separate from the body — the Cartesian dualism that Descartes articulated in the seventeenth century. However, contemporary research in cognitive neuroscience suggests that consciousness is an emergent property of complex neural networks, not a transcendent soul. The implications are profound: if our sense of self is merely a neurological construct, what does that mean for concepts of free will, moral responsibility, and personal identity? These questions sit at the intersection of science, philosophy, and ethics — making them essential territory for the twenty-first century thinker.',
-            reading: 'The field of neuroplasticity has revolutionized how we conceive of human potential. Once believed to be fixed in early childhood, the brain\'s architecture is now understood to be remarkably malleable throughout the lifespan. Pioneering research by Michael Merzenich and others demonstrated that sustained cognitive training could physically alter cortical maps — a discovery with transformative implications for education, rehabilitation, and personal development. This plasticity is not unlimited, however. The degree to which the brain can reorganize itself diminishes with age, and the quality of the input matters enormously. Passive exposure rarely suffices; active, effortful engagement with challenging material appears to be the key driver of genuine structural change. Critics caution against overstating these findings — the popular narrative of \"rewiring your brain\" often outpaces the nuance of the actual science.',
+            listening: 'Modern neuroscience has fundamentally challenged our understanding of consciousness. For centuries, philosophers debated whether the mind was separate from the body, the Cartesian dualism that Descartes articulated in the seventeenth century. However, contemporary research in cognitive neuroscience suggests that consciousness is an emergent property of complex neural networks, not a transcendent soul. The implications are profound: if our sense of self is merely a neurological construct, what does that mean for concepts of free will, moral responsibility, and personal identity? These questions sit at the intersection of science, philosophy, and ethics, making them essential territory for the twenty-first century thinker.',
+            reading: 'The field of neuroplasticity has revolutionized how we conceive of human potential. Once believed to be fixed in early childhood, the brain is now understood to be remarkably malleable throughout the lifespan. Pioneering research by Michael Merzenich and others demonstrated that sustained cognitive training could physically alter cortical maps, a discovery with transformative implications for education, rehabilitation, and personal development. This plasticity is not unlimited, however. The degree to which the brain can reorganize itself diminishes with age, and the quality of the input matters enormously. Passive exposure rarely suffices; active, effortful engagement with challenging material appears to be the key driver of genuine structural change. Critics caution against overstating these findings, as the popular narrative of rewiring your brain often outpaces the nuance of the actual science.',
         },
         {
             id: 'C1-2',
-            title: 'Geopolitics & Global Order',
+            title: 'Geopolitics \u0026 Global Order',
             topic: 'Power, Sovereignty, and International Governance',
             vocab: [
-                { word: 'Sovereignty', ipa: 'ˈsɒvrənti', def: 'Supreme authority of a state to govern itself without external interference.' },
-                { word: 'Hegemony', ipa: 'hɪˈɡɛməni', def: 'Leadership or dominance, especially of one state or group over others.' },
-                { word: 'Multilateralism', ipa: 'ˌmʌltiˈlætərəlɪzəm', def: 'International cooperation among multiple countries to address shared problems.' },
-                { word: 'Deterrence', ipa: 'dɪˈtɛrəns', def: 'The use of threats to dissuade an adversary from taking an undesired action.' },
-                { word: 'Geopolitical', ipa: 'ˌdʒiːəʊpəˈlɪtɪkəl', def: 'Relating to politics, especially international relations, influenced by geographic factors.' },
-                { word: 'Non-state actor', ipa: 'nɒn steɪt ˈæktər', def: 'An individual or organization that has political influence but is not allied with any government.' }
+                { word: 'Sovereignty',        ipa: '\u02C8s\u0252vr\u0259nti', def: 'Supreme authority of a state to govern itself without external interference.' },
+                { word: 'Hegemony',           ipa: 'h\u026A\u02C8\u0261\u025Bm\u0259ni', def: 'Leadership or dominance, especially of one state or group over others.' },
+                { word: 'Multilateralism',    ipa: '\u02CCm\u028Clti\u02C8l\u00E6t\u0259r\u0259l\u026Az\u0259m', def: 'International cooperation among multiple countries to address shared problems.' },
+                { word: 'Deterrence',         ipa: 'd\u026A\u02C8t\u025Br\u0259ns', def: 'The use of threats to dissuade an adversary from taking an undesired action.' },
+                { word: 'Geopolitical',       ipa: '\u02CCd\u0292i\u02D0\u0259\u028Ap\u0259\u02C8l\u026At\u026Ak\u0259l', def: 'Relating to politics, especially international relations, as influenced by geographic factors.' },
+                { word: 'Non-state actor',    ipa: 'n\u0252n ste\u026At \u02C8\u00E6kt\u0259r', def: 'An individual or organization with political influence not allied with any government.' }
             ],
-            listening: 'The post-Cold War assumption of a unipolar world led by the United States is rapidly giving way to a more contested multipolar order. Rising powers — most notably China, but also India, Brazil, and the reassertive Russia — are challenging the liberal international institutions built in the aftermath of World War II. The United Nations, the World Trade Organization, and the International Monetary Fund were designed in a context that no longer exists. As these powers accumulate economic and military weight, they are also projecting alternative governance models — ones that prioritize state sovereignty and non-interference over human rights and democratic accountability. The question is not whether the international order will change, but whether that change can be managed peacefully.',
-            reading: 'The concept of sovereignty — once regarded as the bedrock of international order — is under unprecedented pressure from multiple directions simultaneously. From above, supranational bodies like the European Union and the International Criminal Court claim authority that transcends national boundaries. From below, secessionist movements and stateless peoples assert identities that defy the cartographic logic of the Westphalian state system. Meanwhile, non-state actors from multinational corporations to global terrorist networks operate across borders with an agility that renders traditional sovereignty increasingly difficult to enforce. Scholars are divided on what this means: cosmopolitans celebrate the erosion of state power as an opportunity to ground governance in universal human rights, while realists warn that weakening states creates power vacuums that invite instability and conflict.',
+            listening: 'The post-Cold War assumption of a unipolar world led by the United States is rapidly giving way to a more contested multipolar order. Rising powers, most notably China, but also India, Brazil, and a reassertive Russia, are challenging the liberal international institutions built in the aftermath of World War Two. The United Nations, the World Trade Organization, and the International Monetary Fund were designed in a context that no longer exists. As these powers accumulate economic and military weight, they are also projecting alternative governance models, ones that prioritize state sovereignty and non-interference over human rights and democratic accountability. The question is not whether the international order will change, but whether that change can be managed peacefully.',
+            reading: 'The concept of sovereignty, once regarded as the bedrock of international order, is under unprecedented pressure from multiple directions simultaneously. From above, supranational bodies like the European Union and the International Criminal Court claim authority that transcends national boundaries. From below, secessionist movements and stateless peoples assert identities that defy the cartographic logic of the Westphalian state system. Meanwhile, non-state actors from multinational corporations to global terrorist networks operate across borders with an agility that renders traditional sovereignty increasingly difficult to enforce. Scholars are divided on what this means: cosmopolitans celebrate the erosion of state power as an opportunity to ground governance in universal human rights, while realists warn that weakening states creates power vacuums that invite instability and conflict.',
         }
     ];
+
+    // Register all unit texts in the lookup map
+    units.forEach(u => {
+        _c1Texts[u.id + '-listening'] = u.listening;
+        _c1Texts[u.id + '-reading']   = u.reading;
+        u.vocab.forEach((v, vi) => {
+            _c1Texts[u.id + '-vocab-' + vi] = v.word;
+        });
+    });
+
+    // Build vocab buttons using registry keys (no text in onclick)
+    const vocabButtons = (u) => u.vocab.map((v, vi) => `
+        <div class="vocab-card" style="border-left-color: #a78bfa;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                <button class="play-btn" style="width: 32px; height: 32px; font-size: 0.9rem; flex-shrink: 0;"
+                    onclick="playC1Text('${u.id}-vocab-${vi}')">\uD83D\uDD0A</button>
+                <strong style="font-size: 1.1rem;">${v.word}</strong>
+            </div>
+            ${v.ipa ? `<p style="font-family: monospace; color: #a78bfa; font-size: 0.95rem; margin-bottom: 8px;">/${v.ipa}/</p>` : ''}
+            <p style="opacity: 0.8;">${v.def}</p>
+        </div>
+    `).join('');
 
     let unitsHtml = units.map(u => `
         <details class="unit-block">
@@ -240,18 +278,9 @@ function renderC1() {
                 <div class="section-block">
                     <span class="section-label" style="background: rgba(167,139,250,0.2); color: #a78bfa;">Vocabulary</span>
                     <h3>Advanced Key Terms</h3>
-                    <p style="margin-bottom: 15px; opacity: 0.7;">🔊 Click the speaker to hear each word with American pronunciation:</p>
+                    <p style="margin-bottom: 15px; opacity: 0.7;">\uD83D\uDD0A Click the speaker to hear each word with American pronunciation:</p>
                     <div class="vocab-grid">
-                        ${u.vocab.map(v => `
-                            <div class="vocab-card" style="border-left-color: #a78bfa;">
-                                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-                                    <button class="play-btn" style="width: 32px; height: 32px; font-size: 0.9rem; flex-shrink: 0;" onclick="playAudio('${v.word.replace(/'/g, "\\'")}')">🔊</button>
-                                    <strong style="font-size: 1.1rem;">${v.word}</strong>
-                                </div>
-                                ${v.ipa ? `<p style="font-family: monospace; color: #a78bfa; font-size: 0.95rem; margin-bottom: 8px;">/${v.ipa}/</p>` : ''}
-                                <p style="opacity: 0.8;">${v.def}</p>
-                            </div>
-                        `).join('')}
+                        ${vocabButtons(u)}
                     </div>
                 </div>
 
@@ -260,8 +289,8 @@ function renderC1() {
                     <span class="section-label listening" style="background: rgba(167,139,250,0.2); color: #a78bfa;">Listening</span>
                     <h3>Academic Audio Track</h3>
                     <div class="player-controls">
-                        <button class="play-btn" onclick="playTrack('${u.listening.replace(/'/g, "\\'")}')">▶</button>
-                        <span style="font-size: 0.9rem; opacity: 0.8;">Full Audio Track — C1 Level</span>
+                        <button class="play-btn" onclick="playC1Text('${u.id}-listening')">&#9654;</button>
+                        <span style="font-size: 0.9rem; opacity: 0.8;">Full Audio Track &#8212; C1 Level</span>
                     </div>
                     <button class="btn" style="border: 1px solid rgba(255,255,255,0.2); font-size: 0.8rem; padding: 5px 15px;" onclick="toggleTranscript(this)">Show Transcript</button>
                     <div class="transcript-box" style="display:none; margin-top:10px;">
@@ -273,18 +302,19 @@ function renderC1() {
                 <div class="section-block">
                     <span class="section-label reading" style="background: rgba(167,139,250,0.2); color: #a78bfa;">Reading</span>
                     <h3>Critical Analysis Text</h3>
-                    <div class="reading-text" style="border-left-color: #a78bfa;">
-                        ${u.reading}
+                    <div class="reading-text" style="border-left-color: #a78bfa;">${u.reading}</div>
+                    <div style="display:flex; align-items:center; gap:12px; margin-top:12px;">
+                        <button class="play-btn" style="width: 40px; height: 40px; font-size: 1rem;"
+                            onclick="playC1Text('${u.id}-reading')">\uD83D\uDD0A</button>
+                        <span style="opacity: 0.7; font-size: 0.85rem;">Listen to the full reading passage</span>
                     </div>
-                    <button class="play-btn" style="width: 40px; height: 40px; font-size: 1rem; margin-top: 10px;" onclick="playTrack('${u.reading.replace(/'/g, "\\'")}')">🔊</button>
-                    <span style="vertical-align: middle; margin-left: 10px; opacity: 0.7; font-size: 0.85rem;">Listen to the full reading passage</span>
                 </div>
 
                 <!-- Writing -->
                 <div class="section-block">
                     <span class="section-label" style="background: rgba(255,100,100,0.2); color: #ffadad;">Writing Task</span>
                     <div style="background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px;">
-                        <p style="font-style: italic; margin-bottom: 15px;">Target: 350 words — Academic argument essay</p>
+                        <p style="font-style: italic; margin-bottom: 15px;">Target: 350 words &#8212; Academic argument essay</p>
                         <h4 style="margin-bottom: 10px;">
                             ${u.id === 'C1-1'
                                 ? 'To what extent do advances in neuroscience challenge traditional notions of human free will? Discuss with reference to current research.'
@@ -298,12 +328,12 @@ function renderC1() {
                 <div class="section-block">
                     <span class="section-label" style="background: rgba(255,200,50,0.2); color: #ffe066;">Speaking</span>
                     <div style="background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; display: flex; align-items: center; gap: 20px;">
-                        <span style="font-size: 2rem;">🎙️</span>
+                        <span style="font-size: 2rem;">\uD83C\uDF99\uFE0F</span>
                         <div>
                             <h4>Seminar Discussion</h4>
                             <p>${u.id === 'C1-1'
-                                ? '"If consciousness is entirely a product of brain chemistry, what are the ethical implications for criminal justice and moral responsibility?" — Discuss and defend your position.'
-                                : '"The era of Western-led multilateralism is over. Emerging powers will reshape international institutions in their own image." — Agree or disagree?'}</p>
+                                ? 'If consciousness is entirely a product of brain chemistry, what are the ethical implications for criminal justice and moral responsibility? Discuss and defend your position.'
+                                : 'The era of Western-led multilateralism is over. Emerging powers will reshape international institutions in their own image. Agree or disagree?'}</p>
                         </div>
                     </div>
                 </div>
@@ -311,36 +341,34 @@ function renderC1() {
         </details>
     `).join('');
 
+    const sectionsHtml = sections.map((s, i) => `
+        <div class="c1-section-card">
+            <span class="c1-section-icon">${s.icon}</span>
+            <h4>${s.title}</h4>
+            <p>${s.topics}</p>
+            ${s.sample ? `
+            <div style="margin-top: 12px; display: flex; align-items: center; gap: 10px; background: rgba(167,139,250,0.08); padding: 10px 14px; border-radius: 10px;">
+                <button class="play-btn" style="width: 34px; height: 34px; font-size: 0.85rem; flex-shrink:0;"
+                    onclick="playC1Text('sec-${i}')">\uD83D\uDD0A</button>
+                <span style="font-size: 0.82rem; opacity: 0.75; font-style: italic;">&ldquo;${s.sample}&rdquo;</span>
+            </div>` : ''}
+        </div>
+    `).join('');
+
     const html = `
         <div class="c1-intro-banner">
-            <h2>🎓 Level C1 — Advanced Academic</h2>
+            <h2>\uD83C\uDF93 Level C1 &#8212; Advanced Academic</h2>
             <p>Develop the sophisticated linguistic and critical thinking skills required for academic, professional, and intellectual discourse. Engage with complex ideas across geopolitics, cognitive science, philosophy, and beyond.</p>
         </div>
-
-        <div class="c1-syllabus-grid">
-            ${sections.map(s => `
-                <div class="c1-section-card">
-                    <span class="c1-section-icon">${s.icon}</span>
-                    <h4>${s.title}</h4>
-                    <p>${s.topics}</p>
-                    ${s.sample ? `
-                    <div style="margin-top: 12px; display: flex; align-items: center; gap: 10px; background: rgba(167,139,250,0.08); padding: 10px 14px; border-radius: 10px;">
-                        <button class="play-btn" style="width: 34px; height: 34px; font-size: 0.85rem; flex-shrink:0;" onclick="playAudio('${s.sample.replace(/'/g, "\\'")}')">🔊</button>
-                        <span style="font-size: 0.82rem; opacity: 0.75; font-style: italic;">"${s.sample}"</span>
-                    </div>` : ''}
-                </div>
-            `).join('')}
-        </div>
-
-        <h3 style="color: #a78bfa; margin: 35px 0 20px; font-size: 1.3rem; letter-spacing: 1px;">📋 C1 Interactive Units</h3>
+        <div class="c1-syllabus-grid">${sectionsHtml}</div>
+        <h3 style="color: #a78bfa; margin: 35px 0 20px; font-size: 1.3rem; letter-spacing: 1px;">\uD83D\uDCCB C1 Interactive Units</h3>
         ${unitsHtml}
     `;
 
     container.innerHTML = html;
-
-    // Re-bind navigation for newly created unit blocks
     setupNavigation();
 }
+
 
 const whatsappIcon = `<svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`;
 
