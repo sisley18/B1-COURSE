@@ -98,6 +98,35 @@
     </div>
 
     <div class="container" id="main-content">
+
+        <!-- Level Selector Hub -->
+        <div class="level-selector-hub" id="level-hub">
+            <div class="level-hub-label">Select Your Level</div>
+            <div class="level-tabs" role="tablist">
+                <button class="level-tab" id="tab-a1" role="tab" aria-selected="false" onclick="switchLevel('A1')">
+                    <span class="level-badge a1-badge">A1</span>
+                    <span class="level-tab-text">
+                        <strong>Beginner</strong>
+                        <small>Foundations</small>
+                    </span>
+                </button>
+                <button class="level-tab active" id="tab-b1" role="tab" aria-selected="true" onclick="switchLevel('B1')">
+                    <span class="level-badge b1-badge">B1</span>
+                    <span class="level-tab-text">
+                        <strong>Intermediate</strong>
+                        <small>In Progress</small>
+                    </span>
+                </button>
+                <button class="level-tab" id="tab-c1" role="tab" aria-selected="false" onclick="switchLevel('C1')">
+                    <span class="level-badge c1-badge">C1</span>
+                    <span class="level-tab-text">
+                        <strong>Advanced</strong>
+                        <small>Academic</small>
+                    </span>
+                </button>
+            </div>
+        </div>
+
         <div class="unit-list" id="curriculum-container">
             <!-- Content Injected via script.js -->
         </div>

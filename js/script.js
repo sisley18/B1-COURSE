@@ -106,7 +106,244 @@ window.navigateUnit = function (direction) {
     }
 };
 
+// ============================================================
+// Level Selector Hub — switchLevel / renderA1 / renderC1
+// ============================================================
+let currentLevel = 'B1';
+
+window.switchLevel = function (level) {
+    currentLevel = level;
+
+    // Update tab active states
+    ['A1', 'B1', 'C1'].forEach(l => {
+        const tab = document.getElementById('tab-' + l.toLowerCase());
+        if (tab) {
+            tab.classList.toggle('active', l === level);
+            tab.setAttribute('aria-selected', l === level ? 'true' : 'false');
+        }
+    });
+
+    // Stop any playing audio when switching levels
+    window.stopAudio();
+
+    // Render the appropriate content
+    if (level === 'B1') renderCurriculum();
+    else if (level === 'A1') renderA1();
+    else if (level === 'C1') renderC1();
+};
+
+function renderA1() {
+    const container = document.getElementById('curriculum-container');
+    if (!container) return;
+    container.innerHTML = '';
+
+    const sections = [
+        { icon: '📚', title: '1. Vocabulary', topics: 'Basic nouns, verbs, adjectives & opposites. Everyday objects, numbers, colors, days, months. Common expressions and greetings.', sample: 'Hello, apple, happy, Monday' },
+        { icon: '🎧', title: '2. Listening', topics: 'Short, simple dialogues. Understanding personal information: name, age, country. Listening to instructions and requests.', sample: 'What is your name? Where are you from?' },
+        { icon: '📖', title: '3. Reading', topics: 'Very short texts: signs, forms, notices. Simple descriptions of people, places and daily routines. Postcards and short emails.', sample: 'My name is Ana. I am from Argentina.' },
+        { icon: '✏️', title: '4. Grammar', topics: 'Present Simple (be/have). Plurals. Articles (a, an, the). Subject pronouns and possessives. Yes/No questions. There is / There are.', sample: 'She is a teacher. There are three books.' },
+        { icon: '🔤', title: '5. Pronunciation', topics: 'The English alphabet. Individual sounds: vowels and consonants. Word stress in 2-syllable words. Basic intonation in questions vs. statements.', sample: 'apple, banana, student' },
+        { icon: '🔗', title: '6. Collocations', topics: 'Simple verb + noun collocations. Make vs. Do. Have + noun. Common fixed expressions.', sample: 'make a coffee, do homework' },
+        { icon: '🖊️', title: '7. Writing', topics: 'Fill in personal information forms. Write a short profile (50 words). Write a simple postcard or message.', sample: 'My name is... I live in...' },
+        { icon: '🎙️', title: '8. Speaking', topics: 'Introduce yourself and others. Describe your family and home. Talk about daily routines. Ask for and give directions.', sample: 'Hi! My name is Carlos. I am 25 years old.' }
+    ];
+
+    const html = `
+        <div class="a1-intro-banner">
+            <h2>📗 Level A1 — Beginner</h2>
+            <p>Master the essential building blocks of English. This level covers fundamental vocabulary, everyday grammar, and basic communication skills so you can introduce yourself and interact in simple situations.</p>
+        </div>
+
+        <div class="a1-syllabus-grid">
+            ${sections.map(s => `
+                <div class="a1-section-card">
+                    <span class="c1-section-icon">${s.icon}</span>
+                    <h4>${s.title}</h4>
+                    <p>${s.topics}</p>
+                    ${s.sample ? `
+                    <div style="margin-top: 12px; display: flex; align-items: center; gap: 10px; background: rgba(52,211,153,0.08); padding: 10px 14px; border-radius: 10px;">
+                        <button class="play-btn" style="width: 34px; height: 34px; font-size: 0.85rem; flex-shrink:0;" onclick="playAudio('${s.sample.replace(/'/g, "\\'")}')">🔊</button>
+                        <span style="font-size: 0.82rem; opacity: 0.75; font-style: italic;">"${s.sample}"</span>
+                    </div>` : ''}
+                </div>
+            `).join('')}
+        </div>
+
+        <div style="text-align: center; padding: 20px; background: rgba(52,211,153,0.08); border: 1px solid rgba(52,211,153,0.25); border-radius: 16px; margin-top: 10px;">
+            <p style="opacity: 0.7; font-size: 0.9rem;">🚀 A1 course materials coming soon. Switch to <strong>B1</strong> to access full interactive units.</p>
+        </div>
+    `;
+    container.innerHTML = html;
+}
+
+function renderC1() {
+    const container = document.getElementById('curriculum-container');
+    if (!container) return;
+    container.innerHTML = '';
+
+    const sections = [
+        { icon: '📚', title: '1. Vocabulary', topics: 'Academic and professional register. Low-frequency advanced lexis: geopolitical, philosophical, and scientific terminology. Nuance between near-synonyms (e.g. assert vs. contend). Figurative and idiomatic language at C-level.', sample: 'paradigm, sovereignty, epistemology' },
+        { icon: '🎧', title: '2. Listening', topics: 'Authentic lectures, debates, and academic podcasts. Inferring speaker stance, bias, and subtext. Note-taking strategies. Understanding accented and rapid native speech.', sample: 'The cognitive dissonance created by social media algorithms is unprecedented.' },
+        { icon: '📖', title: '3. Reading', topics: 'Complex academic and journalistic texts. Critical analysis of argument structure and rhetorical devices. Identifying implicit meaning, hedging language, and authorial stance.', sample: 'Global governance frameworks are increasingly inadequate.' },
+        { icon: '✏️', title: '4. Grammar', topics: 'Advanced inversion and cleft structures. Subjunctive and conditional nuance. Ellipsis and substitution. Passive and reporting verbs for academic style. Complex nominal groups.', sample: 'Not only has technology transformed communication, but it has also reshaped cognition.' },
+        { icon: '🔤', title: '5. Pronunciation', topics: 'Weak forms and connected speech at natural speed. Nuclear stress and information structure. Discourse-level intonation. American English rhythm, linking, and elision patterns.', sample: 'The implications of this research are far-reaching.' },
+        { icon: '🔗', title: '6. Collocations & Register', topics: 'Academic collocations: conduct research, draw conclusions, cast doubt. Formal vs. neutral vs. informal register switches. Fixed expressions in academic discourse and debate.', sample: 'draw a distinction, take into account, give rise to' },
+        { icon: '🖊️', title: '7. Writing', topics: 'Extended academic essays (argument, discussion, evaluation). Abstracts and executive summaries. Formal reports and proposals. Coherence, cohesion, hedging, and academic integrity.', sample: 'Critically evaluate the role of biotechnology in addressing food insecurity.' },
+        { icon: '🎙️', title: '8. Speaking', topics: 'Academic presentations and seminars. Structured debate and argumentation. Diplomatic disagreement and turn-taking. Impromptu discussions on complex global topics.', sample: 'While I take your point, I would argue that the evidence suggests otherwise.' }
+    ];
+
+    const units = [
+        {
+            id: 'C1-1',
+            title: 'Cognitive Science & The Mind',
+            topic: 'Consciousness, Memory, and Human Perception',
+            vocab: [
+                { word: 'Paradigm', ipa: 'ˈpærəˌdaɪm', def: 'A typical example or pattern; a model of thinking within a discipline.' },
+                { word: 'Cognitive dissonance', ipa: 'ˈkɒɡnɪtɪv ˈdɪsənəns', def: 'The discomfort felt when holding two contradictory beliefs simultaneously.' },
+                { word: 'Epistemology', ipa: 'ɪˌpɪstɪˈmɒlədʒi', def: 'The branch of philosophy concerned with the nature and scope of knowledge.' },
+                { word: 'Neuroplasticity', ipa: 'ˌnjʊərəʊplæˈstɪsɪti', def: 'The brain\'s ability to reorganize itself by forming new neural connections throughout life.' },
+                { word: 'Heuristic', ipa: 'hjʊˈrɪstɪk', def: 'A practical mental shortcut enabling quick, efficient judgment and problem-solving.' },
+                { word: 'Introspection', ipa: 'ˌɪntrəˈspɛkʃən', def: 'The examination of one\'s own mental and emotional processes.' }
+            ],
+            listening: 'Modern neuroscience has fundamentally challenged our understanding of consciousness. For centuries, philosophers debated whether the mind was separate from the body — the Cartesian dualism that Descartes articulated in the seventeenth century. However, contemporary research in cognitive neuroscience suggests that consciousness is an emergent property of complex neural networks, not a transcendent soul. The implications are profound: if our sense of self is merely a neurological construct, what does that mean for concepts of free will, moral responsibility, and personal identity? These questions sit at the intersection of science, philosophy, and ethics — making them essential territory for the twenty-first century thinker.',
+            reading: 'The field of neuroplasticity has revolutionized how we conceive of human potential. Once believed to be fixed in early childhood, the brain\'s architecture is now understood to be remarkably malleable throughout the lifespan. Pioneering research by Michael Merzenich and others demonstrated that sustained cognitive training could physically alter cortical maps — a discovery with transformative implications for education, rehabilitation, and personal development. This plasticity is not unlimited, however. The degree to which the brain can reorganize itself diminishes with age, and the quality of the input matters enormously. Passive exposure rarely suffices; active, effortful engagement with challenging material appears to be the key driver of genuine structural change. Critics caution against overstating these findings — the popular narrative of \"rewiring your brain\" often outpaces the nuance of the actual science.',
+        },
+        {
+            id: 'C1-2',
+            title: 'Geopolitics & Global Order',
+            topic: 'Power, Sovereignty, and International Governance',
+            vocab: [
+                { word: 'Sovereignty', ipa: 'ˈsɒvrənti', def: 'Supreme authority of a state to govern itself without external interference.' },
+                { word: 'Hegemony', ipa: 'hɪˈɡɛməni', def: 'Leadership or dominance, especially of one state or group over others.' },
+                { word: 'Multilateralism', ipa: 'ˌmʌltiˈlætərəlɪzəm', def: 'International cooperation among multiple countries to address shared problems.' },
+                { word: 'Deterrence', ipa: 'dɪˈtɛrəns', def: 'The use of threats to dissuade an adversary from taking an undesired action.' },
+                { word: 'Geopolitical', ipa: 'ˌdʒiːəʊpəˈlɪtɪkəl', def: 'Relating to politics, especially international relations, influenced by geographic factors.' },
+                { word: 'Non-state actor', ipa: 'nɒn steɪt ˈæktər', def: 'An individual or organization that has political influence but is not allied with any government.' }
+            ],
+            listening: 'The post-Cold War assumption of a unipolar world led by the United States is rapidly giving way to a more contested multipolar order. Rising powers — most notably China, but also India, Brazil, and the reassertive Russia — are challenging the liberal international institutions built in the aftermath of World War II. The United Nations, the World Trade Organization, and the International Monetary Fund were designed in a context that no longer exists. As these powers accumulate economic and military weight, they are also projecting alternative governance models — ones that prioritize state sovereignty and non-interference over human rights and democratic accountability. The question is not whether the international order will change, but whether that change can be managed peacefully.',
+            reading: 'The concept of sovereignty — once regarded as the bedrock of international order — is under unprecedented pressure from multiple directions simultaneously. From above, supranational bodies like the European Union and the International Criminal Court claim authority that transcends national boundaries. From below, secessionist movements and stateless peoples assert identities that defy the cartographic logic of the Westphalian state system. Meanwhile, non-state actors from multinational corporations to global terrorist networks operate across borders with an agility that renders traditional sovereignty increasingly difficult to enforce. Scholars are divided on what this means: cosmopolitans celebrate the erosion of state power as an opportunity to ground governance in universal human rights, while realists warn that weakening states creates power vacuums that invite instability and conflict.',
+        }
+    ];
+
+    let unitsHtml = units.map(u => `
+        <details class="unit-block">
+            <summary class="unit-header">
+                <div>
+                    <span class="unit-subtitle">Unit ${u.id}</span>
+                    <span class="unit-title">${u.title}</span>
+                </div>
+            </summary>
+            <div class="unit-body">
+                <p style="opacity: 0.7; margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">Topic: ${u.topic}</p>
+
+                <!-- Vocabulary -->
+                <div class="section-block">
+                    <span class="section-label" style="background: rgba(167,139,250,0.2); color: #a78bfa;">Vocabulary</span>
+                    <h3>Advanced Key Terms</h3>
+                    <p style="margin-bottom: 15px; opacity: 0.7;">🔊 Click the speaker to hear each word with American pronunciation:</p>
+                    <div class="vocab-grid">
+                        ${u.vocab.map(v => `
+                            <div class="vocab-card" style="border-left-color: #a78bfa;">
+                                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                                    <button class="play-btn" style="width: 32px; height: 32px; font-size: 0.9rem; flex-shrink: 0;" onclick="playAudio('${v.word.replace(/'/g, "\\'")}')">🔊</button>
+                                    <strong style="font-size: 1.1rem;">${v.word}</strong>
+                                </div>
+                                ${v.ipa ? `<p style="font-family: monospace; color: #a78bfa; font-size: 0.95rem; margin-bottom: 8px;">/${v.ipa}/</p>` : ''}
+                                <p style="opacity: 0.8;">${v.def}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- Listening -->
+                <div class="section-block">
+                    <span class="section-label listening" style="background: rgba(167,139,250,0.2); color: #a78bfa;">Listening</span>
+                    <h3>Academic Audio Track</h3>
+                    <div class="player-controls">
+                        <button class="play-btn" onclick="playTrack('${u.listening.replace(/'/g, "\\'")}')">▶</button>
+                        <span style="font-size: 0.9rem; opacity: 0.8;">Full Audio Track — C1 Level</span>
+                    </div>
+                    <button class="btn" style="border: 1px solid rgba(255,255,255,0.2); font-size: 0.8rem; padding: 5px 15px;" onclick="toggleTranscript(this)">Show Transcript</button>
+                    <div class="transcript-box" style="display:none; margin-top:10px;">
+                        ${u.listening}
+                    </div>
+                </div>
+
+                <!-- Reading -->
+                <div class="section-block">
+                    <span class="section-label reading" style="background: rgba(167,139,250,0.2); color: #a78bfa;">Reading</span>
+                    <h3>Critical Analysis Text</h3>
+                    <div class="reading-text" style="border-left-color: #a78bfa;">
+                        ${u.reading}
+                    </div>
+                    <button class="play-btn" style="width: 40px; height: 40px; font-size: 1rem; margin-top: 10px;" onclick="playTrack('${u.reading.replace(/'/g, "\\'")}')">🔊</button>
+                    <span style="vertical-align: middle; margin-left: 10px; opacity: 0.7; font-size: 0.85rem;">Listen to the full reading passage</span>
+                </div>
+
+                <!-- Writing -->
+                <div class="section-block">
+                    <span class="section-label" style="background: rgba(255,100,100,0.2); color: #ffadad;">Writing Task</span>
+                    <div style="background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px;">
+                        <p style="font-style: italic; margin-bottom: 15px;">Target: 350 words — Academic argument essay</p>
+                        <h4 style="margin-bottom: 10px;">
+                            ${u.id === 'C1-1'
+                                ? 'To what extent do advances in neuroscience challenge traditional notions of human free will? Discuss with reference to current research.'
+                                : 'Critically evaluate whether multilateral institutions are still capable of maintaining global peace and stability in a multipolar world.'}
+                        </h4>
+                        <textarea style="width: 100%; height: 180px; background: rgba(255,255,255,0.05); border: 1px solid rgba(167,139,250,0.3); color: #fff; padding: 12px; border-radius: 8px; font-family: inherit;" placeholder="Write your academic essay here..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Speaking -->
+                <div class="section-block">
+                    <span class="section-label" style="background: rgba(255,200,50,0.2); color: #ffe066;">Speaking</span>
+                    <div style="background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; display: flex; align-items: center; gap: 20px;">
+                        <span style="font-size: 2rem;">🎙️</span>
+                        <div>
+                            <h4>Seminar Discussion</h4>
+                            <p>${u.id === 'C1-1'
+                                ? '"If consciousness is entirely a product of brain chemistry, what are the ethical implications for criminal justice and moral responsibility?" — Discuss and defend your position.'
+                                : '"The era of Western-led multilateralism is over. Emerging powers will reshape international institutions in their own image." — Agree or disagree?'}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </details>
+    `).join('');
+
+    const html = `
+        <div class="c1-intro-banner">
+            <h2>🎓 Level C1 — Advanced Academic</h2>
+            <p>Develop the sophisticated linguistic and critical thinking skills required for academic, professional, and intellectual discourse. Engage with complex ideas across geopolitics, cognitive science, philosophy, and beyond.</p>
+        </div>
+
+        <div class="c1-syllabus-grid">
+            ${sections.map(s => `
+                <div class="c1-section-card">
+                    <span class="c1-section-icon">${s.icon}</span>
+                    <h4>${s.title}</h4>
+                    <p>${s.topics}</p>
+                    ${s.sample ? `
+                    <div style="margin-top: 12px; display: flex; align-items: center; gap: 10px; background: rgba(167,139,250,0.08); padding: 10px 14px; border-radius: 10px;">
+                        <button class="play-btn" style="width: 34px; height: 34px; font-size: 0.85rem; flex-shrink:0;" onclick="playAudio('${s.sample.replace(/'/g, "\\'")}')">🔊</button>
+                        <span style="font-size: 0.82rem; opacity: 0.75; font-style: italic;">"${s.sample}"</span>
+                    </div>` : ''}
+                </div>
+            `).join('')}
+        </div>
+
+        <h3 style="color: #a78bfa; margin: 35px 0 20px; font-size: 1.3rem; letter-spacing: 1px;">📋 C1 Interactive Units</h3>
+        ${unitsHtml}
+    `;
+
+    container.innerHTML = html;
+
+    // Re-bind navigation for newly created unit blocks
+    setupNavigation();
+}
+
 const whatsappIcon = `<svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`;
+
 
 function renderCurriculum() {
     const container = document.getElementById('curriculum-container');
@@ -555,159 +792,164 @@ window.sendVideoAnswersToWhatsApp = function (unitId) {
     window.open(`https://wa.me/?text=${encoded}`, '_blank');
 };
 
-// Universal High-Quality Audio Engine (Native Web Speech API)
-// Optimized for American Professional Pronunciation on Mobile/Tablet/PC
+// ============================================================
+// Universal Audio Engine — Mobile/Tablet/Desktop
+// Pronunciación americana natural y profesional en todos los dispositivos
+// ============================================================
 let audioQueue = [];
 let isPlaying = false;
 let isPaused = false;
 let voices = [];
+let _currentUtterance = null;
+
+// Detect mobile/tablet environments where gesture-gating applies
+const _isMobile = /iPhone|iPad|iPod|Android|Mobile|Tablet/i.test(navigator.userAgent);
 
 function initAudioEngine() {
-    if ('speechSynthesis' in window) {
-        // Load voices immediately (works on Firefox, Safari)
-        voices = window.speechSynthesis.getVoices();
-        // Desktop Chrome/Edge load voices asynchronously — keep retrying
-        if (window.speechSynthesis.onvoiceschanged !== undefined) {
-            window.speechSynthesis.onvoiceschanged = () => {
-                voices = window.speechSynthesis.getVoices();
-                console.log("Voices updated:", voices.length);
-            };
-        }
-        // Fallback retry loop for Chrome on Windows (voices often empty on first call)
-        if (voices.length === 0) {
-            let attempts = 0;
-            const retryLoad = setInterval(() => {
-                voices = window.speechSynthesis.getVoices();
-                attempts++;
-                if (voices.length > 0 || attempts >= 15) {
-                    clearInterval(retryLoad);
-                    console.log("Voices ready after retry:", voices.length);
-                }
-            }, 200);
-        }
+    if (!('speechSynthesis' in window)) {
+        console.warn('Web Speech API not supported on this browser.');
+        return;
     }
-    console.log("Universal Audio Engine Ready (Web Speech API — All Devices)");
+
+    // Attempt immediate load (works synchronously on Firefox & Safari)
+    _loadVoices();
+
+    // Chrome/Edge: voices load asynchronously — hook the event
+    window.speechSynthesis.onvoiceschanged = () => {
+        _loadVoices();
+        console.log('Voices updated:', voices.length);
+    };
+
+    // Retry fallback for browsers that never fire onvoiceschanged (some Android WebViews)
+    if (voices.length === 0) {
+        let attempts = 0;
+        const retryInterval = setInterval(() => {
+            _loadVoices();
+            attempts++;
+            if (voices.length > 0 || attempts >= 20) {
+                clearInterval(retryInterval);
+                console.log('Voices ready after retry — count:', voices.length);
+            }
+        }, 250);
+    }
+
+    console.log('Audio Engine Ready — Device:', _isMobile ? 'Mobile/Tablet' : 'Desktop');
+}
+
+function _loadVoices() {
+    const raw = window.speechSynthesis.getVoices();
+    if (raw.length > 0) voices = raw;
+}
+
+function _normalizedLang(voice) {
+    // Normalize both en-US and en_US and en_us etc. → 'en-us'
+    return voice.lang.toLowerCase().replace(/_/g, '-');
 }
 
 function getBestVoice(genderPreference) {
-    if (voices.length === 0) voices = window.speechSynthesis.getVoices();
+    // Always refresh voice list on call — lazy load for iOS
+    if (voices.length === 0) _loadVoices();
 
-    const usVoices = voices.filter(v => v.lang === 'en-US' || v.lang.startsWith('en-US'));
-    if (usVoices.length === 0) return voices.find(v => v.lang.includes('en')) || null;
+    // Match en-US voices tolerantly (handles en_US, en-US, en_us)
+    const usVoices = voices.filter(v => {
+        const lang = _normalizedLang(v);
+        return lang === 'en-us' || lang.startsWith('en-us');
+    });
 
-    // Filter by gender if possible
-    let filtered = usVoices;
+    // Broader English fallback if no US voices found
+    const pool = usVoices.length > 0
+        ? usVoices
+        : voices.filter(v => _normalizedLang(v).startsWith('en'));
+
+    if (pool.length === 0) return null;
+
+    // Filter by gender preference (keyword heuristics — browsers don't expose gender)
+    let filtered = pool;
     if (genderPreference) {
         const gp = genderPreference.toLowerCase();
         if (gp === 'female') {
-            filtered = usVoices.filter(v => /female|samantha|zira|victoria|aria|jenny|michelle|monica/i.test(v.name));
+            const f = pool.filter(v => /samantha|zira|victoria|aria|jenny|michelle|monica|karen|siri|ava|allison|susan|alice/i.test(v.name));
+            if (f.length > 0) filtered = f;
         } else if (gp === 'male') {
-            filtered = usVoices.filter(v => /male|alex|david|mark|guy|ryan|andrew/i.test(v.name));
+            const m = pool.filter(v => /alex|david|mark|guy|ryan|andrew|fred|tom|daniel|bruce/i.test(v.name));
+            if (m.length > 0) filtered = m;
         }
     }
 
-    if (filtered.length === 0) filtered = usVoices;
+    // Premium voice priority list — neural/enhanced voices first
+    const priority = [
+        'Google US English',
+        'Google US',
+        'Microsoft Aria Online',
+        'Microsoft Jenny Online',
+        'Microsoft Aria',
+        'Microsoft Jenny',
+        'Microsoft Guy',
+        'Microsoft David',
+        'Microsoft Zira',
+        'Samantha',
+        'Enhanced',
+        'Premium',
+        'Natural',
+        'Google',
+        'Microsoft'
+    ];
 
-    // Priority: Google US English (Chrome desktop) > Microsoft Aria/Jenny (Edge neural) > Apple Enhanced (Mac/iOS) > fallback
-    const premiumOrder = ['Google US English', 'Google US', 'Google', 'Microsoft Aria', 'Microsoft Jenny', 'Microsoft', 'Aria', 'Jenny', 'Enhanced', 'Premium', 'Natural'];
-    for (const keyword of premiumOrder) {
+    for (const keyword of priority) {
         const match = filtered.find(v => v.name.includes(keyword));
         if (match) return match;
     }
 
-    return filtered[0];
+    return filtered[0] || pool[0];
 }
+
+// ---- Public API ----
 
 window.playAudio = function (text, genderPreference) {
-    window.stopAudio();
     if (!text || !('speechSynthesis' in window)) return;
 
-    // Split text into ~180 char chunks at sentence boundaries for smoother playback
-    const chunks = splitTextForTTS(text, 180);
-    audioQueue = chunks.map(c => ({ text: c, gender: genderPreference }));
-    isPaused = false;
-    processAudioQueue();
+    window.stopAudio();
+
+    // On mobile/tablet, play the entire text as ONE utterance.
+    // Chunking breaks iOS gesture validation — subsequent chunks are blocked by Safari.
+    // On desktop, chunk for Chrome's 15-second cut-off on long paragraphs.
+    if (_isMobile || text.length <= 300) {
+        _speak(text, genderPreference);
+    } else {
+        const chunks = _splitText(text, 250);
+        audioQueue = chunks.map(c => ({ text: c, gender: genderPreference }));
+        isPaused = false;
+        _processQueue();
+    }
 };
-
-function splitTextForTTS(text, maxLength) {
-    const chunks = [];
-    let remaining = text;
-
-    while (remaining.length > 0) {
-        if (remaining.length <= maxLength) {
-            chunks.push(remaining);
-            break;
-        }
-
-        let splitIdx = remaining.lastIndexOf('. ', maxLength);
-        if (splitIdx === -1) splitIdx = remaining.lastIndexOf('? ', maxLength);
-        if (splitIdx === -1) splitIdx = remaining.lastIndexOf('! ', maxLength);
-        if (splitIdx === -1) splitIdx = remaining.lastIndexOf(', ', maxLength);
-        if (splitIdx === -1) splitIdx = remaining.lastIndexOf(' ', maxLength);
-        if (splitIdx === -1) splitIdx = maxLength;
-
-        chunks.push(remaining.substring(0, splitIdx + 1).trim());
-        remaining = remaining.substring(splitIdx + 1).trim();
-    }
-    return chunks;
-}
-
-function processAudioQueue() {
-    if (isPaused || audioQueue.length === 0) {
-        isPlaying = false;
-        return;
-    }
-
-    isPlaying = true;
-    const item = audioQueue.shift();
-    const utterance = new SpeechSynthesisUtterance(item.text);
-    
-    utterance.lang = 'en-US';
-    utterance.rate = 0.98; // Slightly more natural professional speed
-    utterance.pitch = 1.0;
-    
-    const voice = getBestVoice(item.gender);
-    if (voice) utterance.voice = voice;
-
-    utterance.onend = () => {
-        // Small delay between segments for natural breathing (400ms)
-        if (isPlaying && !isPaused) {
-            setTimeout(processAudioQueue, 400);
-        } else {
-            processAudioQueue();
-        }
-    };
-
-    utterance.onerror = (e) => {
-        console.error("SpeechSynthesis error:", e);
-        processAudioQueue();
-    };
-
-    window.speechSynthesis.speak(utterance);
-}
 
 window.stopAudio = function () {
     audioQueue = [];
+    isPlaying = false;
+    isPaused = false;
+    _currentUtterance = null;
     if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
     }
-    isPlaying = false;
-    isPaused = false;
-    updatePauseButton(false);
+    _updatePauseBtn(false);
 };
 
 window.pauseAudio = function () {
     if ('speechSynthesis' in window && window.speechSynthesis.speaking && !isPaused) {
-        window.speechSynthesis.pause();
         isPaused = true;
-        updatePauseButton(true);
+        window.speechSynthesis.pause();
+        _updatePauseBtn(true);
     }
 };
 
 window.resumeAudio = function () {
-    if ('speechSynthesis' in window && isPaused) {
-        isPaused = false;
-        updatePauseButton(false);
+    if (!('speechSynthesis' in window) || !isPaused) return;
+    isPaused = false;
+    _updatePauseBtn(false);
+    // iOS often ignores resume() — restart remaining queue instead
+    if (_isMobile) {
+        _processQueue();
+    } else {
         window.speechSynthesis.resume();
     }
 };
@@ -720,13 +962,6 @@ window.togglePauseAudio = function () {
     }
 };
 
-function updatePauseButton(isPaused) {
-    const pauseBtn = document.getElementById('pause-audio-btn');
-    if (pauseBtn) {
-        pauseBtn.innerHTML = isPaused ? '▶️ Resume' : '⏸️ Pause';
-    }
-}
-
 window.courseAudio = {
     play: window.playAudio,
     stop: window.stopAudio,
@@ -734,6 +969,74 @@ window.courseAudio = {
     resume: window.resumeAudio,
     togglePause: window.togglePauseAudio
 };
+
+// ---- Internal helpers ----
+
+function _speak(text, gender) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-US';
+    utterance.rate = 0.95;   // Slightly slower = more natural & clear
+    utterance.pitch = 1.0;
+    utterance.volume = 1.0;
+
+    const voice = getBestVoice(gender);
+    if (voice) utterance.voice = voice;
+
+    _currentUtterance = utterance;
+    isPlaying = true;
+
+    utterance.onend = () => {
+        if (isPlaying && !isPaused) {
+            setTimeout(_processQueue, 350);
+        }
+    };
+
+    utterance.onerror = (e) => {
+        // 'interrupted' is normal when stopAudio() is called — suppress it
+        if (e.error !== 'interrupted' && e.error !== 'canceled') {
+            console.warn('SpeechSynthesis error:', e.error, '— Text:', text.substring(0, 60));
+        }
+        if (isPlaying && !isPaused && e.error !== 'interrupted' && e.error !== 'canceled') {
+            setTimeout(_processQueue, 200);
+        }
+    };
+
+    // Guard: if synth is in a stuck state, reset it first
+    if (window.speechSynthesis.paused) window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(utterance);
+}
+
+function _processQueue() {
+    if (isPaused || audioQueue.length === 0) {
+        isPlaying = audioQueue.length > 0;
+        return;
+    }
+    const item = audioQueue.shift();
+    _speak(item.text, item.gender);
+}
+
+function _splitText(text, maxLen) {
+    const chunks = [];
+    let remaining = text;
+    while (remaining.length > 0) {
+        if (remaining.length <= maxLen) { chunks.push(remaining); break; }
+        let idx = remaining.lastIndexOf('. ', maxLen);
+        if (idx < 0) idx = remaining.lastIndexOf('? ', maxLen);
+        if (idx < 0) idx = remaining.lastIndexOf('! ', maxLen);
+        if (idx < 0) idx = remaining.lastIndexOf(', ', maxLen);
+        if (idx < 0) idx = remaining.lastIndexOf(' ', maxLen);
+        if (idx < 0) idx = maxLen;
+        chunks.push(remaining.substring(0, idx + 1).trim());
+        remaining = remaining.substring(idx + 1).trim();
+    }
+    return chunks;
+}
+
+function _updatePauseBtn(paused) {
+    const btn = document.getElementById('pause-audio-btn');
+    if (btn) btn.innerHTML = paused ? '▶️ Resume' : '⏸️ Pause';
+}
+// ============================================================
 
 // Attendance Logic
 function initAttendance() {

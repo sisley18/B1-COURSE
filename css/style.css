@@ -910,4 +910,238 @@ footer p {
     opacity: 1;
     color: #ef4444;
 }
+
+/* ============================================================
+   Level Selector Hub — A1 / B1 / C1
+   ============================================================ */
+.level-selector-hub {
+    margin: 40px 0 30px;
+    text-align: center;
+}
+
+.level-hub-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 14px;
+}
+
+.level-tabs {
+    display: inline-flex;
+    gap: 12px;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 60px;
+    padding: 8px;
+    backdrop-filter: blur(12px);
+}
+
+.level-tab {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 22px;
+    border-radius: 50px;
+    border: 2px solid transparent;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.55);
+    cursor: pointer;
+    font-family: var(--font-body);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.level-tab:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.level-tab.active {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.35);
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.level-badge {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    flex-shrink: 0;
+}
+
+.a1-badge {
+    background: linear-gradient(135deg, #34d399, #10b981);
+    color: #fff;
+}
+
+.b1-badge {
+    background: linear-gradient(135deg, #fb923c, #f97316);
+    color: #fff;
+}
+
+.c1-badge {
+    background: linear-gradient(135deg, #a78bfa, #7c3aed);
+    color: #fff;
+}
+
+.level-tab-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.2;
+}
+
+.level-tab-text strong {
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.level-tab-text small {
+    font-size: 0.72rem;
+    opacity: 0.65;
+}
+
+/* C1 Section Cards */
+.c1-intro-banner {
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(167, 139, 250, 0.1));
+    border: 1px solid rgba(167, 139, 250, 0.35);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.c1-intro-banner h2 {
+    font-size: 2rem;
+    background: linear-gradient(135deg, #a78bfa, #e879f9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+}
+
+.c1-intro-banner p {
+    opacity: 0.75;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+.c1-syllabus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-bottom: 35px;
+}
+
+.c1-section-card {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 22px;
+    transition: all 0.3s ease;
+}
+
+.c1-section-card:hover {
+    border-color: rgba(167, 139, 250, 0.45);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.15);
+}
+
+.c1-section-card h4 {
+    color: #a78bfa;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.c1-section-card p {
+    font-size: 0.87rem;
+    opacity: 0.7;
+    line-height: 1.6;
+}
+
+/* A1 Section Cards */
+.a1-intro-banner {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(52, 211, 153, 0.1));
+    border: 1px solid rgba(52, 211, 153, 0.35);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.a1-intro-banner h2 {
+    font-size: 2rem;
+    background: linear-gradient(135deg, #34d399, #6ee7b7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+}
+
+.a1-intro-banner p {
+    opacity: 0.75;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+.a1-syllabus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-bottom: 35px;
+}
+
+.a1-section-card {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 22px;
+    transition: all 0.3s ease;
+}
+
+.a1-section-card:hover {
+    border-color: rgba(52, 211, 153, 0.45);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.15);
+}
+
+.a1-section-card h4 {
+    color: #34d399;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.a1-section-card p {
+    font-size: 0.87rem;
+    opacity: 0.7;
+    line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+    .level-tabs {
+        flex-direction: column;
+        border-radius: 20px;
+        padding: 8px;
+        width: 100%;
+    }
+    .level-tab {
+        width: 100%;
+        justify-content: flex-start;
+    }
+    .c1-syllabus-grid,
+    .a1-syllabus-grid {
+        grid-template-columns: 1fr;
+    }
+}
 
