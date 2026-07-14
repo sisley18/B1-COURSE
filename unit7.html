@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 7 | Restaurants & Bars Services A2</title>
+    <link rel="icon" type="image/x-icon" href="st_marys.ico">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Restaurants & Bars<span>Services A2</span></div>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <a href="index.html" class="btn" style="padding: 6px 15px; font-size: 0.8rem;">Home</a>
+                    <div style="display: flex; gap: 5px;">
+                        <a href="unit6.html" class="btn" style="padding: 6px 12px; font-size: 0.8rem;">◀️</a>
+                        <a href="unit8.html" class="btn" style="padding: 6px 12px; font-size: 0.8rem;">▶️</a>
+                        <button id="pause-audio-btn" class="btn" onclick="togglePauseAudio()" style="padding: 6px 12px; font-size: 0.8rem;">⏸️</button>
+                        <button class="btn" onclick="stopAudio()" style="padding: 6px 12px; font-size: 0.8rem;">⏹️</button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding-top: 120px; padding-bottom: 60px;">
+        <div id="unit-content">
+            <div style="text-align: center; padding: 50px;">
+                <h2>Loading Unit 7...</h2>
+            </div>
+        </div>
+
+        <div style="margin-top: 50px; display: flex; justify-content: space-between;">
+            <a href="index.html" class="btn">Back to All Units</a>
+            <a href="unit8.html" class="btn" style="background: var(--accent-gold); color: #fff;">Next Unit ▶️</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Restaurants & Bars Services A2. Optimized for American English Pronunciation.</p>
+        </div>
+    </footer>
+
+    <script src="js/audio_engine.js"></script>
+    <script src="js/data_part1.js"></script>
+    <script src="js/data_part2.js"></script>
+    <script src="js/data_part3.js"></script>
+    <script src="js/data_part4.js"></script>
+    <script src="js/unit_renderer.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderUnitPage(7);
+        });
+    </script>
+    <script src="js/script.js"></script>
+</body>
+</html>
