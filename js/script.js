@@ -1,11 +1,48 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('App Initialized: Full Module with Pronunciation');
+    sanitizeStoredTeacherLinks(); // Fix any broken URLs saved previously
     initAudioEngine();
     renderCurriculum();
     setupNavigation();
     setupProtection();
     initAttendance();
 });
+
+// Fix any broken teacher link URLs already stored in localStorage
+// (e.g. links saved as "tps://..." or "ttps://..." before the validation fix)
+function sanitizeStoredTeacherLinks() {
+    try {
+        const all = JSON.parse(localStorage.getItem('teacher_links') || '{}');
+        let changed = false;
+        Object.keys(all).forEach(unitId => {
+            all[unitId] = all[unitId].filter(link => {
+                // Strip any broken protocol prefix and rebuild with https://
+                let url = link.url.replace(/^[a-z]*:\/\//i, '');
+                url = 'https://' + url;
+                try {
+                    const parsed = new URL(url);
+                    if (!parsed.hostname.includes('.')) {
+                        changed = true;
+                        return false; // Remove invalid link
+                    }
+                    link.url = url;
+                    changed = true;
+                    return true;
+                } catch (e) {
+                    changed = true;
+                    return false; // Remove unparseable link
+                }
+            });
+        });
+        if (changed) {
+            localStorage.setItem('teacher_links', JSON.stringify(all));
+            console.log('Teacher links sanitized.');
+        }
+    } catch (e) {
+        console.warn('Could not sanitize teacher links:', e);
+    }
+}
+
 
 // Content Protection
 function setupProtection() {
@@ -383,15 +420,16 @@ function renderCurriculum() {
         unitBlock.className = 'unit-block';
 
         // Image mapping for each unit
+        // Free-use photos from Unsplash (Unsplash License — free for commercial & personal use, no attribution required)
         const unitImages = {
-            1: 'images/unit1_ai_tech_1769887384498.png',
-            2: 'images/unit2_global_business_1769887397475.png',
-            3: 'images/unit3_planet_earth_1769887410570.png',
-            4: 'images/unit4_media_society_1769887424674.png',
-            5: 'images/unit5_health_wellness_1769887449497.png',
-            6: 'images/unit6_art_culture_1769887464596.png',
-            7: 'images/unit7_urban_life_1769887479614.png',
-            8: 'images/unit8_education_1769887495495.png'
+            1: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80', // AI / Robotics
+            2: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80', // Global Business / Teamwork
+            3: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800&q=80', // Planet Earth / Nature
+            4: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&q=80', // Media & Society / Social Media
+            5: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80', // Health & Wellness / Fitness
+            6: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800&q=80', // Art & Culture / Painting
+            7: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=80', // Urban Life / City
+            8: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80'  // Education / University
         };
 
         unitBlock.innerHTML = `
