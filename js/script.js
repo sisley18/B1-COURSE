@@ -406,7 +406,29 @@ function renderCurriculum() {
                     <img src="${unitImages[unit.id]}" alt="${unit.title}" style="width: 100%; max-width: 400px; border-radius: 16px; margin: 0 auto 30px; display: block; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
                 </div>
                 <p style="opacity: 0.7; margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">Topic: ${unit.topic}</p>
-                
+
+                <!-- Teacher Links -->
+                <div class="section-block teacher-links-block" id="teacher-links-unit-${unit.id}">
+                    <span class="section-label" style="background: rgba(99, 102, 241, 0.2); color: #818cf8;">📎 Teacher Links</span>
+                    <div class="teacher-links-container">
+                        <div class="teacher-links-list" id="teacher-links-list-${unit.id}">
+                            <!-- Links loaded dynamically -->
+                        </div>
+                        <details class="teacher-link-form-toggle">
+                            <summary class="btn teacher-add-link-btn" style="background: rgba(99, 102, 241, 0.15); border: 1px dashed rgba(129, 140, 248, 0.4); color: #818cf8; padding: 10px 20px; font-size: 0.9rem; cursor: pointer; border-radius: 10px; list-style: none; text-align: center; transition: all 0.3s ease;">
+                                ➕ Add Link
+                            </summary>
+                            <div class="teacher-link-form" style="margin-top: 12px; display: grid; gap: 10px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 12px;">
+                                <input type="text" id="teacher-link-title-${unit.id}" placeholder="Link title (e.g. Grammar worksheet)" style="padding: 10px 14px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; border-radius: 8px; font-family: inherit; font-size: 0.9rem;">
+                                <input type="url" id="teacher-link-url-${unit.id}" placeholder="https://..." style="padding: 10px 14px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; border-radius: 8px; font-family: inherit; font-size: 0.9rem;">
+                                <button class="btn" onclick="addTeacherLink(${unit.id})" style="background: linear-gradient(135deg, #6366f1, #818cf8); border: none; color: #fff; padding: 10px 20px; font-weight: 600; border-radius: 8px; cursor: pointer; transition: all 0.3s ease;">
+                                    Save Link 💾
+                                </button>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
                 <!-- 1. Vocabulary -->
                 <div class="section-block">
                     <span class="section-label" style="background: rgba(255,255,255,0.1); color: #fff;">Vocabulary</span>
@@ -729,6 +751,9 @@ function renderCurriculum() {
         `;
         container.appendChild(unitBlock);
     });
+
+    // Load saved teacher links for all units
+    loadAllTeacherLinks();
 }
 
 function renderQuiz(questions) {
@@ -1124,3 +1149,104 @@ window.deleteAttendance = function (id) {
     loadAttendance();
 };
 
+// ============================================================
+// Teacher Links Management
+// ============================================================
+
+function getTeacherLinks(unitId) {
+    const all = JSON.parse(localStorage.getItem('teacher_links') || '{}');
+    return all[unitId] || [];
+}
+
+function saveTeacherLinks(unitId, links) {
+    const all = JSON.parse(localStorage.getItem('teacher_links') || '{}');
+    all[unitId] = links;
+    localStorage.setItem('teacher_links', JSON.stringify(all));
+}
+
+window.addTeacherLink = function (unitId) {
+    const titleInput = document.getElementById('teacher-link-title-' + unitId);
+    const urlInput = document.getElementById('teacher-link-url-' + unitId);
+    if (!titleInput || !urlInput) return;
+
+    const title = titleInput.value.trim();
+    let url = urlInput.value.trim();
+
+    if (!title || !url) {
+        alert('Please enter both a title and a URL.');
+        return;
+    }
+
+    // Clean up common copy-paste errors (like ttps:// or tps://) and force https://
+    url = url.replace(/^[a-z]*:\/\//i, '');
+    url = 'https://' + url;
+
+    try {
+        const parsed = new URL(url);
+        // A valid internet domain must have at least one dot (e.g., example.com)
+        if (!parsed.hostname.includes('.')) {
+            alert('Por favor, ingresá una dirección web válida (ej: página.com)');
+            return;
+        }
+    } catch (e) {
+        alert('Por favor, ingresá un URL válido.');
+        return;
+    }
+
+    const links = getTeacherLinks(unitId);
+    links.push({ title, url, id: Date.now() });
+    saveTeacherLinks(unitId, links);
+
+    titleInput.value = '';
+    urlInput.value = '';
+
+    // Close the form
+    const details = titleInput.closest('details');
+    if (details) details.open = false;
+
+    loadTeacherLinks(unitId);
+};
+
+window.deleteTeacherLink = function (unitId, linkId) {
+    if (!confirm('Delete this link?')) return;
+    let links = getTeacherLinks(unitId);
+    links = links.filter(l => l.id !== linkId);
+    saveTeacherLinks(unitId, links);
+    loadTeacherLinks(unitId);
+};
+
+function loadTeacherLinks(unitId) {
+    const container = document.getElementById('teacher-links-list-' + unitId);
+    if (!container) return;
+
+    const links = getTeacherLinks(unitId);
+
+    if (links.length === 0) {
+        container.innerHTML = '<p style="opacity: 0.45; font-size: 0.85rem; padding: 8px 0; font-style: italic;">No links added yet.</p>';
+        return;
+    }
+
+    container.innerHTML = links.map(link => `
+        <div class="teacher-link-item" style="display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: rgba(99, 102, 241, 0.08); border: 1px solid rgba(129, 140, 248, 0.2); border-radius: 10px; margin-bottom: 8px; transition: all 0.3s ease;"
+             onmouseover="this.style.borderColor='rgba(129, 140, 248, 0.5)'; this.style.background='rgba(99, 102, 241, 0.15)'"
+             onmouseout="this.style.borderColor='rgba(129, 140, 248, 0.2)'; this.style.background='rgba(99, 102, 241, 0.08)'">
+            <span style="font-size: 1.2rem;">🔗</span>
+            <a href="${link.url}" target="_blank" rel="noopener noreferrer" 
+               style="flex: 1; color: #a5b4fc; text-decoration: none; font-weight: 500; font-size: 0.95rem;"
+               onmouseover="this.style.color='#c7d2fe'" onmouseout="this.style.color='#a5b4fc'">
+                ${link.title}
+            </a>
+            <button onclick="deleteTeacherLink(${unitId}, ${link.id})" 
+                    style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); color: #fca5a5; width: 30px; height: 30px; border-radius: 8px; cursor: pointer; font-size: 0.8rem; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; flex-shrink: 0;"
+                    onmouseover="this.style.background='rgba(239, 68, 68, 0.3)'"
+                    onmouseout="this.style.background='rgba(239, 68, 68, 0.15)'"
+                    title="Delete link">🗑️</button>
+        </div>
+    `).join('');
+}
+
+function loadAllTeacherLinks() {
+    courseData.units.forEach(unit => {
+        loadTeacherLinks(unit.id);
+    });
+}
