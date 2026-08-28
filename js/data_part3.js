@@ -139,24 +139,27 @@ courseData.units.push(
                 { sentence: "She finished _____ her therapy sessions.", options: ["attending", "to attend", "attend"], correct: 0 }
             ]
         },
-        videos: [
-            { title: "How to Make Stress Your Friend", channel: "TED", duration: "14:28", url: "https://www.youtube.com/watch?v=RcGyVTAoXEU" },
-            { title: "The Science of Well-Being", channel: "Yale University", duration: "5:12", url: "https://www.youtube.com/watch?v=ZizdB0TgAVM" },
-            { title: "How Meditation Can Reshape Our Brains", channel: "TEDx", duration: "8:33", url: "https://www.youtube.com/watch?v=m8rRzTtP7Tc" }
-        ],
-        video_comprehension: {
-            videoId: "m8rRzTtP7Tc",
-            videoTitle: "How Meditation Can Reshape Our Brains",
-            channel: "TEDx",
-            duration: "8:33",
-            fitb: [
-                "Meditation trains our ___ to focus and stay calm.",
-                "Brain scans show that meditation can change the ___ of the brain.",
-                "Regular meditation reduces ___ and anxiety levels.",
-                "Mindfulness means paying full ___ to the present moment.",
-                "Even a few minutes of daily ___ can improve mental health."
-            ]
-        }
+            movie_scene: {
+                movie: "Good Will Hunting (1997)",
+                director: "Gus Van Sant",
+                characters: "Sean Maguire & Will Hunting",
+                context: "Therapist Sean Maguire sits on a park bench with Will, challenging his emotional defense mechanisms and explaining that intellectual facts cannot replace emotional vulnerability, mindfulness, and real lived experiences.",
+                dialogue: [
+                    { speaker: "Sean", line: "If I ask you about art, you'd give me the breakdown on every art book ever published. Michelangelo, you know all his work. But I bet you can't tell me what it smells like inside the Sistine Chapel." },
+                    { speaker: "Will", line: "Knowing the historical facts is what matters. You can analyze any psychological theory with enough study." },
+                    { speaker: "Sean", line: "Academic knowledge is not emotional wisdom, Will. If I ask you about love, you'd quote a romantic sonnet. But you've never looked at another person and felt completely vulnerable." },
+                    { speaker: "Will", line: "You think you can diagnose my life from a clinical evaluation?" },
+                    { speaker: "Sean", line: "I don't know a thing about you except what you choose to reveal. Mental health isn't about hiding behind intellectual walls; it's about being present, accepting yourself, and facing your emotions honestly." },
+                    { speaker: "Will", line: "It's easier to keep emotional distance." },
+                    { speaker: "Sean", line: "Distance protects you from pain, but it also prevents you from truly living and healing." }
+                ],
+                quiz: [
+                    { q: "What distinction does Sean emphasize between books and real experience?", options: ["Books are more accurate than human memory", "Intellectual knowledge cannot substitute for emotional vulnerability and lived experience", "Therapists prefer books to conversation"], correct: 1 },
+                    { q: "Why does Sean bring up the Sistine Chapel?", options: ["To recommend a vacation in Italy", "To illustrate that reading facts is entirely different from experiencing reality firsthand", "To test Will's knowledge of architecture"], correct: 1 },
+                    { q: "According to Sean, what is required for genuine mental wellbeing and connection?", options: ["Hiding personal feelings behind intellectual achievements", "Being present, open, and accepting emotional vulnerability", "Avoiding difficult conversations"], correct: 1 }
+                ],
+                discussion_prompt: "In maintaining personal wellbeing and mental health, why is emotional awareness just as crucial as intellectual intelligence?"
+            }
     },
     {
         id: 6, title: "Art & Culture", topic: "Modern Art & Cultural Heritage",
@@ -297,23 +300,26 @@ courseData.units.push(
                 { sentence: "They finished _____ the mural yesterday.", options: ["painting", "to paint", "paint"], correct: 0 }
             ]
         },
-        videos: [
-            { title: "Why Is Modern Art So Bad?", channel: "PragerU", duration: "5:27", url: "https://www.youtube.com/watch?v=lNI07egoefc" },
-            { title: "The Case for Conceptual Art", channel: "The Art Assignment", duration: "10:34", url: "https://www.youtube.com/watch?v=KrWQw3S0B_4" },
-            { title: "Why Cultural Heritage Matters", channel: "UNESCO", duration: "3:15", url: "https://www.youtube.com/watch?v=dH0MNJhKfoA" }
-        ],
-        video_comprehension: {
-            videoId: "KrWQw3S0B_4",
-            videoTitle: "The Case for Conceptual Art",
-            channel: "The Art Assignment",
-            duration: "10:34",
-            fitb: [
-                "Conceptual art focuses on the ___ behind the work, not just appearance.",
-                "Marcel Duchamp submitted a ___ as a work of art.",
-                "Conceptual artists argue that anyone can make ___ if they decide to.",
-                "The ___ in which art is placed affects how we interpret it.",
-                "Modern art often aims to make viewers ___ rather than just admire beauty."
-            ]
-        }
+            movie_scene: {
+                movie: "Mona Lisa Smile (2003)",
+                director: "Mike Newell",
+                characters: "Katherine Watson & Betty Warren",
+                context: "Art history professor Katherine Watson shows her university students a groundbreaking abstract expressionist painting by Jackson Pollock, igniting an intense debate over tradition versus modern artistic freedom.",
+                dialogue: [
+                    { speaker: "Katherine", line: "Look at this canvas. What do you see? Don't search through your textbooks, because this painting is not in the syllabus." },
+                    { speaker: "Betty", line: "This is not legitimate art. It's just random drips of paint splattered across a canvas. There's no technique, no formal composition, and no dignity." },
+                    { speaker: "Katherine", line: "Who defines what qualifies as art, Betty? Does art have to conform strictly to classical rules, or can it represent raw human emotion and innovative expression?" },
+                    { speaker: "Betty", line: "Art is supposed to represent order, beauty, and technical mastery. If anyone can splatter paint on canvas, then artistic tradition loses all value." },
+                    { speaker: "Katherine", line: "Jackson Pollock didn't paint what he saw with his eyes; he painted what he felt in his mind and spirit. True culture evolves when artists dare to challenge convention and spark dialogue." },
+                    { speaker: "Betty", line: "So you're saying anything can be art as long as it provokes a reaction?" },
+                    { speaker: "Katherine", line: "Art is a living conversation between the creator and the observer. It invites us to think beyond conventional boundaries." }
+                ],
+                quiz: [
+                    { q: "Why does Betty refuse to accept the abstract painting as legitimate art?", options: ["The colors are too dark", "It lacks traditional technique, realistic depiction, and formal composition", "The artist was unknown"], correct: 1 },
+                    { q: "What does Professor Watson suggest about modern abstract art?", options: ["It represents internal emotion and challenges rigid classical conventions", "It is easier to produce than classical paintings", "It should only be displayed in private galleries"], correct: 0 },
+                    { q: "How does Katherine define the relationship between art and the viewer?", options: ["A financial transaction for wealthy collectors", "A dynamic conversation that encourages critical thinking", "A strict test of historical memorization"], correct: 1 }
+                ],
+                discussion_prompt: "Do you believe art should be judged primarily by classical technical craftsmanship, or by the ideas and emotions it communicates? Share your thoughts."
+            }
     }
 );

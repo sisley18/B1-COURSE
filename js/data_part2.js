@@ -139,24 +139,26 @@ courseData.units.push(
                 { sentence: "I want _____ a more sustainable life.", options: ["living", "to live", "live"], correct: 1 }
             ]
         },
-        videos: [
-            { title: "Climate Change 101 with Bill Nye", channel: "National Geographic", duration: "4:14", url: "https://www.youtube.com/watch?v=EtW2rrLHs08" },
-            { title: "Can We Fix Climate Change?", channel: "Kurzgesagt", duration: "16:24", url: "https://www.youtube.com/watch?v=LxgMdjyw8uw" },
-            { title: "What Is Sustainability?", channel: "UCLA", duration: "2:26", url: "https://www.youtube.com/watch?v=zx04Kl8y4dE" }
-        ],
-        video_comprehension: {
-            videoId: "EtW2rrLHs08",
-            videoTitle: "Climate Change 101 with Bill Nye",
-            channel: "National Geographic",
-            duration: "4:14",
-            fitb: [
-                "Greenhouse gases trap ___ in the Earth's atmosphere.",
-                "The main cause of climate change is burning ___ fuels.",
-                "Rising temperatures cause polar ___ to melt and sea levels to rise.",
-                "Renewable energy sources include solar, wind and ___.",
-                "We must act now to stop the planet from ___ too fast."
-            ]
-        }
+            movie_scene: {
+                movie: "Interstellar (2014)",
+                director: "Christopher Nolan",
+                characters: "Cooper & Professor Brand",
+                context: "Professor Brand shows Cooper the ecological devastation ravaging Earth's agricultural biosphere, stressing the urgent imperative of scientific breakthroughs and renewable innovation to preserve humanity.",
+                dialogue: [
+                    { speaker: "Cooper", line: "We used to look up at the sky and wonder at our place in the stars. Now we just look down and worry about our place in the dirt." },
+                    { speaker: "Professor Brand", line: "The planet's biosphere is collapsing, Cooper. The blight is consuming our crops, and atmospheric oxygen is dwindling with every passing season." },
+                    { speaker: "Cooper", line: "So we give up on finding ecological solutions? We just accept defeat?" },
+                    { speaker: "Professor Brand", line: "We haven't run out of technology, Cooper; we've run out of time. We must harness physics, engineering, and sustainable science to preserve humanity." },
+                    { speaker: "Cooper", line: "We're not meant to save the world. We're meant to leave it." },
+                    { speaker: "Professor Brand", line: "No, Cooper. We must invent the sustainable science and technology that guarantees future generations can survive, wherever we build our communities." }
+                ],
+                quiz: [
+                    { q: "What environmental catastrophe is depicted in the scene?", options: ["A massive asteroid impact", "Global crop blight and atmospheric depletion", "Severe volcanic winters"], correct: 1 },
+                    { q: "How does Cooper describe the change in human perspective?", options: ["From space exploration to daily survival on Earth", "From farming to deep-sea mining", "From science to superstition"], correct: 0 },
+                    { q: "According to Professor Brand, what resource has humanity critically depleted?", options: ["Solar energy", "Time to implement solutions", "Computer technology"], correct: 1 }
+                ],
+                discussion_prompt: "Do you think global society should prioritize fixing Earth's current ecosystems or investing in colonizing space? Give your reasons."
+            }
     },
     {
         id: 4, title: "Media & Society", topic: "Fake News & Media Literacy",
@@ -297,23 +299,25 @@ courseData.units.push(
                 { sentence: "Suggest _____ multiple sources for every story.", options: ["to consult", "consulting", "consult"], correct: 1 }
             ]
         },
-        videos: [
-            { title: "How False News Can Spread", channel: "TED-Ed", duration: "3:42", url: "https://www.youtube.com/watch?v=cSKGa_7XJkg" },
-            { title: "How To Spot Fake News", channel: "BBC Learning English", duration: "6:05", url: "https://www.youtube.com/watch?v=AkwWcHekMdo" },
-            { title: "The Spread of Misinformation Online", channel: "Vox", duration: "8:21", url: "https://www.youtube.com/watch?v=soYkEqDp760" }
-        ],
-        video_comprehension: {
-            videoId: "cSKGa_7XJkg",
-            videoTitle: "How False News Can Spread",
-            channel: "TED-Ed",
-            duration: "3:42",
-            fitb: [
-                "False news spreads faster than ___ news online.",
-                "People often share stories without ___ them first.",
-                "A lie can travel around the ___ before the truth starts.",
-                "Always verify information from multiple ___ before sharing.",
-                "Media ___ helps us identify and stop fake stories."
-            ]
-        }
+            movie_scene: {
+                movie: "Don't Look Up (2021)",
+                director: "Adam McKay",
+                characters: "Dr. Randall Mindy, Kate Dibiasky, & TV Host Jack",
+                context: "Astronomers Randall and Kate appear on a popular morning television broadcast to warn the world about an imminent comet, but the media network trivializes the urgent facts into lighthearted infotainment and social media clicks.",
+                dialogue: [
+                    { speaker: "Kate", line: "This is not a joke. A massive six-mile-wide comet is on a direct collision course with Earth, and the mathematical certainty is 99.7 percent!" },
+                    { speaker: "Jack", line: "Well, around here we like to keep the news fun and digestible! It keeps our viewer ratings high and the morning energy upbeat." },
+                    { speaker: "Randall", line: "With respect, this is a planetary emergency! The scientific data has been peer-reviewed, but your broadcast is treating it like entertainment." },
+                    { speaker: "Jack", line: "Look, our audience wants accessible content that trends on social media feeds. If you want ordinary citizens to care, you have to package the truth as entertaining drama." },
+                    { speaker: "Kate", line: "How can you turn an existential reality into clickbait while the integrity of information is falling apart?" },
+                    { speaker: "Randall", line: "Media literacy requires discerning verified science from sensationalist entertainment." }
+                ],
+                quiz: [
+                    { q: "Why do the talk show hosts minimize the scientists' urgent warning?", options: ["They don't understand English", "They prioritize entertainment ratings and lighthearted engagement", "They already have a defense plan"], correct: 1 },
+                    { q: "What does Jack argue is necessary for news to reach modern audiences?", options: ["Lengthy academic white papers", "Sensational packaging suitable for social feeds", "Government censorship"], correct: 1 },
+                    { q: "What critical media literacy problem is highlighted in this dialogue?", options: ["Slow internet speeds", "Sensationalism overshadowing factual reporting and evidence", "The cost of television production"], correct: 1 }
+                ],
+                discussion_prompt: "How do social media algorithms and clickbait headlines distort important news, and what steps can individuals take to verify reliable information?"
+            }
     }
 );

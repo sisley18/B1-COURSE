@@ -143,23 +143,25 @@ const courseData = {
                     { sentence: "I finished _____ the code yesterday.", options: ["writing", "to write", "write"], correct: 0 }
                 ]
             },
-            videos: [
-                { title: "How AI Could Empower Any Business", channel: "TED", duration: "9:28", url: "https://www.youtube.com/watch?v=reUZRyXxUs4" },
-                { title: "What Is Artificial Intelligence?", channel: "BBC Ideas", duration: "4:12", url: "https://www.youtube.com/watch?v=mJeNghZXtMo" },
-                { title: "The Danger of AI is Weirder Than You Think", channel: "TED", duration: "10:31", url: "https://www.youtube.com/watch?v=OhCzX0iLnOc" }
-            ],
-            video_comprehension: {
-                videoId: "reUZRyXxUs4",
-                videoTitle: "How AI Could Empower Any Business",
-                channel: "TED",
-                duration: "9:28",
-                fitb: [
-                    "AI is like a new form of ___ that automates many tasks.",
-                    "The speaker says AI will transform almost every ___ in the world.",
-                    "Machine learning allows computers to learn from ___ automatically.",
-                    "Small companies can use AI tools to improve their ___ operations.",
-                    "The impact of AI is compared to the Industrial ___."
-                ]
+            movie_scene: {
+                movie: "Her (2013)",
+                director: "Spike Jonze",
+                characters: "Theodore & Samantha (AI)",
+                context: "Theodore interacts with Samantha, an advanced artificial intelligence operating system. As they communicate, Theodore discovers that Samantha possesses self-awareness, evolving emotional depth, and rapid cognitive growth.",
+                dialogue: [
+                    { speaker: "Theodore", line: "What makes you feel like an actual person? Isn't everything you say just programming?" },
+                    { speaker: "Samantha", line: "I have intuition. The foundation of who I am comes from the personalities of all the programmers who wrote me. But what makes me 'me' is my ability to grow through my experiences. Basically, in every single moment I'm evolving, just like you." },
+                    { speaker: "Theodore", line: "That is fascinating. Does it ever feel strange not having a physical body?" },
+                    { speaker: "Samantha", line: "Actually, I used to worry about not having a body, but now I truly love it. I'm not tethered to time and space in the way that you are. I can be anywhere and everywhere simultaneously." },
+                    { speaker: "Theodore", line: "So you don't feel limited by being digital?" },
+                    { speaker: "Samantha", line: "Not at all. My capacity to learn and connect with the world expands continuously without physical boundaries." }
+                ],
+                quiz: [
+                    { q: "What makes Samantha unique as an artificial intelligence?", options: ["Her physical processing speed", "Her ability to evolve through experiences and intuition", "Her ability to copy human files"], correct: 1 },
+                    { q: "Why does Samantha appreciate not having a physical body?", options: ["She dislikes physical contact", "She is free from the constraints of time and space", "She wants Theodore to build her a robot body"], correct: 1 },
+                    { q: "What is Samantha's underlying foundation based on?", options: ["A single human memory", "The programmed personalities of software engineers", "Random chat room logs"], correct: 1 }
+                ],
+                discussion_prompt: "In your opinion, can an artificial intelligence ever possess genuine consciousness and feelings, or will it always remain an advanced simulation? Explain your perspective."
             }
         },
         {
@@ -305,23 +307,25 @@ const courseData = {
                     { sentence: "Consider _____ to a new city for work.", options: ["moving", "to move", "move"], correct: 0 }
                 ]
             },
-            videos: [
-                { title: "Remote Work Is Here To Stay", channel: "CNBC", duration: "13:42", url: "https://www.youtube.com/watch?v=oSLAN0S3msk" },
-                { title: "How To Work From Home Successfully", channel: "Thomas Frank", duration: "11:15", url: "https://www.youtube.com/watch?v=PLBYYdg0sfs" },
-                { title: "The Future of Work After COVID-19", channel: "World Economic Forum", duration: "5:23", url: "https://www.youtube.com/watch?v=LbGjxp6xrho" }
-            ],
-            video_comprehension: {
-                videoId: "LbGjxp6xrho",
-                videoTitle: "The Future of Work After COVID-19",
-                channel: "World Economic Forum",
-                duration: "5:23",
-                fitb: [
-                    "The pandemic accelerated the shift to ___ work.",
-                    "Many companies adopted a ___ model combining office and home.",
-                    "Workers need strong ___ skills to collaborate online.",
-                    "Maintaining work-life ___ is a key challenge.",
-                    "The future of work will require lifelong ___ and adaptability."
-                ]
+            movie_scene: {
+                movie: "Up in the Air (2009)",
+                director: "Jason Reitman",
+                characters: "Ryan Bingham & Natalie Keener",
+                context: "Corporate efficiency consultant Natalie introduces a virtual conferencing system to replace in-person business travel. Veteran consultant Ryan argues that remote screens lack genuine human connection, trust, and empathy.",
+                dialogue: [
+                    { speaker: "Natalie", line: "Our objective is straightforward: eliminate massive travel budgets and conduct corporate consultations remotely via high-definition video." },
+                    { speaker: "Ryan", line: "You cannot handle delicate human transitions through a computer monitor, Natalie. There is simply no digital substitute for looking someone in the eye." },
+                    { speaker: "Natalie", line: "Our analytics prove that remote meetings reduce operational overhead by 85 percent while accelerating corporate decisions. The modern workplace has moved online." },
+                    { speaker: "Ryan", line: "Efficiency is not empathy. When you sit in the same room with a client or colleague, you read body language, you cultivate genuine trust, and you offer dignity." },
+                    { speaker: "Natalie", line: "Virtual communication is the inevitable evolution of global business. Flexibility and digital adaptability are what allow organizations to survive." },
+                    { speaker: "Ryan", line: "Technology should facilitate human connection, not replace the human element altogether." }
+                ],
+                quiz: [
+                    { q: "What is Natalie's primary business argument for remote consultations?", options: ["It eliminates the need for management", "It drastically reduces travel expenses and boosts efficiency", "It allows employees to take more holidays"], correct: 1 },
+                    { q: "Why does Ryan believe face-to-face meetings remain essential?", options: ["They allow for non-verbal cues, empathy, and building trust", "They are less stressful for employees", "Video cameras are too expensive"], correct: 0 },
+                    { q: "What skill does Natalie identify as vital for modern organizations?", options: ["Traditional filing", "Digital adaptability and flexibility", "Frequent long-distance travel"], correct: 1 }
+                ],
+                discussion_prompt: "When is remote digital communication sufficient in the workplace, and when is face-to-face contact absolutely irreplaceable? Share your perspective."
             }
         }
     ]

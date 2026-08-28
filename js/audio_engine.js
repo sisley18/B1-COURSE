@@ -1,51 +1,103 @@
 /**
  * Universal Audio Engine — Web Speech API
- * Uses the browser's built-in speech synthesis for guaranteed
- * cross-device compatibility (phones, tablets, computers).
- * Configured for clear, natural American English pronunciation.
+ * Cross-device compatible: phones, tablets, computers.
+ * Configured for clear, NATURAL-sounding American English pronunciation.
+ * Avoids robotic sound by:
+ *   - Using neural/natural voices when available
+ *   - Splitting text into short chunks with breath pauses
+ *   - Rate tuned for conversational fluency (not too slow = robotic)
  */
 
 let sentenceQueue = [];
 let isGlobalPaused = false;
 let currentUtterance = null;
 let isSpeaking = false;
+let _chromeKeepAliveTimer = null;
 
 // -------------------------------------------------------
-// Voice selection: prefer a high-quality US English voice
+// Voice selection — ordered by naturalness across platforms
 // -------------------------------------------------------
 function getAmericanVoice() {
     const voices = window.speechSynthesis.getVoices();
 
-    // Priority order: best American English voices across platforms
-    const preferred = [
-        // Chrome / Edge desktop
-        "Google US English",
+    // Tier 1: Neural / Online voices — most natural
+    const tier1 = [
         "Microsoft Aria Online (Natural) - English (United States)",
         "Microsoft Guy Online (Natural) - English (United States)",
         "Microsoft Jenny Online (Natural) - English (United States)",
-        "Microsoft Zira - English (United States)",
-        "Microsoft David - English (United States)",
-        // macOS / iOS
-        "Samantha",
-        "Alex",
-        "Ava",
-        "Nicky",
-        // Android
-        "en-us-x-sfg#female_1-local",
-        "en-us-x-tpf-network",
+        "Google US English",
+        // Edge neural voices
+        "Microsoft AnaNeural",
+        "Microsoft GuyNeural",
+        "Microsoft AriaNeural",
     ];
 
-    for (const name of preferred) {
+    // Tier 2: High-quality built-in voices
+    const tier2 = [
+        "Samantha",          // macOS / iOS — very natural
+        "Ava (Premium)",     // macOS Premium
+        "Ava",               // macOS
+        "Alex",              // macOS
+        "Nicky",             // macOS
+        "Microsoft Zira - English (United States)",
+        "Microsoft David - English (United States)",
+    ];
+
+    // Tier 3: Android en-US voices
+    const tier3 = [
+        "en-us-x-sfg#female_1-local",
+        "en-us-x-tpf-network",
+        "en-US-language",
+    ];
+
+    for (const name of [...tier1, ...tier2, ...tier3]) {
         const v = voices.find(v => v.name === name);
         if (v) return v;
     }
 
-    // Fallback: any en-US voice
-    const usVoice = voices.find(v => v.lang === "en-US");
-    if (usVoice) return usVoice;
+    // Fallback: any en-US voice (prefer non-compact for more natural sound)
+    const usVoices = voices.filter(v => v.lang === "en-US");
+    // Prefer voices whose name contains "natural", "neural", or "online"
+    const natural = usVoices.find(v =>
+        /natural|neural|online|premium/i.test(v.name)
+    );
+    if (natural) return natural;
+    if (usVoices.length > 0) return usVoices[0];
 
     // Last resort: any English voice
     return voices.find(v => v.lang.startsWith("en")) || null;
+}
+
+// -------------------------------------------------------
+// Text preparation — split into natural breath chunks
+// -------------------------------------------------------
+function _splitIntoChunks(text) {
+    // Clean markdown artifacts
+    const cleaned = text
+        .replace(/[`*_#]/g, "")
+        .replace(/\s+/g, " ")
+        .trim();
+
+    // Split on sentence-ending punctuation, keeping the delimiter
+    // Also split long comma-separated clauses for more natural delivery
+    const raw = cleaned.match(/[^.!?;]+[.!?;]*\s*/g) || [cleaned];
+
+    const chunks = [];
+    raw.forEach(chunk => {
+        const c = chunk.trim();
+        if (!c) return;
+        // If a chunk is very long (>120 chars), split further on commas
+        if (c.length > 120) {
+            const sub = c.split(/,\s+/);
+            sub.forEach((s, i) => {
+                if (s.trim()) chunks.push(i < sub.length - 1 ? s + "," : s);
+            });
+        } else {
+            chunks.push(c);
+        }
+    });
+
+    return chunks;
 }
 
 // -------------------------------------------------------
@@ -55,11 +107,9 @@ window.playAudio = function (text, slow = false) {
     window.stopAudio();
     if (!text) return;
 
-    // Split into sentences for a more natural cadence
-    const cleaned = text.replace(/[`]/g, "").trim();
-    sentenceQueue = cleaned.match(/[^.!?]+[.!?]*\s*/g) || [cleaned];
+    sentenceQueue = _splitIntoChunks(text);
     isGlobalPaused = false;
-
+    _startChromeKeepAlive();
     _playNext(slow);
 };
 
@@ -69,6 +119,7 @@ window.stopAudio = function () {
     window.speechSynthesis.cancel();
     sentenceQueue = [];
     currentUtterance = null;
+    _stopChromeKeepAlive();
     _updatePauseButton(false);
 };
 
@@ -76,36 +127,38 @@ window.togglePauseAudio = function () {
     if (!isSpeaking && sentenceQueue.length === 0) return;
 
     if (isGlobalPaused) {
-        // Resume
         isGlobalPaused = false;
         if (window.speechSynthesis.paused) {
             window.speechSynthesis.resume();
         } else {
+            _startChromeKeepAlive();
             _playNext();
         }
         _updatePauseButton(false);
     } else {
-        // Pause
         isGlobalPaused = true;
         window.speechSynthesis.pause();
+        _stopChromeKeepAlive();
         _updatePauseButton(true);
     }
 };
 
 window.initAudioEngine = function () {
-    // Pre-load voices list (required by some browsers)
     if (typeof window.speechSynthesis === "undefined") {
         console.warn("Web Speech API not supported on this browser.");
         return;
     }
 
-    // Voices may load asynchronously
+    // Trigger voice loading (async in some browsers)
+    const load = () => {
+        const v = getAmericanVoice();
+        console.log("Audio Engine Ready —", v ? v.name : "default voice");
+    };
+
     if (window.speechSynthesis.getVoices().length === 0) {
-        window.speechSynthesis.addEventListener("voiceschanged", () => {
-            console.log("Audio Engine Ready — American English voice loaded.");
-        }, { once: true });
+        window.speechSynthesis.addEventListener("voiceschanged", load, { once: true });
     } else {
-        console.log("Audio Engine Ready — American English voice loaded.");
+        load();
     }
 };
 
@@ -115,26 +168,28 @@ window.initAudioEngine = function () {
 function _playNext(slow = false) {
     if (sentenceQueue.length === 0 || isGlobalPaused) {
         isSpeaking = false;
+        _stopChromeKeepAlive();
         _updatePauseButton(false);
         return;
     }
 
-    const sentence = sentenceQueue.shift().trim();
-    if (!sentence) {
+    const chunk = sentenceQueue.shift().trim();
+    if (!chunk) {
         _playNext(slow);
         return;
     }
 
-    const utterance = new SpeechSynthesisUtterance(sentence);
+    const utterance = new SpeechSynthesisUtterance(chunk);
     currentUtterance = utterance;
 
-    // American English settings
-    utterance.lang = "en-US";
-    utterance.rate = slow ? 0.78 : 0.90;   // Slightly slower than default = clearer
-    utterance.pitch = 1.0;                  // Natural pitch
-    utterance.volume = 1.0;
+    // ---- Natural American English settings ----
+    utterance.lang    = "en-US";
+    // 0.92 = natural conversational pace (1.0 = default, which sounds fast/robotic)
+    // Going too slow (< 0.80) sounds monotone and robotic
+    utterance.rate    = slow ? 0.82 : 0.92;
+    utterance.pitch   = 1.0;   // Keep at 1.0 — altering pitch makes it sound synthetic
+    utterance.volume  = 1.0;
 
-    // Assign best available American voice
     const voice = getAmericanVoice();
     if (voice) utterance.voice = voice;
 
@@ -145,26 +200,43 @@ function _playNext(slow = false) {
 
     utterance.onend = () => {
         if (!isGlobalPaused) {
-            // Short natural pause between sentences (400 ms)
-            setTimeout(() => _playNext(slow), 400);
+            // 500ms pause between chunks = natural breath pause
+            setTimeout(() => _playNext(slow), 500);
         }
     };
 
     utterance.onerror = (e) => {
-        // Skip to next sentence on error (e.g. cancelled)
         if (e.error !== "interrupted" && e.error !== "canceled" && !isGlobalPaused) {
             setTimeout(() => _playNext(slow), 300);
         }
     };
 
-    // Workaround for Chrome bug: long texts stop after ~15 s
-    // We split by sentence above, so this should not be needed,
-    // but we keep a safety keepalive.
     isSpeaking = true;
     window.speechSynthesis.speak(utterance);
 }
 
+// Chrome bug workaround: speechSynthesis stops after ~15s on long texts.
+// Solution: pause+resume every 10s to reset the internal timer.
+function _startChromeKeepAlive() {
+    _stopChromeKeepAlive();
+    _chromeKeepAliveTimer = setInterval(() => {
+        if (!isGlobalPaused && window.speechSynthesis.speaking) {
+            window.speechSynthesis.pause();
+            setTimeout(() => {
+                if (!isGlobalPaused) window.speechSynthesis.resume();
+            }, 50);
+        }
+    }, 10000);
+}
+
+function _stopChromeKeepAlive() {
+    if (_chromeKeepAliveTimer) {
+        clearInterval(_chromeKeepAliveTimer);
+        _chromeKeepAliveTimer = null;
+    }
+}
+
 function _updatePauseButton(paused) {
     const btn = document.getElementById("pause-audio-btn");
-    if (btn) btn.innerHTML = paused ? "▶️" : "⏸️";
+    if (btn) btn.innerHTML = paused ? "▶️ Resume" : "⏸️ Pause";
 }

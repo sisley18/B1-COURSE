@@ -649,7 +649,66 @@ function renderCurriculum() {
                     `).join('') : ''}
                 </div>
 
-                <!-- 6. Collocation -->
+                <!-- 6. Cinema & Culture Scene Analysis -->
+                ${unit.movie_scene ? `
+                <div class="section-block">
+                    <span class="section-label" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24;">🎬 Cinema Scene</span>
+                    <h3>${unit.movie_scene.movie}</h3>
+                    <p style="margin: 0 0 15px 0; font-size: 0.95rem; color: var(--accent-gold);"><strong>Director:</strong> ${unit.movie_scene.director} &nbsp;|&nbsp; <strong>Characters:</strong> ${unit.movie_scene.characters}</p>
+                    
+                    <div style="background: rgba(0, 0, 0, 0.25); border-left: 4px solid #f59e0b; padding: 15px 20px; border-radius: 0 10px 10px 0; margin-bottom: 20px; font-style: italic; font-size: 0.95rem; color: var(--text-secondary);">
+                        💡 <strong>Scene Context:</strong> ${unit.movie_scene.context}
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h4 style="margin: 0; color: #fbbf24;">📜 Dialogue & Pronunciation</h4>
+                        <button class="btn" style="background: var(--accent-gold); color: #111; font-weight: 700; border-color: var(--accent-gold); padding: 6px 14px; font-size: 0.8rem;" onclick="playAudio(\`${unit.movie_scene.dialogue.map(d => `${d.speaker} says: ${d.line}`).join('. ').replace(/'/g, "\\'")}\`)">
+                            🔊 Play Scene Audio
+                        </button>
+                    </div>
+
+                    <div style="display: grid; gap: 10px; margin-bottom: 25px;">
+                        ${unit.movie_scene.dialogue.map((d, dIdx) => `
+                            <div style="display: flex; gap: 12px; align-items: flex-start; background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.05); padding: 12px 16px; border-radius: 10px;">
+                                <button class="play-btn" style="width: 32px; height: 32px; min-width: 32px; font-size: 0.8rem; background: rgba(245, 158, 11, 0.2); border-color: #f59e0b;" onclick="playAudio(\`${d.speaker} says: ${d.line.replace(/'/g, "\\'")}\`)">🔊</button>
+                                <div style="flex: 1;">
+                                    <strong style="color: var(--accent-gold); font-size: 0.9rem;">${d.speaker}:</strong>
+                                    <p style="margin: 3px 0 0 0; font-size: 0.95rem; color: #fff; line-height: 1.4;">"${d.line}"</p>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <h4 style="margin-bottom: 12px; color: #fbbf24;">🧠 Scene Comprehension Check</h4>
+                    <div style="display: grid; gap: 15px; margin-bottom: 20px;">
+                        ${unit.movie_scene.quiz.map((q, qIdx) => `
+                            <div class="theory-box" style="border-left-color: #f59e0b; background: rgba(0, 0, 0, 0.2); padding: 15px;">
+                                <p style="font-weight: 600; margin-bottom: 10px;">${qIdx + 1}. ${q.q}</p>
+                                <div class="options-grid" style="justify-content: flex-start;">
+                                    ${q.options.map((opt, i) => `
+                                        <button class="btn" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); font-size: 0.85rem;" 
+                                        onclick="checkAnswer(this, ${i === q.correct})">${opt}</button>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <div style="background: rgba(0, 0, 0, 0.25); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px; padding: 18px;">
+                        <p style="font-weight: 600; margin-bottom: 8px; color: #fbbf24;">💬 Discussion & Reflection:</p>
+                        <p style="margin-bottom: 12px; font-size: 0.9rem; opacity: 0.85;">${unit.movie_scene.discussion_prompt}</p>
+                        <textarea class="movie-reflection-box" data-unit="${unit.id}" placeholder="✍️ Write your thoughts here..." 
+                            style="width: 100%; min-height: 70px; background: rgba(255,255,255,0.05); border: 1px solid rgba(251,191,36,0.2); color: #fff; padding: 10px; border-radius: 8px; font-family: inherit; font-size: 0.9rem; resize: vertical;"></textarea>
+                        <button onclick="sendMovieAnswersToWhatsApp(${unit.id})" 
+                            style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px 20px; margin-top: 10px; background: linear-gradient(135deg, #25D366, #128C7E); border: none; color: #fff; font-size: 0.95rem; font-weight: 700; border-radius: 10px; cursor: pointer; transition: all 0.3s ease;">
+                            ${whatsappIcon}
+                            Send Cinema Reflection to Teacher 📱
+                        </button>
+                    </div>
+                </div>
+                ` : ''}
+
+                <!-- 7. Collocations -->
                 <div class="section-block">
                     <span class="section-label collocation">Collocations</span>
                     <div style="display: grid; gap: 20px;">
@@ -664,7 +723,7 @@ function renderCurriculum() {
                     const opts = [col.pair[1], ...col.distractors].sort(() => Math.random() - 0.5);
                     return opts.map(opt => `
                                         <button class="btn" style="background:rgba(255,255,255,0.1);" 
-                                        onclick="checkCollocation(this, '${opt}', '${col.pair[1]}')">${opt}</button>
+                                        onclick="checkCollocation(this, '${opt}', '${col.pair[1]}')">$opt</button>
                                     `).join('');
                 })()}
                             </div>
@@ -673,7 +732,7 @@ function renderCurriculum() {
                     </div>
                 </div>
 
-                <!-- 7. Writing -->
+                <!-- 8. Writing -->
                 <div class="section-block">
                     <span class="section-label" style="background: rgba(255, 100, 100, 0.2); color: #ffadad;">Writing Task</span>
                     <div style="background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px;">
@@ -683,7 +742,7 @@ function renderCurriculum() {
                     </div>
                 </div>
 
-                <!-- 8. Speaking -->
+                <!-- 9. Speaking -->
                 <div class="section-block">
                     <span class="section-label" style="background: rgba(255, 200, 50, 0.2); color: #ffe066;">Speaking</span>
                     <div style="background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; display: flex; align-items: center; gap: 20px;">
@@ -694,82 +753,6 @@ function renderCurriculum() {
                         </div>
                     </div>
                 </div>
-
-                <!-- 9. Videos -->
-                ${unit.videos && unit.videos.length > 0 ? `
-                <div class="section-block">
-                    <span class="section-label" style="background: rgba(255, 0, 0, 0.2); color: #ff6b6b;">📺 Videos</span>
-                    <h3>Recommended Videos</h3>
-                    <p style="margin-bottom: 20px; opacity: 0.7;">Watch these videos to deepen your understanding of the topic:</p>
-                    <div style="display: grid; gap: 15px;">
-                        ${unit.videos.map((video, vIdx) => {
-                    const isCompVideo = unit.video_comprehension && (
-                        unit.video_comprehension.videoIndex === vIdx ||
-                        (unit.video_comprehension.videoId && video.url.includes(unit.video_comprehension.videoId))
-                    );
-                    return `
-                            <div>
-                                <a href="${video.url}" target="_blank" rel="noopener noreferrer" 
-                                   style="display: flex; align-items: center; gap: 15px; background: rgba(0,0,0,0.2); padding: 15px 20px; border-radius: 12px; text-decoration: none; color: #fff; border: 1px solid ${isCompVideo ? 'var(--accent-gold)' : 'rgba(255,255,255,0.1)'}; transition: all 0.3s ease;"
-                                   onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='var(--accent-gold)';"
-                                   onmouseout="this.style.background='rgba(0,0,0,0.2)'; this.style.borderColor='${isCompVideo ? 'var(--accent-gold)' : 'rgba(255,255,255,0.1)'}';">
-                                    <span style="font-size: 2rem;">▶️</span>
-                                    <div>
-                                        <h4 style="margin: 0 0 5px 0; color: var(--accent-gold);">${video.title}</h4>
-                                        <p style="margin: 0; font-size: 0.9rem; opacity: 0.7;">${video.channel} • ${video.duration}</p>
-                                    </div>
-                                </a>
-                                ${unit.video_comprehension && isCompVideo ? `
-                                <div id="video-comp-unit-${unit.id}" style="margin-top: 2px; padding: 20px; background: rgba(0,0,0,0.25); border: 1px solid rgba(251,191,36,0.3); border-top: none; border-radius: 0 0 12px 12px;">
-                                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
-                                        <span style="font-size: 1.5rem;">🎧</span>
-                                        <h4 style="margin: 0; color: #fbbf24;">Listening Comprehension Exercise</h4>
-                                    </div>
-                                    <div style="margin-bottom: 20px; opacity: 0.8; font-style: italic;">${unit.video_comprehension.instructions || 'Watch the video and complete the exercise below:'}</div>
-                                    ${unit.video_comprehension.questions ? unit.video_comprehension.questions.map((q, qIdx) => `
-                                        <div style="margin-bottom: 20px; padding-bottom: 15px; ${qIdx < unit.video_comprehension.questions.length - 1 ? 'border-bottom: 1px dashed rgba(255,255,255,0.1);' : ''}">
-                                            <p style="font-weight: 600; margin-bottom: 10px;">${qIdx + 1}. ${q.q}</p>
-                                            <div class="options-grid" style="justify-content: flex-start; margin-bottom: 10px;">
-                                                ${q.options.map((opt, i) => `
-                                                    <button class="btn" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);" 
-                                                    onclick="checkAnswer(this, ${i === q.correct})">${opt}</button>
-                                                `).join('')}
-                                            </div>
-                                            <textarea class="video-answer-box" data-unit="${unit.id}" data-question="${qIdx}" 
-                                                placeholder="✍️ Write your answer here..." 
-                                                style="width: 100%; min-height: 60px; background: rgba(255,255,255,0.05); border: 1px solid rgba(251,191,36,0.2); color: #fff; padding: 12px; border-radius: 8px; font-family: inherit; font-size: 0.9rem; resize: vertical; transition: border-color 0.3s ease;"
-                                                onfocus="this.style.borderColor='rgba(251,191,36,0.6)'"
-                                                onblur="this.style.borderColor='rgba(251,191,36,0.2)'"
-                                            ></textarea>
-                                        </div>
-                                    `).join('') : ''}
-                                    ${unit.video_comprehension.fitb ? unit.video_comprehension.fitb.map((sentence, qIdx) => `
-                                        <div style="margin-bottom: 20px; padding-bottom: 15px; ${qIdx < unit.video_comprehension.fitb.length - 1 ? 'border-bottom: 1px dashed rgba(255,255,255,0.1);' : ''}">
-                                            <p style="font-weight: 600; margin-bottom: 10px;">${qIdx + 1}. ${sentence}</p>
-                                            <textarea class="video-answer-box" data-unit="${unit.id}" data-question="fitb-${qIdx}" 
-                                                placeholder="✍️ Complete the sentence..." 
-                                                style="width: 100%; min-height: 60px; background: rgba(255,255,255,0.05); border: 1px solid rgba(251,191,36,0.2); color: #fff; padding: 12px; border-radius: 8px; font-family: inherit; font-size: 0.9rem; resize: vertical; transition: border-color 0.3s ease;"
-                                                onfocus="this.style.borderColor='rgba(251,191,36,0.6)'"
-                                                onblur="this.style.borderColor='rgba(251,191,36,0.2)'"
-                                            ></textarea>
-                                        </div>
-                                    `).join('') : ''}
-                                    <button onclick="sendVideoAnswersToWhatsApp(${unit.id})" 
-                                        style="display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 14px 20px; margin-top: 10px; background: linear-gradient(135deg, #25D366, #128C7E); border: none; color: #fff; font-size: 1rem; font-weight: 700; border-radius: 12px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);"
-                                        onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(37, 211, 102, 0.4)'"
-                                        onmouseout="this.style.transform=''; this.style.boxShadow='0 4px 15px rgba(37, 211, 102, 0.3)'"
-                                    >
-                                        ${whatsappIcon}
-                                        Send Answers via WhatsApp
-                                    </button>
-                                </div>
-                                ` : ''}
-                            </div>
-                            `;
-                }).join('')}
-                    </div>
-                </div>
-                ` : ''}
 
                 ${unit.id % 2 === 0 ? `
                 <!-- Exam Link for Even Units -->
@@ -838,50 +821,22 @@ window.checkCollocation = function (btn, selected, correct) {
         setTimeout(() => { btn.style.background = 'rgba(255,255,255,0.1)'; }, 500);
     }
 };
-window.sendVideoAnswersToWhatsApp = function (unitId) {
-    const unit = courseData.units.find(u => u.id === unitId);
-    if (!unit || !unit.video_comprehension) return;
+window.sendMovieAnswersToWhatsApp = function (unitId) {
+    let allUnits = [...courseData.units];
+    if (typeof courseDataPart2 !== 'undefined') allUnits = [...allUnits, ...courseDataPart2.units];
+    if (typeof courseDataPart3 !== 'undefined') allUnits = [...allUnits, ...courseDataPart3.units];
+    const unit = allUnits.find(u => u.id === unitId);
+    if (!unit || !unit.movie_scene) return;
 
-    const textareas = document.querySelectorAll(`textarea.video-answer-box[data-unit="${unitId}"]`);
-    const answers = [];
-    let hasAnswers = false;
+    const textarea = document.querySelector(`textarea.movie-reflection-box[data-unit="${unitId}"]`);
+    const reflection = textarea ? textarea.value.trim() : '';
 
-    if (unit.video_comprehension.questions) {
-        unit.video_comprehension.questions.forEach((q, idx) => {
-            const textarea = Array.from(textareas).find(t => t.dataset.question === String(idx));
-            const answer = textarea ? textarea.value.trim() : '';
-            if (answer) hasAnswers = true;
-            answers.push(`Q${idx + 1}: ${q.q}\n→ ${answer || '(no answer)'}`);
-        });
-    }
-
-    if (unit.video_comprehension.fitb) {
-        unit.video_comprehension.fitb.forEach((sentence, idx) => {
-            const textarea = Array.from(textareas).find(t => t.dataset.question === `fitb-${idx}`);
-            const answer = textarea ? textarea.value.trim() : '';
-            if (answer) hasAnswers = true;
-            answers.push(`FITB ${idx + 1}: ${sentence}\n→ ${answer || '(no answer)'}`);
-        });
-    }
-
-    if (!hasAnswers) {
-        alert('Please write at least one answer before sending.');
-        return;
-    }
-
-    let videoTitle = 'Video';
-    if (unit.video_comprehension.videoIndex !== undefined) {
-        videoTitle = unit.videos[unit.video_comprehension.videoIndex]?.title || 'Video';
-    } else if (unit.video_comprehension.videoId) {
-        const video = unit.videos.find(v => v.url.includes(unit.video_comprehension.videoId));
-        videoTitle = video ? video.title : (unit.video_comprehension.videoTitle || 'Video');
-    }
-
-    const message = `📺 *Video Comprehension - Unit ${unitId}: ${unit.title}*\n🎬 Video: ${videoTitle}\n\n${answers.join('\n\n')}`;
+    const message = `🎬 *Cinema Scene Reflection - Unit ${unitId}: ${unit.title}*\n🎥 Movie: ${unit.movie_scene.movie}\n💭 Prompt: ${unit.movie_scene.discussion_prompt}\n\n✍️ Student Reflection:\n${reflection || '(No reflection entered)'}`;
 
     const encoded = encodeURIComponent(message);
     window.open(`https://wa.me/?text=${encoded}`, '_blank');
 };
+window.sendVideoAnswersToWhatsApp = window.sendMovieAnswersToWhatsApp;
 
 // ============================================================
 // Universal Audio Engine — Mobile/Tablet/Desktop
@@ -1066,7 +1021,7 @@ window.courseAudio = {
 function _speak(text, gender) {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'en-US';
-    utterance.rate = 0.95;   // Slightly slower = more natural & clear
+    utterance.rate = 0.90;   // 0.90 = natural conversational pace for EFL learners (0.95 sounds slightly robotic)
     utterance.pitch = 1.0;
     utterance.volume = 1.0;
 
@@ -1078,7 +1033,7 @@ function _speak(text, gender) {
 
     utterance.onend = () => {
         if (isPlaying && !isPaused) {
-            setTimeout(_processQueue, 350);
+            setTimeout(_processQueue, 500);  // 500ms = natural breath pause between chunks
         }
     };
 

@@ -108,17 +108,17 @@
                 html += `</div></div>`;
             }
 
-            // Video Comprehension
-            if (unit.video_comprehension) {
-                const vc = unit.video_comprehension;
-                html += `<div class="section"><h3>&#x1F3A5; Video: ${vc.videoTitle} (${vc.channel})</h3>`;
-                html += `<p style="font-size:0.82rem;color:#666;margin-bottom:4px;">Fill-in-the-blank &mdash; Suggested answers:</p><ol class="fitb-list">`;
-                vc.fitb.forEach((sentence, i) => {
-                    const answer = vc.answers ? vc.answers[i] : '______';
-                    const blank = sentence.replace(/___+/g, `<span class="fitb-answer">${answer}</span>`);
-                    html += `<li>${blank}</li>`;
+            // Cinema & Culture Movie Scene
+            if (unit.movie_scene) {
+                const ms = unit.movie_scene;
+                html += `<div class="section"><h3>&#x1F3AC; Cinema Scene: ${ms.movie} (Dir. ${ms.director})</h3>`;
+                html += `<p style="font-size:0.85rem;color:#555;margin-bottom:8px;"><strong>Context:</strong> <em>${ms.context}</em></p>`;
+                html += `<p style="font-size:0.82rem;color:#666;margin-bottom:4px;"><strong>Comprehension Quiz Answers:</strong></p><div class="answer-grid">`;
+                ms.quiz.forEach((q, i) => {
+                    html += `<div class="answer-item"><strong>${i+1}.</strong> ${q.q} &rarr; <span class="correct">${q.options[q.correct]}</span></div>`;
                 });
-                html += `</ol><p style="font-size:0.75rem;color:#999;margin-top:4px;">Note: Video FITB answers are open-ended. Accept reasonable synonyms.</p></div>`;
+                html += `</div>`;
+                html += `<div style="margin-top:10px;padding:8px 12px;background:#fffbeb;border-left:3px solid #f59e0b;font-size:0.82rem;color:#92400e;"><strong>Discussion Prompt:</strong> ${ms.discussion_prompt}</div></div>`;
             }
 
             html += `</div>`;

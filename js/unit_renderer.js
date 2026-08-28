@@ -21,7 +21,7 @@ function renderUnitPage(unitId) {
     container.innerHTML = `
         <div class="animate__animated animate__fadeIn">
             <div style="margin-bottom: 40px; text-align: center;">
-                <span class="level-badge level-${unit.level.toLowerCase()}">${unit.level} • Unit ${unit.id}</span>
+                <span class="level-badge level-${(unit.level || 'B1').toLowerCase()}">${unit.level || 'B1'} • Unit ${unit.id}</span>
                 <h1 style="font-size: 2.5rem; margin-top: 10px;">${unit.title}</h1>
                 <p style="font-size: 1.1rem; opacity: 0.7;">Topic: ${unit.topic}</p>
             </div>
@@ -175,31 +175,61 @@ function renderUnitPage(unitId) {
             </section>
             ` : ''}
 
-            <!-- Video Section -->
-            ${unit.videos && unit.videos.length > 0 ? `
+            <!-- Cinema & Culture Movie Scene Section -->
+            ${unit.movie_scene ? `
             <section class="section-block">
-                <span class="section-label" style="border-left: 4px solid #ef4444;">h1. Video Resource</span>
-                ${unit.videos.map((video, vIdx) => `
-                    <div style="background: var(--bg-accent); padding: 25px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05); margin-bottom: 20px;">
-                        <a href="${video.url}" target="_blank" style="display: flex; align-items: center; gap: 20px; text-decoration: none; margin-bottom: 20px;">
-                            <div style="width: 60px; height: 60px; background: #ef4444; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.5rem;">▶</div>
-                            <div>
-                                <h4 style="margin: 0; color: var(--text-primary);">${video.title}</h4>
-                                <p style="margin: 0; font-size: 0.85rem; color: var(--text-secondary);">${video.channel} • ${video.duration}</p>
+                <span class="section-label" style="border-left: 4px solid #f59e0b;">h1. Cinema & Culture Scene</span>
+                <div style="background: var(--bg-accent, rgba(255, 255, 255, 0.03)); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 25px; margin-bottom: 25px;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 15px; margin-bottom: 15px;">
+                        <div>
+                            <span style="display: inline-block; background: #f59e0b; color: #111; font-weight: 700; font-size: 0.8rem; padding: 3px 10px; border-radius: 20px; margin-bottom: 8px;">🎬 MOVIE SCENE</span>
+                            <h3 style="margin: 0; font-size: 1.5rem; color: #fff;">${unit.movie_scene.movie}</h3>
+                            <p style="margin: 3px 0 0 0; font-size: 0.9rem; color: var(--accent-gold);"><strong>Director:</strong> ${unit.movie_scene.director} &nbsp;|&nbsp; <strong>Characters:</strong> ${unit.movie_scene.characters}</p>
+                        </div>
+                        <button class="btn" style="background: var(--accent-gold); color: #111; font-weight: 700; border-color: var(--accent-gold); padding: 8px 16px; font-size: 0.85rem;" onclick="playAudio(\`${unit.movie_scene.dialogue.map(d => `${d.speaker} says: ${d.line}`).join('. ').replace(/'/g, "\\'")}\`)">
+                            🔊 Play Entire Scene Audio
+                        </button>
+                    </div>
+
+                    <div style="background: rgba(0, 0, 0, 0.25); border-left: 4px solid #f59e0b; padding: 15px 20px; border-radius: 0 10px 10px 0; margin-bottom: 25px; font-style: italic; font-size: 0.95rem; color: var(--text-secondary);">
+                        💡 <strong>Scene Context:</strong> ${unit.movie_scene.context}
+                    </div>
+
+                    <h4 style="margin-bottom: 15px; color: #f59e0b; font-size: 1.1rem;">📜 Scene Dialogue & Pronunciation</h4>
+                    <div style="display: grid; gap: 12px; margin-bottom: 30px;">
+                        ${unit.movie_scene.dialogue.map((d, dIdx) => `
+                            <div style="display: flex; gap: 15px; align-items: flex-start; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.06); padding: 14px 18px; border-radius: 10px;">
+                                <button class="play-btn" style="width: 34px; height: 34px; min-width: 34px; font-size: 0.85rem; background: rgba(245, 158, 11, 0.2); border-color: #f59e0b;" onclick="playAudio(\`${d.speaker} says: ${d.line.replace(/'/g, "\\'")}\`)">🔊</button>
+                                <div style="flex: 1;">
+                                    <strong style="color: var(--accent-gold); font-size: 0.95rem;">${d.speaker}:</strong>
+                                    <p style="margin: 4px 0 0 0; font-size: 1rem; color: #fff; line-height: 1.5;">"${d.line}"</p>
+                                </div>
                             </div>
-                        </a>
-                        ${video.quiz ? `
-                            <div style="border-top: 1px solid rgba(0,0,0,0.05); padding-top: 20px;" class="quiz-question">
-                                <p style="font-size: 0.95rem; margin-bottom: 15px;" class="question-text"><strong>Video Check:</strong> ${video.quiz.question}</p>
-                                <div class="options-grid" style="display: grid; grid-template-columns: 1fr; gap: 10px;">
-                                    ${video.quiz.options.map((opt, oIdx) => `
-                                        <button class="btn" style="text-align: left; padding: 10px 20px; font-size: 0.9rem;" onclick="checkAnswer(this, ${oIdx === video.quiz.correct})">${opt}</button>
+                        `).join('')}
+                    </div>
+
+                    <!-- Scene Comprehension Quiz -->
+                    <h4 style="margin-bottom: 15px; color: #f59e0b; font-size: 1.1rem;">🧠 Scene Comprehension Check</h4>
+                    <div style="display: grid; gap: 15px; margin-bottom: 25px;">
+                        ${unit.movie_scene.quiz.map((q, qIdx) => `
+                            <div class="theory-box quiz-question" style="border-left-color: #f59e0b;">
+                                <p style="font-size: 1rem; font-weight: 600; margin-bottom: 12px;" class="question-text">${qIdx + 1}. ${q.q}</p>
+                                <div class="options-grid">
+                                    ${q.options.map((opt, oIdx) => `
+                                        <button class="btn" style="padding: 8px 16px; font-size: 0.9rem; text-align: left;" onclick="checkAnswer(this, ${oIdx === q.correct})">${opt}</button>
                                     `).join('')}
                                 </div>
                             </div>
-                        ` : ''}
+                        `).join('')}
                     </div>
-                `).join('')}
+
+                    <!-- Scene Discussion / Reflection Prompt -->
+                    <div class="theory-box" style="border-left-color: #f59e0b; background: rgba(0, 0, 0, 0.2);">
+                        <p style="font-size: 1rem; font-weight: 600; margin-bottom: 10px; color: #f59e0b;">💬 Scene Discussion & Personal Reflection:</p>
+                        <p style="margin-bottom: 15px; font-size: 0.95rem; color: var(--text-secondary);">${unit.movie_scene.discussion_prompt}</p>
+                        <textarea class="movie-reflection-box" data-unit="${unit.id}" placeholder="Write your reflection or response here..." style="width: 100%; height: 100px; background: rgba(0,0,0,0.3); border: 1px solid rgba(245, 158, 11, 0.3); color: #fff; padding: 12px; border-radius: 8px; font-family: inherit; font-size: 0.95rem; resize: vertical;"></textarea>
+                    </div>
+                </div>
             </section>
             ` : ''}
 
@@ -371,6 +401,13 @@ window.sendUnitAnswersToWhatsApp = function(unitId) {
     if (writingBox) {
         message += `*--- Writing Task ---*\n`;
         message += `${writingBox.value.trim() || '(Not answered)'}\n\n`;
+    }
+
+    // Gather Cinema Scene Reflection
+    const movieReflection = document.querySelector(`.movie-reflection-box[data-unit="${unitId}"]`);
+    if (movieReflection && movieReflection.value.trim()) {
+        message += `*--- Cinema Scene Reflection (${unit.movie_scene ? unit.movie_scene.movie : 'Movie Scene'}) ---*\n`;
+        message += `${movieReflection.value.trim()}\n\n`;
     }
 
     message += `*Student Signature:* __________________`;

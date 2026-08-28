@@ -139,24 +139,26 @@ courseData.units.push(
                 { sentence: "She finished _____ her commute in 30 minutes.", options: ["to complete", "completing", "complete"], correct: 1 }
             ]
         },
-        videos: [
-            { title: "The 15-Minute City", channel: "TED", duration: "13:24", url: "https://www.youtube.com/watch?v=5dVcn8NjbwY" },
-            { title: "What Makes a City Great?", channel: "Wendover Productions", duration: "11:23", url: "https://www.youtube.com/watch?v=IFjD3NMv6Kw" },
-            { title: "How Singapore Solved Housing", channel: "Vox", duration: "8:42", url: "https://www.youtube.com/watch?v=2cjPgNBNeLs" }
-        ],
-        video_comprehension: {
-            videoId: "5dVcn8NjbwY",
-            videoTitle: "The 15-Minute City",
-            channel: "TED (Carlos Moreno)",
-            duration: "13:24",
-            fitb: [
-                "Carlos Moreno says cities must be redesigned around human ___.",
-                "The 15-minute city is based on the idea of ___: everything close to home.",
-                "The four pillars of the concept are ecology, proximity, solidarity and ___.",
-                "In Paris, Mayor Anne Hidalgo transformed ___ spaces into parks and bike lanes.",
-                "The goal is to reduce our dependence on the ___ and create greener neighbourhoods."
-            ]
-        }
+            movie_scene: {
+                movie: "Inception (2010)",
+                director: "Christopher Nolan",
+                characters: "Dom Cobb & Ariadne",
+                context: "Master architect Dom Cobb trains Ariadne in constructing urban spaces, showing how manipulating architectural geometry, transit flows, and vertical planes can redefine how people live, move, and interact in a modern metropolis.",
+                dialogue: [
+                    { speaker: "Cobb", line: "In the physical world, architects are constrained by gravity, construction physics, and municipal zoning regulations. Here, you construct entire urban environments from pure spatial imagination." },
+                    { speaker: "Ariadne", line: "So I can design an entire metropolitan grid? Skyscrapers, transit hubs, green parks, and bridges?" },
+                    { speaker: "Cobb", line: "Yes, but remember: the urban design must feel intuitive. If the streets and public spaces are disorienting, inhabitants lose their sense of direction and comfort." },
+                    { speaker: "Ariadne", line: "Watch this—if we fold the urban plane over itself, vertical structures become horizontal plazas. We can link two distant neighborhoods without needing congested highways." },
+                    { speaker: "Cobb", line: "Never copy places from memory; always design innovative architecture. Sustainable urban planning is about reinventing how citizens move, live, and interact within a city." },
+                    { speaker: "Ariadne", line: "It's about creating spaces where communities can thrive seamlessly." }
+                ],
+                quiz: [
+                    { q: "What constraints do traditional urban architects face in the physical world?", options: ["Only budget limitations", "Gravity, building materials, and zoning laws", "A shortage of digital design software"], correct: 1 },
+                    { q: "Why does Cobb emphasize that urban spaces must feel intuitive?", options: ["To make buildings cheaper to construct", "So that residents can navigate smoothly without confusion", "To satisfy historical preservation societies"], correct: 1 },
+                    { q: "How does Ariadne reimagine urban infrastructure in the scene?", options: ["By constructing wider highways for cars", "By connecting separated districts through creative spatial geometry", "By demolishing older buildings"], correct: 1 }
+                ],
+                discussion_prompt: "How can future smart cities incorporate futuristic high-density infrastructure while maintaining pedestrian-friendly, green, and walkable neighborhoods?"
+            }
     },
     {
         id: 8, title: "Education", topic: "Educational Technology & Lifelong Learning",
@@ -297,38 +299,26 @@ courseData.units.push(
                 { sentence: "She finished _____ her dissertation last month.", options: ["to write", "writing", "write"], correct: 1 }
             ]
         },
-        videos: [
-            { title: "Do Schools Kill Creativity?", channel: "TED", duration: "19:24", url: "https://www.youtube.com/watch?v=iG9CE55wbtY" },
-            { title: "OECD: The Future of Education", channel: "OECD Education", duration: "2:13", url: "https://www.youtube.com/watch?v=9YNDnkph_Ko" },
-            { title: "How to Learn Faster", channel: "Veritasium", duration: "14:11", url: "https://www.youtube.com/watch?v=rhgwIhB58PA" }
-        ],
-        video_comprehension: {
-            videoId: "9YNDnkph_Ko",
-            videoTitle: "OECD Future of Education and Skills 2030: The new 'normal' in education",
-            channel: "OECD Education",
-            duration: "2:13",
-            instructions: "<strong>What is the OECD?</strong> The Organisation for Economic Co-operation and Development is an international group that shapes global policies. They run the famous PISA tests and study how education systems must adapt to prepare students for the future job market.<br><br>" +
-            "<button class='btn' style='border: 1px solid rgba(251,191,36,0.5); color: #fbbf24; font-size: 0.8rem; padding: 5px 15px; margin-bottom: 10px;' onclick='toggleTranscript(this)'>Show Video Transcript</button>" +
-            "<div class='transcript-box' style='display:none; margin-bottom:15px; padding:15px; background:rgba(0,0,0,0.2); border-left: 3px solid #fbbf24; border-radius: 0 8px 8px 0; font-size: 0.9rem; line-height: 1.6;'>" +
-            "The future is unpredictable, and we need to prepare students for jobs that haven't been created yet. The traditional model of education—centralized decision-making, teachers talking while students listen, a rigid curriculum, and standardized tests—is giving way to a new normal. This new ecosystem involves students, teachers, parents, and the community. It's a shift from 'one-size-fits-all' to student-centric learning. We are moving from a system focused solely on academic performance to one that prioritizes student well-being, and from using assessments for accountability to using them as continuous feedback to improve learning." +
-            "</div>" +
-            "<div style='margin-bottom: 20px; padding: 15px; background: rgba(251,191,36,0.1); border-radius: 8px;'>" +
-            "<h5 style='color: #fbbf24; margin-bottom: 10px;'>💡 Key Ideas for Discussion</h5>" +
-            "<ul style='margin-left: 20px; font-size: 0.9rem;'>" +
-            "<li style='margin-bottom: 5px;'>How does the \"one-size-fits-all\" approach fail students with different needs?</li>" +
-            "<li style='margin-bottom: 5px;'>In what ways can parents and the community become more involved in the education ecosystem?</li>" +
-            "<li style='margin-bottom: 5px;'>Why is student well-being becoming as important as academic performance?</li>" +
-            "<li style='margin-bottom: 5px;'>How might assessments be redesigned to provide better feedback rather than just grades?</li>" +
-            "</ul></div>" +
-            "Watch this video from their 'Education 2030' project and complete the exercise below:",
-            fitb: [
-                "Traditional education systems are often characterized by ___ decision-making and passive learning.",
-                "In the 'new normal' ecosystem, responsibilities are shared among students, teachers, parents, and the ___.",
-                "The future model advocates for student-centric learning, moving away from a ___ approach.",
-                "Beyond academic performance, the OECD project places a strong emphasis on student ___.",
-                "Assessment is increasingly viewed as a tool for providing frequent ___ to improve learning."
-            ],
-            answers: ["centralized", "community", "one-size-fits-all", "well-being", "feedback"]
-        }
+            movie_scene: {
+                movie: "Dead Poets Society (1989)",
+                director: "Peter Weir",
+                characters: "John Keating & Neil Perry",
+                context: "English teacher John Keating stands on top of his classroom desk to inspire his students to challenge rigid educational conformity and develop independent critical thinking.",
+                dialogue: [
+                    { speaker: "Mr. Keating", line: "Why do I stand up on my desk? Does anyone know?" },
+                    { speaker: "Neil", line: "To feel taller, sir?" },
+                    { speaker: "Mr. Keating", line: "No! I stand upon my desk to remind myself that we must constantly look at things in a different way. Just when you think you know something, you have to look at it from another perspective." },
+                    { speaker: "Student", line: "Isn't the primary purpose of school to memorize the textbook curriculum and score well on examinations?" },
+                    { speaker: "Mr. Keating", line: "Standardized testing and academic rigor have their utility. But genuine education is about learning how to think for yourselves as independent minds. When you read, don't merely accept what the author believes; consider what you think." },
+                    { speaker: "Neil", line: "So lifelong learning means questioning established dogmas?" },
+                    { speaker: "Mr. Keating", line: "Dare to strike out, find your own voice, and discover new ground. Seize the day, gentlemen. Make your learning journey extraordinary." }
+                ],
+                quiz: [
+                    { q: "Why does Mr. Keating stand on top of his classroom desk?", options: ["To fix the classroom ceiling lights", "To physically demonstrate the value of viewing concepts from new perspectives", "To discipline noisy students"], correct: 1 },
+                    { q: "According to Mr. Keating, what is the ultimate goal of education?", options: ["Memorizing every detail in standardized textbooks", "Developing independent critical thinking and finding one's own voice", "Competing for high examination rankings"], correct: 1 },
+                    { q: "How does Mr. Keating encourage students to interact with learning materials?", options: ["To accept every printed word without questioning", "To actively form their own critical perspectives and questions", "To avoid reading challenging literature"], correct: 1 }
+                ],
+                discussion_prompt: "In an era of artificial intelligence and search engines, is it more important for education to teach factual memorization or critical thinking and creativity? Defend your opinion."
+            }
     }
 );
