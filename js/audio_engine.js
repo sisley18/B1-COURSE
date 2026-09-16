@@ -208,8 +208,8 @@ function _playNext(slow = false) {
 
     // ---- Natural American English settings ----
     utterance.lang    = "en-US";
-    // 0.84 = relaxed, crystal-clear conversational pace for EFL learners
-    utterance.rate    = slow ? 0.75 : 0.84;
+    // 1.0 = native natural pace (slowing below 1.0 often introduces robotic digital artifacts)
+    utterance.rate    = slow ? 0.9 : 1.0;
     utterance.pitch   = 1.0;   // Keep at 1.0 — altering pitch makes it sound synthetic
     utterance.volume  = 1.0;
 
