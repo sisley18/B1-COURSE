@@ -259,9 +259,8 @@ function renderUnitPage(unitId) {
                 </div>
             </section>
 
-            <!-- Progress Test injection if it is Unit 4 or Unit 8 -->
-            ${(unitId === 4) ? renderProgressTestHTML(1, unitId) + renderProgressTestHTML(3, unitId) : ''}
-            ${(unitId === 8) ? renderProgressTestHTML(2, unitId) : ''}
+            <!-- Progress Exam Card for Units 2, 4, 6, 8 -->
+            ${renderProgressExamCard(unitId)}
 
             <!-- Submit Unit Button -->
             <div style="margin-top: 40px; text-align: center; border-top: 1px dashed rgba(0,0,0,0.1); padding-top: 30px;">
@@ -415,8 +414,61 @@ window.sendUnitAnswersToWhatsApp = function(unitId) {
 }
 
 // ==========================================
-// Progress Test Engine & UI Renderer
+// Progress Test & Exam Card Renderer
 // ==========================================
+
+function renderProgressExamCard(unitId) {
+    if (unitId % 2 !== 0) return '';
+    const examNum = unitId / 2;
+    const examFile = `exam${examNum}.html`;
+    const examTitles = {
+        2: { title: "Progress Exam 1 (Units 1 & 2)", desc: "The Future of Tech & Global Business", color: "var(--accent-indigo)" },
+        4: { title: "Progress Exam 2 (Units 3 & 4)", desc: "Sustainability, Climate Change & Media Literacy", color: "#10b981" },
+        6: { title: "Progress Exam 3 (Units 5 & 6)", desc: "Modern Wellness & Contemporary Arts", color: "#8b5cf6" },
+        8: { title: "Progress Exam 4 (Units 7 & 8)", desc: "Philosophy, Critical Thinking & Scientific Innovation", color: "#f59e0b" }
+    };
+    const info = examTitles[unitId] || { title: `Progress Exam ${examNum}`, desc: `Units ${unitId-1} & ${unitId}`, color: "var(--accent-gold)" };
+    
+    return `
+        <!-- Progress Test / Exam Section -->
+        <section class="section-block" style="border: 2px solid ${info.color}; background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(251, 191, 36, 0.05)); border-radius: 16px; padding: 30px; margin-top: 40px;">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                <span style="font-size: 2.2rem;">📋</span>
+                <div>
+                    <span class="section-label" style="background: rgba(251,191,36,0.2); color: #fbbf24; border: 1px solid #fbbf24; margin-bottom: 6px; display: inline-block;">Progress Test</span>
+                    <h3 style="margin: 0; font-size: 1.5rem; color: var(--text-primary);">${info.title}</h3>
+                </div>
+            </div>
+            <p style="font-size: 1.05rem; opacity: 0.9; margin-bottom: 20px; line-height: 1.6;">
+                ${unitId === 4 ? `🌟 <strong>Milestone Reached:</strong> You have completed Units 3 & 4 (First Half of the Course)! Test your mastery with this official Progress Test covering Listening Comprehension, Extended Writing, and Grammar in Context.` : `Ready to evaluate your progress? Test your knowledge with the official Progress Exam covering Units ${unitId-1} & ${unitId}.`}
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 25px;">
+                <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px 16px; border-radius: 10px; font-size: 0.9rem;">
+                    🎧 <strong>Listening Comprehension</strong> (Audio + 10 Qs)
+                </div>
+                <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px 16px; border-radius: 10px; font-size: 0.9rem;">
+                    ✍️ <strong>Writing & Discussion</strong> (4 Tasks)
+                </div>
+                <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px 16px; border-radius: 10px; font-size: 0.9rem;">
+                    📝 <strong>Grammar in Context</strong> (10 Qs)
+                </div>
+                <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px 16px; border-radius: 10px; font-size: 0.9rem;">
+                    🎯 <strong>Pass Mark:</strong> 30 / 50 Marks
+                </div>
+            </div>
+            <div style="text-align: center; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                <a href="${examFile}" class="btn" style="display: inline-block; background: linear-gradient(135deg, #10b981, #059669); color: #fff; padding: 14px 30px; border-radius: 50px; font-weight: 700; font-size: 1.05rem; text-decoration: none; border: 2px solid #10b981; box-shadow: 0 4px 20px rgba(16,185,129,0.3); transition: all 0.3s ease;">
+                    📝 Start ${info.title} →
+                </a>
+                ${unitId === 6 ? `
+                <a href="progress_test_1_6.html" class="btn" style="display: inline-block; background: linear-gradient(135deg, #f59e0b, #d97706); color: #fff; padding: 14px 30px; border-radius: 50px; font-weight: 700; font-size: 1.05rem; text-decoration: none; border: 2px solid #fbbf24; box-shadow: 0 4px 20px rgba(245,158,11,0.35); transition: all 0.3s ease;">
+                    ⭐ Full Progress Test (Units 1–6) →
+                </a>
+                ` : ''}
+            </div>
+        </section>
+    `;
+}
 
 function renderProgressTestHTML(testId, currentUnitId) {
     if (typeof window.progressTestsData === 'undefined') return '';

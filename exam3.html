@@ -309,9 +309,12 @@
         <!-- SECTION A -->
         <div class="exam-section">
             <span class="sec-label sec-red">🎧 Section A — Listening Comprehension — 20 marks</span>
-            <p class="mark-hint">Read the transcript, then answer. Each correct answer = 2 marks.</p>
-            <button class="tbtn" onclick="document.getElementById('tr').classList.toggle('hidden')">📄 Show / Hide
-                Transcript</button>
+            <p class="mark-hint">Listen to the audio or read the transcript, then answer. Each correct answer = 2 marks.</p>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 1.2rem;">
+                <button class="tbtn" id="listen-btn" onclick="listenTranscript()">🔊 Listen to Audio</button>
+                <button class="tbtn" onclick="stopListen()">⏹️ Stop</button>
+                <button class="tbtn" onclick="document.getElementById('tr').classList.toggle('hidden')">📄 Show / Hide Transcript</button>
+            </div>
             <div id="tr" class="transcript hidden">
                 <strong>Transcript: "The Modern Wellness Movement — Hype or Help?"</strong><br><br>
                 Welcome to Mind &amp; Body, the podcast exploring the science behind health and happiness. Today's guest
@@ -681,6 +684,18 @@
                     </tr>
                 </table>
             </div>
+        <!-- Mid-Course Full Review Link -->
+        <div style="background: linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(16, 185, 129, 0.1)); border: 2px solid #fbbf24; border-radius: 16px; padding: 2rem; margin: 2.5rem 0; text-align: center;">
+            <span style="background: rgba(251, 191, 36, 0.25); color: #fbbf24; border: 1px solid #fbbf24; padding: 4px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 800; text-transform: uppercase;">
+                ⭐ Mid-Course Milestone (Units 1 to 6)
+            </span>
+            <h3 style="color: #fff; font-size: 1.5rem; margin: 0.8rem 0 0.4rem;">Take the Full Progress Test (Units 1 to 6)</h3>
+            <p style="color: rgba(255,255,255,0.85); font-size: 1rem; max-width: 600px; margin: 0 auto 1.5rem;">
+                Round off all 4 skills (Listening, Reading, Grammar, Writing & Speaking) with automated self-correction and instant WhatsApp score dispatch!
+            </p>
+            <a href="progress_test_1_6.html" class="btn" style="background: linear-gradient(135deg, #f59e0b, #d97706); color: #fff; font-weight: 700; border-color: #fbbf24; padding: 12px 32px; border-radius: 50px; text-decoration: none; box-shadow: 0 4px 15px rgba(245,158,11,0.35);">
+                📋 Open Progress Test Units 1–6 →
+            </a>
         </div>
     </div>
 
@@ -705,6 +720,90 @@
             const msg = `📝 *${title} — Section B Answers*\n\n*1.* ${b1 || '(No answer)'}\n\n*2.* ${b2 || '(No answer)'}\n\n*3.* ${b3 || '(No answer)'}\n\n*4.* ${b4 || '(No answer)'}`;
             window.open(`https://wa.me/5493517017850?text=${encodeURIComponent(msg)}`, '_blank');
         }
+
+        const TRANSCRIPT_TEXT = `Welcome to Mind & Body, the podcast exploring the science behind health and happiness. Today's guest is Dr. Sofia Ramos, a clinical psychologist who has been practising for over twelve years and specialises in stress management and preventative mental health care.
+Dr. Ramos, the wellness industry is worth billions globally. Is it living up to its promises?
+It's a mixed picture. On one hand, the growing public awareness of mental health has helped reduce stigma enormously — people feel far more comfortable discussing anxiety, burnout, and depression than they did a generation ago. On the other hand, many so-called wellness products and apps capitalise on anxiety without providing genuinely evidence-based interventions. Some mindfulness apps, for example, are marketed as solutions to serious clinical conditions when they're really only helpful for mild daily stress.
+What habits are genuinely supported by science?
+Regular physical exercise is the single most evidence-backed intervention for both mental and physical health. Even thirty minutes of moderate exercise five times a week significantly lowers the risk of depression, anxiety, and cardiovascular disease. After that comes sleep quality — not just duration, but genuinely restful sleep. Then social connection. Chronic loneliness is now recognised as having the same mortality risk as smoking fifteen cigarettes a day.
+That's remarkable. What about nutrition?
+Nutrition matters enormously but people often overcomplicate it. The research consistently shows that a diet rich in fruit, vegetables, whole grains, and lean protein — and low in processed food and added sugar — correlates with better mental health outcomes. The gut-brain connection is real and is one of the most exciting areas of current research.`;
+
+        let isListening = false;
+
+        function getBestUSVoice() {
+            const voices = window.speechSynthesis.getVoices();
+            const us = voices.filter(v => v.lang === 'en-US' || v.lang.startsWith('en-US'));
+            if (!us.length) return voices.find(v => v.lang.includes('en')) || null;
+            const priority = [
+                'Microsoft Jenny Online (Natural)',
+                'Microsoft Aria Online (Natural)',
+                'Google US English',
+                'Google US',
+                'Microsoft Aria',
+                'Microsoft Jenny',
+                'Samantha (Enhanced)',
+                'Samantha (Premium)',
+                'Ava (Premium)',
+                'Samantha',
+                'Enhanced',
+                'Premium',
+                'Natural'
+            ];
+            for (const k of priority) { const m = us.find(v => v.name.includes(k)); if (m) return m; }
+            return us[0];
+        }
+
+        function listenTranscript() {
+            stopListen();
+            isListening = true;
+            const btn = document.getElementById('listen-btn');
+            if (btn) btn.innerHTML = '⏸️ Playing...';
+            
+            const chunks = TRANSCRIPT_TEXT.match(/[^.!?]+[.!?]+/g) || [TRANSCRIPT_TEXT];
+            let i = 0;
+            
+            function next() {
+                if (!isListening || i >= chunks.length) {
+                    isListening = false;
+                    if (btn) btn.innerHTML = '🔊 Listen to Audio';
+                    return;
+                }
+                
+                const u = new SpeechSynthesisUtterance(chunks[i++].trim());
+                u.lang = 'en-US';
+                u.rate = 0.84; // Natural, slower pace for EFL learners
+                u.pitch = 1.0;
+                
+                const v = getBestUSVoice();
+                if (v) u.voice = v;
+                
+                u.onend = () => {
+                    if (isListening) setTimeout(next, 500);
+                };
+                
+                u.onerror = () => {
+                    if (isListening) next();
+                };
+                
+                window.speechSynthesis.speak(u);
+            }
+
+            if (window.speechSynthesis.getVoices().length === 0) {
+                setTimeout(next, 400);
+            } else {
+                next();
+            }
+        }
+
+        function stopListen() {
+            isListening = false;
+            if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+            const btn = document.getElementById('listen-btn');
+            if (btn) btn.innerHTML = '🔊 Listen to Audio';
+        }
+
+        window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
     </script>
 </body>
 

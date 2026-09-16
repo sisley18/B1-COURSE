@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Test — Units 1 to 6 (Mid-Course Round-Off) | English B1 Course</title>
+    <link rel="icon" type="image/x-icon" href="st_marys.ico">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="js/auth.js"></script>
+    <script src="js/audio_engine.js"></script>
+    <style>
+        :root {
+            --pt-gold: #fbbf24;
+            --pt-indigo: #6366f1;
+            --pt-emerald: #10b981;
+            --pt-purple: #8b5cf6;
+            --pt-teal: #14b8a6;
+            --pt-rose: #f43f5e;
+            --pt-bg-card: rgba(18, 24, 38, 0.85);
+            --pt-border: rgba(255, 255, 255, 0.15);
+        }
+
+        body {
+            background: linear-gradient(135deg, #0b0f19 0%, #111827 50%, #0f172a 100%);
+            color: #f3f4f6;
+            min-height: 100vh;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+        }
+
+        .exam-banner {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(16, 185, 129, 0.2), rgba(251, 191, 36, 0.15));
+            border: 2px solid rgba(251, 191, 36, 0.5);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 100px 0 2rem;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exam-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .exam-banner h1 {
+            font-size: 2.3rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .exam-banner p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.15rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .exam-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .exam-meta span {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            backdrop-filter: blur(8px);
+        }
+
+        .student-bar {
+            background: var(--pt-bg-card);
+            border: 2px solid var(--pt-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .student-bar .input-group {
+            flex: 1;
+            min-width: 240px;
+        }
+
+        .student-bar label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--pt-gold);
+            margin-bottom: 0.4rem;
+        }
+
+        .student-bar input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1.5px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .student-bar input:focus {
+            border-color: var(--pt-gold);
+            box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.2);
+        }
+
+        .exam-section {
+            background: var(--pt-bg-card);
+            border: 2px solid var(--pt-border);
+            border-radius: 20px;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            transition: border-color 0.3s ease;
+        }
+
+        .exam-section:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .sec-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.5rem 1.4rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.4rem;
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .sec-indigo {
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            border: 1px solid #818cf8;
+        }
+
+        .sec-emerald {
+            background: linear-gradient(135deg, #10b981, #059669);
+            border: 1px solid #34d399;
+        }
+
+        .sec-purple {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            border: 1px solid #a78bfa;
+        }
+
+        .sec-gold {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            border: 1px solid #fbbf24;
+        }
+
+        .sec-rose {
+            background: linear-gradient(135deg, #f43f5e, #e11d48);
+            border: 1px solid #fb7185;
+        }
+
+        .mark-hint {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            padding-left: 0.5rem;
+            border-left: 3px solid var(--pt-gold);
+        }
+
+        .audio-control-panel {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 1.8rem;
+        }
+
+        .audio-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tbtn {
+            background: rgba(99, 102, 241, 0.25);
+            border: 1.5px solid #6366f1;
+            color: #fff;
+            padding: 0.6rem 1.3rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .tbtn:hover {
+            background: #6366f1;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .tbtn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .tbtn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: none;
+        }
+
+        .transcript-box {
+            background: rgba(0, 0, 0, 0.4);
+            border-left: 4px solid var(--pt-gold);
+            border-radius: 12px;
+            padding: 1.8rem;
+            line-height: 1.9;
+            color: rgba(255, 255, 255, 0.95);
+            margin: 1.5rem 0;
+            font-size: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .reading-article {
+            background: rgba(0, 0, 0, 0.35);
+            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 2rem;
+            line-height: 1.9;
+            color: rgba(255, 255, 255, 0.92);
+            font-size: 1.05rem;
+            margin: 1.5rem 0 2rem;
+        }
+
+        .reading-article h3 {
+            color: var(--pt-gold);
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+            text-align: center;
+        }
+
+        .reading-article p {
+            margin-bottom: 1.2rem;
+        }
+
+        .reading-article p:last-child {
+            margin-bottom: 0;
+        }
+
+        .reading-highlight {
+            color: #93c5fd;
+            font-weight: 600;
+        }
+
+        .ebox {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 4px solid var(--pt-indigo);
+            border-radius: 12px;
+            padding: 1.4rem;
+            margin: 1.3rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.2s;
+        }
+
+        .ebox:hover {
+            background: rgba(0, 0, 0, 0.4);
+            border-left-color: var(--pt-gold);
+        }
+
+        .ebox.correct-border {
+            border-left-color: #10b981 !important;
+            background: rgba(16, 185, 129, 0.08) !important;
+        }
+
+        .ebox.incorrect-border {
+            border-left-color: #ef4444 !important;
+            background: rgba(239, 68, 68, 0.08) !important;
+        }
+
+        .ebox p.qtext {
+            font-weight: 600;
+            color: #fff;
+            font-size: 1.05rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .opts {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .opts label {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.7rem 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .opts label:hover {
+            background: rgba(99, 102, 241, 0.15);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .opts input[type="radio"] {
+            accent-color: var(--pt-gold);
+            width: 18px;
+            height: 18px;
+        }
+
+        .q-feedback {
+            margin-top: 0.8rem;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .q-feedback.correct {
+            display: block;
+            background: rgba(16, 185, 129, 0.2);
+            color: #6ee7b7;
+            border: 1px solid #10b981;
+        }
+
+        .q-feedback.incorrect {
+            display: block;
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+            border: 1px solid #ef4444;
+        }
+
+        .check-btn {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border: none;
+            color: #fff;
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-top: 1.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .check-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.6);
+        }
+
+        .score-reveal {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(16, 185, 129, 0.2));
+            border: 2px solid var(--pt-gold);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 1.5rem;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .score-num {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--pt-gold);
+            line-height: 1.2;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 140px;
+            background: rgba(0, 0, 0, 0.35);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 1.2rem;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+            line-height: 1.7;
+            transition: border-color 0.2s;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--pt-gold);
+            box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.2);
+        }
+
+        .wc {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-align: right;
+            margin-top: 0.4rem;
+        }
+
+        .vocab-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 0.8rem 0 1.2rem;
+        }
+
+        .chip {
+            background: rgba(251, 191, 36, 0.15);
+            border: 1px solid rgba(251, 191, 36, 0.4);
+            color: var(--pt-gold);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: default;
+        }
+
+        .wa-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 16px 24px;
+            margin-top: 20px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border: none;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.35);
+        }
+
+        .wa-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5);
+            background: linear-gradient(135deg, #2ae06c, #159c8d);
+        }
+
+        .grand-summary-card {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(99, 102, 241, 0.15), rgba(251, 191, 36, 0.15));
+            border: 2px solid var(--pt-gold);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 3rem 0 2rem;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 2rem 0;
+        }
+
+        .summary-item {
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 1.2rem;
+            text-align: center;
+        }
+
+        .summary-item .label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.3rem;
+            text-transform: uppercase;
+        }
+
+        .summary-item .val {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .ms-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(251, 191, 36, 0.4);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .ms-box h3 {
+            color: var(--pt-gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .ak-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.6rem;
+            margin: 1rem 0 1.5rem;
+        }
+
+        .ak-item {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(251, 191, 36, 0.25);
+            padding: 0.7rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .ak-item strong {
+            color: var(--pt-gold);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .ms-toggle {
+            background: rgba(251, 191, 36, 0.15);
+            border: 2px solid var(--pt-gold);
+            color: var(--pt-gold);
+            padding: 0.9rem 2.2rem;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            margin: 2rem auto;
+            display: block;
+            transition: all 0.2s;
+        }
+
+        .ms-toggle:hover {
+            background: rgba(251, 191, 36, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .speaking-timer-badge {
+            background: rgba(244, 63, 94, 0.2);
+            border: 1px solid #f43f5e;
+            color: #fda4af;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .exam-banner {
+                padding: 1.8rem 1.2rem;
+                margin-top: 80px;
+            }
+
+            .exam-banner h1 {
+                font-size: 1.7rem;
+            }
+
+            .exam-section {
+                padding: 1.4rem;
+            }
+
+            .summary-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">English<span>Language</span> Course</div>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <a href="index.html" class="btn" style="padding: 6px 16px; font-size: 0.85rem;">← Back to Course</a>
+                    <button id="pause-audio-btn" class="btn" onclick="togglePauseAudio()" style="padding: 6px 14px; font-size: 0.85rem; background: rgba(251, 146, 60, 0.25); border-color: #fb923c;">⏸️ Pause</button>
+                    <button class="btn" onclick="stopAudio()" style="padding: 6px 14px; font-size: 0.85rem; background: rgba(239, 68, 68, 0.25); border-color: #ef4444;">⏹️ Stop</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Banner -->
+        <div class="exam-banner animate__animated animate__fadeIn">
+            <span style="background: rgba(251, 191, 36, 0.25); color: #fbbf24; border: 1px solid #fbbf24; padding: 4px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">
+                ⭐ Comprehensive Mid-Course Evaluation
+            </span>
+            <h1 style="margin-top: 0.8rem;">📋 Progress Test (Units 1 to 6)</h1>
+            <p>Integrating Technology, Global Business, Our Planet, Media Literacy, Modern Wellness &amp; Contemporary Arts</p>
+            <div class="exam-meta">
+                <span>⏱️ <strong>Time:</strong> 90 minutes</span>
+                <span>📊 <strong>Total Marks:</strong> 100 marks</span>
+                <span>🎯 <strong>Pass Mark:</strong> 60 / 100</span>
+                <span>🏆 <strong>Level:</strong> CEFR B1 / B1+</span>
+                <span>📚 <strong>Units:</strong> 1, 2, 3, 4, 5 &amp; 6</span>
+            </div>
+        </div>
+
+        <!-- Student Identification Bar -->
+        <div class="student-bar">
+            <div class="input-group">
+                <label for="student-name">👤 Student Full Name:</label>
+                <input type="text" id="student-name" placeholder="e.g. Maria Fernandez" value="">
+            </div>
+            <div class="input-group" style="max-width: 260px;">
+                <label for="student-date">📅 Test Date:</label>
+                <input type="date" id="student-date">
+            </div>
+            <div class="input-group" style="max-width: 220px;">
+                <label>🎯 Target Level:</label>
+                <input type="text" value="B1 Intermediate" readonly style="background: rgba(255,255,255,0.05); color: #fbbf24; font-weight: 700;">
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- a1. LISTENING COMPREHENSION (25 MARKS) -->
+        <!-- ========================================================= -->
+        <div class="exam-section" id="section-a1">
+            <span class="sec-label sec-indigo">🎧 a1. Listening Comprehension — 25 marks</span>
+            <p class="mark-hint">Listen to the panel discussion between Dr. Clara Harris and Julian Mercer, then answer the 10 questions. Each correct question = 2.5 marks. <em>(Optimized for clear, natural American English pronunciation)</em>.</p>
+
+            <div class="audio-control-panel">
+                <div>
+                    <strong style="color: #fff; display: block; font-size: 1.05rem;">🎙️ Panel Discussion: "The Connected Future"</strong>
+                    <span style="font-size: 0.85rem; color: rgba(255,255,255,0.7);">Topic: AI, Remote Culture, Green Innovation, Media Discernment &amp; Mental Health</span>
+                </div>
+                <div class="audio-buttons">
+                    <button class="tbtn" id="listen-btn" onclick="playListeningAudio()">🔊 Play Discussion</button>
+                    <button class="tbtn tbtn-secondary" onclick="stopAudio()">⏹️ Stop</button>
+                    <button class="tbtn tbtn-secondary" onclick="toggleTranscript('tr-a1')">📄 Show / Hide Transcript</button>
+                </div>
+            </div>
+
+            <div id="tr-a1" class="transcript-box hidden">
+                <strong style="color: var(--pt-gold); font-size: 1.1rem;">Transcript: "The Connected Future — Balancing Technology, Ecology, and Human Wellness"</strong><br><br>
+                <strong>Host:</strong> Welcome to Global Perspectives. Today we're reviewing the major themes reshaping our world: from artificial intelligence and new workplace models to environmental sustainability, media literacy, and personal wellness. I am joined by Dr. Clara Harris, environmental and tech researcher, and Julian Mercer, digital media and culture analyst. Clara, let's start with workplace automation and ecology. How are they converging?<br><br>
+                <strong>Dr. Clara Harris:</strong> Well, over the past five years, we have seen that AI isn't just automating repetitive office tasks; it is also optimizing energy grids and helping us design biodegradable materials. However, as remote work has expanded, our digital carbon footprint has grown. Data centers now consume substantial electrical power. If companies are going to scale up remote teams, they must invest in renewable energy sources like wind and solar to power these servers.<br><br>
+                <strong>Host:</strong> Julian, what about the psychological and cultural side of this digital shift?<br><br>
+                <strong>Julian Mercer:</strong> That's crucial. While digital nomads celebrate flexibility, many workers experience digital fatigue and burnout. When work and personal life blur, stress increases, which directly impacts physical health and the gut microbiome, as recent nutritional science proves. Furthermore, our constant exposure to social media feeds creates echo chambers where misinformation spreads six times faster than verified news. Critical media literacy is no longer optional; it is essential for civic well-being.<br><br>
+                <strong>Host:</strong> How does contemporary art and culture respond to these pressures?<br><br>
+                <strong>Julian Mercer:</strong> Street art and digital multimedia installations are now addressing these very themes. Artists are creating interactive exhibits to make invisible issues—like microplastics in oceans or algorithm bias—visible and emotionally tangible. Art provides a human counterweight to pure technological acceleration.<br><br>
+                <strong>Dr. Clara Harris:</strong> I completely agree. By 2035, society will have transformed completely. The true measure of our progress will not be how powerful our algorithms are, but whether we have created a sustainable, mentally healthy, and culturally vibrant world.<br><br>
+                <strong>Host:</strong> An inspiring conclusion. Thank you both.
+            </div>
+
+            <!-- Listening Questions 1-10 -->
+            <div class="ebox" id="box-l1">
+                <p class="qtext">1. According to Dr. Clara Harris, in addition to automating office tasks, what is AI helping to do?</p>
+                <div class="opts">
+                    <label><input type="radio" name="l1" value="a"> A. Replace all human managers in global companies</label>
+                    <label><input type="radio" name="l1" value="b"> B. Optimize energy grids and design biodegradable materials</label>
+                    <label><input type="radio" name="l1" value="c"> C. Eliminate the need for renewable energy sources</label>
+                </div>
+                <div class="q-feedback" id="fb-l1"></div>
+            </div>
+
+            <div class="ebox" id="box-l2">
+                <p class="qtext">2. What environmental concern does Dr. Harris mention regarding remote work?</p>
+                <div class="opts">
+                    <label><input type="radio" name="l2" value="a"> A. Increased gasoline consumption from daily commuting</label>
+                    <label><input type="radio" name="l2" value="b"> B. The expanding digital carbon footprint and high power consumption of data centers</label>
+                    <label><input type="radio" name="l2" value="c"> C. A shortage of office buildings in metropolitan areas</label>
+                </div>
+                <div class="q-feedback" id="fb-l2"></div>
+            </div>
+
+            <div class="ebox" id="box-l3">
+                <p class="qtext">3. What term does Dr. Harris use for expanding remote teams?</p>
+                <div class="opts">
+                    <label><input type="radio" name="l3" value="a"> A. "Scale up"</label>
+                    <label><input type="radio" name="l3" value="b"> B. "Slow down"</label>
+                    <label><input type="radio" name="l3" value="c"> C. "Shut down"</label>
+                </div>
+                <div class="q-feedback" id="fb-l3"></div>
+            </div>
+
+            <div class="ebox" id="box-l4">
+                <p class="qtext">4. According to Julian Mercer, what negative effect do remote workers frequently face?</p>
+                <div class="opts">
+                    <label><input type="radio" name="l4" value="a"> A. Lower productivity and lack of technical skills</label>
+                    <label><input type="radio" name="l4" value="b"> B. Digital fatigue and burnout when work-life boundaries blur</label>
+                    <label><input type="radio" name="l4" value="c"> C. Inability to communicate across time zones</label>
+                </div>
+                <div class="q-feedback" id="fb-l4"></div>
+            </div>
+
+            <div class="ebox" id="box-l5">
+                <p class="qtext">5. Julian mentions that stress directly impacts which physiological element highlighted in Unit 5?</p>
+                <div class="opts">
+                    <label><input type="radio" name="l5" value="a"> A. Bone density</label>
+                    <label><input type="radio" name="l5" value="b"> B. The gut microbiome</label>
+                    <label><input type="radio" name="l5" value="c"> C. Hair pigmentation</label>
+                </div>
+                <div class="q-feedback" id="fb-l5"></div>
+            </div>
+
+            <div class="ebox" id="box-l6">
+                <p class="qtext">6. How fast does misinformation spread on social media compared to verified news?</p>
+                <div class="opts">
+                    <label><input type="radio" name="l6" value="a"> A. Twice as fast</label>
+                    <label><input type="radio" name="l6" value="b"> B. Four times as fast</label>
+                    <label><input type="radio" name="l6" value="c"> C. Six times faster</label>
+                </div>
+                <div class="q-feedback" id="fb-l6"></div>
+            </div>
+
+            <div class="ebox" id="box-l7">
+                <p class="qtext">7. Why is critical media literacy described as "no longer optional"?</p>
+                <div class="opts">
+                    <label><input type="radio" name="l7" value="a"> A. Because governments require an exam for internet users</label>
+                    <label><input type="radio" name="l7" value="b"> B. Because social media feeds trap users in echo chambers</label>
+                    <label><input type="radio" name="l7" value="c"> C. Because traditional journalism has ceased to exist</label>
+                </div>
+                <div class="q-feedback" id="fb-l7"></div>
+            </div>
+
+            <div class="ebox" id="box-l8">
+                <p class="qtext">8. How are contemporary artists addressing complex modern challenges?</p>
+                <div class="opts">
+                    <label><input type="radio" name="l8" value="a"> A. By making issues like microplastics and algorithm bias emotionally tangible</label>
+                    <label><input type="radio" name="l8" value="b"> B. By refusing to use any digital technology in their studios</label>
+                    <label><input type="radio" name="l8" value="c"> C. By copying 19th-century classical landscape paintings</label>
+                </div>
+                <div class="q-feedback" id="fb-l8"></div>
+            </div>
+
+            <div class="ebox" id="box-l9">
+                <p class="qtext">9. According to Dr. Harris, by 2035, what will society have done? <em>(Grammar: Future Perfect)</em></p>
+                <div class="opts">
+                    <label><input type="radio" name="l9" value="a"> A. Society will be transforming</label>
+                    <label><input type="radio" name="l9" value="b"> B. Society will have transformed completely</label>
+                    <label><input type="radio" name="l9" value="c"> C. Society will transformed</label>
+                </div>
+                <div class="q-feedback" id="fb-l9"></div>
+            </div>
+
+            <div class="ebox" id="box-l10">
+                <p class="qtext">10. What is the ultimate message agreed upon by both speakers?</p>
+                <div class="opts">
+                    <label><input type="radio" name="l10" value="a"> A. Economic profit is the sole metric of technological evolution</label>
+                    <label><input type="radio" name="l10" value="b"> B. True progress lies in building a sustainable, healthy, and culturally rich society</label>
+                    <label><input type="radio" name="l10" value="c"> C. Remote work should be prohibited worldwide</label>
+                </div>
+                <div class="q-feedback" id="fb-l10"></div>
+            </div>
+
+            <button class="check-btn" onclick="checkSectionA1()">✅ Check a1. Listening Answers</button>
+
+            <div id="score-a1" class="score-reveal">
+                <div style="color:rgba(255,255,255,0.8); font-size: 1rem;">Section a1 — Listening Score:</div>
+                <div class="score-num" id="num-a1">0 / 25</div>
+                <div style="color:rgba(255,255,255,0.7); font-size: 0.9rem;" id="pct-a1">0%</div>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- b1. READING COMPREHENSION (25 MARKS) -->
+        <!-- ========================================================= -->
+        <div class="exam-section" id="section-b1">
+            <span class="sec-label sec-emerald">📖 b1. Reading Comprehension — 25 marks</span>
+            <p class="mark-hint">Read the synthesizing article below carefully. Answer the 10 questions (5 Multiple Choice + 5 True/False/Not Given). Each correct answer = 2.5 marks.</p>
+
+            <div class="audio-control-panel">
+                <div>
+                    <strong style="color: #fff; display: block; font-size: 1.05rem;">📖 Synthesizing Article: "The Paradigm of Convergence"</strong>
+                    <span style="font-size: 0.85rem; color: rgba(255,255,255,0.7);">Synthesizing Units 1 to 6 Core Concepts</span>
+                </div>
+                <div class="audio-buttons">
+                    <button class="tbtn" style="background: rgba(16, 185, 129, 0.25); border-color: #10b981;" onclick="playReadingArticle()">🔊 Read Article Aloud</button>
+                    <button class="tbtn tbtn-secondary" onclick="stopAudio()">⏹️ Stop</button>
+                </div>
+            </div>
+
+            <article class="reading-article">
+                <h3>The Paradigm of Convergence: Redefining Work, Planet, and Human Vitality</h3>
+                <p><strong>[1]</strong> In the first quarter of the 21st century, human society is experiencing an unprecedented convergence of technological transformation, ecological urgency, and cultural evolution. Where previous generations viewed industry, nature, and personal wellness as discrete domains, modern reality reveals them to be intimately linked. <span class="reading-highlight">Not only has artificial intelligence disrupted routine labour</span>, but it has also redefined the speed at which global markets innovate and compete.</p>
+
+                <p><strong>[2]</strong> In the business sphere, the rise of the digital nomad and gig platforms has decentralized traditional corporations. By 2030, millions of professionals will have abandoned rigid office cubicles in favor of flexible, cross-cultural remote teams. Yet, this spatial liberation brings unanticipated challenges. Constant connectivity frequently erodes the boundary between private life and professional obligations, precipitating widespread mental fatigue. To counter this, forward-thinking enterprises are recognizing that holistic wellness—including mindfulness and nutrition—is a fundamental driver of productivity rather than a corporate luxury.</p>
+
+                <p><strong>[3]</strong> Simultaneously, the planet faces an urgent ecological reckoning. While renewable energy capacity expands globally, the pervasive proliferation of <span class="reading-highlight">microplastics</span> in soil, marine habitats, and even human circulatory systems underscores the cost of unchecked industrial manufacturing. Resolving these multifaceted crises requires not merely political treaties, but also sophisticated media literacy. In an age dominated by sensationalist algorithms and synthetic fake news, citizens must cultivate analytical discernment to distinguish verified environmental science from deceptive propaganda.</p>
+
+                <p><strong>[4]</strong> Finally, contemporary arts and cultural expressions serve as the conscience of this transitional era. From provocative street murals in metropolitan centers to immersive digital art exhibitions, artists translate abstract statistics into visceral human narratives. As the world navigates this transition, the overarching goal must be harmony: harnessing automation to liberate human potential, restoring planetary ecosystems, and nurturing physical and emotional equilibrium.</p>
+            </article>
+
+            <!-- Reading Questions 1 to 5: Multiple Choice -->
+            <h4 style="color: var(--pt-gold); margin: 1.8rem 0 1rem; font-size: 1.15rem;">Part I — Multiple Choice Comprehension</h4>
+
+            <div class="ebox" id="box-r1">
+                <p class="qtext">1. What is the central thesis of paragraph [1] regarding technology, nature, and wellness?</p>
+                <div class="opts">
+                    <label><input type="radio" name="r1" value="a"> A. They are completely separate domains that should be studied independently</label>
+                    <label><input type="radio" name="r1" value="b"> B. They form an interconnected convergence shaping modern society</label>
+                    <label><input type="radio" name="r1" value="c"> C. Technological growth has eliminated all ecological concerns</label>
+                </div>
+                <div class="q-feedback" id="fb-r1"></div>
+            </div>
+
+            <div class="ebox" id="box-r2">
+                <p class="qtext">2. According to paragraph [2], what is one unintended consequence of constant remote connectivity?</p>
+                <div class="opts">
+                    <label><input type="radio" name="r2" value="a"> A. A significant drop in international business communication</label>
+                    <label><input type="radio" name="r2" value="b"> B. The erosion of boundaries between personal life and work, causing mental fatigue</label>
+                    <label><input type="radio" name="r2" value="c"> C. An immediate return to rigid 9-to-5 physical office requirements</label>
+                </div>
+                <div class="q-feedback" id="fb-r2"></div>
+            </div>
+
+            <div class="ebox" id="box-r3">
+                <p class="qtext">3. Why do forward-thinking enterprises invest in holistic wellness and mindfulness?</p>
+                <div class="opts">
+                    <label><input type="radio" name="r3" value="a"> A. They see it as a fundamental driver of productivity rather than a luxury</label>
+                    <label><input type="radio" name="r3" value="b"> B. They are required by international law to hire yoga instructors</label>
+                    <label><input type="radio" name="r3" value="c"> C. It allows companies to reduce workers' annual salaries</label>
+                </div>
+                <div class="q-feedback" id="fb-r3"></div>
+            </div>
+
+            <div class="ebox" id="box-r4">
+                <p class="qtext">4. What connection is made in paragraph [3] between environmental crises and media literacy?</p>
+                <div class="opts">
+                    <label><input type="radio" name="r4" value="a"> A. Environmental problems can only be solved by watching television broadcasts</label>
+                    <label><input type="radio" name="r4" value="b"> B. Citizens need critical discernment to separate verified scientific facts from fake news and propaganda</label>
+                    <label><input type="radio" name="r4" value="c"> C. Social media algorithms automatically eliminate false climate information</label>
+                </div>
+                <div class="q-feedback" id="fb-r4"></div>
+            </div>
+
+            <div class="ebox" id="box-r5">
+                <p class="qtext">5. What role do contemporary arts and street murals play in this transitional era (paragraph [4])?</p>
+                <div class="opts">
+                    <label><input type="radio" name="r5" value="a"> A. They translate dry statistics into visceral, emotional human narratives</label>
+                    <label><input type="radio" name="r5" value="b"> B. They decorate corporate office buildings to increase real estate value</label>
+                    <label><input type="radio" name="r5" value="c"> C. They distract society from addressing real ecological problems</label>
+                </div>
+                <div class="q-feedback" id="fb-r5"></div>
+            </div>
+
+            <!-- Reading Questions 6 to 10: True / False / Not Given -->
+            <h4 style="color: var(--pt-gold); margin: 2rem 0 1rem; font-size: 1.15rem;">Part II — True / False / Not Given (TFNG)</h4>
+
+            <div class="ebox" id="box-r6">
+                <p class="qtext">6. Previous generations viewed industry, ecology, and personal health as completely distinct fields.</p>
+                <div class="opts">
+                    <label><input type="radio" name="r6" value="true"> A. TRUE</label>
+                    <label><input type="radio" name="r6" value="false"> B. FALSE</label>
+                    <label><input type="radio" name="r6" value="ng"> C. NOT GIVEN</label>
+                </div>
+                <div class="q-feedback" id="fb-r6"></div>
+            </div>
+
+            <div class="ebox" id="box-r7">
+                <p class="qtext">7. By 2030, all physical office buildings worldwide will have closed permanently.</p>
+                <div class="opts">
+                    <label><input type="radio" name="r7" value="true"> A. TRUE</label>
+                    <label><input type="radio" name="r7" value="false"> B. FALSE</label>
+                    <label><input type="radio" name="r7" value="ng"> C. NOT GIVEN</label>
+                </div>
+                <div class="q-feedback" id="fb-r7"></div>
+            </div>
+
+            <div class="ebox" id="box-r8">
+                <p class="qtext">8. Microplastic particles have been detected inside human circulatory systems.</p>
+                <div class="opts">
+                    <label><input type="radio" name="r8" value="true"> A. TRUE</label>
+                    <label><input type="radio" name="r8" value="false"> B. FALSE</label>
+                    <label><input type="radio" name="r8" value="ng"> C. NOT GIVEN</label>
+                </div>
+                <div class="q-feedback" id="fb-r8"></div>
+            </div>
+
+            <div class="ebox" id="box-r9">
+                <p class="qtext">9. European legislation has fined tech platforms for spreading sensationalist climate content.</p>
+                <div class="opts">
+                    <label><input type="radio" name="r9" value="true"> A. TRUE</label>
+                    <label><input type="radio" name="r9" value="false"> B. FALSE</label>
+                    <label><input type="radio" name="r9" value="ng"> C. NOT GIVEN</label>
+                </div>
+                <div class="q-feedback" id="fb-r9"></div>
+            </div>
+
+            <div class="ebox" id="box-r10">
+                <p class="qtext">10. The author argues that automation should be leveraged to liberate human potential rather than merely maximize profit.</p>
+                <div class="opts">
+                    <label><input type="radio" name="r10" value="true"> A. TRUE</label>
+                    <label><input type="radio" name="r10" value="false"> B. FALSE</label>
+                    <label><input type="radio" name="r10" value="ng"> C. NOT GIVEN</label>
+                </div>
+                <div class="q-feedback" id="fb-r10"></div>
+            </div>
+
+            <button class="check-btn" onclick="checkSectionB1()">✅ Check b1. Reading Answers</button>
+
+            <div id="score-b1" class="score-reveal">
+                <div style="color:rgba(255,255,255,0.8); font-size: 1rem;">Section b1 — Reading Score:</div>
+                <div class="score-num" id="num-b1">0 / 25</div>
+                <div style="color:rgba(255,255,255,0.7); font-size: 0.9rem;" id="pct-b1">0%</div>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- c1. GRAMMAR & VOCABULARY IN CONTEXT (25 MARKS) -->
+        <!-- ========================================================= -->
+        <div class="exam-section" id="section-c1">
+            <span class="sec-label sec-purple">📝 c1. Grammar &amp; Vocabulary in Context — 25 marks</span>
+            <p class="mark-hint">Choose the grammatically correct option or collocation that best completes each sentence (covering Units 1 to 6). 15 questions, ~1.67 marks each = 25 marks.</p>
+
+            <!-- G1: Future Perfect (Unit 1) -->
+            <div class="ebox" id="box-g1">
+                <p class="qtext">1. By the end of this decade, scientists predict that engineers _____ new carbon-neutral batteries.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g1" value="a"> A. will have developed</label>
+                    <label><input type="radio" name="g1" value="b"> B. will be developed</label>
+                    <label><input type="radio" name="g1" value="c"> C. have develop</label>
+                </div>
+                <div class="q-feedback" id="fb-g1"></div>
+            </div>
+
+            <!-- G2: Future Continuous (Unit 1) -->
+            <div class="ebox" id="box-g2">
+                <p class="qtext">2. This time tomorrow, our international research team _____ the keynote presentation at the global conference.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g2" value="a"> A. will have delivering</label>
+                    <label><input type="radio" name="g2" value="b"> B. will be delivering</label>
+                    <label><input type="radio" name="g2" value="c"> C. delivers</label>
+                </div>
+                <div class="q-feedback" id="fb-g2"></div>
+            </div>
+
+            <!-- G3: Modals of Deduction - Past (Unit 2) -->
+            <div class="ebox" id="box-g3">
+                <p class="qtext">3. Mark's office is completely dark and his car isn't outside. He _____ for the day already.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g3" value="a"> A. must have left</label>
+                    <label><input type="radio" name="g3" value="b"> B. can't have left</label>
+                    <label><input type="radio" name="g3" value="c"> C. should leave</label>
+                </div>
+                <div class="q-feedback" id="fb-g3"></div>
+            </div>
+
+            <!-- G4: Modals of Deduction - Present (Unit 2) -->
+            <div class="ebox" id="box-g4">
+                <p class="qtext">4. Look at that complex algorithm analysis! She only started coding last week, so she _____ the entire system on her own.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g4" value="a"> A. must have written</label>
+                    <label><input type="radio" name="g4" value="b"> B. can't have written</label>
+                    <label><input type="radio" name="g4" value="c"> C. might write</label>
+                </div>
+                <div class="q-feedback" id="fb-g4"></div>
+            </div>
+
+            <!-- G5: Inversion for Emphasis (Unit 3) -->
+            <div class="ebox" id="box-g5">
+                <p class="qtext">5. Not only _____ to reduce industrial emissions, but governments must also invest in green infrastructure.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g5" value="a"> A. corporations have</label>
+                    <label><input type="radio" name="g5" value="b"> B. do corporations need</label>
+                    <label><input type="radio" name="g5" value="c"> C. corporations need</label>
+                </div>
+                <div class="q-feedback" id="fb-g5"></div>
+            </div>
+
+            <!-- G6: Inversion with Never / Seldom (Unit 3) -->
+            <div class="ebox" id="box-g6">
+                <p class="qtext">6. Seldom _____ such high levels of microplastic contamination in freshwater streams.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g6" value="a"> A. have researchers documented</label>
+                    <label><input type="radio" name="g6" value="b"> B. researchers have documented</label>
+                    <label><input type="radio" name="g6" value="c"> C. did researchers documented</label>
+                </div>
+                <div class="q-feedback" id="fb-g6"></div>
+            </div>
+
+            <!-- G7: Reported Speech - Statement (Unit 4) -->
+            <div class="ebox" id="box-g7">
+                <p class="qtext">7. Direct: "We are investigating how the fake article went viral," the analyst said.<br>Reported: The analyst said that they _____ how the fake article had gone viral.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g7" value="a"> A. are investigating</label>
+                    <label><input type="radio" name="g7" value="b"> B. were investigating</label>
+                    <label><input type="radio" name="g7" value="c"> C. have investigated</label>
+                </div>
+                <div class="q-feedback" id="fb-g7"></div>
+            </div>
+
+            <!-- G8: Reported Speech - Question (Unit 4) -->
+            <div class="ebox" id="box-g8">
+                <p class="qtext">8. She asked the editor _____ the news source had been properly verified before publication.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g8" value="a"> A. that if</label>
+                    <label><input type="radio" name="g8" value="b"> B. whether</label>
+                    <label><input type="radio" name="g8" value="c"> C. did</label>
+                </div>
+                <div class="q-feedback" id="fb-g8"></div>
+            </div>
+
+            <!-- G9: Gerund vs Infinitive (Unit 5) -->
+            <div class="ebox" id="box-g9">
+                <p class="qtext">9. Health experts recommend _____ ultra-processed foods to support a balanced gut microbiome.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g9" value="a"> A. to avoid</label>
+                    <label><input type="radio" name="g9" value="b"> B. avoiding</label>
+                    <label><input type="radio" name="g9" value="c"> C. avoid</label>
+                </div>
+                <div class="q-feedback" id="fb-g9"></div>
+            </div>
+
+            <!-- G10: Gerund / Infinitive with stop/remember (Unit 5) -->
+            <div class="ebox" id="box-g10">
+                <p class="qtext">10. When feeling overwhelmed by digital notifications, remember _____ deep breathing exercises.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g10" value="a"> A. to practice</label>
+                    <label><input type="radio" name="g10" value="b"> B. practicing</label>
+                    <label><input type="radio" name="g10" value="c"> C. practice</label>
+                </div>
+                <div class="q-feedback" id="fb-g10"></div>
+            </div>
+
+            <!-- G11: Passive Voice (Unit 6) -->
+            <div class="ebox" id="box-g11">
+                <p class="qtext">11. The revolutionary street art mural _____ by municipal authorities after public outcry against its removal.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g11" value="a"> A. was preserved</label>
+                    <label><input type="radio" name="g11" value="b"> B. preserved</label>
+                    <label><input type="radio" name="g11" value="c"> C. is preserving</label>
+                </div>
+                <div class="q-feedback" id="fb-g11"></div>
+            </div>
+
+            <!-- G12: Participle Clauses (Unit 6) -->
+            <div class="ebox" id="box-g12">
+                <p class="qtext">12. _____ by contemporary urban struggles, the artists created a breathtaking digital exhibition.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g12" value="a"> A. Inspiring</label>
+                    <label><input type="radio" name="g12" value="b"> B. Inspired</label>
+                    <label><input type="radio" name="g12" value="c"> C. Having inspire</label>
+                </div>
+                <div class="q-feedback" id="fb-g12"></div>
+            </div>
+
+            <!-- G13: Business & Tech Collocation (Units 1 & 2) -->
+            <div class="ebox" id="box-g13">
+                <p class="qtext">13. The tech startup managed to _____ its customer support operations by deploying intelligent automation.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g13" value="a"> A. scale up</label>
+                    <label><input type="radio" name="g13" value="b"> B. break up</label>
+                    <label><input type="radio" name="g13" value="c"> C. turn off</label>
+                </div>
+                <div class="q-feedback" id="fb-g13"></div>
+            </div>
+
+            <!-- G14: Media & Ecology Collocation (Units 3 & 4) -->
+            <div class="ebox" id="box-g14">
+                <p class="qtext">14. Social media algorithms often trap individuals in _____, where differing opinions are completely filtered out.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g14" value="a"> A. green zones</label>
+                    <label><input type="radio" name="g14" value="b"> B. echo chambers</label>
+                    <label><input type="radio" name="g14" value="c"> C. data centers</label>
+                </div>
+                <div class="q-feedback" id="fb-g14"></div>
+            </div>
+
+            <!-- G15: Wellness & Arts Collocation (Units 5 & 6) -->
+            <div class="ebox" id="box-g15">
+                <p class="qtext">15. Engaging in creative hobbies provides a healthy outlet for emotional _____ and reduces stress.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g15" value="a"> A. expression</label>
+                    <label><input type="radio" name="g15" value="b"> B. impression</label>
+                    <label><input type="radio" name="g15" value="c"> C. depression</label>
+                </div>
+                <div class="q-feedback" id="fb-g15"></div>
+            </div>
+
+            <button class="check-btn" onclick="checkSectionC1()">✅ Check c1. Grammar &amp; Vocabulary Answers</button>
+
+            <div id="score-c1" class="score-reveal">
+                <div style="color:rgba(255,255,255,0.8); font-size: 1rem;">Section c1 — Grammar &amp; Vocabulary Score:</div>
+                <div class="score-num" id="num-c1">0 / 25</div>
+                <div style="color:rgba(255,255,255,0.7); font-size: 0.9rem;" id="pct-c1">0%</div>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- d1. WRITING: INTEGRATED ROUND-OFF ESSAY (15 MARKS) -->
+        <!-- ========================================================= -->
+        <div class="exam-section" id="section-d1">
+            <span class="sec-label sec-gold">✍️ d1. Writing: Integrated Round-Off Essay — 15 marks</span>
+            <p class="mark-hint">Choose <strong>ONE</strong> of the two essay prompts below. Write a well-structured essay (180–240 words). Connect themes from at least 3 units (e.g. Technology, Remote Work, Ecology, Media, Wellness, or Arts).</p>
+
+            <div style="background: rgba(0,0,0,0.3); border-left: 4px solid var(--pt-gold); padding: 1.2rem; border-radius: 10px; margin-bottom: 1.5rem;">
+                <p style="color: #fff; font-weight: 700; margin-bottom: 0.5rem;">Option A (Opinion Essay):</p>
+                <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem; margin-bottom: 1rem;">
+                    <em>"Rapid technological advancements—such as AI and remote work—are transforming our lives. While some argue they cause digital burnout and social isolation, others believe they are essential for environmental sustainability and personal freedom. Discuss both sides and give your opinion."</em>
+                </p>
+                <p style="color: #fff; font-weight: 700; margin-bottom: 0.5rem;">Option B (Formal Proposal):</p>
+                <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">
+                    <em>"Write a proposal for the CEO of a modern enterprise recommending 3 key policies: (1) adopting sustainable tech/remote practices to reduce carbon footprint, (2) providing mental health/nutrition support for staff, and (3) promoting creative cultural activities to foster teamwork."</em>
+                </p>
+            </div>
+
+            <div class="vocab-chips">
+                <span class="chip">💡 Suggested Vocabulary:</span>
+                <span class="chip">scale up</span>
+                <span class="chip">digital nomad</span>
+                <span class="chip">carbon footprint</span>
+                <span class="chip">renewable energy</span>
+                <span class="chip">media literacy</span>
+                <span class="chip">echo chamber</span>
+                <span class="chip">gut microbiome</span>
+                <span class="chip">holistic health</span>
+                <span class="chip">artistic expression</span>
+                <span class="chip">future perfect</span>
+            </div>
+
+            <div style="margin: 1.5rem 0;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <label for="essay-text" style="color: #fff; font-weight: 700;">Your Written Essay / Proposal:</label>
+                    <span style="font-size: 0.85rem; color: var(--pt-gold);">Target: 180 – 240 words</span>
+                </div>
+                <textarea id="essay-text" placeholder="Start typing your essay or proposal here. Remember to include an Introduction, 2 Main Body Paragraphs with B1 connectors, and a strong Conclusion..." oninput="updateWordCount('essay-text', 'essay-wc')"></textarea>
+                <div class="wc" id="essay-wc">Words: 0 / 240</div>
+            </div>
+
+            <button onclick="sendSectionD1()" class="wa-btn" style="background: linear-gradient(135deg, #f59e0b, #d97706); box-shadow: 0 6px 20px rgba(245, 158, 11, 0.35);">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Send Section d1 (Writing) via WhatsApp
+            </button>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- e1. SPEAKING & ORAL ASSESSMENT (10 MARKS) -->
+        <!-- ========================================================= -->
+        <div class="exam-section" id="section-e1">
+            <span class="sec-label sec-rose">🎙️ e1. Speaking: Oral Round-Off Assessment — 10 marks</span>
+            <p class="mark-hint">Prepare 2-minute spoken responses for the 3 prompts below. You can record your voice note on WhatsApp or write your key speaking notes here before submitting.</p>
+
+            <div style="display: grid; gap: 15px; margin: 1.5rem 0;">
+                <div style="background: rgba(0,0,0,0.3); border-left: 4px solid var(--pt-rose); padding: 1.2rem; border-radius: 10px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+                        <strong style="color: #fff;">Task 1: Work &amp; Technology (Units 1 &amp; 2)</strong>
+                        <span class="speaking-timer-badge">⏱️ 1-2 mins</span>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem;">
+                        How will artificial intelligence and remote work have transformed career opportunities by 2035? Share your personal experience with remote tools.
+                    </p>
+                </div>
+
+                <div style="background: rgba(0,0,0,0.3); border-left: 4px solid var(--pt-emerald); padding: 1.2rem; border-radius: 10px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+                        <strong style="color: #fff;">Task 2: Sustainability &amp; Media Discernment (Units 3 &amp; 4)</strong>
+                        <span class="speaking-timer-badge">⏱️ 1-2 mins</span>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem;">
+                        Why is critical media literacy crucial when evaluating climate change reports and consumer sustainability claims?
+                    </p>
+                </div>
+
+                <div style="background: rgba(0,0,0,0.3); border-left: 4px solid var(--pt-purple); padding: 1.2rem; border-radius: 10px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+                        <strong style="color: #fff;">Task 3: Holistic Health &amp; Cultural Art (Units 5 &amp; 6)</strong>
+                        <span class="speaking-timer-badge">⏱️ 1-2 mins</span>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem;">
+                        How do maintaining mind-body nutrition and engaging with visual arts or creative hobbies foster emotional resilience in a fast-paced society?
+                    </p>
+                </div>
+            </div>
+
+            <div style="margin: 1.5rem 0;">
+                <label for="speaking-notes" style="color: #fff; font-weight: 700; display: block; margin-bottom: 0.5rem;">Your Speaking Notes / Key Talking Points:</label>
+                <textarea id="speaking-notes" placeholder="Outline your key talking points here (Introduction, 2 main examples with B1 collocations, and Conclusion)..." oninput="updateWordCount('speaking-notes', 'spk-wc')"></textarea>
+                <div class="wc" id="spk-wc">Words: 0</div>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- GRAND SUMMARY & WHATSAPP DISPATCH DASHBOARD -->
+        <!-- ========================================================= -->
+        <div class="grand-summary-card animate__animated animate__fadeIn">
+            <span style="background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid #10b981; padding: 4px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 800; text-transform: uppercase;">
+                📊 Final Score &amp; WhatsApp Submission
+            </span>
+            <h2 style="font-size: 2rem; color: #fff; margin-top: 0.8rem;">Mid-Course Progress Evaluation</h2>
+            <p style="color: rgba(255, 255, 255, 0.85); font-size: 1.05rem;">Review your auto-graded scores across all sections and submit your complete examination to your instructor.</p>
+
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="label">🎧 a1. Listening</div>
+                    <div class="val" id="sum-a1" style="color: #818cf8;">— / 25</div>
+                </div>
+                <div class="summary-item">
+                    <div class="label">📖 b1. Reading</div>
+                    <div class="val" id="sum-b1" style="color: #34d399;">— / 25</div>
+                </div>
+                <div class="summary-item">
+                    <div class="label">📝 c1. Grammar &amp; Vocab</div>
+                    <div class="val" id="sum-c1" style="color: #c084fc;">— / 25</div>
+                </div>
+                <div class="summary-item">
+                    <div class="label">🏆 Auto-Graded Total</div>
+                    <div class="val" id="sum-auto" style="color: var(--pt-gold);">— / 75</div>
+                </div>
+            </div>
+
+            <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 1.2rem; margin: 1.5rem auto; max-width: 650px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                    <span style="font-size: 1.1rem; font-weight: 700; color: #fff;">Performance Standing:</span>
+                    <span id="grade-badge" style="background: rgba(251, 191, 36, 0.2); border: 1px solid #fbbf24; color: #fbbf24; padding: 4px 16px; border-radius: 20px; font-weight: 800; font-size: 1rem;">
+                        Click "Check" on sections above
+                    </span>
+                </div>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-top: 0.5rem; text-align: left;">
+                    <em>Note: Writing (15 marks) and Speaking (10 marks) are evaluated directly by your teacher upon submission. Total Course Mark = 100.</em>
+                </p>
+            </div>
+
+            <!-- Master WhatsApp Button -->
+            <button onclick="sendFullProgressTest()" class="wa-btn">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                📲 Send Complete Progress Test (Units 1–6) via WhatsApp
+            </button>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- TEACHER MARKING SCHEME (COLLAPSIBLE) -->
+        <!-- ========================================================= -->
+        <button class="ms-toggle" onclick="toggleTranscript('ms-teacher')">🔑 Show / Hide Teacher Marking Scheme &amp; Answer Keys</button>
+
+        <div id="ms-teacher" class="ms-box hidden">
+            <h3>🔑 Teacher Marking Scheme &amp; Key Explanations (Units 1–6)</h3>
+
+            <h4 style="color: #818cf8; margin: 1.5rem 0 0.8rem;">Section a1 — Listening Answers (2.5 marks each = 25 marks)</h4>
+            <div class="ak-grid">
+                <div class="ak-item">Q1 → <strong>B</strong> (Optimize grids &amp; design biodegradable materials)</div>
+                <div class="ak-item">Q2 → <strong>B</strong> (Digital carbon footprint &amp; data center power)</div>
+                <div class="ak-item">Q3 → <strong>A</strong> ("Scale up")</div>
+                <div class="ak-item">Q4 → <strong>B</strong> (Digital fatigue &amp; burnout)</div>
+                <div class="ak-item">Q5 → <strong>B</strong> (Gut microbiome)</div>
+                <div class="ak-item">Q6 → <strong>C</strong> (Six times faster)</div>
+                <div class="ak-item">Q7 → <strong>B</strong> (Echo chambers require critical discernment)</div>
+                <div class="ak-item">Q8 → <strong>A</strong> (Make microplastics &amp; algorithm bias emotionally tangible)</div>
+                <div class="ak-item">Q9 → <strong>B</strong> (Will have transformed — Future Perfect)</div>
+                <div class="ak-item">Q10 → <strong>B</strong> (Sustainable, healthy, and culturally rich society)</div>
+            </div>
+
+            <h4 style="color: #34d399; margin: 1.5rem 0 0.8rem;">Section b1 — Reading Answers (2.5 marks each = 25 marks)</h4>
+            <div class="ak-grid">
+                <div class="ak-item">Q1 → <strong>B</strong> (Interconnected convergence)</div>
+                <div class="ak-item">Q2 → <strong>B</strong> (Erosion of life/work boundaries)</div>
+                <div class="ak-item">Q3 → <strong>A</strong> (Driver of productivity)</div>
+                <div class="ak-item">Q4 → <strong>B</strong> (Critical discernment against fake news)</div>
+                <div class="ak-item">Q5 → <strong>A</strong> (Translate statistics into human narratives)</div>
+                <div class="ak-item">Q6 → <strong>TRUE</strong> (Explicit in paragraph 1)</div>
+                <div class="ak-item">Q7 → <strong>FALSE</strong> ("Decentralized" / "millions", not all closed)</div>
+                <div class="ak-item">Q8 → <strong>TRUE</strong> (Found in circulatory systems, paragraph 3)</div>
+                <div class="ak-item">Q9 → <strong>NOT GIVEN</strong> (No mention of specific fines)</div>
+                <div class="ak-item">Q10 → <strong>TRUE</strong> (Explicit in paragraph 4)</div>
+            </div>
+
+            <h4 style="color: #c084fc; margin: 1.5rem 0 0.8rem;">Section c1 — Grammar &amp; Vocabulary Answers (1.67 marks each = 25 marks)</h4>
+            <div class="ak-grid">
+                <div class="ak-item">G1 → <strong>A</strong> (will have developed)</div>
+                <div class="ak-item">G2 → <strong>B</strong> (will be delivering)</div>
+                <div class="ak-item">G3 → <strong>A</strong> (must have left)</div>
+                <div class="ak-item">G4 → <strong>B</strong> (can't have written)</div>
+                <div class="ak-item">G5 → <strong>B</strong> (do corporations need - Inversion)</div>
+                <div class="ak-item">G6 → <strong>A</strong> (have researchers documented - Inversion)</div>
+                <div class="ak-item">G7 → <strong>B</strong> (were investigating - Reported Speech)</div>
+                <div class="ak-item">G8 → <strong>B</strong> (whether - Indirect Question)</div>
+                <div class="ak-item">G9 → <strong>B</strong> (avoiding - Gerund after recommend)</div>
+                <div class="ak-item">G10 → <strong>A</strong> (to practice - Remember to do)</div>
+                <div class="ak-item">G11 → <strong>A</strong> (was preserved - Passive Voice)</div>
+                <div class="ak-item">G12 → <strong>B</strong> (Inspired - Participle Clause)</div>
+                <div class="ak-item">G13 → <strong>A</strong> (scale up)</div>
+                <div class="ak-item">G14 → <strong>B</strong> (echo chambers)</div>
+                <div class="ak-item">G15 → <strong>A</strong> (expression)</div>
+            </div>
+
+            <h4 style="color: var(--pt-gold); margin: 1.5rem 0 0.8rem;">CEFR B1 Assessment Rubric (Sections d1 &amp; e1)</h4>
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; margin-top: 0.5rem; font-size: 0.9rem;">
+                    <thead>
+                        <tr style="background: rgba(251, 191, 36, 0.2); color: #fff;">
+                            <th style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); text-align: left;">Criteria</th>
+                            <th style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); text-align: left;">Distinction (90-100%)</th>
+                            <th style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); text-align: left;">Merit (75-89%)</th>
+                            <th style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); text-align: left;">Pass (60-74%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.08); font-weight: 700; color: #fbbf24;">Task Achievement</td>
+                            <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.08);">Addresses all prompts thoroughly with clear examples from Units 1-6.</td>
+                            <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.08);">Addresses all prompts well; minor omissions in detail.</td>
+                            <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.08);">Addresses the main points adequately with basic development.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.08); font-weight: 700; color: #fbbf24;">Grammar &amp; Vocabulary</td>
+                            <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.08);">Uses advanced collocations, Future Perfect, Inversion, and Passives naturally.</td>
+                            <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.08);">Good range of B1 lexis; occasional minor slips that do not impede meaning.</td>
+                            <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.08);">Basic structures mostly accurate; some vocabulary repetition.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.08); font-weight: 700; color: #fbbf24;">Cohesion &amp; Fluency</td>
+                            <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.08);">Flawless paragraphing, natural discourse markers (consequently, furthermore).</td>
+                            <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.08);">Clear organization and logical progression of arguments.</td>
+                            <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.08);">Coherent with simple linkers (and, but, because, also).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container" style="text-align: center; padding: 40px 0 30px;">
+            <p>© 2026 English Language Course. Created by Cecilia Chiappero.</p>
+            <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 5px;">
+                Mid-Course Progress Test (Units 1–6). Optimized for American English Pronunciation.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Interactive Self-Correction and Audio Scripts -->
+    <script>
+        // Set today's date automatically
+        document.addEventListener('DOMContentLoaded', () => {
+            const dateInput = document.getElementById('student-date');
+            if (dateInput && !dateInput.value) {
+                dateInput.value = new Date().toISOString().split('T')[0];
+            }
+        });
+
+        // Toggle text/transcript
+        function toggleTranscript(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.toggle('hidden');
+        }
+
+        // Live Word Counter
+        function updateWordCount(textareaId, counterId) {
+            const text = document.getElementById(textareaId).value.trim();
+            const count = text === '' ? 0 : text.split(/\s+/).length;
+            document.getElementById(counterId).textContent = `Words: ${count}`;
+        }
+
+        // -------------------------------------------------------------
+        // AUDIO PLAYBACK (American English natural voice engine)
+        // -------------------------------------------------------------
+        const LISTENING_TRANSCRIPT = `Welcome to Global Perspectives. Today we're reviewing the major themes reshaping our world: from artificial intelligence and new workplace models to environmental sustainability, media literacy, and personal wellness. I am joined by Doctor Clara Harris, environmental and tech researcher, and Julian Mercer, digital media and culture analyst. Clara, let's start with workplace automation and ecology. How are they converging?
+Well, over the past five years, we have seen that AI isn't just automating repetitive office tasks; it is also optimizing energy grids and helping us design biodegradable materials. However, as remote work has expanded, our digital carbon footprint has grown. Data centers now consume substantial electrical power. If companies are going to scale up remote teams, they must invest in renewable energy sources like wind and solar to power these servers.
+Julian, what about the psychological and cultural side of this digital shift?
+That's crucial. While digital nomads celebrate flexibility, many workers experience digital fatigue and burnout. When work and personal life blur, stress increases, which directly impacts physical health and the gut microbiome, as recent nutritional science proves. Furthermore, our constant exposure to social media feeds creates echo chambers where misinformation spreads six times faster than verified news. Critical media literacy is no longer optional; it is essential for civic well-being.
+How does contemporary art and culture respond to these pressures?
+Street art and digital multimedia installations are now addressing these very themes. Artists are creating interactive exhibits to make invisible issues—like microplastics in oceans or algorithm bias—visible and emotionally tangible. Art provides a human counterweight to pure technological acceleration.
+I completely agree. By 2035, society will have transformed completely. The true measure of our progress will not be how powerful our algorithms are, but whether we have created a sustainable, mentally healthy, and culturally vibrant world.
+An inspiring conclusion. Thank you both.`;
+
+        const READING_PASSAGE = `The Paradigm of Convergence: Redefining Work, Planet, and Human Vitality.
+In the first quarter of the 21st century, human society is experiencing an unprecedented convergence of technological transformation, ecological urgency, and cultural evolution. Where previous generations viewed industry, nature, and personal wellness as discrete domains, modern reality reveals them to be intimately linked. Not only has artificial intelligence disrupted routine labour, but it has also redefined the speed at which global markets innovate and compete.
+In the business sphere, the rise of the digital nomad and gig platforms has decentralized traditional corporations. By 2030, millions of professionals will have abandoned rigid office cubicles in favor of flexible, cross-cultural remote teams. Yet, this spatial liberation brings unanticipated challenges. Constant connectivity frequently erodes the boundary between private life and professional obligations, precipitating widespread mental fatigue. To counter this, forward-thinking enterprises are recognizing that holistic wellness—including mindfulness and nutrition—is a fundamental driver of productivity rather than a corporate luxury.
+Simultaneously, the planet faces an urgent ecological reckoning. While renewable energy capacity expands globally, the pervasive proliferation of microplastics in soil, marine habitats, and even human circulatory systems underscores the cost of unchecked industrial manufacturing. Resolving these multifaceted crises requires not merely political treaties, but also sophisticated media literacy. In an age dominated by sensationalist algorithms and synthetic fake news, citizens must cultivate analytical discernment to distinguish verified environmental science from deceptive propaganda.
+Finally, contemporary arts and cultural expressions serve as the conscience of this transitional era. From provocative street murals in metropolitan centers to immersive digital art exhibitions, artists translate abstract statistics into visceral human narratives. As the world navigates this transition, the overarching goal must be harmony: harnessing automation to liberate human potential, restoring planetary ecosystems, and nurturing physical and emotional equilibrium.`;
+
+        function playListeningAudio() {
+            if (typeof window.playAudio === 'function') {
+                window.playAudio(LISTENING_TRANSCRIPT);
+            } else {
+                speakFallback(LISTENING_TRANSCRIPT);
+            }
+        }
+
+        function playReadingArticle() {
+            if (typeof window.playAudio === 'function') {
+                window.playAudio(READING_PASSAGE);
+            } else {
+                speakFallback(READING_PASSAGE);
+            }
+        }
+
+        function speakFallback(text) {
+            window.speechSynthesis.cancel();
+            const u = new SpeechSynthesisUtterance(text);
+            u.lang = 'en-US';
+            u.rate = 0.85;
+            window.speechSynthesis.speak(u);
+        }
+
+        // -------------------------------------------------------------
+        // ANSWER KEYS & SELF-CORRECTION LOGIC
+        // -------------------------------------------------------------
+        const ANSWERS_A1 = {
+            l1: { ans: 'b', exp: 'AI is optimizing energy grids and designing biodegradable materials.' },
+            l2: { ans: 'b', exp: 'Expanding digital carbon footprint from data centers.' },
+            l3: { ans: 'a', exp: '"Scale up" remote teams.' },
+            l4: { ans: 'b', exp: 'Digital fatigue and burnout when boundaries blur.' },
+            l5: { ans: 'b', exp: 'Stress directly affects the gut microbiome.' },
+            l6: { ans: 'c', exp: 'Misinformation spreads six times faster.' },
+            l7: { ans: 'b', exp: 'Social media traps users in echo chambers.' },
+            l8: { ans: 'a', exp: 'Artists make microplastics and algorithm bias emotionally tangible.' },
+            l9: { ans: 'b', exp: '"Will have transformed" is the correct Future Perfect construction.' },
+            l10: { ans: 'b', exp: 'True progress is a sustainable, healthy, and culturally rich world.' }
+        };
+
+        const ANSWERS_B1 = {
+            r1: { ans: 'b', exp: 'Paragraph 1 explains the interconnected convergence of these domains.' },
+            r2: { ans: 'b', exp: 'Constant connectivity erodes life/work boundaries, causing mental fatigue.' },
+            r3: { ans: 'a', exp: 'Enterprises view wellness as a fundamental productivity driver.' },
+            r4: { ans: 'b', exp: 'Critical media literacy is needed to separate science from disinformation.' },
+            r5: { ans: 'a', exp: 'Artists translate abstract stats into visceral human stories.' },
+            r6: { ans: 'true', exp: 'TRUE: Previous generations viewed them as discrete domains.' },
+            r7: { ans: 'false', exp: 'FALSE: The text says millions will work remotely, not that all offices close.' },
+            r8: { ans: 'true', exp: 'TRUE: Explicitly mentions microplastics in human circulatory systems.' },
+            r9: { ans: 'ng', exp: 'NOT GIVEN: The text mentions fake news algorithms but no specific European fines.' },
+            r10: { ans: 'true', exp: 'TRUE: Paragraph 4 calls for harnessing automation to liberate human potential.' }
+        };
+
+        const ANSWERS_C1 = {
+            g1: { ans: 'a', exp: 'By the end of this decade + will have developed (Future Perfect).' },
+            g2: { ans: 'b', exp: 'This time tomorrow + will be delivering (Future Continuous).' },
+            g3: { ans: 'a', exp: 'Must have left (Past deduction with certainty).' },
+            g4: { ans: 'b', exp: 'Can\'t have written (Negative deduction: impossible for a beginner).' },
+            g5: { ans: 'b', exp: 'Not only do corporations need (Inversion with auxiliary do).' },
+            g6: { ans: 'a', exp: 'Seldom have researchers documented (Inversion after seldom).' },
+            g7: { ans: 'b', exp: 'Were investigating (Past Continuous in Reported Speech).' },
+            g8: { ans: 'b', exp: 'Whether (Indirect Yes/No question connector).' },
+            g9: { ans: 'b', exp: 'Avoiding (Recommend takes a gerund).' },
+            g10: { ans: 'a', exp: 'To practice (Remember + infinitive for future action).' },
+            g11: { ans: 'a', exp: 'Was preserved (Past Simple Passive).' },
+            g12: { ans: 'b', exp: 'Inspired (Past Participle Clause expressing cause).' },
+            g13: { ans: 'a', exp: 'Scale up (Expand operations efficiently).' },
+            g14: { ans: 'b', exp: 'Echo chambers (Closed social information bubbles).' },
+            g15: { ans: 'a', exp: 'Emotional expression (Healthy release of emotions).' }
+        };
+
+        let scoreA1 = 0;
+        let scoreB1 = 0;
+        let scoreC1 = 0;
+
+        function checkSectionA1() {
+            let correctCount = 0;
+            for (const [q, data] of Object.entries(ANSWERS_A1)) {
+                const checked = document.querySelector(`input[name="${q}"]:checked`);
+                const box = document.getElementById(`box-${q}`);
+                const fb = document.getElementById(`fb-${q}`);
+                
+                if (checked && checked.value === data.ans) {
+                    correctCount++;
+                    if (box) { box.className = 'ebox correct-border'; }
+                    if (fb) {
+                        fb.className = 'q-feedback correct';
+                        fb.innerHTML = `✅ <strong>Correct!</strong> ${data.exp}`;
+                    }
+                } else {
+                    if (box) { box.className = 'ebox incorrect-border'; }
+                    if (fb) {
+                        fb.className = 'q-feedback incorrect';
+                        fb.innerHTML = `❌ <strong>Incorrect.</strong> Correct answer: <strong>${data.ans.toUpperCase()}</strong>. ${data.exp}`;
+                    }
+                }
+            }
+            scoreA1 = correctCount * 2.5;
+            document.getElementById('num-a1').textContent = `${scoreA1.toFixed(1)} / 25`;
+            document.getElementById('pct-a1').textContent = `${Math.round((scoreA1 / 25) * 100)}% (${correctCount}/10 correct)`;
+            document.getElementById('score-a1').style.display = 'block';
+            updateGrandSummary();
+        }
+
+        function checkSectionB1() {
+            let correctCount = 0;
+            for (const [q, data] of Object.entries(ANSWERS_B1)) {
+                const checked = document.querySelector(`input[name="${q}"]:checked`);
+                const box = document.getElementById(`box-${q}`);
+                const fb = document.getElementById(`fb-${q}`);
+
+                if (checked && checked.value === data.ans) {
+                    correctCount++;
+                    if (box) { box.className = 'ebox correct-border'; }
+                    if (fb) {
+                        fb.className = 'q-feedback correct';
+                        fb.innerHTML = `✅ <strong>Correct!</strong> ${data.exp}`;
+                    }
+                } else {
+                    if (box) { box.className = 'ebox incorrect-border'; }
+                    if (fb) {
+                        fb.className = 'q-feedback incorrect';
+                        fb.innerHTML = `❌ <strong>Incorrect.</strong> Correct answer: <strong>${data.ans.toUpperCase()}</strong>. ${data.exp}`;
+                    }
+                }
+            }
+            scoreB1 = correctCount * 2.5;
+            document.getElementById('num-b1').textContent = `${scoreB1.toFixed(1)} / 25`;
+            document.getElementById('pct-b1').textContent = `${Math.round((scoreB1 / 25) * 100)}% (${correctCount}/10 correct)`;
+            document.getElementById('score-b1').style.display = 'block';
+            updateGrandSummary();
+        }
+
+        function checkSectionC1() {
+            let correctCount = 0;
+            for (const [q, data] of Object.entries(ANSWERS_C1)) {
+                const checked = document.querySelector(`input[name="${q}"]:checked`);
+                const box = document.getElementById(`box-${q}`);
+                const fb = document.getElementById(`fb-${q}`);
+
+                if (checked && checked.value === data.ans) {
+                    correctCount++;
+                    if (box) { box.className = 'ebox correct-border'; }
+                    if (fb) {
+                        fb.className = 'q-feedback correct';
+                        fb.innerHTML = `✅ <strong>Correct!</strong> ${data.exp}`;
+                    }
+                } else {
+                    if (box) { box.className = 'ebox incorrect-border'; }
+                    if (fb) {
+                        fb.className = 'q-feedback incorrect';
+                        fb.innerHTML = `❌ <strong>Incorrect.</strong> Correct answer: <strong>${data.ans.toUpperCase()}</strong>. ${data.exp}`;
+                    }
+                }
+            }
+            scoreC1 = (correctCount / 15) * 25;
+            document.getElementById('num-c1').textContent = `${scoreC1.toFixed(1)} / 25`;
+            document.getElementById('pct-c1').textContent = `${Math.round((scoreC1 / 25) * 100)}% (${correctCount}/15 correct)`;
+            document.getElementById('score-c1').style.display = 'block';
+            updateGrandSummary();
+        }
+
+        function updateGrandSummary() {
+            document.getElementById('sum-a1').textContent = `${scoreA1.toFixed(1)} / 25`;
+            document.getElementById('sum-b1').textContent = `${scoreB1.toFixed(1)} / 25`;
+            document.getElementById('sum-c1').textContent = `${scoreC1.toFixed(1)} / 25`;
+            
+            const totalAuto = scoreA1 + scoreB1 + scoreC1;
+            const pct = Math.round((totalAuto / 75) * 100);
+            document.getElementById('sum-auto').textContent = `${totalAuto.toFixed(1)} / 75 (${pct}%)`;
+
+            const badge = document.getElementById('grade-badge');
+            if (pct >= 90) {
+                badge.style.background = 'rgba(16, 185, 129, 0.25)';
+                badge.style.borderColor = '#10b981';
+                badge.style.color = '#34d399';
+                badge.textContent = `⭐⭐⭐ Distinction (${pct}%) — Excellent Mastery`;
+            } else if (pct >= 75) {
+                badge.style.background = 'rgba(99, 102, 241, 0.25)';
+                badge.style.borderColor = '#6366f1';
+                badge.style.color = '#818cf8';
+                badge.textContent = `✅ Merit (${pct}%) — Strong B1 Competence`;
+            } else if (pct >= 60) {
+                badge.style.background = 'rgba(251, 191, 36, 0.25)';
+                badge.style.borderColor = '#fbbf24';
+                badge.style.color = '#fbbf24';
+                badge.textContent = `👍 Pass (${pct}%) — Ready for B1+ Units 7 & 8`;
+            } else {
+                badge.style.background = 'rgba(244, 63, 94, 0.25)';
+                badge.style.borderColor = '#f43f5e';
+                badge.style.color = '#fda4af';
+                badge.textContent = `⚠️ Review Needed (${pct}%) — Reinforce Units 1–6`;
+            }
+        }
+
+        // -------------------------------------------------------------
+        // WHATSAPP SUBMISSIONS
+        // -------------------------------------------------------------
+        function sendSectionD1() {
+            const student = document.getElementById('student-name').value.trim() || 'Anonymous Student';
+            const essay = document.getElementById('essay-text').value.trim();
+            if (!essay) {
+                alert('Please write your essay or proposal before sending Section d1.');
+                return;
+            }
+            const msg = `📝 *B1 PROGRESS TEST (UNITS 1–6) — SECTION d1 (WRITING)*\n\n👤 *Student:* ${student}\n📅 *Date:* ${document.getElementById('student-date').value}\n\n✍️ *Written Composition:*\n${essay}`;
+            window.open(`https://wa.me/5493517017850?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        function sendFullProgressTest() {
+            const student = document.getElementById('student-name').value.trim() || 'Anonymous Student';
+            const date = document.getElementById('student-date').value || new Date().toISOString().split('T')[0];
+            const essay = document.getElementById('essay-text').value.trim() || '(No written composition submitted)';
+            const speaking = document.getElementById('speaking-notes').value.trim() || '(No speaking notes submitted)';
+            
+            const totalAuto = (scoreA1 + scoreB1 + scoreC1).toFixed(1);
+            const pct = Math.round((totalAuto / 75) * 100);
+
+            const msg = `📋 *COMPREHENSIVE PROGRESS TEST (UNITS 1 TO 6)*\n*English Language Course — CEFR B1 Level*\n\n👤 *Student:* ${student}\n📅 *Date:* ${date}\n\n📊 *AUTO-GRADED MARKS (75 max):*\n• 🎧 *a1. Listening:* ${scoreA1.toFixed(1)} / 25\n• 📖 *b1. Reading:* ${scoreB1.toFixed(1)} / 25\n• 📝 *c1. Grammar & Vocab:* ${scoreC1.toFixed(1)} / 25\n🏆 *Auto-Graded Total:* ${totalAuto} / 75 (${pct}%)\n\n✍️ *d1. WRITING SUBMISSION:*\n${essay}\n\n🎙️ *e1. SPEAKING ORAL PREP & NOTES:*\n${speaking}\n\nTeacher Evaluation Target: 100 Total Marks.`;
+
+            window.open(`https://wa.me/5493517017850?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+    </script>
+</body>
+
+</html>
