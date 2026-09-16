@@ -924,16 +924,33 @@ function getBestVoice(genderPreference) {
 
     // Premium voice priority list — neural/enhanced voices first
     const priority = [
+        'Microsoft Jenny Online (Natural)',
+        'Microsoft Aria Online (Natural)',
+        'Microsoft Guy Online (Natural)',
+        'Microsoft Christopher Online (Natural)',
+        'Microsoft Eric Online (Natural)',
+        'Microsoft Michelle Online (Natural)',
         'Google US English',
+        'Google English (United States)',
         'Google US',
         'Microsoft Aria Online',
         'Microsoft Jenny Online',
-        'Microsoft Aria',
-        'Microsoft Jenny',
-        'Microsoft Guy',
+        'Microsoft Guy Online',
+        'Microsoft AnaNeural',
+        'Microsoft GuyNeural',
+        'Microsoft AriaNeural',
+        'Microsoft JennyNeural',
+        'Samantha (Enhanced)',
+        'Samantha (Premium)',
+        'Ava (Premium)',
+        'Ava (Enhanced)',
+        'Allison (Premium)',
+        'Tom (Premium)',
+        'Samantha',
+        'Ava',
+        'Allison',
         'Microsoft David',
         'Microsoft Zira',
-        'Samantha',
         'Enhanced',
         'Premium',
         'Natural',
@@ -1021,7 +1038,7 @@ window.courseAudio = {
 function _speak(text, gender) {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'en-US';
-    utterance.rate = 0.90;   // 0.90 = natural conversational pace for EFL learners (0.95 sounds slightly robotic)
+    utterance.rate = 0.84;   // 0.84 = natural conversational pace for EFL learners
     utterance.pitch = 1.0;
     utterance.volume = 1.0;
 

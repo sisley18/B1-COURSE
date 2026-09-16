@@ -314,9 +314,12 @@
         <!-- SECTION A -->
         <div class="exam-section">
             <span class="sec-label sec-green">🎧 Section A — Listening Comprehension — 20 marks</span>
-            <p class="mark-hint">Read the transcript, then answer all 10 questions. Each correct answer = 2 marks.</p>
-            <button class="tbtn" onclick="document.getElementById('tr').classList.toggle('hidden')">📄 Show / Hide
-                Transcript</button>
+            <p class="mark-hint">Listen to the audio or read the transcript, then answer all 10 questions. Each correct answer = 2 marks.</p>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 1.2rem;">
+                <button class="tbtn" id="listen-btn" onclick="listenTranscript()">🔊 Listen to Audio</button>
+                <button class="tbtn" onclick="stopListen()">⏹️ Stop</button>
+                <button class="tbtn" onclick="document.getElementById('tr').classList.toggle('hidden')">📄 Show / Hide Transcript</button>
+            </div>
             <div id="tr" class="transcript hidden">
                 <strong>Transcript: "Media Literacy in the Age of Misinformation"</strong><br><br>
                 Welcome to Open Dialogue, where we discuss issues shaping modern society. Today's guest is Professor
@@ -715,6 +718,90 @@
             const msg = `📝 *${title} — Section B Answers*\n\n*1.* ${b1 || '(No answer)'}\n\n*2.* ${b2 || '(No answer)'}\n\n*3.* ${b3 || '(No answer)'}\n\n*4.* ${b4 || '(No answer)'}`;
             window.open(`https://wa.me/5493517017850?text=${encodeURIComponent(msg)}`, '_blank');
         }
+
+        const TRANSCRIPT_TEXT = `Welcome to Open Dialogue, where we discuss issues shaping modern society. Today's guest is Professor Mark Chen, a media studies researcher who has spent fifteen years studying how people consume and share information online.
+Professor Chen, why has fake news become such a significant problem in recent years?
+Several factors are at play. First, social media platforms reward content that generates strong emotional reactions — outrage, fear, and excitement spread far faster than calm, factual reporting. Second, the sheer volume of information available makes it difficult for people to evaluate everything critically. And third, confirmation bias leads people to accept information that matches their existing beliefs without questioning it.
+How can ordinary people protect themselves from misinformation?
+I always recommend three steps. First, check the source — is it a reputable news outlet with a history of editorial standards? Second, look for the same story in at least three different independent sources. If only one source is reporting something significant, that's a warning sign. Third, pay attention to your emotional response. If a headline makes you feel outraged or delighted, slow down. Strong emotions cloud our critical thinking. Be especially suspicious of stories that confirm exactly what you already believe.
+And what role should governments and tech companies play?
+Regulation alone won't solve the problem. We need a combination of platform accountability — meaning tech companies must take responsibility for the content that spreads on their platforms — and widespread investment in media literacy education, particularly in secondary schools. Young people need to develop critical thinking skills before they encounter the full volume of online information. In Finland, for example, media literacy has been taught as part of the curriculum since the late 1990s, and their levels of misinformation spread are significantly lower than in comparable countries.`;
+
+        let isListening = false;
+
+        function getBestUSVoice() {
+            const voices = window.speechSynthesis.getVoices();
+            const us = voices.filter(v => v.lang === 'en-US' || v.lang.startsWith('en-US'));
+            if (!us.length) return voices.find(v => v.lang.includes('en')) || null;
+            const priority = [
+                'Microsoft Jenny Online (Natural)',
+                'Microsoft Aria Online (Natural)',
+                'Google US English',
+                'Google US',
+                'Microsoft Aria',
+                'Microsoft Jenny',
+                'Samantha (Enhanced)',
+                'Samantha (Premium)',
+                'Ava (Premium)',
+                'Samantha',
+                'Enhanced',
+                'Premium',
+                'Natural'
+            ];
+            for (const k of priority) { const m = us.find(v => v.name.includes(k)); if (m) return m; }
+            return us[0];
+        }
+
+        function listenTranscript() {
+            stopListen();
+            isListening = true;
+            const btn = document.getElementById('listen-btn');
+            if (btn) btn.innerHTML = '⏸️ Playing...';
+            
+            const chunks = TRANSCRIPT_TEXT.match(/[^.!?]+[.!?]+/g) || [TRANSCRIPT_TEXT];
+            let i = 0;
+            
+            function next() {
+                if (!isListening || i >= chunks.length) {
+                    isListening = false;
+                    if (btn) btn.innerHTML = '🔊 Listen to Audio';
+                    return;
+                }
+                
+                const u = new SpeechSynthesisUtterance(chunks[i++].trim());
+                u.lang = 'en-US';
+                u.rate = 0.84; // Natural, slower pace for EFL learners
+                u.pitch = 1.0;
+                
+                const v = getBestUSVoice();
+                if (v) u.voice = v;
+                
+                u.onend = () => {
+                    if (isListening) setTimeout(next, 500);
+                };
+                
+                u.onerror = () => {
+                    if (isListening) next();
+                };
+                
+                window.speechSynthesis.speak(u);
+            }
+
+            if (window.speechSynthesis.getVoices().length === 0) {
+                setTimeout(next, 400);
+            } else {
+                next();
+            }
+        }
+
+        function stopListen() {
+            isListening = false;
+            if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+            const btn = document.getElementById('listen-btn');
+            if (btn) btn.innerHTML = '🔊 Listen to Audio';
+        }
+
+        window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
     </script>
 </body>
 

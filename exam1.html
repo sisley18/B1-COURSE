@@ -330,11 +330,12 @@
         <!-- SECTION A: LISTENING -->
         <div class="exam-section">
             <span class="sec-label sec-indigo">🎧 Section A — Listening Comprehension — 20 marks</span>
-            <p class="mark-hint">Read the transcript carefully, then answer all 10 questions. Each correct answer = 2
-                marks.</p>
-
-            <button class="tbtn" onclick="document.getElementById('tr1').classList.toggle('hidden')">📄 Show / Hide
-                Transcript</button>
+            <p class="mark-hint">Listen to the audio or read the transcript carefully, then answer all 10 questions. Each correct answer = 2 marks.</p>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 1.2rem;">
+                <button class="tbtn" id="listen-btn" onclick="listenTranscript()">🔊 Listen to Audio</button>
+                <button class="tbtn" onclick="stopListen()">⏹️ Stop</button>
+                <button class="tbtn" onclick="document.getElementById('tr1').classList.toggle('hidden')">📄 Show / Hide Transcript</button>
+            </div>
             <div id="tr1" class="transcript hidden">
                 <strong>Transcript: "The AI Revolution — Opportunity or Threat?"</strong><br><br>
                 Welcome to Tech Forward, the podcast exploring how emerging technologies are reshaping our world. Today
@@ -749,6 +750,91 @@
             const msg = `📝 *${title} — Section B Answers*\n\n*1.* ${b1 || '(No answer)'}\n\n*2.* ${b2 || '(No answer)'}\n\n*3.* ${b3 || '(No answer)'}\n\n*4.* ${b4 || '(No answer)'}`;
             window.open(`https://wa.me/5493517017850?text=${encodeURIComponent(msg)}`, '_blank');
         }
+
+        const TRANSCRIPT_TEXT = `Welcome to Tech Forward, the podcast exploring how emerging technologies are reshaping our world. Today I'm speaking with Dr. Ana Fuentes, a researcher in artificial intelligence and the future of work at a leading European university.
+Dr. Fuentes, how significant is the impact of AI on today's workforce?
+It's already transformative. Studies show that around forty percent of current jobs globally contain tasks that could be automated within the next decade. However, I want to stress that automation replacing jobs is not a new phenomenon — it happened during the Industrial Revolution and again with the rise of computing in the 1980s. What's different now is the speed of change.
+That sounds alarming. Is there any good news?
+Absolutely. While AI will eliminate certain repetitive roles, it will also create entirely new categories of work that don't exist today. Think about social media managers — that role didn't exist twenty years ago. Similarly, new positions in AI ethics, robot maintenance, and data interpretation are already emerging. The key is adaptability. Workers who are willing to upskill and retrain will have significant advantages.
+And what about remote work? Has AI accelerated that trend?
+Enormously. AI-powered collaboration tools now allow teams spread across multiple time zones to work together seamlessly. Automated scheduling, real-time translation, and intelligent project management software have made location largely irrelevant for many knowledge workers. Research from Stanford University found that remote workers showed a fourteen percent increase in productivity compared to office counterparts. However, psychological wellbeing remains a concern — many remote workers report feeling isolated and disconnected from their colleagues.
+Thank you, Dr. Fuentes. Extremely insightful.`;
+
+        let isListening = false;
+
+        function getBestUSVoice() {
+            const voices = window.speechSynthesis.getVoices();
+            const us = voices.filter(v => v.lang === 'en-US' || v.lang.startsWith('en-US'));
+            if (!us.length) return voices.find(v => v.lang.includes('en')) || null;
+            const priority = [
+                'Microsoft Jenny Online (Natural)',
+                'Microsoft Aria Online (Natural)',
+                'Google US English',
+                'Google US',
+                'Microsoft Aria',
+                'Microsoft Jenny',
+                'Samantha (Enhanced)',
+                'Samantha (Premium)',
+                'Ava (Premium)',
+                'Samantha',
+                'Enhanced',
+                'Premium',
+                'Natural'
+            ];
+            for (const k of priority) { const m = us.find(v => v.name.includes(k)); if (m) return m; }
+            return us[0];
+        }
+
+        function listenTranscript() {
+            stopListen();
+            isListening = true;
+            const btn = document.getElementById('listen-btn');
+            if (btn) btn.innerHTML = '⏸️ Playing...';
+            
+            const chunks = TRANSCRIPT_TEXT.match(/[^.!?]+[.!?]+/g) || [TRANSCRIPT_TEXT];
+            let i = 0;
+            
+            function next() {
+                if (!isListening || i >= chunks.length) {
+                    isListening = false;
+                    if (btn) btn.innerHTML = '🔊 Listen to Audio';
+                    return;
+                }
+                
+                const u = new SpeechSynthesisUtterance(chunks[i++].trim());
+                u.lang = 'en-US';
+                u.rate = 0.84; // Natural, slower pace for EFL learners
+                u.pitch = 1.0;
+                
+                const v = getBestUSVoice();
+                if (v) u.voice = v;
+                
+                u.onend = () => {
+                    if (isListening) setTimeout(next, 500);
+                };
+                
+                u.onerror = () => {
+                    if (isListening) next();
+                };
+                
+                window.speechSynthesis.speak(u);
+            }
+
+            if (window.speechSynthesis.getVoices().length === 0) {
+                setTimeout(next, 400);
+            } else {
+                next();
+            }
+        }
+
+        function stopListen() {
+            isListening = false;
+            if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+            const btn = document.getElementById('listen-btn');
+            if (btn) btn.innerHTML = '🔊 Listen to Audio';
+        }
+
+        window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
     </script>
 </body>
 

@@ -768,7 +768,7 @@
                 
                 const u = new SpeechSynthesisUtterance(chunks[i++].trim());
                 u.lang = 'en-US';
-                u.rate = 0.95; // Slightly slower for better clarity
+                u.rate = 0.84; // Measured, natural pace for EFL listening test
                 u.pitch = 1.0;
                 
                 const v = getBestUSVoice();

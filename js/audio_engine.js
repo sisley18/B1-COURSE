@@ -20,33 +20,54 @@ let _chromeKeepAliveTimer = null;
 function getAmericanVoice() {
     const voices = window.speechSynthesis.getVoices();
 
-    // Tier 1: Neural / Online voices — most natural
+    // Tier 1: Neural / Online / Natural American voices — highest quality
     const tier1 = [
+        "Microsoft Jenny Online (Natural) - English (United States)",
         "Microsoft Aria Online (Natural) - English (United States)",
         "Microsoft Guy Online (Natural) - English (United States)",
-        "Microsoft Jenny Online (Natural) - English (United States)",
+        "Microsoft Christopher Online (Natural) - English (United States)",
+        "Microsoft Eric Online (Natural) - English (United States)",
+        "Microsoft Michelle Online (Natural) - English (United States)",
+        "Microsoft Steffan Online (Natural) - English (United States)",
+        "Microsoft Roger Online (Natural) - English (United States)",
         "Google US English",
-        // Edge neural voices
+        "Google English (United States)",
         "Microsoft AnaNeural",
         "Microsoft GuyNeural",
         "Microsoft AriaNeural",
+        "Microsoft JennyNeural",
+        "Microsoft ChristopherNeural",
     ];
 
-    // Tier 2: High-quality built-in voices
+    // Tier 2: Apple iOS / macOS Enhanced & Premium voices
     const tier2 = [
-        "Samantha",          // macOS / iOS — very natural
-        "Ava (Premium)",     // macOS Premium
-        "Ava",               // macOS
-        "Alex",              // macOS
-        "Nicky",             // macOS
+        "Samantha (Enhanced)",
+        "Samantha (Premium)",
+        "Samantha",
+        "Ava (Premium)",
+        "Ava (Enhanced)",
+        "Ava",
+        "Allison (Enhanced)",
+        "Allison (Premium)",
+        "Allison",
+        "Tom (Enhanced)",
+        "Tom (Premium)",
+        "Tom",
+        "Alex",
+        "Nicky",
+        "Siri",
         "Microsoft Zira - English (United States)",
         "Microsoft David - English (United States)",
+        "Microsoft Mark - English (United States)",
     ];
 
-    // Tier 3: Android en-US voices
+    // Tier 3: Android / Samsung en-US network neural voices
     const tier3 = [
-        "en-us-x-sfg#female_1-local",
+        "en-us-x-sfg-network",
         "en-us-x-tpf-network",
+        "en-us-x-iom-network",
+        "en-us-x-iol-network",
+        "en-us-x-sfg#female_1-local",
         "en-US-language",
     ];
 
@@ -55,17 +76,20 @@ function getAmericanVoice() {
         if (v) return v;
     }
 
-    // Fallback: any en-US voice (prefer non-compact for more natural sound)
-    const usVoices = voices.filter(v => v.lang === "en-US");
-    // Prefer voices whose name contains "natural", "neural", or "online"
+    // Fallback: any en-US voice (prefer natural/neural/online/premium)
+    const usVoices = voices.filter(v => {
+        const lang = v.lang.toLowerCase().replace(/_/g, '-');
+        return lang === 'en-us' || lang.startsWith('en-us');
+    });
+
     const natural = usVoices.find(v =>
-        /natural|neural|online|premium/i.test(v.name)
+        /natural|neural|online|premium|enhanced/i.test(v.name)
     );
     if (natural) return natural;
     if (usVoices.length > 0) return usVoices[0];
 
     // Last resort: any English voice
-    return voices.find(v => v.lang.startsWith("en")) || null;
+    return voices.find(v => v.lang.toLowerCase().startsWith("en")) || null;
 }
 
 // -------------------------------------------------------
@@ -184,9 +208,8 @@ function _playNext(slow = false) {
 
     // ---- Natural American English settings ----
     utterance.lang    = "en-US";
-    // 0.92 = natural conversational pace (1.0 = default, which sounds fast/robotic)
-    // Going too slow (< 0.80) sounds monotone and robotic
-    utterance.rate    = slow ? 0.82 : 0.92;
+    // 0.84 = relaxed, crystal-clear conversational pace for EFL learners
+    utterance.rate    = slow ? 0.75 : 0.84;
     utterance.pitch   = 1.0;   // Keep at 1.0 — altering pitch makes it sound synthetic
     utterance.volume  = 1.0;
 
