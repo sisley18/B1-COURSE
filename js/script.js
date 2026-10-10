@@ -1165,9 +1165,6 @@ window.deleteAttendance = function (id) {
 
 function getTeacherLinks(unitId) {
     const all = JSON.parse(localStorage.getItem('teacher_links') || '{}');
-    if (all[unitId] !== undefined) {
-        return all[unitId];
-    }
 
     let unitsToSearch = [];
     if (typeof courseData !== 'undefined' && Array.isArray(courseData.units)) unitsToSearch = unitsToSearch.concat(courseData.units);
@@ -1177,11 +1174,20 @@ function getTeacherLinks(unitId) {
     if (typeof courseDataPart4 !== 'undefined' && Array.isArray(courseDataPart4.units)) unitsToSearch = unitsToSearch.concat(courseDataPart4.units);
 
     const unit = unitsToSearch.find(u => u.id === unitId);
-    if (unit && Array.isArray(unit.teacher_links)) {
-        return [...unit.teacher_links];
+    const defaultLinks = (unit && Array.isArray(unit.teacher_links)) ? unit.teacher_links : [];
+
+    if (all[unitId] !== undefined) {
+        const userLinks = all[unitId];
+        const combined = [...userLinks];
+        defaultLinks.forEach(dl => {
+            if (!combined.some(ul => ul.id === dl.id || ul.url === dl.url)) {
+                combined.push(dl);
+            }
+        });
+        return combined;
     }
 
-    return [];
+    return defaultLinks;
 }
 
 function saveTeacherLinks(unitId, links) {

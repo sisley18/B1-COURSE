@@ -163,7 +163,10 @@ courseData.units.push(
     {
         id: 8, title: "Education", topic: "Educational Technology & Lifelong Learning",
         teacher_links: [
-            { id: "default_test_english_8", title: "Level Test - Test-English", url: "https://test-english.com/level-test/" }
+            { id: "default_test_english_8", title: "Level Test - Test-English", url: "https://test-english.com/level-test/" },
+            { id: "progress_test_4_8_link_8", title: "📋 Comprehensive Progress Test (Units 4-8)", url: "progress_test_4_8.html" },
+            { id: "progress_test_4_8_pdf_link_8", title: "🔑 Teacher Answer Key PDF (Units 4-8)", url: "Progress_Test_Units_4_to_8_Teacher_Key.pdf" },
+            { id: "all_exams_pdf_link_8", title: "📄 Complete Course Answer Key PDF", url: "B1_Exams_Answer_Key.pdf" }
         ],
         listening: {
             title: "The Classroom of Tomorrow: Technology and Education",
