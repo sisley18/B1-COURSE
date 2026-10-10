@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Test — Units 4 to 8 (Comprehensive Evaluation) | English B1 Course</title>
+    <link rel="icon" type="image/x-icon" href="st_marys.ico">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="js/auth.js"></script>
+    <script src="js/audio_engine.js"></script>
+    <style>
+        :root {
+            --pt-gold: #fbbf24;
+            --pt-indigo: #6366f1;
+            --pt-emerald: #10b981;
+            --pt-purple: #8b5cf6;
+            --pt-teal: #14b8a6;
+            --pt-rose: #f43f5e;
+            --pt-bg-card: rgba(18, 24, 38, 0.85);
+            --pt-border: rgba(255, 255, 255, 0.15);
+        }
+
+        body {
+            background: linear-gradient(135deg, #0b0f19 0%, #111827 50%, #0f172a 100%);
+            color: #f3f4f6;
+            min-height: 100vh;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+        }
+
+        .exam-banner {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(20, 184, 166, 0.2), rgba(251, 191, 36, 0.15));
+            border: 2px solid rgba(139, 92, 246, 0.5);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 100px 0 2rem;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exam-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .exam-banner h1 {
+            font-size: 2.3rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .exam-banner p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.15rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .exam-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .exam-meta span {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            backdrop-filter: blur(8px);
+        }
+
+        .student-bar {
+            background: var(--pt-bg-card);
+            border: 2px solid var(--pt-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .student-bar .input-group {
+            flex: 1;
+            min-width: 240px;
+        }
+
+        .student-bar label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--pt-gold);
+            margin-bottom: 0.4rem;
+        }
+
+        .student-bar input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1.5px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .student-bar input:focus {
+            border-color: var(--pt-gold);
+            box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.2);
+        }
+
+        .exam-section {
+            background: var(--pt-bg-card);
+            border: 2px solid var(--pt-border);
+            border-radius: 20px;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            transition: border-color 0.3s ease;
+        }
+
+        .exam-section:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .sec-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.5rem 1.4rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.4rem;
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .sec-indigo {
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            border: 1px solid #818cf8;
+        }
+
+        .sec-emerald {
+            background: linear-gradient(135deg, #10b981, #059669);
+            border: 1px solid #34d399;
+        }
+
+        .sec-purple {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            border: 1px solid #a78bfa;
+        }
+
+        .sec-gold {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            border: 1px solid #fbbf24;
+        }
+
+        .sec-rose {
+            background: linear-gradient(135deg, #f43f5e, #e11d48);
+            border: 1px solid #fb7185;
+        }
+
+        .mark-hint {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            padding-left: 0.5rem;
+            border-left: 3px solid var(--pt-gold);
+        }
+
+        .audio-control-panel {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 1.8rem;
+        }
+
+        .audio-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tbtn {
+            background: rgba(139, 92, 246, 0.25);
+            border: 1.5px solid #8b5cf6;
+            color: #fff;
+            padding: 0.6rem 1.3rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .tbtn:hover {
+            background: #8b5cf6;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+        }
+
+        .tbtn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .tbtn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: none;
+        }
+
+        .transcript-box {
+            background: rgba(0, 0, 0, 0.4);
+            border-left: 4px solid var(--pt-gold);
+            border-radius: 12px;
+            padding: 1.8rem;
+            line-height: 1.9;
+            color: rgba(255, 255, 255, 0.95);
+            margin: 1.5rem 0;
+            font-size: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .reading-article {
+            background: rgba(0, 0, 0, 0.35);
+            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 2rem;
+            line-height: 1.9;
+            color: rgba(255, 255, 255, 0.92);
+            font-size: 1.05rem;
+            margin: 1.5rem 0 2rem;
+        }
+
+        .reading-article h3 {
+            color: var(--pt-gold);
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+            text-align: center;
+        }
+
+        .reading-article p {
+            margin-bottom: 1.2rem;
+        }
+
+        .reading-article p:last-child {
+            margin-bottom: 0;
+        }
+
+        .ebox {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 4px solid var(--pt-purple);
+            border-radius: 12px;
+            padding: 1.4rem;
+            margin: 1.3rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.2s;
+        }
+
+        .ebox:hover {
+            background: rgba(0, 0, 0, 0.4);
+            border-left-color: var(--pt-gold);
+        }
+
+        .ebox.correct-border {
+            border-left-color: #10b981 !important;
+            background: rgba(16, 185, 129, 0.08) !important;
+        }
+
+        .ebox.incorrect-border {
+            border-left-color: #ef4444 !important;
+            background: rgba(239, 68, 68, 0.08) !important;
+        }
+
+        .ebox p.qtext {
+            font-weight: 600;
+            color: #fff;
+            font-size: 1.05rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .opts {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .opts label {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.7rem 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .opts label:hover {
+            background: rgba(139, 92, 246, 0.15);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        .opts input[type="radio"] {
+            accent-color: var(--pt-gold);
+            width: 18px;
+            height: 18px;
+        }
+
+        .q-feedback {
+            margin-top: 0.8rem;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .q-feedback.correct {
+            display: block;
+            background: rgba(16, 185, 129, 0.2);
+            color: #6ee7b7;
+            border: 1px solid #10b981;
+        }
+
+        .q-feedback.incorrect {
+            display: block;
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+            border: 1px solid #ef4444;
+        }
+
+        .check-btn {
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            border: none;
+            color: #fff;
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-top: 1.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+        }
+
+        .check-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.6);
+        }
+
+        .score-reveal {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(16, 185, 129, 0.2));
+            border: 2px solid var(--pt-gold);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 1.5rem;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .score-num {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--pt-gold);
+            line-height: 1.2;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 140px;
+            background: rgba(0, 0, 0, 0.35);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 1.2rem;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+            line-height: 1.7;
+            transition: border-color 0.2s;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--pt-gold);
+            box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.2);
+        }
+
+        .wc {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-align: right;
+            margin-top: 0.4rem;
+        }
+
+        .wa-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 16px 24px;
+            margin-top: 20px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border: none;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.35);
+        }
+
+        .wa-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5);
+            background: linear-gradient(135deg, #2ae06c, #159c8d);
+        }
+
+        .grand-summary-card {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(16, 185, 129, 0.15), rgba(251, 191, 36, 0.15));
+            border: 2px solid var(--pt-gold);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 3rem 0 2rem;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 2rem 0;
+        }
+
+        .summary-item {
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 1.2rem;
+            text-align: center;
+        }
+
+        .summary-item .label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.3rem;
+            text-transform: uppercase;
+        }
+
+        .summary-item .val {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .ms-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(251, 191, 36, 0.4);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .ms-box h3 {
+            color: var(--pt-gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .ak-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.6rem;
+            margin: 1rem 0 1.5rem;
+        }
+
+        .ak-item {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(251, 191, 36, 0.25);
+            padding: 0.7rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .ak-item strong {
+            color: var(--pt-gold);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .ms-toggle {
+            background: rgba(251, 191, 36, 0.15);
+            border: 2px solid var(--pt-gold);
+            color: var(--pt-gold);
+            padding: 0.9rem 2.2rem;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            margin: 2rem auto;
+            display: block;
+            transition: all 0.2s;
+        }
+
+        .ms-toggle:hover {
+            background: rgba(251, 191, 36, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .speaking-timer-badge {
+            background: rgba(244, 63, 94, 0.2);
+            border: 1px solid #f43f5e;
+            color: #fda4af;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .exam-banner {
+                padding: 1.8rem 1.2rem;
+                margin-top: 80px;
+            }
+
+            .exam-banner h1 {
+                font-size: 1.7rem;
+            }
+
+            .exam-section {
+                padding: 1.4rem;
+            }
+
+            .summary-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">English<span>Language</span> Course</div>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <a href="index.html" class="btn" style="padding: 6px 16px; font-size: 0.85rem;">← Back to Course</a>
+                    <button id="pause-audio-btn" class="btn" onclick="togglePauseAudio()" style="padding: 6px 14px; font-size: 0.85rem; background: rgba(251, 146, 60, 0.25); border-color: #fb923c;">⏸️ Pause</button>
+                    <button class="btn" onclick="stopAudio()" style="padding: 6px 14px; font-size: 0.85rem; background: rgba(239, 68, 68, 0.25); border-color: #ef4444;">⏹️ Stop</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Banner -->
+        <div class="exam-banner animate__animated animate__fadeIn">
+            <span style="background: rgba(139, 92, 246, 0.25); color: #a78bfa; border: 1px solid #a78bfa; padding: 4px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">
+                🎓 Comprehensive Upper-Module Evaluation
+            </span>
+            <h1 style="margin-top: 0.8rem;">📋 Progress Test (Units 4 to 8)</h1>
+            <p>Evaluating Media Literacy, Holistic Wellness, Art &amp; Expression, Smart Cities &amp; Educational Technology</p>
+            <div class="exam-meta">
+                <span>⏱️ <strong>Time:</strong> 90 minutes</span>
+                <span>📊 <strong>Total Marks:</strong> 100 marks</span>
+                <span>🎯 <strong>Pass Mark:</strong> 60 / 100</span>
+                <span>🏆 <strong>Level:</strong> CEFR B1 / B1+</span>
+                <span>📚 <strong>Units:</strong> 4, 5, 6, 7 &amp; 8</span>
+            </div>
+        </div>
+
+        <!-- Student Identification Bar -->
+        <div class="student-bar">
+            <div class="input-group">
+                <label for="student-name">👤 Student Full Name:</label>
+                <input type="text" id="student-name" placeholder="e.g. Matias / Gi" value="">
+            </div>
+            <div class="input-group" style="max-width: 260px;">
+                <label for="student-date">📅 Test Date:</label>
+                <input type="date" id="student-date">
+            </div>
+            <div class="input-group" style="max-width: 220px;">
+                <label>🎯 Target Level:</label>
+                <input type="text" value="B1 Intermediate" readonly style="background: rgba(255,255,255,0.05); color: #fbbf24; font-weight: 700;">
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- a1. LISTENING COMPREHENSION (25 MARKS) -->
+        <!-- ========================================================= -->
+        <div class="exam-section" id="section-a1">
+            <span class="sec-label sec-indigo">🎧 a1. Listening Comprehension — 25 marks</span>
+            <p class="mark-hint">Listen to the international symposium audio discussion between Dr. Elena Rostova and Prof. Marcus Vance, then answer the 10 questions. Each correct answer = 2.5 marks. <em>(Optimized for natural American English pronunciation)</em>.</p>
+
+            <div class="audio-control-panel">
+                <div>
+                    <strong style="color: #fff; display: block; font-size: 1.05rem;">🎙️ Symposium Discussion: "Reimagining Society — Media, Health, Art &amp; Innovation"</strong>
+                    <span style="font-size: 0.85rem; color: rgba(255,255,255,0.7);">Topic: Media Literacy, Gut Health, Contemporary Art, 15-Minute Cities &amp; AI Education</span>
+                </div>
+                <div class="audio-buttons">
+                    <button class="tbtn" id="listen-btn" onclick="playListeningAudio()">🔊 Play Discussion</button>
+                    <button class="tbtn tbtn-secondary" onclick="stopAudio()">⏹️ Stop</button>
+                    <button class="tbtn tbtn-secondary" onclick="toggleTranscript('tr-a1')">📄 Show / Hide Transcript</button>
+                </div>
+            </div>
+
+            <div id="tr-a1" class="transcript-box hidden">
+                <strong style="color: var(--pt-gold); font-size: 1.1rem;">Transcript: "Reimagining Society — Integrating Media, Health, Art &amp; Technology"</strong><br><br>
+                <strong>Moderator:</strong> Welcome to our Global Innovation Forum. Today we synthesize key developments from media literacy and nutrition to contemporary art, smart cities, and AI in education. I am joined by Dr. Elena Rostova, urban strategist and health researcher, and Professor Marcus Vance, media theorist and educator.<br><br>
+                <strong>Dr. Elena Rostova:</strong> Thank you. Over the last decade, we have realized that human wellbeing cannot be separated from our living environment. In smart cities, the 15-minute city model aims to ensure that residents access work, green parks, and organic food within a 15-minute walk. When citizens walk more and commute less, stress levels decrease, which directly improves the gut microbiome and overall immunity.<br><br>
+                <strong>Prof. Marcus Vance:</strong> Exactly, Elena. But physical health is only half the battle. In digital media, algorithms create echo chambers where sensationalism and misinformation spread faster than verified facts. If citizens are not taught critical media literacy from an early age, democracy itself is undermined. That's why schools are integrating AI tutoring and gamified learning platforms to help students verify sources and evaluate digital content.<br><br>
+                <strong>Dr. Elena Rostova:</strong> And contemporary art plays a vital role here as well! Conceptual installations and public street art force us to confront uncomfortable truths—like microplastic pollution or urban isolation—in ways that statistics never could.<br><br>
+                <strong>Prof. Marcus Vance:</strong> Indeed. By combining human creativity with smart infrastructure, we can build communities that are intellectually resilient, ecologically sustainable, and mentally healthy.<br><br>
+                <strong>Moderator:</strong> A compelling vision. Thank you both.
+            </div>
+
+            <!-- Listening Questions 1-10 -->
+            <div class="ebox" id="box-l1">
+                <p class="qtext">1. According to Dr. Elena Rostova, what does the 15-minute city model ensure?</p>
+                <div class="opts">
+                    <label><input type="radio" name="l1" value="a"> A. That everyone owns an electric car</label>
+                    <label><input type="radio" name="l1" value="b"> B. That essential needs are accessible within a 15-minute walk or bike ride</label>
+                    <label><input type="radio" name="l1" value="c"> C. That all public schools are replaced by online MOOCs</label>
+                </div>
+                <div class="q-feedback" id="fb-l1"></div>
+            </div>
+
+            <div class="ebox" id="box-l2">
+                <p class="qtext">2. What physiological benefit is linked to decreased commuting stress?</p>
+                <div class="opts">
+                    <label><input type="radio" name="l2" value="a"> A. Improved gut microbiome and immunity</label>
+                    <label><input type="radio" name="l2" value="b"> B. Complete elimination of eye strain</label>
+                    <label><input type="radio" name="l2" value="c"> C. Faster typing speed</label>
+                </div>
+                <div class="q-feedback" id="fb-l2"></div>
+            </div>
+
+            <div class="ebox" id="box-l3">
+                <p class="qtext">3. What does Prof. Marcus Vance say social media algorithms create?</p>
+                <div class="opts">
+                    <label><input type="radio" name="l3" value="a"> A. Free internet access for all</label>
+                    <label><input type="radio" name="l3" value="b"> B. Echo chambers where misinformation spreads rapidly</label>
+                    <label><input type="radio" name="l3" value="c"> C. Automatic fact-checking tools</label>
+                </div>
+                <div class="q-feedback" id="fb-l3"></div>
+            </div>
+
+            <div class="ebox" id="box-l4">
+                <p class="qtext">4. What happens if media literacy is not taught early?</p>
+                <div class="opts">
+                    <label><input type="radio" name="l4" value="a"> A. Students stop using mobile devices</label>
+                    <label><input type="radio" name="l4" value="b"> B. Democracy itself is undermined by misinformation</label>
+                    <label><input type="radio" name="l4" value="c"> C. Newspapers become completely free</label>
+                </div>
+                <div class="q-feedback" id="fb-l4"></div>
+            </div>
+
+            <div class="ebox" id="box-l5">
+                <p class="qtext">5. How are schools using technology to improve learning, according to Prof. Vance?</p>
+                <div class="opts">
+                    <label><input type="radio" name="l5" value="a"> A. By replacing all human teachers with robots</label>
+                    <label><input type="radio" name="l5" value="b"> B. By integrating AI tutoring and gamified learning platforms</label>
+                    <label><input type="radio" name="l5" value="c"> C. By banning digital screens in classrooms</label>
+                </div>
+                <div class="q-feedback" id="fb-l5"></div>
+            </div>
+
+            <div class="ebox" id="box-l6">
+                <p class="qtext">6. How does contemporary art help society address complex problems?</p>
+                <div class="opts">
+                    <label><input type="radio" name="l6" value="a"> A. By making invisible issues like pollution and isolation emotionally tangible</label>
+                    <label><input type="radio" name="l6" value="b"> B. By increasing the monetary value of classic paintings</label>
+                    <label><input type="radio" name="l6" value="c"> C. By forcing artists to follow traditional 19th-century rules</label>
+                </div>
+                <div class="q-feedback" id="fb-l6"></div>
+            </div>
+
+            <div class="ebox" id="box-l7">
+                <p class="qtext">7. What reported speech form correctly summarizes Prof. Vance's statement?</p>
+                <div class="opts">
+                    <label><input type="radio" name="l7" value="a"> A. Marcus said that media literacy is vital for democracy.</label>
+                    <label><input type="radio" name="l7" value="b"> B. Marcus said that media literacy will be vital yesterday.</label>
+                    <label><input type="radio" name="l7" value="c"> C. Marcus says that media literacy was vital tomorrow.</label>
+                </div>
+                <div class="q-feedback" id="fb-l7"></div>
+            </div>
+
+            <div class="ebox" id="box-l8">
+                <p class="qtext">8. Which passive construction reflects Dr. Rostova's view on smart cities?</p>
+                <div class="opts">
+                    <label><input type="radio" name="l8" value="a"> A. Smart cities can be designed to prioritize pedestrians.</label>
+                    <label><input type="radio" name="l8" value="b"> B. Smart cities will designing for cars.</label>
+                    <label><input type="radio" name="l8" value="c"> C. Smart cities designed people.</label>
+                </div>
+                <div class="q-feedback" id="fb-l8"></div>
+            </div>
+
+            <div class="ebox" id="box-l9">
+                <p class="qtext">9. Which mixed conditional sentence matches the discussion on diet and stress?</p>
+                <div class="opts">
+                    <label><input type="radio" name="l9" value="a"> A. If people had eaten better in the past, they would feel healthier today.</label>
+                    <label><input type="radio" name="l9" value="b"> B. If people will eat better, they had felt good.</label>
+                    <label><input type="radio" name="l9" value="c"> C. If people eat better, they would have feel good tomorrow.</label>
+                </div>
+                <div class="q-feedback" id="fb-l9"></div>
+            </div>
+
+            <div class="ebox" id="box-l10">
+                <p class="qtext">10. What is the ultimate goal of combining human creativity with smart technology?</p>
+                <div class="opts">
+                    <label><input type="radio" name="l10" value="a"> A. To eliminate all physical jobs in urban centers</label>
+                    <label><input type="radio" name="l10" value="b"> B. To build resilient, sustainable, and mentally healthy communities</label>
+                    <label><input type="radio" name="l10" value="c"> C. To maximize advertising revenue on social networks</label>
+                </div>
+                <div class="q-feedback" id="fb-l10"></div>
+            </div>
+
+            <button class="check-btn" onclick="checkSectionA1()">Check Section a1 Answers ✅</button>
+
+            <div class="score-reveal" id="score-a1">
+                <div class="score-num" id="num-a1">0.0 / 25</div>
+                <div style="color: rgba(255,255,255,0.9); font-weight: 600;" id="pct-a1">0%</div>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- b1. READING COMPREHENSION (25 MARKS) -->
+        <!-- ========================================================= -->
+        <div class="exam-section" id="section-b1">
+            <span class="sec-label sec-emerald">📖 b1. Reading &amp; Textual Analysis — 25 marks</span>
+            <p class="mark-hint">Read the text carefully and answer the 10 questions. Each correct answer = 2.5 marks.</p>
+
+            <div class="reading-article">
+                <h3>The Interconnected Modern Era: Digital Ecosystems, Urban Life, and Human Wellbeing</h3>
+                <p>The modern world is characterized by unprecedented technological acceleration and structural transformation. Across five interconnected domains—media literacy, holistic health, contemporary art, urban infrastructure, and educational technology—society is grappling with how to balance innovation with human dignity. As digital media platforms continue to shape public discourse, algorithms often prioritize engagement over veracity, leading to confirmation bias and polarization. Consequently, developing media literacy has become an urgent imperative for citizens navigating complex news ecosystems.</p>
+
+                <p>Simultaneously, scientific research into the gut-brain axis has revealed that mental health is deeply linked to diet and physical environment. Diets rich in whole foods and fiber support beneficial intestinal bacteria, which produce vital neurotransmitters like serotonin. Conversely, chronic urban stress caused by automobile sprawl and noise pollution negatively impacts biological systems. To combat this, urban planners are implementing the "15-minute city" concept—redesigning metropolitan areas so that green spaces, markets, and healthcare facilities are accessible within short walking distances.</p>
+
+                <p>Furthermore, contemporary art and cultural heritage provide essential space for reflection. Conceptual artists challenge traditional aesthetic definitions, using interactive installations to spark critical dialogue regarding environmental degradation and digital surveillance. In education, artificial intelligence and virtual reality classrooms are personalizing learning experiences, allowing students to explore historic events or scientific phenomena at their own pace. When these advancements are combined thoughtfully, they empower individuals to thrive in a rapidly evolving global society.</p>
+            </div>
+
+            <!-- Reading Questions 1-10 -->
+            <div class="ebox" id="box-r1">
+                <p class="qtext">1. What characterizes the modern world according to the passage?</p>
+                <div class="opts">
+                    <label><input type="radio" name="r1" value="a"> A. Complete economic stagnation</label>
+                    <label><input type="radio" name="r1" value="b"> B. Unprecedented technological acceleration and structural transformation</label>
+                    <label><input type="radio" name="r1" value="c"> C. A return to 19th-century agricultural lifestyle</label>
+                </div>
+                <div class="q-feedback" id="fb-r1"></div>
+            </div>
+
+            <div class="ebox" id="box-r2">
+                <p class="qtext">2. Why do digital algorithms lead to confirmation bias and polarization?</p>
+                <div class="opts">
+                    <label><input type="radio" name="r2" value="a"> A. Because they prioritize user engagement over veracity</label>
+                    <label><input type="radio" name="r2" value="b"> B. Because they censor all political news</label>
+                    <label><input type="radio" name="r2" value="c"> C. Because they charge money for viewing posts</label>
+                </div>
+                <div class="q-feedback" id="fb-r2"></div>
+            </div>
+
+            <div class="ebox" id="box-r3">
+                <p class="qtext">3. What has research into the gut-brain axis revealed?</p>
+                <div class="opts">
+                    <label><input type="radio" name="r3" value="a"> A. That mental health is completely independent of physical nutrition</label>
+                    <label><input type="radio" name="r3" value="b"> B. That mental health is deeply linked to diet and physical environment</label>
+                    <label><input type="radio" name="r3" value="c"> C. That serotonin is only produced in the brain</label>
+                </div>
+                <div class="q-feedback" id="fb-r3"></div>
+            </div>
+
+            <div class="ebox" id="box-r4">
+                <p class="qtext">4. Which neurotransmitter crucial for mood regulation is produced by gut bacteria?</p>
+                <div class="opts">
+                    <label><input type="radio" name="r4" value="a"> A. Adrenaline</label>
+                    <label><input type="radio" name="r4" value="b"> B. Serotonin</label>
+                    <label><input type="radio" name="r4" value="c"> C. Insulin</label>
+                </div>
+                <div class="q-feedback" id="fb-r4"></div>
+            </div>
+
+            <div class="ebox" id="box-r5">
+                <p class="qtext">5. What negative urban factor is mentioned as damaging to human biological systems?</p>
+                <div class="opts">
+                    <label><input type="radio" name="r5" value="a"> A. Pedestrian walkways</label>
+                    <label><input type="radio" name="r5" value="b"> B. Automobile sprawl and noise pollution</label>
+                    <label><input type="radio" name="r5" value="c"> C. Organic farming in city gardens</label>
+                </div>
+                <div class="q-feedback" id="fb-r5"></div>
+            </div>
+
+            <div class="ebox" id="box-r6">
+                <p class="qtext">6. How does the "15-minute city" concept reshape urban areas?</p>
+                <div class="opts">
+                    <label><input type="radio" name="r6" value="a"> A. By building longer highways between suburban zones</label>
+                    <label><input type="radio" name="r6" value="b"> B. By placing green spaces, markets, and health services within short walking distance</label>
+                    <label><input type="radio" name="r6" value="c"> C. By eliminating all public transport options</label>
+                </div>
+                <div class="q-feedback" id="fb-r6"></div>
+            </div>
+
+            <div class="ebox" id="box-r7">
+                <p class="qtext">7. What role do contemporary art and conceptual installations play?</p>
+                <div class="opts">
+                    <label><input type="radio" name="r7" value="a"> A. They spark critical dialogue on topics like environmental degradation and surveillance</label>
+                    <label><input type="radio" name="r7" value="b"> B. They generate advertising revenue for social networks</label>
+                    <label><input type="radio" name="r7" value="c"> C. They force viewers to memorise historical dates</label>
+                </div>
+                <div class="q-feedback" id="fb-r7"></div>
+            </div>
+
+            <div class="ebox" id="box-r8">
+                <p class="qtext">8. How do AI and virtual reality enhance modern education?</p>
+                <div class="opts">
+                    <label><input type="radio" name="r8" value="a"> A. By standardizing exams so everyone gets identical scores</label>
+                    <label><input type="radio" name="r8" value="b"> B. By personalizing learning experiences and allowing exploration at one's own pace</label>
+                    <label><input type="radio" name="r8" value="c"> C. By removing teachers from all academic institutions</label>
+                </div>
+                <div class="q-feedback" id="fb-r8"></div>
+            </div>
+
+            <div class="ebox" id="box-r9">
+                <p class="qtext">9. The word "veracity" in paragraph 1 is closest in meaning to:</p>
+                <div class="opts">
+                    <label><input type="radio" name="r9" value="a"> A. Truthfulness / accuracy</label>
+                    <label><input type="radio" name="r9" value="b"> B. Velocity / speed</label>
+                    <label><input type="radio" name="r9" value="c"> C. Popularity / fame</label>
+                </div>
+                <div class="q-feedback" id="fb-r9"></div>
+            </div>
+
+            <div class="ebox" id="box-r10">
+                <p class="qtext">10. What is the overarching conclusion of the article?</p>
+                <div class="opts">
+                    <label><input type="radio" name="r10" value="a"> A. Technology will inevitably destroy human culture</label>
+                    <label><input type="radio" name="r10" value="b"> B. Combining smart infrastructure and human creativity empowers individuals to thrive</label>
+                    <label><input type="radio" name="r10" value="c"> C. Cities should stop investing in renewable energy and media literacy</label>
+                </div>
+                <div class="q-feedback" id="fb-r10"></div>
+            </div>
+
+            <button class="check-btn" onclick="checkSectionB1()">Check Section b1 Answers ✅</button>
+
+            <div class="score-reveal" id="score-b1">
+                <div class="score-num" id="num-b1">0.0 / 25</div>
+                <div style="color: rgba(255,255,255,0.9); font-weight: 600;" id="pct-b1">0%</div>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- c1. LANGUAGE IN USE (25 MARKS) -->
+        <!-- ========================================================= -->
+        <div class="exam-section" id="section-c1">
+            <span class="sec-label sec-purple">📝 c1. Language in Use: Grammar, Vocab &amp; Structure — 25 marks</span>
+            <p class="mark-hint">Select the best answer for each item. 15 questions, ~1.67 marks each = 25 marks total.</p>
+
+            <!-- Grammar / Vocab Q1 to Q15 -->
+            <div class="ebox" id="box-g1">
+                <p class="qtext">1. <em>(Unit 4 Reported Speech)</em> "I am reading about fake news," she said. → She said that she _____ about fake news.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g1" value="a"> A. is reading</label>
+                    <label><input type="radio" name="g1" value="b"> B. was reading</label>
+                    <label><input type="radio" name="g1" value="c"> C. had read</label>
+                </div>
+                <div class="q-feedback" id="fb-g1"></div>
+            </div>
+
+            <div class="ebox" id="box-g2">
+                <p class="qtext">2. <em>(Unit 4 Reported Speech)</em> "We will launch the media campaign tomorrow," they explained. → They explained that they _____ the media campaign the next day.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g2" value="a"> A. will launch</label>
+                    <label><input type="radio" name="g2" value="b"> B. would launch</label>
+                    <label><input type="radio" name="g2" value="c"> C. launched</label>
+                </div>
+                <div class="q-feedback" id="fb-g2"></div>
+            </div>
+
+            <div class="ebox" id="box-g3">
+                <p class="qtext">3. <em>(Unit 5 Mixed Conditionals)</em> If I _____ a healthier diet last year, I would feel much more energetic today.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g3" value="a"> A. adopted</label>
+                    <label><input type="radio" name="g3" value="b"> B. had adopted</label>
+                    <label><input type="radio" name="g3" value="c"> C. would adopt</label>
+                </div>
+                <div class="q-feedback" id="fb-g3"></div>
+            </div>
+
+            <div class="ebox" id="box-g4">
+                <p class="qtext">4. <em>(Unit 5 Mixed Conditionals)</em> If she were not so stressed about her work, she _____ sleeping better last night.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g4" value="a"> A. would have been</label>
+                    <label><input type="radio" name="g4" value="b"> B. will be</label>
+                    <label><input type="radio" name="g4" value="c"> C. had been</label>
+                </div>
+                <div class="q-feedback" id="fb-g4"></div>
+            </div>
+
+            <div class="ebox" id="box-g5">
+                <p class="qtext">5. <em>(Unit 6 Passive Voice)</em> Many contemporary artworks _____ in international galleries every year.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g5" value="a"> A. are exhibited</label>
+                    <label><input type="radio" name="g5" value="b"> B. exhibit</label>
+                    <label><input type="radio" name="g5" value="c"> C. were exhibit</label>
+                </div>
+                <div class="q-feedback" id="fb-g5"></div>
+            </div>
+
+            <div class="ebox" id="box-g6">
+                <p class="qtext">6. <em>(Unit 6 Passive Voice)</em> It _____ that Duchamp's 'Fountain' revolutionized modern conceptual art.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g6" value="a"> A. is believed</label>
+                    <label><input type="radio" name="g6" value="b"> B. believes</label>
+                    <label><input type="radio" name="g6" value="c"> C. is believing</label>
+                </div>
+                <div class="q-feedback" id="fb-g6"></div>
+            </div>
+
+            <div class="ebox" id="box-g7">
+                <p class="qtext">7. <em>(Unit 7 Causative Form)</em> The mayor decided to _____ the city park redesigned by landscape architects.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g7" value="a"> A. have</label>
+                    <label><input type="radio" name="g7" value="b"> B. make</label>
+                    <label><input type="radio" name="g7" value="c"> C. doing</label>
+                </div>
+                <div class="q-feedback" id="fb-g7"></div>
+            </div>
+
+            <div class="ebox" id="box-g8">
+                <p class="qtext">8. <em>(Unit 7 Causative Form)</em> We need to get our solar panels _____ before winter begins.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g8" value="a"> A. inspect</label>
+                    <label><input type="radio" name="g8" value="b"> B. inspected</label>
+                    <label><input type="radio" name="g8" value="c"> C. inspecting</label>
+                </div>
+                <div class="q-feedback" id="fb-g8"></div>
+            </div>
+
+            <div class="ebox" id="box-g9">
+                <p class="qtext">9. <em>(Unit 8 Relative Clauses)</em> Carlos Moreno, _____ introduced the 15-minute city concept, is a professor at the Sorbonne.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g9" value="a"> A. which</label>
+                    <label><input type="radio" name="g9" value="b"> B. who</label>
+                    <label><input type="radio" name="g9" value="c"> C. whose</label>
+                </div>
+                <div class="q-feedback" id="fb-g9"></div>
+            </div>
+
+            <div class="ebox" id="box-g10">
+                <p class="qtext">10. <em>(Unit 8 Relative Clauses)</em> The AI learning platform _____ we tested in class provides instant personalized feedback.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g10" value="a"> A. which</label>
+                    <label><input type="radio" name="g10" value="b"> B. where</label>
+                    <label><input type="radio" name="g10" value="c"> C. who</label>
+                </div>
+                <div class="q-feedback" id="fb-g10"></div>
+            </div>
+
+            <div class="ebox" id="box-g11">
+                <p class="qtext">11. <em>(Unit 4 Vocabulary)</em> Social media algorithms tend to create _____ where users only see content that confirms their beliefs.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g11" value="a"> A. echo chambers</label>
+                    <label><input type="radio" name="g11" value="b"> B. solar grids</label>
+                    <label><input type="radio" name="g11" value="c"> C. urban sprawls</label>
+                </div>
+                <div class="q-feedback" id="fb-g11"></div>
+            </div>
+
+            <div class="ebox" id="box-g12">
+                <p class="qtext">12. <em>(Unit 5 Vocabulary)</em> The gut _____ contains trillions of microorganisms essential for digestive and mental health.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g12" value="a"> A. infrastructure</label>
+                    <label><input type="radio" name="g12" value="b"> B. microbiome</label>
+                    <label><input type="radio" name="g12" value="c"> C. installation</label>
+                </div>
+                <div class="q-feedback" id="fb-g12"></div>
+            </div>
+
+            <div class="ebox" id="box-g13">
+                <p class="qtext">13. <em>(Unit 6 Vocabulary)</em> Marcel Duchamp's signed urinal is a famous example of _____ art.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g13" value="a"> A. conceptual</label>
+                    <label><input type="radio" name="g13" value="b"> B. residential</label>
+                    <label><input type="radio" name="g13" value="c"> C. agricultural</label>
+                </div>
+                <div class="q-feedback" id="fb-g13"></div>
+            </div>
+
+            <div class="ebox" id="box-g14">
+                <p class="qtext">14. <em>(Unit 7 Vocabulary)</em> High reliance on automobiles and single-family suburban housing contributes to urban _____.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g14" value="a"> A. sprawl</label>
+                    <label><input type="radio" name="g14" value="b"> B. literacy</label>
+                    <label><input type="radio" name="g14" value="c"> C. meditation</label>
+                </div>
+                <div class="q-feedback" id="fb-g14"></div>
+            </div>
+
+            <div class="ebox" id="box-g15">
+                <p class="qtext">15. <em>(Unit 8 Vocabulary)</em> Applying game design mechanics to educational courses is known as _____.</p>
+                <div class="opts">
+                    <label><input type="radio" name="g15" value="a"> A. gamification</label>
+                    <label><input type="radio" name="g15" value="b"> B. polarization</label>
+                    <label><input type="radio" name="g15" value="c"> C. urbanization</label>
+                </div>
+                <div class="q-feedback" id="fb-g15"></div>
+            </div>
+
+            <button class="check-btn" onclick="checkSectionC1()">Check Section c1 Answers ✅</button>
+
+            <div class="score-reveal" id="score-c1">
+                <div class="score-num" id="num-c1">0.0 / 25</div>
+                <div style="color: rgba(255,255,255,0.9); font-weight: 600;" id="pct-c1">0%</div>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- d1. WRITING & EXPRESSIVE COMPOSITION (15 MARKS) -->
+        <!-- ========================================================= -->
+        <div class="exam-section" id="section-d1">
+            <span class="sec-label sec-gold">✍️ d1. Writing &amp; Expressive Composition — 15 marks</span>
+            <p class="mark-hint">Select ONE of the prompts below. Write a well-structured essay or article (150–220 words). Incorporate target vocabulary and grammar structures from Units 4 to 8 (e.g., Reported Speech, Mixed Conditionals, Passive Voice, Causative Form, or Relative Clauses).</p>
+
+            <div style="background: rgba(0,0,0,0.3); border: 1.5px solid rgba(251,191,36,0.3); border-radius: 14px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                <strong style="color: var(--pt-gold); display: block; margin-bottom: 0.8rem; font-size: 1.1rem;">Choose Prompt A or Prompt B:</strong>
+                <p style="margin-bottom: 0.8rem;"><strong>Option A (Smart Cities &amp; Wellbeing):</strong> "How can 15-minute smart city design and balanced technology use improve physical health, reduce mental stress, and foster stronger communities?"</p>
+                <p><strong>Option B (Media Literacy &amp; Digital Education):</strong> "How can schools and digital platforms empower citizens to combat fake news while harnessing AI for lifelong learning?"</p>
+            </div>
+
+            <textarea id="essay-text" oninput="updateWordCount()" placeholder="Type your composition here... (Target: 150–220 words)"></textarea>
+            <div class="wc" id="wc-display">Word count: 0 words</div>
+
+            <button class="wa-btn" onclick="sendSectionD1()">
+                <span>📱 Send Section d1 (Writing) to Teacher via WhatsApp</span>
+            </button>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- e1. SPEAKING & ORAL PRODUCTION (10 MARKS) -->
+        <!-- ========================================================= -->
+        <div class="exam-section" id="section-e1">
+            <span class="sec-label sec-rose">🎙️ e1. Speaking &amp; Oral Production — 10 marks</span>
+            <p class="mark-hint">Prepare notes for BOTH speaking prompts below (1–2 minutes speaking time each). Submit your outline or record audio responses to your teacher.</p>
+
+            <div style="display: grid; gap: 1.2rem; margin-bottom: 1.5rem;">
+                <div style="background: rgba(0,0,0,0.3); border-left: 4px solid var(--pt-rose); padding: 1.2rem; border-radius: 10px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <strong style="color: #fff;">Task 1: Media &amp; Mental Health Debate</strong>
+                        <span class="speaking-timer-badge">⏱️ 1.5 mins</span>
+                    </div>
+                    <p style="font-size: 0.95rem; color: rgba(255,255,255,0.85);">Do social media platforms have a responsibility to filter misinformation, or should users be solely responsible for developing media literacy? Give reasons and examples.</p>
+                </div>
+
+                <div style="background: rgba(0,0,0,0.3); border-left: 4px solid var(--pt-rose); padding: 1.2rem; border-radius: 10px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <strong style="color: #fff;">Task 2: Urban Living &amp; Technology</strong>
+                        <span class="speaking-timer-badge">⏱️ 1.5 mins</span>
+                    </div>
+                    <p style="font-size: 0.95rem; color: rgba(255,255,255,0.85);">Would you prefer to live in a 15-minute walkable smart city or a traditional spacious suburb? How does your daily environment impact your diet, exercise, and mood?</p>
+                </div>
+            </div>
+
+            <textarea id="speaking-notes" placeholder="Write your key points, key vocabulary, and speaking outline here before sending to teacher..."></textarea>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- GRAND SUMMARY CARD -->
+        <!-- ========================================================= -->
+        <div class="grand-summary-card">
+            <h2 style="font-size: 1.8rem; color: #fff; margin-bottom: 0.5rem;">🏆 Overall Evaluation Summary</h2>
+            <p style="color: rgba(255,255,255,0.8);">Progress Test — Units 4 to 8 (Upper-Module Mastery)</p>
+
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="label">a1. Listening</div>
+                    <div class="val" id="sum-a1">0.0 / 25</div>
+                </div>
+                <div class="summary-item">
+                    <div class="label">b1. Reading</div>
+                    <div class="val" id="sum-b1">0.0 / 25</div>
+                </div>
+                <div class="summary-item">
+                    <div class="label">c1. Language</div>
+                    <div class="val" id="sum-c1">0.0 / 25</div>
+                </div>
+                <div class="summary-item">
+                    <div class="label">Auto Total (75 max)</div>
+                    <div class="val" id="sum-auto" style="color: var(--pt-gold);">0.0 / 75</div>
+                </div>
+            </div>
+
+            <div id="grade-badge" style="display: inline-block; padding: 0.7rem 1.8rem; border-radius: 30px; font-weight: 800; font-size: 1.1rem; border: 2px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); color: #fff; margin-bottom: 1.5rem;">
+                Complete Sections a1, b1, and c1 to reveal grade status
+            </div>
+
+            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto 1.5rem;">
+                <em>Note: Section d1 (Writing - 15 marks) and Section e1 (Speaking - 10 marks) are evaluated directly by your teacher to complete your 100-mark final grade.</em>
+            </p>
+
+            <button class="wa-btn" onclick="sendFullProgressTest()">
+                <span>📱 Submit Full Progress Test &amp; Oral Prep to Teacher via WhatsApp</span>
+            </button>
+        </div>
+
+        <!-- Teacher Marking Scheme & Solutions -->
+        <button class="ms-toggle" onclick="toggleTranscript('marking-scheme-box')">
+            🔑 Toggle Teacher Marking Scheme &amp; Answer Key
+        </button>
+
+        <div id="marking-scheme-box" class="ms-box hidden">
+            <h3>🔑 Official Teacher Answer Key &amp; Explanations</h3>
+            <p style="color: rgba(255,255,255,0.8); margin-bottom: 1rem;">Use this answer key to review results with students:</p>
+
+            <strong style="color: var(--pt-gold);">a1. Listening Answers (10 x 2.5 marks = 25):</strong>
+            <div class="ak-grid">
+                <div class="ak-item">1: <strong>B</strong> (15-min walk/bike)</div>
+                <div class="ak-item">2: <strong>A</strong> (Gut microbiome &amp; immunity)</div>
+                <div class="ak-item">3: <strong>B</strong> (Echo chambers)</div>
+                <div class="ak-item">4: <strong>B</strong> (Democracy undermined)</div>
+                <div class="ak-item">5: <strong>B</strong> (AI tutoring &amp; gamification)</div>
+                <div class="ak-item">6: <strong>A</strong> (Emotionally tangible issues)</div>
+                <div class="ak-item">7: <strong>A</strong> (Reported: said that... was)</div>
+                <div class="ak-item">8: <strong>A</strong> (Passive: can be designed)</div>
+                <div class="ak-item">9: <strong>A</strong> (Mixed conditional: had eaten... would feel)</div>
+                <div class="ak-item">10: <strong>B</strong> (Resilient, sustainable communities)</div>
+            </div>
+
+            <strong style="color: var(--pt-gold); margin-top: 1rem; display: block;">b1. Reading Answers (10 x 2.5 marks = 25):</strong>
+            <div class="ak-grid">
+                <div class="ak-item">1: <strong>B</strong> (Acceleration &amp; transformation)</div>
+                <div class="ak-item">2: <strong>A</strong> (Engagement over veracity)</div>
+                <div class="ak-item">3: <strong>B</strong> (Gut-brain axis link to diet)</div>
+                <div class="ak-item">4: <strong>B</strong> (Serotonin)</div>
+                <div class="ak-item">5: <strong>B</strong> (Automobile sprawl &amp; noise)</div>
+                <div class="ak-item">6: <strong>B</strong> (Services within walking distance)</div>
+                <div class="ak-item">7: <strong>A</strong> (Spark critical dialogue)</div>
+                <div class="ak-item">8: <strong>B</strong> (Personalized learning)</div>
+                <div class="ak-item">9: <strong>A</strong> (Veracity = truthfulness)</div>
+                <div class="ak-item">10: <strong>B</strong> (Empowers individuals to thrive)</div>
+            </div>
+
+            <strong style="color: var(--pt-gold); margin-top: 1rem; display: block;">c1. Language in Use Answers (15 x 1.67 marks = 25):</strong>
+            <div class="ak-grid">
+                <div class="ak-item">1: <strong>B</strong> (was reading)</div>
+                <div class="ak-item">2: <strong>B</strong> (would launch)</div>
+                <div class="ak-item">3: <strong>B</strong> (had adopted)</div>
+                <div class="ak-item">4: <strong>A</strong> (would have been)</div>
+                <div class="ak-item">5: <strong>A</strong> (are exhibited)</div>
+                <div class="ak-item">6: <strong>A</strong> (is believed)</div>
+                <div class="ak-item">7: <strong>A</strong> (have something done)</div>
+                <div class="ak-item">8: <strong>B</strong> (inspected)</div>
+                <div class="ak-item">9: <strong>B</strong> (who)</div>
+                <div class="ak-item">10: <strong>A</strong> (which)</div>
+                <div class="ak-item">11: <strong>A</strong> (echo chambers)</div>
+                <div class="ak-item">12: <strong>B</strong> (microbiome)</div>
+                <div class="ak-item">13: <strong>A</strong> (conceptual)</div>
+                <div class="ak-item">14: <strong>A</strong> (sprawl)</div>
+                <div class="ak-item">15: <strong>A</strong> (gamification)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="margin-top: 4rem; padding: 2rem 0; background: rgba(0,0,0,0.5); text-align: center; border-top: 1px solid rgba(255,255,255,0.1);">
+        <div class="container">
+            <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">© 2026 English Language Course — B1 CEFR Intermediate Level. Designed by Cecilia Chiappero, Universidad Nacional de Córdoba.</p>
+        </div>
+    </footer>
+
+    <!-- Logic Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dateInput = document.getElementById('student-date');
+            if (dateInput) {
+                dateInput.value = new Date().toISOString().split('T')[0];
+            }
+        });
+
+        const ANSWERS_A1 = {
+            l1: { ans: 'b', exp: 'The 15-minute city ensures essential services are within 15 minutes by walking or cycling.' },
+            l2: { ans: 'a', exp: 'Less commuting stress directly benefits gut microbiome and immunity.' },
+            l3: { ans: 'b', exp: 'Algorithms create echo chambers promoting misinformation.' },
+            l4: { ans: 'b', exp: 'Without media literacy, democracy is undermined by fake news.' },
+            l5: { ans: 'b', exp: 'Schools integrate AI tutoring and gamified platforms for learning.' },
+            l6: { ans: 'a', exp: 'Contemporary art makes issues like microplastics and isolation emotionally tangible.' },
+            l7: { ans: 'a', exp: 'Reported speech backs tense from is to was.' },
+            l8: { ans: 'a', exp: 'Passive modal form: can be designed.' },
+            l9: { ans: 'a', exp: 'Mixed conditional: Past condition (had eaten) with present result (would feel).' },
+            l10: { ans: 'b', exp: 'The goal is building resilient, sustainable, healthy communities.' }
+        };
+
+        const ANSWERS_B1 = {
+            r1: { ans: 'b', exp: 'Paragraph 1 mentions unprecedented technological acceleration and structural transformation.' },
+            r2: { ans: 'a', exp: 'Algorithms prioritize user engagement over veracity.' },
+            r3: { ans: 'b', exp: 'Gut-brain axis links mental health to diet and environment.' },
+            r4: { ans: 'b', exp: 'Serotonin is produced by intestinal bacteria.' },
+            r5: { ans: 'b', exp: 'Automobile sprawl and noise pollution damage human biology.' },
+            r6: { ans: 'b', exp: 'It places green spaces, markets, and healthcare within short walking distances.' },
+            r7: { ans: 'a', exp: 'Conceptual art sparks critical dialogue on environmental and digital issues.' },
+            r8: { ans: 'b', exp: 'AI and VR personalize learning at student pace.' },
+            r9: { ans: 'a', exp: 'Veracity means truthfulness and accuracy.' },
+            r10: { ans: 'b', exp: 'Combining technology and human creativity empowers individuals.' }
+        };
+
+        const ANSWERS_C1 = {
+            g1: { ans: 'b', exp: 'Direct present continuous becomes past continuous in reported speech: was reading.' },
+            g2: { ans: 'b', exp: 'Direct will becomes would in reported speech.' },
+            g3: { ans: 'b', exp: 'Mixed conditional past condition uses past perfect: had adopted.' },
+            g4: { ans: 'a', exp: 'Mixed conditional past result uses would have + past participle.' },
+            g5: { ans: 'a', exp: 'Present passive: are exhibited.' },
+            g6: { ans: 'a', exp: 'Reporting passive: It is believed that...' },
+            g7: { ans: 'a', exp: 'Causative structure: have + object + past participle.' },
+            g8: { ans: 'b', exp: 'Causative past participle: inspected.' },
+            g9: { ans: 'b', exp: 'Relative pronoun for people: who.' },
+            g10: { ans: 'a', exp: 'Relative pronoun for things: which.' },
+            g11: { ans: 'a', exp: 'Echo chambers isolate users into single viewpoints.' },
+            g12: { ans: 'b', exp: 'Gut microbiome refers to intestinal microorganisms.' },
+            g13: { ans: 'a', exp: 'Conceptual art emphasizes the idea behind the artwork.' },
+            g14: { ans: 'a', exp: 'Urban sprawl describes low-density expansion.' },
+            g15: { ans: 'a', exp: 'Gamification applies game design to education.' }
+        };
+
+        let scoreA1 = 0;
+        let scoreB1 = 0;
+        let scoreC1 = 0;
+
+        function playListeningAudio() {
+            const transcriptText = `Transcript: Reimagining Society. Integrating Media, Health, Art, and Technology. 
+            Moderator: Welcome to our Global Innovation Forum. Today we synthesize key developments from media literacy and nutrition to contemporary art, smart cities, and AI in education. I am joined by Doctor Elena Rostova, urban strategist and health researcher, and Professor Marcus Vance, media theorist and educator. 
+            Doctor Elena Rostova: Thank you. Over the last decade, we have realized that human wellbeing cannot be separated from our living environment. In smart cities, the 15-minute city model aims to ensure that residents access work, green parks, and organic food within a 15-minute walk. When citizens walk more and commute less, stress levels decrease, which directly improves the gut microbiome and overall immunity. 
+            Professor Marcus Vance: Exactly, Elena. But physical health is only half the battle. In digital media, algorithms create echo chambers where sensationalism and misinformation spread faster than verified facts. If citizens are not taught critical media literacy from an early age, democracy itself is undermined. That is why schools are integrating AI tutoring and gamified learning platforms to help students verify sources and evaluate digital content. 
+            Doctor Elena Rostova: And contemporary art plays a vital role here as well! Conceptual installations and public street art force us to confront uncomfortable truths—like microplastic pollution or urban isolation—in ways that statistics never could. 
+            Professor Marcus Vance: Indeed. By combining human creativity with smart infrastructure, we can build communities that are intellectually resilient, ecologically sustainable, and mentally healthy. 
+            Moderator: A compelling vision. Thank you both.`;
+
+            playAudio(transcriptText);
+        }
+
+        function toggleTranscript(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.classList.toggle('hidden');
+            }
+        }
+
+        function updateWordCount() {
+            const text = document.getElementById('essay-text').value.trim();
+            const words = text ? text.split(/\s+/).length : 0;
+            document.getElementById('wc-display').textContent = `Word count: ${words} words`;
+        }
+
+        function checkSectionA1() {
+            let correctCount = 0;
+            for (const [q, data] of Object.entries(ANSWERS_A1)) {
+                const checked = document.querySelector(`input[name="${q}"]:checked`);
+                const box = document.getElementById(`box-${q}`);
+                const fb = document.getElementById(`fb-${q}`);
+
+                if (checked && checked.value === data.ans) {
+                    correctCount++;
+                    if (box) { box.className = 'ebox correct-border'; }
+                    if (fb) {
+                        fb.className = 'q-feedback correct';
+                        fb.innerHTML = `✅ <strong>Correct!</strong> ${data.exp}`;
+                    }
+                } else {
+                    if (box) { box.className = 'ebox incorrect-border'; }
+                    if (fb) {
+                        fb.className = 'q-feedback incorrect';
+                        fb.innerHTML = `❌ <strong>Incorrect.</strong> Correct answer: <strong>${data.ans.toUpperCase()}</strong>. ${data.exp}`;
+                    }
+                }
+            }
+            scoreA1 = correctCount * 2.5;
+            document.getElementById('num-a1').textContent = `${scoreA1.toFixed(1)} / 25`;
+            document.getElementById('pct-a1').textContent = `${Math.round((scoreA1 / 25) * 100)}% (${correctCount}/10 correct)`;
+            document.getElementById('score-a1').style.display = 'block';
+            updateGrandSummary();
+        }
+
+        function checkSectionB1() {
+            let correctCount = 0;
+            for (const [q, data] of Object.entries(ANSWERS_B1)) {
+                const checked = document.querySelector(`input[name="${q}"]:checked`);
+                const box = document.getElementById(`box-${q}`);
+                const fb = document.getElementById(`fb-${q}`);
+
+                if (checked && checked.value === data.ans) {
+                    correctCount++;
+                    if (box) { box.className = 'ebox correct-border'; }
+                    if (fb) {
+                        fb.className = 'q-feedback correct';
+                        fb.innerHTML = `✅ <strong>Correct!</strong> ${data.exp}`;
+                    }
+                } else {
+                    if (box) { box.className = 'ebox incorrect-border'; }
+                    if (fb) {
+                        fb.className = 'q-feedback incorrect';
+                        fb.innerHTML = `❌ <strong>Incorrect.</strong> Correct answer: <strong>${data.ans.toUpperCase()}</strong>. ${data.exp}`;
+                    }
+                }
+            }
+            scoreB1 = correctCount * 2.5;
+            document.getElementById('num-b1').textContent = `${scoreB1.toFixed(1)} / 25`;
+            document.getElementById('pct-b1').textContent = `${Math.round((scoreB1 / 25) * 100)}% (${correctCount}/10 correct)`;
+            document.getElementById('score-b1').style.display = 'block';
+            updateGrandSummary();
+        }
+
+        function checkSectionC1() {
+            let correctCount = 0;
+            for (const [q, data] of Object.entries(ANSWERS_C1)) {
+                const checked = document.querySelector(`input[name="${q}"]:checked`);
+                const box = document.getElementById(`box-${q}`);
+                const fb = document.getElementById(`fb-${q}`);
+
+                if (checked && checked.value === data.ans) {
+                    correctCount++;
+                    if (box) { box.className = 'ebox correct-border'; }
+                    if (fb) {
+                        fb.className = 'q-feedback correct';
+                        fb.innerHTML = `✅ <strong>Correct!</strong> ${data.exp}`;
+                    }
+                } else {
+                    if (box) { box.className = 'ebox incorrect-border'; }
+                    if (fb) {
+                        fb.className = 'q-feedback incorrect';
+                        fb.innerHTML = `❌ <strong>Incorrect.</strong> Correct answer: <strong>${data.ans.toUpperCase()}</strong>. ${data.exp}`;
+                    }
+                }
+            }
+            scoreC1 = (correctCount / 15) * 25;
+            document.getElementById('num-c1').textContent = `${scoreC1.toFixed(1)} / 25`;
+            document.getElementById('pct-c1').textContent = `${Math.round((scoreC1 / 25) * 100)}% (${correctCount}/15 correct)`;
+            document.getElementById('score-c1').style.display = 'block';
+            updateGrandSummary();
+        }
+
+        function updateGrandSummary() {
+            document.getElementById('sum-a1').textContent = `${scoreA1.toFixed(1)} / 25`;
+            document.getElementById('sum-b1').textContent = `${scoreB1.toFixed(1)} / 25`;
+            document.getElementById('sum-c1').textContent = `${scoreC1.toFixed(1)} / 25`;
+
+            const totalAuto = scoreA1 + scoreB1 + scoreC1;
+            const pct = Math.round((totalAuto / 75) * 100);
+            document.getElementById('sum-auto').textContent = `${totalAuto.toFixed(1)} / 75 (${pct}%)`;
+
+            const badge = document.getElementById('grade-badge');
+            if (pct >= 90) {
+                badge.style.background = 'rgba(16, 185, 129, 0.25)';
+                badge.style.borderColor = '#10b981';
+                badge.style.color = '#34d399';
+                badge.textContent = `⭐⭐⭐ Distinction (${pct}%) — Excellent Mastery (Units 4-8)`;
+            } else if (pct >= 75) {
+                badge.style.background = 'rgba(99, 102, 241, 0.25)';
+                badge.style.borderColor = '#6366f1';
+                badge.style.color = '#818cf8';
+                badge.textContent = `✅ Merit (${pct}%) — Strong B1+ Competence`;
+            } else if (pct >= 60) {
+                badge.style.background = 'rgba(251, 191, 36, 0.25)';
+                badge.style.borderColor = '#fbbf24';
+                badge.style.color = '#fbbf24';
+                badge.textContent = `👍 Pass (${pct}%) — B1 Level Achieved`;
+            } else {
+                badge.style.background = 'rgba(244, 63, 94, 0.25)';
+                badge.style.borderColor = '#f43f5e';
+                badge.style.color = '#fda4af';
+                badge.textContent = `⚠️ Review Needed (${pct}%) — Reinforce Units 4–8`;
+            }
+        }
+
+        function sendSectionD1() {
+            const student = document.getElementById('student-name').value.trim() || 'Anonymous Student';
+            const essay = document.getElementById('essay-text').value.trim();
+            if (!essay) {
+                alert('Please write your essay or composition before sending Section d1.');
+                return;
+            }
+            const msg = `📝 *B1 PROGRESS TEST (UNITS 4–8) — SECTION d1 (WRITING)*\n\n👤 *Student:* ${student}\n📅 *Date:* ${document.getElementById('student-date').value}\n\n✍️ *Written Composition:*\n${essay}`;
+            window.open(`https://wa.me/5493517017850?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        function sendFullProgressTest() {
+            const student = document.getElementById('student-name').value.trim() || 'Anonymous Student';
+            const date = document.getElementById('student-date').value || new Date().toISOString().split('T')[0];
+            const essay = document.getElementById('essay-text').value.trim() || '(No written composition submitted)';
+            const speaking = document.getElementById('speaking-notes').value.trim() || '(No speaking notes submitted)';
+
+            const totalAuto = (scoreA1 + scoreB1 + scoreC1).toFixed(1);
+            const pct = Math.round((totalAuto / 75) * 100);
+
+            const msg = `📋 *COMPREHENSIVE PROGRESS TEST (UNITS 4 TO 8)*\n*English Language Course — CEFR B1 Level*\n\n👤 *Student:* ${student}\n📅 *Date:* ${date}\n\n📊 *AUTO-GRADED MARKS (75 max):*\n• 🎧 *a1. Listening:* ${scoreA1.toFixed(1)} / 25\n• 📖 *b1. Reading:* ${scoreB1.toFixed(1)} / 25\n• 📝 *c1. Grammar & Vocab:* ${scoreC1.toFixed(1)} / 25\n🏆 *Auto-Graded Total:* ${totalAuto} / 75 (${pct}%)\n\n✍️ *d1. WRITING SUBMISSION:*\n${essay}\n\n🎙️ *e1. SPEAKING ORAL PREP & NOTES:*\n${speaking}\n\nTeacher Evaluation Target: 100 Total Marks.`;
+
+            window.open(`https://wa.me/5493517017850?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+    </script>
+</body>
+
+</html>

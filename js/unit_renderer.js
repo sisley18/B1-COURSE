@@ -487,6 +487,11 @@ function renderProgressExamCard(unitId) {
                     ⭐ Exam 1 (Units 1–6) →
                 </a>
                 ` : ''}
+                ${unitId === 8 ? `
+                <a href="progress_test_4_8.html" class="btn" style="display: inline-block; background: linear-gradient(135deg, #8b5cf6, #6366f1); color: #fff; padding: 14px 30px; border-radius: 50px; font-weight: 700; font-size: 1.05rem; text-decoration: none; border: 2px solid #8b5cf6; box-shadow: 0 4px 20px rgba(139,92,246,0.35); transition: all 0.3s ease;">
+                    ⭐ Progress Test (Units 4–8) →
+                </a>
+                ` : ''}
             </div>
         </section>
     `;
