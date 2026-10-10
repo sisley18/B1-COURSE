@@ -29,6 +29,28 @@ function renderUnitPage(unitId) {
             <!-- Completion Status Card -->
             <div class="completion-status-card" id="unit-status-panel"></div>
 
+            <!-- Teacher Links Section -->
+            <section class="section-block teacher-links-block" id="teacher-links-unit-${unit.id}">
+                <span class="section-label" style="background: rgba(99, 102, 241, 0.2); color: #818cf8;">📎 Teacher Links</span>
+                <div class="teacher-links-container">
+                    <div class="teacher-links-list" id="teacher-links-list-${unit.id}">
+                        <!-- Links loaded dynamically -->
+                    </div>
+                    <details class="teacher-link-form-toggle">
+                        <summary class="btn teacher-add-link-btn" style="background: rgba(99, 102, 241, 0.15); border: 1px dashed rgba(129, 140, 248, 0.4); color: #818cf8; padding: 10px 20px; font-size: 0.9rem; cursor: pointer; border-radius: 10px; list-style: none; text-align: center; transition: all 0.3s ease;">
+                            ➕ Add Link
+                        </summary>
+                        <div class="teacher-link-form" style="margin-top: 12px; display: grid; gap: 10px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 12px;">
+                            <input type="text" id="teacher-link-title-${unit.id}" placeholder="Link title (e.g. Grammar worksheet)" style="padding: 10px 14px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; border-radius: 8px; font-family: inherit; font-size: 0.9rem;">
+                            <input type="url" id="teacher-link-url-${unit.id}" placeholder="https://..." style="padding: 10px 14px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; border-radius: 8px; font-family: inherit; font-size: 0.9rem;">
+                            <button class="btn" onclick="addTeacherLink(${unit.id})" style="background: linear-gradient(135deg, #6366f1, #818cf8); border: none; color: #fff; padding: 10px 20px; font-weight: 600; border-radius: 8px; cursor: pointer; transition: all 0.3s ease;">
+                                Save Link 💾
+                            </button>
+                        </div>
+                    </details>
+                </div>
+            </section>
+
             <!-- Vocabulary Section -->
             <section class="section-block">
                 <span class="section-label">a1. Vocabulary & Pronunciation</span>
