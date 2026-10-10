@@ -380,6 +380,9 @@ const courseData = {
             id: 8,
             title: "Education",
             topic: "EdTech & Lifelong Learning",
+            teacher_links: [
+                { id: "default_test_english_8", title: "Level Test - Test-English", url: "https://test-english.com/level-test/" }
+            ],
             listening: {
                 title: "The Classroom of Tomorrow",
                 level: "Intermediate",

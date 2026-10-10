@@ -1165,7 +1165,23 @@ window.deleteAttendance = function (id) {
 
 function getTeacherLinks(unitId) {
     const all = JSON.parse(localStorage.getItem('teacher_links') || '{}');
-    return all[unitId] || [];
+    if (all[unitId] !== undefined) {
+        return all[unitId];
+    }
+
+    let unitsToSearch = [];
+    if (typeof courseData !== 'undefined' && Array.isArray(courseData.units)) unitsToSearch = unitsToSearch.concat(courseData.units);
+    if (typeof courseDataPart1 !== 'undefined' && Array.isArray(courseDataPart1.units)) unitsToSearch = unitsToSearch.concat(courseDataPart1.units);
+    if (typeof courseDataPart2 !== 'undefined' && Array.isArray(courseDataPart2.units)) unitsToSearch = unitsToSearch.concat(courseDataPart2.units);
+    if (typeof courseDataPart3 !== 'undefined' && Array.isArray(courseDataPart3.units)) unitsToSearch = unitsToSearch.concat(courseDataPart3.units);
+    if (typeof courseDataPart4 !== 'undefined' && Array.isArray(courseDataPart4.units)) unitsToSearch = unitsToSearch.concat(courseDataPart4.units);
+
+    const unit = unitsToSearch.find(u => u.id === unitId);
+    if (unit && Array.isArray(unit.teacher_links)) {
+        return [...unit.teacher_links];
+    }
+
+    return [];
 }
 
 function saveTeacherLinks(unitId, links) {
@@ -1220,7 +1236,7 @@ window.addTeacherLink = function (unitId) {
 window.deleteTeacherLink = function (unitId, linkId) {
     if (!confirm('Delete this link?')) return;
     let links = getTeacherLinks(unitId);
-    links = links.filter(l => l.id !== linkId);
+    links = links.filter(l => l.id !== linkId && String(l.id) !== String(linkId));
     saveTeacherLinks(unitId, links);
     loadTeacherLinks(unitId);
 };
@@ -1246,7 +1262,7 @@ function loadTeacherLinks(unitId) {
                onmouseover="this.style.color='#c7d2fe'" onmouseout="this.style.color='#a5b4fc'">
                 ${link.title}
             </a>
-            <button onclick="deleteTeacherLink(${unitId}, ${link.id})" 
+            <button onclick="deleteTeacherLink(${unitId}, '${link.id}')" 
                     style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); color: #fca5a5; width: 30px; height: 30px; border-radius: 8px; cursor: pointer; font-size: 0.8rem; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; flex-shrink: 0;"
                     onmouseover="this.style.background='rgba(239, 68, 68, 0.3)'"
                     onmouseout="this.style.background='rgba(239, 68, 68, 0.15)'"
@@ -1256,7 +1272,18 @@ function loadTeacherLinks(unitId) {
 }
 
 function loadAllTeacherLinks() {
-    courseData.units.forEach(unit => {
-        loadTeacherLinks(unit.id);
+    let unitsToLoad = [];
+    if (typeof courseData !== 'undefined' && Array.isArray(courseData.units)) unitsToLoad = unitsToLoad.concat(courseData.units);
+    if (typeof courseDataPart1 !== 'undefined' && Array.isArray(courseDataPart1.units)) unitsToLoad = unitsToLoad.concat(courseDataPart1.units);
+    if (typeof courseDataPart2 !== 'undefined' && Array.isArray(courseDataPart2.units)) unitsToLoad = unitsToLoad.concat(courseDataPart2.units);
+    if (typeof courseDataPart3 !== 'undefined' && Array.isArray(courseDataPart3.units)) unitsToLoad = unitsToLoad.concat(courseDataPart3.units);
+    if (typeof courseDataPart4 !== 'undefined' && Array.isArray(courseDataPart4.units)) unitsToLoad = unitsToLoad.concat(courseDataPart4.units);
+
+    const seen = new Set();
+    unitsToLoad.forEach(unit => {
+        if (!seen.has(unit.id)) {
+            seen.add(unit.id);
+            loadTeacherLinks(unit.id);
+        }
     });
 }
