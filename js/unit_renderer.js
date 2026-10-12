@@ -494,6 +494,41 @@ function renderProgressExamCard(unitId) {
                 ` : ''}
             </div>
         </section>
+
+        ${unitId === 8 ? `
+        <!-- Comprehensive Progress Test (Units 4 to 8) Final Milestone Card -->
+        <section class="section-block" style="border: 2px solid #8b5cf6; background: linear-gradient(135deg, rgba(139, 92, 246, 0.12), rgba(20, 184, 166, 0.08)); border-radius: 16px; padding: 30px; margin-top: 30px;">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                <span style="font-size: 2.4rem;">🎓</span>
+                <div>
+                    <span class="section-label" style="background: rgba(139, 92, 246, 0.25); color: #a78bfa; border: 1px solid #8b5cf6; margin-bottom: 6px; display: inline-block;">Final Milestone</span>
+                    <h3 style="margin: 0; font-size: 1.6rem; color: #fff;">Comprehensive Progress Test (Units 4 to 8)</h3>
+                </div>
+            </div>
+            <p style="font-size: 1.05rem; opacity: 0.9; margin-bottom: 20px; line-height: 1.6;">
+                🌟 <strong>Upper-Module Final Evaluation:</strong> Test your mastery across Media Literacy, Wellness &amp; Nutrition, Contemporary Art, Smart Cities, and Educational Technology. Evaluates Listening Comprehension with audio controls, Reading Analysis, Language in Use, Written Composition, and Oral Production.
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 25px;">
+                <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px 16px; border-radius: 10px; font-size: 0.9rem;">
+                    🎧 <strong>a1. Listening</strong> (Audio + 10 Qs - 25 pts)
+                </div>
+                <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px 16px; border-radius: 10px; font-size: 0.9rem;">
+                    📖 <strong>b1. Reading</strong> (Analysis - 25 pts)
+                </div>
+                <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px 16px; border-radius: 10px; font-size: 0.9rem;">
+                    📝 <strong>c1. Grammar &amp; Vocab</strong> (15 Qs - 25 pts)
+                </div>
+                <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px 16px; border-radius: 10px; font-size: 0.9rem;">
+                    ✍️ <strong>d1 &amp; e1. Writing &amp; Speaking</strong> (25 pts)
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <a href="progress_test_4_8.html" class="btn" style="display: inline-block; background: linear-gradient(135deg, #8b5cf6, #6366f1); color: #fff; padding: 14px 35px; border-radius: 50px; font-weight: 700; font-size: 1.1rem; text-decoration: none; border: 2px solid #8b5cf6; box-shadow: 0 4px 20px rgba(139,92,246,0.4); transition: all 0.3s ease;">
+                    📋 Take Comprehensive Progress Test (Units 4 to 8) →
+                </a>
+            </div>
+        </section>
+        ` : ''}
     `;
 }
 
